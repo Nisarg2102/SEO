@@ -11,7 +11,7 @@ export class WebhooksController {
   @Post('research-sync')
   @HttpCode(HttpStatus.ACCEPTED)
   async syncResearch() {
-    const appUrl = process.env.API_URL || process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3001';
+    const appUrl = process.env.API_URL || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3001');
     const res = await this.qstash.publishJSON({
       url: `${appUrl}/internal/queues/research/sync-all`,
       body: {}
@@ -28,7 +28,7 @@ export class PostizWebhooksController {
   @Post('sync')
   @HttpCode(HttpStatus.ACCEPTED)
   async syncPostizStatuses() {
-    const appUrl = process.env.API_URL || process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3001';
+    const appUrl = process.env.API_URL || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3001');
     const res = await this.qstash.publishJSON({
       url: `${appUrl}/internal/queues/webhooks/sync-postiz`,
       body: {}

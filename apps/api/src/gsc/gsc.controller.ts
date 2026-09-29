@@ -63,7 +63,7 @@ export class GscController {
   @Post('sync')
   @HttpCode(HttpStatus.ACCEPTED)
   async sync(@Param('workspaceId') workspaceId: string, @Body('days') days?: number) {
-    const appUrl = process.env.API_URL || process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3001';
+    const appUrl = process.env.API_URL || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3001');
     const res = await this.qstash.publishJSON({
       url: `${appUrl}/internal/queues/analytics/sync-gsc`,
       body: { workspaceId, days: days || 28 }

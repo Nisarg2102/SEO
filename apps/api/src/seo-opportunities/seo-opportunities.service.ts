@@ -59,7 +59,7 @@ export class SeoOpportunitiesService {
   }
 
   async analyzeMetrics(workspaceId: string, metrics: RawMetric[]) {
-    const appUrl = process.env.API_URL || process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3001';
+    const appUrl = process.env.API_URL || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3001');
     const res = await this.qstash.publishJSON({
       url: `${appUrl}/internal/queues/seo/analyze-metrics`,
       body: { workspaceId, metrics }
