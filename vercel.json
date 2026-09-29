@@ -2,6 +2,7 @@
   "services": {
     "api": {
       "root": "apps/api",
+      "entrypoint": "src/main.ts",
       "functions": {
         "src/main.ts": {
           "maxDuration": 60
