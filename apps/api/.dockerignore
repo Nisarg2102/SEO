@@ -1,0 +1,13 @@
+node_modules
+dist
+.next
+coverage
+*.log
+.env
+.env.*
+!.env.example
+Dockerfile*
+docker-entrypoint.sh
+.dockerignore
+README.md
+*.md

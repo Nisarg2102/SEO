@@ -1,0 +1,12 @@
+node_modules/
+.DS_Store
+dist/
+build/
+.env
+.env.*
+!.env.example
+!.env.production.example
+.next/
+coverage/
+# TLS certificates — never commit
+infrastructure/nginx/certs/

@@ -1,0 +1,351 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id               String            @id @default(uuid()) @db.Uuid
+  email            String            @unique
+  name             String
+  passwordHash     String            @map("password_hash")
+  role             String            @default("USER")
+  createdAt        DateTime          @default(now()) @map("created_at")
+  updatedAt        DateTime          @updatedAt @map("updated_at")
+
+  workspaceMembers WorkspaceMember[]
+
+  @@map("users")
+}
+
+model Workspace {
+  id             String            @id @default(uuid()) @db.Uuid
+  name           String
+  type           String
+  createdAt      DateTime          @default(now()) @map("created_at")
+  updatedAt      DateTime          @updatedAt @map("updated_at")
+
+  members        WorkspaceMember[]
+  brandProfiles  BrandProfile[]
+  sources        Source[]
+  researchItems  ResearchItem[]
+  contentPacks     ContentPack[]
+  seoOpportunities SeoOpportunity[]
+  integrations     Integration[]
+  gscMetrics       GscMetric[]
+  analyticsAccounts AnalyticsAccount[]
+  weeklyReports    WeeklyReport[]
+  contentIdeas     ContentIdea[]
+
+  @@map("workspaces")
+}
+
+model WorkspaceMember {
+  id           String    @id @default(uuid()) @db.Uuid
+  workspaceId  String    @map("workspace_id") @db.Uuid
+  userId       String    @map("user_id") @db.Uuid
+  role         String
+  createdAt    DateTime  @default(now()) @map("created_at")
+
+  workspace    Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([workspaceId, userId])
+  @@index([workspaceId])
+  @@index([userId])
+  @@map("workspace_members")
+}
+
+model BrandProfile {
+  id              String    @id @default(uuid()) @db.Uuid
+  workspaceId     String    @map("workspace_id") @db.Uuid
+  businessName    String    @map("business_name")
+  description     String
+  targetAudience  String    @map("target_audience")
+  location        String
+  tone            String
+  language        String
+  industry        String?
+  services        String?
+  website         String?
+  createdAt       DateTime  @default(now()) @map("created_at")
+  updatedAt       DateTime  @updatedAt @map("updated_at")
+
+  workspace       Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+
+  @@index([workspaceId])
+  @@map("brand_profiles")
+}
+
+model Source {
+  id           String    @id @default(uuid()) @db.Uuid
+  workspaceId  String    @map("workspace_id") @db.Uuid
+  name         String
+  url          String
+  sourceType   String    @map("source_type")
+  sourceTier   String    @map("source_tier")
+  active       Boolean   @default(true)
+  createdAt    DateTime  @default(now()) @map("created_at")
+
+  workspace    Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  researchItems ResearchItem[]
+
+  @@index([workspaceId])
+  @@map("sources")
+}
+
+model ResearchItem {
+  id                      String    @id @default(uuid()) @db.Uuid
+  workspaceId             String    @map("workspace_id") @db.Uuid
+  sourceId                String    @map("source_id") @db.Uuid
+  title                   String
+  url                     String
+  topic                   String?
+  audience                String?
+  summary                 String    @db.Text
+  relevanceReason         String?   @map("relevance_reason") @db.Text
+  suggestedContentFormats String?   @map("suggested_content_formats") @db.Text
+  publishedAt             DateTime? @map("published_at")
+  confidence              Float
+  intent                  String
+  status                  String
+  createdAt               DateTime  @default(now()) @map("created_at")
+
+  workspace    Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  source       Source    @relation(fields: [sourceId], references: [id], onDelete: Cascade)
+  contentIdeas ContentIdea[]
+
+  @@index([workspaceId])
+  @@index([sourceId])
+  @@unique([workspaceId, url])
+  @@map("research_items")
+}
+
+model ContentIdea {
+  id               String    @id @default(uuid()) @db.Uuid
+  workspaceId      String    @map("workspace_id") @db.Uuid
+  researchItemId   String?   @map("research_item_id") @db.Uuid
+  seoOpportunityId String?   @map("seo_opportunity_id") @db.Uuid
+  title            String
+  topic            String
+  audience         String
+  intent           String
+  status           String
+  confidence       Float
+  createdAt        DateTime  @default(now()) @map("created_at")
+  updatedAt        DateTime  @updatedAt @map("updated_at")
+
+  workspace        Workspace       @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  researchItem     ResearchItem?   @relation(fields: [researchItemId], references: [id], onDelete: SetNull)
+  seoOpportunity   SeoOpportunity? @relation(fields: [seoOpportunityId], references: [id], onDelete: SetNull)
+  contentPacks     ContentPack[]
+
+  @@index([workspaceId])
+  @@index([researchItemId])
+  @@index([seoOpportunityId])
+  @@map("content_ideas")
+}
+
+model ContentPack {
+  id                String    @id @default(uuid()) @db.Uuid
+  workspaceId       String    @map("workspace_id") @db.Uuid
+  contentIdeaId     String?   @map("content_idea_id") @db.Uuid
+  topic             String?
+  objective         String?
+  audience          String?
+  intent            String?
+  platform          String
+  hook              String?   @db.Text
+  caption           String?   @db.Text
+  script            String?   @db.Text
+  visualDirection   String?   @map("visual_direction") @db.Text
+  cta               String?   @db.Text
+  hashtags          String?
+  seoTitle          String?   @map("seo_title")
+  metaDescription   String?   @map("meta_description") @db.Text
+  primaryKeyword    String?   @map("primary_keyword")
+  secondaryKeywords String?   @map("secondary_keywords")
+  complianceNotes   String?   @map("compliance_notes") @db.Text
+  status            String
+  scheduledAt       DateTime? @map("scheduled_at")
+  externalPostId    String?   @map("external_post_id")
+  createdAt         DateTime  @default(now()) @map("created_at")
+  updatedAt         DateTime  @updatedAt @map("updated_at")
+
+  workspace       Workspace    @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  contentIdea     ContentIdea? @relation(fields: [contentIdeaId], references: [id], onDelete: Cascade)
+
+  @@index([workspaceId])
+  @@index([contentIdeaId])
+  @@map("content_packs")
+}
+
+model SeoOpportunity {
+  id              String    @id @default(uuid()) @db.Uuid
+  workspaceId     String    @map("workspace_id") @db.Uuid
+  url             String
+  keyword         String
+  impressions     Int
+  clicks          Int
+  ctr             Float
+  averagePosition Float     @map("average_position")
+  opportunityType String    @map("opportunity_type")
+  recommendation  String    @db.Text
+  priority        String
+  createdAt       DateTime  @default(now()) @map("created_at")
+
+  workspace       Workspace     @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  contentIdeas    ContentIdea[]
+
+  @@index([workspaceId])
+  @@map("seo_opportunities")
+}
+
+model Integration {
+  id           String    @id @default(uuid()) @db.Uuid
+  workspaceId  String    @map("workspace_id") @db.Uuid
+  provider     String    // e.g., 'google_search_console'
+  accessToken  String?   @map("access_token") @db.Text
+  refreshToken String?   @map("refresh_token") @db.Text
+  expiresAt    DateTime? @map("expires_at")
+  config       String?   @db.Text // JSON string for things like propertyUrl
+  lastSyncAt   DateTime? @map("last_sync_at")
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @updatedAt @map("updated_at")
+
+  workspace    Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+
+  @@unique([workspaceId, provider])
+  @@map("integrations")
+}
+
+model GscMetric {
+  id           String    @id @default(uuid()) @db.Uuid
+  workspaceId  String    @map("workspace_id") @db.Uuid
+  date         DateTime
+  query        String
+  page         String
+  clicks       Int
+  impressions  Int
+  ctr          Float
+  position     Float
+  createdAt    DateTime  @default(now()) @map("created_at")
+
+  workspace    Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+
+  @@index([workspaceId])
+  @@unique([workspaceId, date, query, page])
+  @@map("gsc_metrics")
+}
+
+model AnalyticsSource {
+  id          String   @id @default(uuid()) @db.Uuid
+  name        String   @unique
+  category    String   // 'website', 'social', 'video'
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now()) @map("created_at")
+  
+  accounts    AnalyticsAccount[]
+
+  @@map("analytics_sources")
+}
+
+model AnalyticsAccount {
+  id              String   @id @default(uuid()) @db.Uuid
+  workspaceId     String   @map("workspace_id") @db.Uuid
+  sourceId        String   @map("source_id") @db.Uuid
+  accountName     String   @map("account_name")
+  externalId      String?  @map("external_id")
+  config          String?  @db.Text // JSON config
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  workspace       Workspace       @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  source          AnalyticsSource @relation(fields: [sourceId], references: [id], onDelete: Cascade)
+  snapshots       AnalyticsSnapshot[]
+  postMetrics     PostMetric[]
+
+  @@unique([workspaceId, sourceId, accountName])
+  @@map("analytics_accounts")
+}
+
+model AnalyticsSnapshot {
+  id            String   @id @default(uuid()) @db.Uuid
+  accountId     String   @map("account_id") @db.Uuid
+  date          DateTime
+  
+  // Normalized metrics
+  impressions   Int      @default(0)
+  reach         Int      @default(0)
+  views         Int      @default(0)
+  likes         Int      @default(0)
+  comments      Int      @default(0)
+  shares        Int      @default(0)
+  saves         Int      @default(0)
+  clicks        Int      @default(0)
+  conversions   Int      @default(0)
+  
+  // Extensible JSON for platform-specific metrics (e.g. CTR, Average Position)
+  metadata      String?  @db.Text 
+  
+  createdAt     DateTime @default(now()) @map("created_at")
+
+  account       AnalyticsAccount @relation(fields: [accountId], references: [id], onDelete: Cascade)
+
+  @@unique([accountId, date])
+  @@map("analytics_snapshots")
+}
+
+model PostMetric {
+  id            String   @id @default(uuid()) @db.Uuid
+  accountId     String   @map("account_id") @db.Uuid
+  externalUrl   String?  @map("external_url")
+  externalId    String?  @map("external_id")
+  date          DateTime
+  
+  // Normalized metrics
+  impressions   Int      @default(0)
+  reach         Int      @default(0)
+  views         Int      @default(0)
+  likes         Int      @default(0)
+  comments      Int      @default(0)
+  shares        Int      @default(0)
+  saves         Int      @default(0)
+  clicks        Int      @default(0)
+  conversions   Int      @default(0)
+  
+  // Extensible JSON
+  metadata      String?  @db.Text 
+  
+  createdAt     DateTime @default(now()) @map("created_at")
+
+  account       AnalyticsAccount @relation(fields: [accountId], references: [id], onDelete: Cascade)
+
+  @@unique([accountId, externalId, date])
+  @@index([externalUrl])
+  @@map("post_metrics")
+}
+
+model WeeklyReport {
+  id                        String   @id @default(uuid()) @db.Uuid
+  workspaceId               String   @map("workspace_id") @db.Uuid
+  weekStartDate             DateTime @map("week_start_date")
+  weekEndDate               DateTime @map("week_end_date")
+  
+  bestPerformingContent     String   @db.Text
+  weakPerformingContent     String   @db.Text
+  observedPatterns          String   @db.Text
+  seoOpportunities          String   @db.Text
+  contentRefreshOpportunities String   @db.Text
+  suggestedExperiments      String   @db.Text
+  nextWeekIdeas             String   @db.Text
+  
+  createdAt                 DateTime @default(now()) @map("created_at")
+
+  workspace                 Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+
+  @@index([workspaceId])
+  @@map("weekly_reports")
+}
