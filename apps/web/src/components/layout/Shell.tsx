@@ -122,8 +122,8 @@ function WorkspaceSwitcher() {
       setCreateModalOpen(false);
       setOpen(false);
       setNewName('');
-    } catch {
-      // swallow — user can retry
+    } catch (err: any) {
+      alert(err.message || 'Failed to create workspace');
     }
   }
 

@@ -14,11 +14,13 @@ export class CreateSourceDto {
   @MaxLength(2048)
   url!: string;
 
+  @IsOptional()
   @IsIn(VALID_SOURCE_TYPES, { message: `sourceType must be one of: ${VALID_SOURCE_TYPES.join(', ')}` })
-  sourceType!: string;
+  sourceType?: string = 'website';
 
+  @IsOptional()
   @IsIn(VALID_SOURCE_TIERS, { message: `sourceTier must be one of: ${VALID_SOURCE_TIERS.join(', ')}` })
-  sourceTier!: string;
+  sourceTier?: string = 'tier3';
 }
 
 export class UpdateSourceDto {
