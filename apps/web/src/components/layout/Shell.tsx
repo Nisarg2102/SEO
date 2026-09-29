@@ -131,7 +131,15 @@ function WorkspaceSwitcher() {
   return (
     <div className="relative" ref={ref}>
       <button
-        onClick={() => setOpen((o) => !o)}
+        onClick={() => {
+          if (open) {
+            setCreating(false);
+            setCreateModalOpen(false);
+            setOpen(false);
+          } else {
+            setOpen(true);
+          }
+        }}
         className="flex items-center gap-2 px-3 py-2 rounded-md bg-gray-50 border border-gray-200 cursor-pointer hover:bg-gray-100 transition-colors"
       >
         <div className="h-6 w-6 bg-blue-600 rounded text-white flex items-center justify-center text-xs font-bold">
@@ -149,7 +157,12 @@ function WorkspaceSwitcher() {
             {workspaces.map((ws) => (
               <button
                 key={ws.id}
-                onClick={() => { setActiveWorkspace(ws); setOpen(false); }}
+                onClick={() => { 
+                  setActiveWorkspace(ws); 
+                  setOpen(false); 
+                  setCreating(false);
+                  setCreateModalOpen(false);
+                }}
                 className={cn(
                   'w-full flex items-center gap-3 p-2 rounded-md text-left text-sm transition-colors',
                   activeWorkspace?.id === ws.id
@@ -178,12 +191,12 @@ function WorkspaceSwitcher() {
                   placeholder="Workspace name"
                   value={newName}
                   onChange={(e) => setNewName(e.target.value)}
-                  className="w-full text-sm text-gray-900 bg-white border border-gray-300 rounded px-2 py-1.5 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  className="w-full text-sm text-black bg-white placeholder:text-gray-500 border border-gray-300 rounded px-2 py-1.5 focus:outline-none focus:ring-1 focus:ring-blue-500"
                 />
                 <select
                   value={newType}
                   onChange={(e) => setNewType(e.target.value as 'GENERAL' | 'MEDICAL')}
-                  className="w-full text-sm text-gray-900 bg-white border border-gray-300 rounded px-2 py-1.5 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  className="w-full text-sm text-black bg-white placeholder:text-gray-500 border border-gray-300 rounded px-2 py-1.5 focus:outline-none focus:ring-1 focus:ring-blue-500"
                 >
                   <option value="GENERAL">General</option>
                   <option value="MEDICAL">Medical / Health</option>
