@@ -21,5 +21,13 @@
   },
   "dependencies": {
     "@prisma/client": "^5.13.0"
+  },
+  "config": {
+    "allowScripts": {
+      "@parcel/watcher": true,
+      "@prisma/client": true,
+      "bcrypt": true,
+      "unrs-resolver": true
+    }
   }
 }
