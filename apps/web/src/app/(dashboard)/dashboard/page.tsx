@@ -52,7 +52,7 @@ function ContentStatusBadge({ status }: { status: string }) {
 }
 
 export default function DashboardPage() {
-  const { activeWorkspace } = useWorkspace();
+  const { activeWorkspace, setCreateModalOpen } = useWorkspace();
   const [stats, setStats] = React.useState<WorkspaceStats | null>(null);
   const [content, setContent] = React.useState<ContentPack[]>([]);
   const [research, setResearch] = React.useState<ResearchItem[]>([]);
@@ -89,7 +89,7 @@ export default function DashboardPage() {
         icon={PenTool}
         title="No workspace selected"
         description="Create or select a workspace to get started."
-        action={<Button>Create Workspace</Button>}
+        action={<Button onClick={() => setCreateModalOpen(true)}>Create Workspace</Button>}
       />
     );
   }

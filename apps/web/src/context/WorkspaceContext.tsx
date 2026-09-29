@@ -13,6 +13,8 @@ interface WorkspaceContextValue {
   loading: boolean;
   setActiveWorkspace: (workspace: Workspace) => void;
   refreshWorkspaces: () => Promise<void>;
+  isCreateModalOpen: boolean;
+  setCreateModalOpen: (open: boolean) => void;
 }
 
 const WorkspaceContext = createContext<WorkspaceContextValue | null>(null);
@@ -22,6 +24,7 @@ export function WorkspaceProvider({ children }: { children: React.ReactNode }) {
   const [workspaces, setWorkspaces] = useState<Workspace[]>([]);
   const [activeWorkspace, setActiveWorkspaceState] = useState<Workspace | null>(null);
   const [loading, setLoading] = useState(true);
+  const [isCreateModalOpen, setCreateModalOpen] = useState(false);
 
   const load = useCallback(async () => {
     if (!user) {
@@ -64,7 +67,15 @@ export function WorkspaceProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <WorkspaceContext.Provider
-      value={{ workspaces, activeWorkspace, loading, setActiveWorkspace, refreshWorkspaces }}
+      value={{ 
+        workspaces, 
+        activeWorkspace, 
+        loading, 
+        setActiveWorkspace, 
+        refreshWorkspaces,
+        isCreateModalOpen,
+        setCreateModalOpen
+      }}
     >
       {children}
     </WorkspaceContext.Provider>

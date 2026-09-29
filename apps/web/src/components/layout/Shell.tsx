@@ -80,7 +80,7 @@ export function Sidebar() {
 }
 
 function WorkspaceSwitcher() {
-  const { workspaces, activeWorkspace, setActiveWorkspace, refreshWorkspaces } = useWorkspace();
+  const { workspaces, activeWorkspace, setActiveWorkspace, refreshWorkspaces, isCreateModalOpen, setCreateModalOpen } = useWorkspace();
   const [open, setOpen] = React.useState(false);
   const [creating, setCreating] = React.useState(false);
   const [newName, setNewName] = React.useState('');
@@ -88,12 +88,25 @@ function WorkspaceSwitcher() {
   const ref = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
+    if (isCreateModalOpen) {
+      setOpen(true);
+      setCreating(true);
+    }
+  }, [isCreateModalOpen]);
+
+  React.useEffect(() => {
     function handleClick(e: MouseEvent) {
-      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setOpen(false);
+        if (creating) {
+          setCreating(false);
+          setCreateModalOpen(false);
+        }
+      }
     }
     document.addEventListener('mousedown', handleClick);
     return () => document.removeEventListener('mousedown', handleClick);
-  }, []);
+  }, [creating, setCreateModalOpen]);
 
   const initials = activeWorkspace?.name
     ? activeWorkspace.name.substring(0, 2).toUpperCase()
@@ -106,6 +119,8 @@ function WorkspaceSwitcher() {
       await refreshWorkspaces();
       setActiveWorkspace(ws);
       setCreating(false);
+      setCreateModalOpen(false);
+      setOpen(false);
       setNewName('');
     } catch {
       // swallow — user can retry
@@ -180,7 +195,10 @@ function WorkspaceSwitcher() {
                     Create
                   </button>
                   <button
-                    onClick={() => setCreating(false)}
+                    onClick={() => {
+                      setCreating(false);
+                      setCreateModalOpen(false);
+                    }}
                     className="flex-1 text-xs bg-gray-100 text-gray-700 rounded py-1.5 hover:bg-gray-200"
                   >
                     Cancel

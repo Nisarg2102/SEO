@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ChevronLeft, ChevronRight, Plus, Calendar as CalendarIcon } from "lucide-react"
+import Link from "next/link"
 
 export default function CalendarPage() {
   return (
@@ -16,7 +17,7 @@ export default function CalendarPage() {
             <Button variant="secondary" size="sm" className="h-8 shadow-sm">Week</Button>
             <Button variant="ghost" size="sm" className="h-8">List</Button>
           </div>
-          <Button><Plus className="mr-2 h-4 w-4" /> Schedule Post</Button>
+          <Button asChild><Link href="/content/create"><Plus className="mr-2 h-4 w-4" /> Schedule Post</Link></Button>
         </div>
       </div>
 
@@ -37,7 +38,7 @@ export default function CalendarPage() {
               <p className="font-medium text-gray-900">No content scheduled for this week</p>
               <p className="text-sm">Create and schedule content to see it appear here.</p>
             </div>
-            <Button variant="outline" className="mt-4"><Plus className="mr-2 h-4 w-4" /> Schedule New Content</Button>
+            <Button asChild variant="outline" className="mt-4"><Link href="/content/create"><Plus className="mr-2 h-4 w-4" /> Schedule New Content</Link></Button>
           </div>
         </div>
       </Card>
