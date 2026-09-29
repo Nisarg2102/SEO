@@ -122,8 +122,9 @@ function WorkspaceSwitcher() {
       setCreateModalOpen(false);
       setOpen(false);
       setNewName('');
-    } catch (err: any) {
-      alert(err.message || 'Failed to create workspace');
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : 'Failed to create workspace';
+      alert(message);
     }
   }
 
