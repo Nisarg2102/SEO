@@ -10,3 +10,4 @@ build/
 coverage/
 # TLS certificates — never commit
 infrastructure/nginx/certs/
+*.tsbuildinfo

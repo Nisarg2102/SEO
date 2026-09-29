@@ -1,15 +1,15 @@
 {
   "services": {
     "api": {
-      "root": "apps/api"
+      "root": "apps/api",
+      "functions": {
+        "src/main.ts": {
+          "maxDuration": 60
+        }
+      }
     },
     "web": {
       "root": "apps/web"
-    }
-  },
-  "functions": {
-    "apps/api/src/main.ts": {
-      "maxDuration": 60
     }
   },
   "rewrites": [
