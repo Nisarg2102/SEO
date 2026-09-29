@@ -4,11 +4,16 @@
 Vercel returned the error: `"Error: Service "api" detected framework "nestjs" in "apps/api" and must specify an "entrypoint" for runtime "node"."`
 In Vercel's unified Services model, when Vercel detects a Node.js framework like NestJS inside a service definition, it requires an explicit `entrypoint` declaration to know exactly which file bootstraps the application, instead of relying purely on zero-config heuristics.
 
-## 2. Exact Configuration Change
-Added `"entrypoint": "src/main.ts"` to the `"api"` service block inside `vercel.json`. 
+Vercel also reported missing type declarations during build (e.g. `TS2307: Cannot find module '@ai-marketing/seo'` and Prisma type errors). This happens because Vercel Services builds isolated sub-directories (`apps/api`) independently, completely skipping compiling local workspace packages or generating the Prisma client. Furthermore, npm 10+ strict scripts blocked Prisma from auto-generating during `postinstall`.
 
-* **Why `entrypoint` was required:** Vercel's strict Services model requires explicit confirmation of the runtime entry point for Node.js backends.
-* **Why `src/main.ts` is used:** We verified that `apps/api/src/main.ts` contains the standard NestJS `bootstrap()` function which Vercel's runtime wraps into a Serverless Function natively.
+## 2. Exact Configuration Change
+1. **API Entrypoint:** Added `"entrypoint": "src/main.ts"` to the `"api"` service block inside `vercel.json`. 
+   * **Why `entrypoint` was required:** Vercel's strict Services model requires explicit confirmation of the runtime entry point for Node.js backends.
+   * **Why `src/main.ts` is used:** We verified that `apps/api/src/main.ts` contains the standard NestJS `bootstrap()` function which Vercel's runtime wraps into a Serverless Function natively.
+
+2. **Monorepo Build Scripts:** 
+   * Updated `apps/api/package.json` with a custom `"build:deps"` script to explicitly compile local packages (`@ai-marketing/*`) before running `nest build`.
+   * Configured `"allowScripts"` in the root `package.json` to guarantee `postinstall` is permitted for Prisma to generate its client automatically on Vercel.
 
 ## 3. Final Service Structure & Architecture
 ```json
@@ -59,7 +64,7 @@ Added `"entrypoint": "src/main.ts"` to the `"api"` service block inside `vercel.
 * All existing variables (`DATABASE_URL`, `DIRECT_URL`, `JWT_SECRET`, `QSTASH_*`) remain required.
 
 ## 6. Remaining Vercel Configuration Steps
-With the structural ambiguity resolved and precise targeting applied, you can:
-1. Commit the project so Vercel picks up the finalized `vercel.json`.
-2. Vercel will now properly route the services, use the explicit entrypoint, and attach the 60-second limit exactly to the NestJS Serverless Function.
+With the structural ambiguity resolved, entrypoints defined, and local workspace builds configured, you can:
+1. Commit the project so Vercel picks up the finalized `vercel.json` and package fixes.
+2. Vercel will now properly route the services, compile local dependencies, use the explicit entrypoint, and attach the 60-second limit exactly to the NestJS Serverless Function.
 3. Deploy!
