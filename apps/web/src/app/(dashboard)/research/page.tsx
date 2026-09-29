@@ -88,9 +88,9 @@ export default function ResearchPage() {
             <RefreshCw className={`mr-2 h-4 w-4 ${syncing ? 'animate-spin' : ''}`} />
             {syncing ? 'Syncing...' : 'Sync Now'}
           </Button>
-          <Link href="/sources">
-            <Button variant="outline"><Filter className="mr-2 h-4 w-4" /> Sources</Button>
-          </Link>
+          <Button asChild variant="outline">
+            <Link href="/sources"><Filter className="mr-2 h-4 w-4" /> Sources</Link>
+          </Button>
         </div>
       </div>
 
@@ -114,9 +114,9 @@ export default function ResearchPage() {
           title="No research items yet"
           description="Add sources and click &ldquo;Sync Now&rdquo; to discover content opportunities from your feeds."
           action={
-            <Link href="/sources">
-              <Button>Manage Sources</Button>
-            </Link>
+            <Button asChild>
+              <Link href="/sources">Manage Sources</Link>
+            </Button>
           }
         />
       ) : (
@@ -159,17 +159,17 @@ export default function ResearchPage() {
                 </div>
 
                 <div className="bg-gray-50 p-6 border-t md:border-t-0 md:border-l border-gray-100 flex flex-col justify-center space-y-3 min-w-[200px]">
-                  <Link href="/content/create">
-                    <Button className="w-full" onClick={() => handleConvert(item)}>
+                  <Button asChild className="w-full">
+                    <Link href="/content/create" onClick={() => handleConvert(item)}>
                       <Sparkles className="mr-2 h-4 w-4" /> Create Content
-                    </Button>
-                  </Link>
+                    </Link>
+                  </Button>
                   {item.sourceUrl && (
-                    <a href={item.sourceUrl} target="_blank" rel="noopener noreferrer">
-                      <Button variant="ghost" className="w-full text-blue-600 hover:text-blue-700">
+                    <Button asChild variant="ghost" className="w-full text-blue-600 hover:text-blue-700">
+                      <a href={item.sourceUrl} target="_blank" rel="noopener noreferrer">
                         View Source <ExternalLink className="ml-2 h-4 w-4" />
-                      </Button>
-                    </a>
+                      </a>
+                    </Button>
                   )}
                 </div>
               </div>

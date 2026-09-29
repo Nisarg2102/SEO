@@ -177,12 +177,12 @@ function WorkspaceSwitcher() {
                   placeholder="Workspace name"
                   value={newName}
                   onChange={(e) => setNewName(e.target.value)}
-                  className="w-full text-sm border border-gray-300 rounded px-2 py-1.5 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  className="w-full text-sm text-gray-900 bg-white border border-gray-300 rounded px-2 py-1.5 focus:outline-none focus:ring-1 focus:ring-blue-500"
                 />
                 <select
                   value={newType}
                   onChange={(e) => setNewType(e.target.value as 'GENERAL' | 'MEDICAL')}
-                  className="w-full text-sm border border-gray-300 rounded px-2 py-1.5 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  className="w-full text-sm text-gray-900 bg-white border border-gray-300 rounded px-2 py-1.5 focus:outline-none focus:ring-1 focus:ring-blue-500"
                 >
                   <option value="GENERAL">General</option>
                   <option value="MEDICAL">Medical / Health</option>
@@ -267,7 +267,11 @@ export function Topbar() {
       <div className="flex flex-1 gap-x-4 self-stretch lg:gap-x-6 justify-between items-center">
         <WorkspaceSwitcher />
         <div className="flex items-center gap-x-4 lg:gap-x-6">
-          <button type="button" className="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500">
+          <button 
+            type="button" 
+            onClick={() => alert("No new notifications")}
+            className="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500"
+          >
             <span className="sr-only">Notifications</span>
             <Bell className="h-6 w-6" aria-hidden="true" />
           </button>

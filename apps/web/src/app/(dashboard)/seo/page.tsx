@@ -178,16 +178,16 @@ export default function SEOPage() {
                   )}
 
                   <div className="pt-2 flex gap-2">
-                    <Link href="/content/create">
-                      <Button
-                        size="sm"
-                        onClick={() => handleConvert(opp)}
-                        disabled={converting === opp.id}
-                      >
+                    <Button
+                      asChild
+                      size="sm"
+                      disabled={converting === opp.id}
+                    >
+                      <Link href="/content/create" onClick={() => handleConvert(opp)}>
                         {converting === opp.id ? 'Creating...' : 'Create Content Idea'}
                         <ArrowRight className="ml-2 h-4 w-4" />
-                      </Button>
-                    </Link>
+                      </Link>
+                    </Button>
                   </div>
                 </CardContent>
               </Card>

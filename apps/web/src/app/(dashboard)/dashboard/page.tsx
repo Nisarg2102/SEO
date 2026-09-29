@@ -126,16 +126,12 @@ export default function DashboardPage() {
           <p className="text-gray-500">Here&apos;s an overview of your workspace.</p>
         </div>
         <div className="flex space-x-3">
-          <Link href="/research">
-            <Button variant="outline">
-              <Search className="mr-2 h-4 w-4" /> Research
-            </Button>
-          </Link>
-          <Link href="/content/create">
-            <Button>
-              <Plus className="mr-2 h-4 w-4" /> Create Content
-            </Button>
-          </Link>
+          <Button asChild variant="outline">
+            <Link href="/research"><Search className="mr-2 h-4 w-4" /> Research</Link>
+          </Button>
+          <Button asChild>
+            <Link href="/content/create"><Plus className="mr-2 h-4 w-4" /> Create Content</Link>
+          </Button>
         </div>
       </div>
 
@@ -175,9 +171,9 @@ export default function DashboardPage() {
               title="No research yet"
               description="Add sources and sync to discover content opportunities."
               action={
-                <Link href="/sources">
-                  <Button variant="outline" size="sm">Manage Sources</Button>
-                </Link>
+                <Button asChild variant="outline" size="sm">
+                  <Link href="/sources">Manage Sources</Link>
+                </Button>
               }
             />
           ) : (
@@ -195,11 +191,11 @@ export default function DashboardPage() {
                           <p className="text-sm text-gray-500">{item.sourceName}</p>
                         )}
                       </div>
-                      <Link href="/content/create">
-                        <Button variant="ghost" size="icon">
+                      <Button asChild variant="ghost" size="icon">
+                        <Link href="/content/create">
                           <Sparkles className="h-4 w-4 text-blue-600" />
-                        </Button>
-                      </Link>
+                        </Link>
+                      </Button>
                     </div>
                   ))}
                 </div>
@@ -216,11 +212,9 @@ export default function DashboardPage() {
               title="No content yet"
               description="Create your first piece of content using the AI wizard."
               action={
-                <Link href="/content/create">
-                  <Button size="sm">
-                    <Plus className="mr-2 h-4 w-4" /> Create Content
-                  </Button>
-                </Link>
+                <Button asChild size="sm">
+                  <Link href="/content/create"><Plus className="mr-2 h-4 w-4" /> Create Content</Link>
+                </Button>
               }
             />
           ) : (

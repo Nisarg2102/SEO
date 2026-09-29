@@ -77,9 +77,9 @@ export default function AnalyticsPage() {
           title="No analytics data yet"
           description="Connect Google Search Console to import SEO performance data, or publish content to start tracking social media engagement."
           action={
-            <Link href="/settings">
-              <Button>Configure Integrations</Button>
-            </Link>
+            <Button asChild>
+              <Link href="/settings">Configure Integrations</Link>
+            </Button>
           }
         />
       )}

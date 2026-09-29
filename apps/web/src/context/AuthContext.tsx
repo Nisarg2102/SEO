@@ -57,9 +57,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, [router]);
 
   const logout = useCallback(async () => {
-    await authApi.logout();
-    setUser(null);
-    router.push('/login');
+    try {
+      await authApi.logout();
+    } catch {
+      // ignore
+    } finally {
+      setUser(null);
+      router.push('/login');
+    }
   }, [router]);
 
   return (

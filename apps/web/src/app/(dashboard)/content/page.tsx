@@ -112,9 +112,9 @@ export default function ContentPage() {
           <h1 className="text-2xl font-bold tracking-tight text-gray-900">Content Library</h1>
           <p className="text-gray-500">Manage, review, and schedule your marketing content.</p>
         </div>
-        <Link href="/content/create">
-          <Button><Plus className="mr-2 h-4 w-4" /> Create Content</Button>
-        </Link>
+        <Button asChild>
+          <Link href="/content/create"><Plus className="mr-2 h-4 w-4" /> Create Content</Link>
+        </Button>
       </div>
 
       {error && (
@@ -159,9 +159,9 @@ export default function ContentPage() {
           }
           action={
             items.length === 0 ? (
-              <Link href="/content/create">
-                <Button><Plus className="mr-2 h-4 w-4" /> Create Content</Button>
-              </Link>
+              <Button asChild>
+                <Link href="/content/create"><Plus className="mr-2 h-4 w-4" /> Create Content</Link>
+              </Button>
             ) : undefined
           }
         />

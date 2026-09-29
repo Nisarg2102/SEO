@@ -217,7 +217,7 @@ export default function CreateContentPage() {
                 <Button
                   className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white"
                   onClick={handleGenerate}
-                  disabled={generating || !activeWorkspace}
+                  disabled={generating || !activeWorkspace || !topic.trim() || !platform || !audience}
                 >
                   {generating ? (
                     <><RefreshCw className="mr-2 h-4 w-4 animate-spin" /> Generating...</>
