@@ -1,3 +1,9 @@
+import "@nestjs/platform-express";
+
+import "class-validator";
+import "class-transformer";
+import "reflect-metadata";
+
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { Logger, ValidationPipe } from '@nestjs/common';
