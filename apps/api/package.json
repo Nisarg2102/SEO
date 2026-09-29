@@ -5,7 +5,6 @@
   "author": "",
   "private": true,
   "license": "UNLICENSED",
-  "type": "module",
   "scripts": {
     "dev": "nest start --watch",
     "build": "npm run build:deps && nest build",
