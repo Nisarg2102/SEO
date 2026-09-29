@@ -1,4 +1,7 @@
+'use client';
+
 import Link from 'next/link';
+import { useRequireAuth } from '@/context/AuthContext';
 
 export default function WorkspaceLayout({
   children,
@@ -7,6 +10,11 @@ export default function WorkspaceLayout({
   children: React.ReactNode;
   params: { workspaceId: string };
 }) {
+  const { loading, user } = useRequireAuth();
+  if (loading || !user) {
+    return null;
+  }
+
   return (
     <div className="flex h-screen bg-gray-50 text-gray-900 font-sans">
       {/* Sidebar */}
