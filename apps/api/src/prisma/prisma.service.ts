@@ -1,10 +1,35 @@
-import { Injectable, OnModuleInit, OnModuleDestroy } from '@nestjs/common';
+import { Injectable, OnModuleInit, OnModuleDestroy, Logger } from '@nestjs/common';
 import { PrismaClient, Prisma } from '@prisma/client';
 
 @Injectable()
 export class PrismaService extends PrismaClient implements OnModuleInit, OnModuleDestroy {
+  private readonly logger = new Logger(PrismaService.name);
+
+  constructor() {
+    let url = process.env.DATABASE_URL;
+    if (url) {
+      // Strip quotes if accidentally included
+      url = url.replace(/^"/, '').replace(/"$/, '');
+      url = url.replace(/^'/, '').replace(/'$/, '');
+    }
+    
+    super({
+      datasources: {
+        db: {
+          url: url,
+        },
+      },
+    });
+  }
+
   async onModuleInit() {
-    await this.$connect();
+    try {
+      await this.$connect();
+      this.logger.log('Successfully connected to the database.');
+    } catch (err) {
+      this.logger.error('Failed to connect to the database. Check DATABASE_URL configuration.');
+      throw err;
+    }
   }
 
   async onModuleDestroy() {
