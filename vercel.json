@@ -1,26 +1,29 @@
 {
-  "version": 2,
-  "builds": [
+  "services": {
+    "api": {
+      "root": "apps/api"
+    },
+    "web": {
+      "root": "apps/web"
+    }
+  },
+  "functions": {
+    "apps/api/src/main.ts": {
+      "maxDuration": 60
+    }
+  },
+  "rewrites": [
     {
-      "src": "apps/api/src/serverless.ts",
-      "use": "@vercel/node",
-      "config": {
-        "maxDuration": 60
+      "source": "/api/(.*)",
+      "destination": {
+        "service": "api"
       }
     },
     {
-      "src": "apps/web/package.json",
-      "use": "@vercel/next"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "apps/api/src/serverless.ts"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "apps/web/package.json"
+      "source": "/(.*)",
+      "destination": {
+        "service": "web"
+      }
     }
   ]
 }
