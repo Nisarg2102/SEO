@@ -1,6 +1,7 @@
 {
   "services": {
     "api": {
+      "root": ".",
       "entrypoint": "apps/api/src/main.ts",
       "functions": {
         "apps/api/src/main.ts": {
