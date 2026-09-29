@@ -1,4 +1,5 @@
-import { Controller, Post, Body, HttpCode, HttpStatus, Res } from '@nestjs/common';
+import { Controller, Post, Get, Body, HttpCode, HttpStatus, Res, UseGuards, Request } from '@nestjs/common';
+import { JwtAuthGuard } from './jwt-auth.guard';
 import type { Response } from 'express';
 import { AuthService } from './auth.service';
 import { RegisterDto, LoginDto } from './dto';
@@ -40,5 +41,11 @@ export class AuthController {
       sameSite: 'lax',
     });
     return { success: true };
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('me')
+  me(@Request() req: { user: { userId: string; email: string; role: string } }) {
+    return { user: req.user };
   }
 }
