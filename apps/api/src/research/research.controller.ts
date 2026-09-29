@@ -11,21 +11,20 @@ import {
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
-import { InjectQueue } from '@nestjs/bullmq';
-import { Queue } from 'bullmq';
 import { ResearchService } from './research.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { WorkspaceGuard } from '../auth/workspace.guard';
 import { ConvertToIdeaDto, ResearchFiltersDto } from './dto';
-import { RESEARCH_QUEUE } from '../queues/queues.constants';
+import { Client } from '@upstash/qstash';
 
 @UseGuards(JwtAuthGuard, WorkspaceGuard)
 @UsePipes(new ValidationPipe({ whitelist: true, forbidNonWhitelisted: true, transform: true }))
 @Controller('workspaces/:workspaceId/research')
 export class ResearchController {
+  private readonly qstash = new Client({ token: process.env.QSTASH_TOKEN || '' });
+
   constructor(
-    private readonly researchService: ResearchService,
-    @InjectQueue(RESEARCH_QUEUE) private readonly researchQueue: Queue,
+    private readonly researchService: ResearchService
   ) {}
 
   @Get()
@@ -56,10 +55,14 @@ export class ResearchController {
   @Post('sync')
   @HttpCode(HttpStatus.ACCEPTED)
   async sync(@Param('workspaceId') workspaceId: string) {
-    const job = await this.researchQueue.add('sync-workspace', { workspaceId });
+    const appUrl = process.env.API_URL || process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3001';
+    const res = await this.qstash.publishJSON({
+      url: `${appUrl}/internal/queues/research/sync-workspace`,
+      body: { workspaceId }
+    });
     return {
       message: 'Research sync queued. New items will appear shortly.',
-      jobId: job.id,
+      jobId: res.messageId,
     };
   }
 

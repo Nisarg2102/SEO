@@ -2,9 +2,7 @@ import { Controller, Get, Post, Body, Param, Query, Res, UseGuards, HttpStatus, 
 import { GscService } from './gsc.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { WorkspaceGuard } from '../auth/workspace.guard';
-import { InjectQueue } from '@nestjs/bullmq';
-import { Queue } from 'bullmq';
-import { ANALYTICS_QUEUE } from '../queues/queues.constants';
+import { Client } from '@upstash/qstash';
 
 // UUID v4 regex — state must be a valid workspace UUID; prevents open redirect via state injection
 const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
@@ -37,9 +35,9 @@ export class GscPublicController {
 @UseGuards(JwtAuthGuard, WorkspaceGuard)
 @Controller('workspaces/:workspaceId/gsc')
 export class GscController {
+  private readonly qstash = new Client({ token: process.env.QSTASH_TOKEN || '' });
   constructor(
-    private readonly gscService: GscService,
-    @InjectQueue(ANALYTICS_QUEUE) private readonly analyticsQueue: Queue,
+    private readonly gscService: GscService
   ) {}
 
   @Get('auth-url')
@@ -65,10 +63,14 @@ export class GscController {
   @Post('sync')
   @HttpCode(HttpStatus.ACCEPTED)
   async sync(@Param('workspaceId') workspaceId: string, @Body('days') days?: number) {
-    const job = await this.analyticsQueue.add('sync-gsc', { workspaceId, days: days || 28 });
+    const appUrl = process.env.API_URL || process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3001';
+    const res = await this.qstash.publishJSON({
+      url: `${appUrl}/internal/queues/analytics/sync-gsc`,
+      body: { workspaceId, days: days || 28 }
+    });
     return {
       message: 'Synchronization queued',
-      jobId: job.id,
+      jobId: res.messageId,
     };
   }
 }

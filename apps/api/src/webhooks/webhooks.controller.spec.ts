@@ -1,7 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { PostizWebhooksController, WebhooksController } from './webhooks.controller';
-import { getQueueToken } from '@nestjs/bullmq';
-import { RESEARCH_QUEUE, WEBHOOKS_QUEUE } from '../queues/queues.constants';
 
 describe('WebhooksControllers', () => {
   let postizController: PostizWebhooksController;
@@ -20,8 +18,6 @@ describe('WebhooksControllers', () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [WebhooksController, PostizWebhooksController],
       providers: [
-        { provide: getQueueToken(RESEARCH_QUEUE), useValue: mockResearchQueue },
-        { provide: getQueueToken(WEBHOOKS_QUEUE), useValue: mockWebhooksQueue },
       ],
     }).compile();
 

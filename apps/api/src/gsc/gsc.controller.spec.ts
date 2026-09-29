@@ -2,8 +2,6 @@ jest.mock('@prisma/client', () => ({ PrismaClient: class {}, Prisma: {} }), { vi
 import { Test, TestingModule } from '@nestjs/testing';
 import { GscController } from './gsc.controller';
 import { GscService } from './gsc.service';
-import { getQueueToken } from '@nestjs/bullmq';
-import { ANALYTICS_QUEUE } from '../queues/queues.constants';
 
 import { PrismaService } from '../prisma/prisma.service';
 
@@ -24,7 +22,6 @@ describe('GscController', () => {
       controllers: [GscController],
       providers: [
         { provide: GscService, useValue: mockGscService },
-        { provide: getQueueToken(ANALYTICS_QUEUE), useValue: mockQueue },
         { provide: PrismaService, useValue: mockPrismaService },
       ],
     }).compile();

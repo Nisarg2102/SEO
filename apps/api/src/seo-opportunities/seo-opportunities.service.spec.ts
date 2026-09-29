@@ -22,8 +22,6 @@ const mockOpportunity = (overrides = {}) => ({
   ...overrides,
 });
 
-import { getQueueToken } from '@nestjs/bullmq';
-import { SEO_QUEUE } from '../queues/queues.constants';
 
 // ... (keep the rest of the file imports intact)
 
@@ -58,7 +56,6 @@ describe('SeoOpportunitiesService', () => {
         SeoOpportunitiesService,
         { provide: PrismaService, useValue: mockPrisma },
         { provide: AiService, useValue: mockAiService },
-        { provide: getQueueToken(SEO_QUEUE), useValue: mockQueue },
       ],
     }).compile();
 

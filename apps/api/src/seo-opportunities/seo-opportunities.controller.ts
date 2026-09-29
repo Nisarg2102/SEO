@@ -2,16 +2,15 @@ import { Controller, Get, Post, Body, Param, UseGuards, Inject, Query } from '@n
 import { SeoOpportunitiesService, RawMetric } from './seo-opportunities.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { WorkspaceGuard } from '../auth/workspace.guard';
-import { InjectQueue } from '@nestjs/bullmq';
-import { Queue } from 'bullmq';
-import { SEO_QUEUE } from '../queues/queues.constants';
+import { Client } from '@upstash/qstash';
 
 @UseGuards(JwtAuthGuard, WorkspaceGuard)
 @Controller('workspaces/:workspaceId/seo-opportunities')
 export class SeoOpportunitiesController {
+  private readonly qstash = new Client({ token: process.env.QSTASH_TOKEN || '' });
+
   constructor(
-    private readonly seoOppsService: SeoOpportunitiesService,
-    @InjectQueue(SEO_QUEUE) private seoQueue: Queue
+    private readonly seoOppsService: SeoOpportunitiesService
   ) {}
 
   @Get()
@@ -25,15 +24,15 @@ export class SeoOpportunitiesController {
 
   @Post('analyze')
   async analyze(@Param('workspaceId') workspaceId: string, @Body('metrics') metrics: RawMetric[]) {
-    // We send this to the background via BullMQ and return 202
-    const job = await this.seoQueue.add('analyze-metrics', {
-      workspaceId,
-      metrics: metrics || []
+    const appUrl = process.env.API_URL || process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3001';
+    const res = await this.qstash.publishJSON({
+      url: `${appUrl}/internal/queues/seo/analyze-metrics`,
+      body: { workspaceId, metrics: metrics || [] }
     });
 
     return { 
       message: 'Analysis queued successfully', 
-      jobId: job.id,
+      jobId: res.messageId,
       status: 'queued'
     };
   }

@@ -2,9 +2,7 @@ import { Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { AiService } from '../ai/ai.service';
 import { z } from 'zod';
-import { InjectQueue } from '@nestjs/bullmq';
-import { Queue } from 'bullmq';
-import { SEO_QUEUE } from '../queues/queues.constants';
+import { Client } from '@upstash/qstash';
 
 export interface RawMetric {
   url: string;
@@ -33,6 +31,7 @@ const OpportunityRecommendationSchema = z.object({
 @Injectable()
 export class SeoOpportunitiesService {
   private readonly logger = new Logger(SeoOpportunitiesService.name);
+  private readonly qstash = new Client({ token: process.env.QSTASH_TOKEN || '' });
 
   // Configurable Thresholds from Env
   private readonly MIN_IMPRESSIONS = parseInt(process.env.SEO_OPPORTUNITY_MIN_IMPRESSIONS || '1000', 10);
@@ -42,8 +41,7 @@ export class SeoOpportunitiesService {
 
   constructor(
     private prisma: PrismaService,
-    private aiService: AiService,
-    @InjectQueue(SEO_QUEUE) private seoQueue: Queue
+    private aiService: AiService
   ) {}
 
   async findAll(workspaceId: string, filters?: { type?: string; priority?: string }) {
@@ -61,8 +59,12 @@ export class SeoOpportunitiesService {
   }
 
   async analyzeMetrics(workspaceId: string, metrics: RawMetric[]) {
-    const job = await this.seoQueue.add('analyze-metrics', { workspaceId, metrics });
-    return { success: true, jobId: job.id, message: 'Analysis queued successfully' };
+    const appUrl = process.env.API_URL || process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3001';
+    const res = await this.qstash.publishJSON({
+      url: `${appUrl}/internal/queues/seo/analyze-metrics`,
+      body: { workspaceId, metrics }
+    });
+    return { success: true, jobId: res.messageId, message: 'Analysis queued successfully' };
   }
 
   async convertToIdea(workspaceId: string, opportunityId: string) {

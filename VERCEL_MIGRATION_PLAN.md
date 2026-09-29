@@ -2,10 +2,10 @@
 
 This document outlines the step-by-step phased approach for migrating the current Docker-based AI SEO Assistant to Vercel, Neon, and Upstash.
 
-## PHASE 1: Repository / Vercel Preparation
+## PHASE 1: Repository / Vercel Preparation (✅ COMPLETED)
 - **Objective:** Configure the monorepo structure to deploy successfully on Vercel.
 - **Action:** 
-  1. Add a `vercel.json` to the root for proxy routing (so `yourdomain.com/api/*` routes to NestJS, and everything else routes to Next.js).
+  1. Add a `vercel.json` to the root for proxy routing.
   2. Install `@vendia/serverless-express` in `apps/api`.
   3. Create `apps/api/src/serverless.ts` wrapper file for NestJS.
 
