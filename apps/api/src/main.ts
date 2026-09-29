@@ -12,6 +12,10 @@ async function bootstrap() {
 
   app.use(cookieParser());
 
+  // ─── Global Prefix ────────────────────────────────────────────────────────
+  // Vercel routes /api to this service, so we must expect /api in the path.
+  app.setGlobalPrefix('api');
+
   // ─── Global Validation ────────────────────────────────────────────────────
   app.useGlobalPipes(new ValidationPipe({
     whitelist: true,           // Strip unknown properties

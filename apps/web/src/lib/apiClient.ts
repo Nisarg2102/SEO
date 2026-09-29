@@ -17,7 +17,13 @@ interface RequestOptions extends RequestInit {
 
 export const apiClient = {
   getBaseUrl() {
-    return process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+    // In browser on Vercel or any non-localhost host, use relative /api
+    if (typeof window !== 'undefined' && window.location.hostname !== 'localhost') {
+      return '/api';
+    }
+    // Locally (or SSR), use the env var and ensure it ends with /api
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+    return baseUrl.endsWith('/api') ? baseUrl : `${baseUrl}/api`;
   },
 
   async request<T = unknown>(endpoint: string, options: RequestOptions = {}): Promise<T> {
