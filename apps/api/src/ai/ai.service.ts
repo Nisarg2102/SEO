@@ -6,6 +6,7 @@ import { z } from 'zod';
 export class AiService {
   private provider: AIProvider;
   private readonly logger = new Logger(AiService.name);
+  private defaultModel = 'gpt-4o';
 
   constructor() {
     const apiKey = process.env.AI_API_KEY;
@@ -32,7 +33,9 @@ export class AiService {
       this.logger.log(`Text generation completed in ${Date.now() - start}ms`);
       return result;
     } catch (error: any) {
-      this.logger.error(`Text generation failed in ${Date.now() - start}ms`, error.stack);
+      this.logger.error(`Text generation failed in ${Date.now() - start}ms. Error type: ${error.name}, Message: ${error.message}`);
+      // Safe logging
+      console.error('[AI_ERROR]', { type: error.name, message: error.message, model: options?.model || this.defaultModel });
       throw error;
     }
   }
@@ -50,7 +53,9 @@ export class AiService {
       this.logger.log(`Structured generation completed in ${Date.now() - start}ms`);
       return result;
     } catch (error: any) {
-      this.logger.error(`Structured generation failed in ${Date.now() - start}ms`, error.stack);
+      this.logger.error(`Structured generation failed in ${Date.now() - start}ms. Error type: ${error.name}, Message: ${error.message}`);
+      // Safe logging
+      console.error('[AI_ERROR]', { type: error.name, message: error.message, schema: schemaName, model: options?.model || this.defaultModel });
       throw error;
     }
   }
@@ -76,7 +81,9 @@ export class AiService {
       this.logger.log(`Chat loop execution completed in ${Date.now() - start}ms`);
       return result;
     } catch (error: any) {
-      this.logger.error(`Chat loop failed in ${Date.now() - start}ms`, error.stack);
+      this.logger.error(`Chat loop failed in ${Date.now() - start}ms. Error type: ${error.name}, Message: ${error.message}`);
+      // Safe logging
+      console.error('[AI_ERROR]', { type: error.name, message: error.message, toolsCount: tools.length });
       throw error;
     }
   }

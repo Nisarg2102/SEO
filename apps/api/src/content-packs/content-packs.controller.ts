@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param, Put, Delete, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Put, Delete, UseGuards, HttpException, HttpStatus } from '@nestjs/common';
 import { ContentPacksService } from './content-packs.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { WorkspaceGuard } from '../auth/workspace.guard';
@@ -10,11 +10,19 @@ export class ContentPacksController {
   constructor(private readonly contentPacksService: ContentPacksService) {}
 
   @Post('generate')
-  generate(
+  async generate(
     @Param('workspaceId') workspaceId: string,
     @Body() dto: GenerateContentPackDto
   ) {
-    return this.contentPacksService.generate(workspaceId, dto);
+    try {
+      return await this.contentPacksService.generate(workspaceId, dto);
+    } catch (error: any) {
+      throw new HttpException({
+        message: 'AI Generation failed',
+        details: error.message,
+        type: 'AI_ERROR'
+      }, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
   }
 
   @Get()

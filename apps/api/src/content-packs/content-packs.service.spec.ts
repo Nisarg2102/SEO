@@ -100,6 +100,7 @@ describe('ContentPacksService', () => {
         data: {
           platform: dto.platform,
           status: 'DRAFT',
+          workspaceId,
           ...aiMockResponse,
         },
       });
