@@ -17,11 +17,11 @@
   "devDependencies": {
     "eslint": "^8.57.0",
     "prettier": "^3.0.0",
-    "typescript": "^5.0.0",
-    "prisma": "^5.13.0"
+    "prisma": "^5.22.0",
+    "typescript": "^5.0.0"
   },
   "dependencies": {
-    "@prisma/client": "^5.13.0"
+    "@prisma/client": "^5.22.0"
   },
   "config": {
     "allowScripts": {

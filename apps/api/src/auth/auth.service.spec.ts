@@ -3,7 +3,7 @@ import { AuthService } from './auth.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { JwtService } from '@nestjs/jwt';
 import { ConflictException, UnauthorizedException } from '@nestjs/common';
-import * as bcrypt from 'bcrypt';
+import * as bcryptjs from 'bcryptjs';
 
 jest.mock('@prisma/client', () => ({
   PrismaClient: class {}
@@ -71,7 +71,7 @@ describe('AuthService', () => {
 
   describe('login', () => {
     it('should login successfully', async () => {
-      const passwordHash = await bcrypt.hash('password123', 10);
+      const passwordHash = await bcryptjs.hash('password123', 10);
       mockPrismaService.user.findUnique.mockResolvedValue({
         id: 'user-1',
         email: 'test@test.com',
@@ -90,7 +90,7 @@ describe('AuthService', () => {
     });
 
     it('should throw UnauthorizedException on invalid password', async () => {
-      const passwordHash = await bcrypt.hash('password123', 10);
+      const passwordHash = await bcryptjs.hash('password123', 10);
       mockPrismaService.user.findUnique.mockResolvedValue({
         id: 'user-1',
         email: 'test@test.com',
