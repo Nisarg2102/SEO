@@ -48,7 +48,7 @@ export default function AssistantPage() {
     setLoading(true);
     try {
       const res = await agentApi.chat(activeWorkspace.id, text.trim(), messages);
-      setMessages([...history, { role: 'assistant', content: res.response }]);
+      setMessages([...history, { role: 'assistant', content: (res as any).content || res.response || 'No response' }]);
     } catch (err) {
       if (err instanceof ApiError && err.status === 401) {
         setError('Session expired. Please sign in again.');

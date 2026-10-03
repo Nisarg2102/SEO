@@ -22,7 +22,7 @@ export class OpenSEOAdapter implements SEOProvider {
   }
 
   async healthCheck(): Promise<boolean> {
-    if (this.isMock) return true;
+    if (this.isMock) return false;
     try {
       const res = await fetch(`${this.baseUrl}/health`);
       return res.ok;
@@ -33,10 +33,7 @@ export class OpenSEOAdapter implements SEOProvider {
 
   async keywordResearch(query: string): Promise<KeywordData[]> {
     if (this.isMock) {
-      return [
-        { keyword: `${query} tips`, volume: 1500, difficulty: 45, intent: 'informational' },
-        { keyword: `best ${query}`, volume: 3200, difficulty: 78, intent: 'commercial' }
-      ];
+      throw new Error('NOT_CONFIGURED');
     }
 
     const res = await fetch(`${this.baseUrl}/keywords?q=${encodeURIComponent(query)}`, {
@@ -48,11 +45,7 @@ export class OpenSEOAdapter implements SEOProvider {
 
   async siteAudit(url: string): Promise<AuditResult> {
     if (this.isMock) {
-      return {
-        score: 85,
-        issues: ['Missing meta description on 3 pages', 'Slow LCP on homepage'],
-        recommendations: ['Add meta descriptions', 'Optimize homepage images']
-      };
+      throw new Error('NOT_CONFIGURED');
     }
 
     const res = await fetch(`${this.baseUrl}/audit`, {
@@ -69,9 +62,7 @@ export class OpenSEOAdapter implements SEOProvider {
 
   async competitorResearch(domain: string): Promise<CompetitorData[]> {
     if (this.isMock) {
-      return [
-        { domain: `competitor-of-${domain}.com`, overlap: 65, topKeywords: ['software', 'saas'] }
-      ];
+      throw new Error('NOT_CONFIGURED');
     }
 
     const res = await fetch(`${this.baseUrl}/competitors?domain=${encodeURIComponent(domain)}`, {
@@ -83,12 +74,7 @@ export class OpenSEOAdapter implements SEOProvider {
 
   async rankTracking(domain: string, keywords: string[]): Promise<RankData[]> {
     if (this.isMock) {
-      return keywords.map((kw, i) => ({
-        keyword: kw,
-        position: i + 1,
-        url: `https://${domain}/page-${i}`,
-        change: Math.floor(Math.random() * 5) - 2
-      }));
+      throw new Error('NOT_CONFIGURED');
     }
 
     const res = await fetch(`${this.baseUrl}/rank`, {

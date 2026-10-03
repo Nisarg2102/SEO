@@ -11,13 +11,19 @@ import { contentApi } from '@/services/content';
 import type { ContentPack, ContentStatus } from '@/types/api';
 import { ApiError } from '@/lib/apiClient';
 
-const STATUS_LABELS: Record<ContentStatus, string> = {
+const STATUS_LABELS: Record<string, string> = {
   draft: 'Draft',
   pending_approval: 'In Review',
   approved: 'Approved',
   scheduled: 'Scheduled',
   published: 'Published',
   rejected: 'Rejected',
+  DRAFT: 'Draft',
+  CLINICAL_REVIEW_REQUIRED: 'Clinical Review Req',
+  PROFESSIONALLY_REVIEWED: 'Professionally Reviewed',
+  APPROVED: 'Approved',
+  SCHEDULED: 'Scheduled',
+  PUBLISHED: 'Published'
 };
 
 const STATUS_VARIANTS: Record<ContentStatus, 'success' | 'warning' | 'secondary' | 'blue' | 'destructive'> = {
@@ -208,25 +214,34 @@ export default function ContentPage() {
                       </Button>
                       {menuOpen === item.id && (
                         <div className="absolute right-0 top-8 z-10 w-48 bg-white border border-gray-200 rounded-lg shadow-lg text-left">
-                          {item.status === 'draft' && (
+                          {(item.status === 'draft' || item.status === 'DRAFT') && (
                             <button
-                              onClick={() => handleStatusChange(item.id, 'pending_approval')}
+                              onClick={() => handleStatusChange(item.id, activeWorkspace?.type === 'MEDICAL' ? 'CLINICAL_REVIEW_REQUIRED' : 'PENDING_APPROVAL')}
                               className="w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 text-left"
                             >
                               Submit for Review
                             </button>
                           )}
-                          {item.status === 'pending_approval' && (
+                          {(item.status === 'pending_approval' || item.status === 'CLINICAL_REVIEW_REQUIRED') && (
                             <button
-                              onClick={() => handleStatusChange(item.id, 'approved')}
+                              onClick={() => handleStatusChange(item.id, activeWorkspace?.type === 'MEDICAL' ? 'PROFESSIONALLY_REVIEWED' : 'APPROVED')}
                               className="w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 text-left"
                             >
                               Approve
                             </button>
                           )}
-                          {item.status === 'approved' && (
+                          
+                          {item.status === 'PROFESSIONALLY_REVIEWED' && (
                             <button
-                              onClick={() => handleStatusChange(item.id, 'scheduled')}
+                              onClick={() => handleStatusChange(item.id, 'APPROVED')}
+                              className="w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 text-left"
+                            >
+                              Final Approve
+                            </button>
+                          )}
+{(item.status === 'approved' || item.status === 'APPROVED') && (
+                            <button
+                              onClick={() => handleStatusChange(item.id, 'SCHEDULED')}
                               className="w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 text-left"
                             >
                               Mark as Scheduled

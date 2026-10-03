@@ -30,7 +30,7 @@ export class AnalyticsService {
     
     const accountIds = accounts.map((a: any) => a.id);
 
-    const snapshots = await p.analyticsSnapshot.findMany({
+        const snapshots = await p.analyticsSnapshot.findMany({
       where: { accountId: { in: accountIds } },
       orderBy: { date: 'asc' }
     });
@@ -41,7 +41,30 @@ export class AnalyticsService {
       take: 10
     });
 
-    return { snapshots, postMetrics };
+    const totalClicks = snapshots.reduce((acc, curr) => acc + (curr.clicks || 0), 0);
+    const totalImpressions = snapshots.reduce((acc, curr) => acc + (curr.impressions || 0), 0);
+
+    let sumPosition = 0;
+    let sumCtr = 0;
+    let count = 0;
+    snapshots.forEach(s => {
+      if (s.metadata) {
+        try {
+          const meta = JSON.parse(s.metadata);
+          if (meta.position) { sumPosition += meta.position; count++; }
+          if (meta.ctr) { sumCtr += meta.ctr; }
+        } catch(e) {}
+      }
+    });
+
+    return { 
+      totalClicks, 
+      totalImpressions, 
+      averagePosition: count > 0 ? sumPosition / count : null,
+      averageCtr: count > 0 ? sumCtr / count : null,
+      snapshots, 
+      recentMetrics: postMetrics 
+    };
   }
 
   async syncAccount(accountId: string) {

@@ -40,13 +40,19 @@ function StatCard({
 }
 
 function ContentStatusBadge({ status }: { status: string }) {
-  const map: Record<string, 'success' | 'warning' | 'secondary' | 'blue' | 'destructive'> = {
+    const map: Record<string, 'success' | 'warning' | 'secondary' | 'blue' | 'destructive'> = {
     published: 'success',
     scheduled: 'blue',
     approved: 'success',
     pending_approval: 'warning',
     draft: 'secondary',
     rejected: 'destructive',
+    PUBLISHED: 'success',
+    SCHEDULED: 'blue',
+    APPROVED: 'success',
+    PROFESSIONALLY_REVIEWED: 'warning',
+    CLINICAL_REVIEW_REQUIRED: 'warning',
+    DRAFT: 'secondary'
   };
   return <Badge variant={map[status] ?? 'secondary'}>{status.replace('_', ' ')}</Badge>;
 }
