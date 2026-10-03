@@ -41,13 +41,13 @@ export class AnalyticsService {
       take: 10
     });
 
-    const totalClicks = snapshots.reduce((acc, curr) => acc + (curr.clicks || 0), 0);
-    const totalImpressions = snapshots.reduce((acc, curr) => acc + (curr.impressions || 0), 0);
+    const totalClicks = snapshots.reduce((acc: number, curr: any) => acc + (curr.clicks || 0), 0);
+    const totalImpressions = snapshots.reduce((acc: number, curr: any) => acc + (curr.impressions || 0), 0);
 
     let sumPosition = 0;
     let sumCtr = 0;
     let count = 0;
-    snapshots.forEach(s => {
+    snapshots.forEach((s: any) => {
       if (s.metadata) {
         try {
           const meta = JSON.parse(s.metadata);

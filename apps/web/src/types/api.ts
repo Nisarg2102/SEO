@@ -113,7 +113,13 @@ export type ContentStatus =
   | 'approved'
   | 'scheduled'
   | 'published'
-  | 'rejected';
+  | 'rejected'
+  | 'DRAFT'
+  | 'CLINICAL_REVIEW_REQUIRED'
+  | 'PROFESSIONALLY_REVIEWED'
+  | 'APPROVED'
+  | 'SCHEDULED'
+  | 'PUBLISHED';
 
 export interface ContentPack {
   id: string;

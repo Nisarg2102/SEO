@@ -27,12 +27,18 @@ const STATUS_LABELS: Record<string, string> = {
 };
 
 const STATUS_VARIANTS: Record<ContentStatus, 'success' | 'warning' | 'secondary' | 'blue' | 'destructive'> = {
-  published: 'success',
-  scheduled: 'blue',
-  approved: 'success',
-  pending_approval: 'warning',
   draft: 'secondary',
+  pending_approval: 'warning',
+  approved: 'success',
+  scheduled: 'blue',
+  published: 'success',
   rejected: 'destructive',
+  DRAFT: 'secondary',
+  CLINICAL_REVIEW_REQUIRED: 'warning',
+  PROFESSIONALLY_REVIEWED: 'warning',
+  APPROVED: 'success',
+  SCHEDULED: 'blue',
+  PUBLISHED: 'success',
 };
 
 type StatusFilter = ContentStatus | 'all';
@@ -216,7 +222,7 @@ export default function ContentPage() {
                         <div className="absolute right-0 top-8 z-10 w-48 bg-white border border-gray-200 rounded-lg shadow-lg text-left">
                           {(item.status === 'draft' || item.status === 'DRAFT') && (
                             <button
-                              onClick={() => handleStatusChange(item.id, activeWorkspace?.type === 'MEDICAL' ? 'CLINICAL_REVIEW_REQUIRED' : 'PENDING_APPROVAL')}
+                              onClick={() => handleStatusChange(item.id, activeWorkspace?.type === 'MEDICAL' ? 'CLINICAL_REVIEW_REQUIRED' : 'pending_approval')}
                               className="w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 text-left"
                             >
                               Submit for Review
