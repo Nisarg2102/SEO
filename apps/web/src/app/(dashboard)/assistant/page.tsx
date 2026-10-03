@@ -48,6 +48,7 @@ export default function AssistantPage() {
     setLoading(true);
     try {
       const res = await agentApi.chat(activeWorkspace.id, text.trim(), messages);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       setMessages([...history, { role: 'assistant', content: (res as any).content || res.response || 'No response' }]);
     } catch (err) {
       if (err instanceof ApiError && err.status === 401) {

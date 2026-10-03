@@ -23,7 +23,7 @@ export default function WorkspaceList() {
 
       {workspaces.length === 0 ? (
         <div className="border p-8 rounded bg-white text-center">
-          <p className="text-gray-500 mb-4">You don't have any workspaces yet.</p>
+          <p className="text-gray-500 mb-4">You don&apos;t have any workspaces yet.</p>
           <button 
             onClick={() => setCreateModalOpen(true)}
             className="text-blue-600 hover:underline"
