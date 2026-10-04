@@ -15,12 +15,16 @@ export class InstagramService {
   getAuthUrl(workspaceId: string): string {
     const appId = process.env.META_APP_ID;
     const redirectUri = process.env.META_CALLBACK_URL;
-    if (!appId || !redirectUri) throw new Error('Meta API not configured');
+    const configId = process.env.META_LOGIN_CONFIG_ID;
+    
+    if (!appId || !redirectUri || !configId) {
+      throw new Error('Meta API or Login Config ID not configured');
+    }
 
     const state = workspaceId;
-    const scopes = ['instagram_basic', 'instagram_manage_insights', 'pages_show_list', 'pages_read_engagement'].join(',');
     
-    return `https://www.facebook.com/v19.0/dialog/oauth?client_id=${appId}&display=page&extras={"setup":{"channel":"IG_API_ONBOARDING"}}&redirect_uri=${encodeURIComponent(redirectUri || '')}&response_type=code&scope=${encodeURIComponent(scopes)}&state=${state}`;
+    // Facebook Login for Business requires config_id instead of scope
+    return `https://www.facebook.com/v19.0/dialog/oauth?client_id=${appId}&display=page&extras={"setup":{"channel":"IG_API_ONBOARDING"}}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=code&config_id=${configId}&state=${state}`;
   }
 
   async handleCallback(code: string, workspaceId: string) {

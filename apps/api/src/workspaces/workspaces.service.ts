@@ -82,7 +82,7 @@ export class WorkspacesService {
         propertyUrl: gscPropertyUrl,
       },
       instagram: {
-        serverConfigured: !!process.env.META_APP_ID && !!process.env.META_APP_SECRET,
+        serverConfigured: !!process.env.META_APP_ID && !!process.env.META_APP_SECRET && !!process.env.META_LOGIN_CONFIG_ID,
         connected: !!instagram,
         username: instagram?.config ? JSON.parse(instagram.config).username : null,
       }
