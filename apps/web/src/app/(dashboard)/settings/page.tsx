@@ -1,13 +1,14 @@
 'use client';
+import Link from 'next/link';
 
 import * as React from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
+
 import { AlertCircle, Check } from 'lucide-react';
 import { useWorkspace } from '@/context/WorkspaceContext';
 import { workspacesApi } from '@/services/workspaces';
-import type { BrandProfile, UpsertBrandProfilePayload } from '@/types/api';
+import type { BrandProfile, UpsertBrandProfilePayload, WorkspaceIntegrations } from '@/types/api';
 import { ApiError } from '@/lib/apiClient';
 
 export default function SettingsPage() {
@@ -30,12 +31,20 @@ export default function SettingsPage() {
   const [workspaceName, setWorkspaceName] = React.useState(activeWorkspace?.name ?? '');
   const [savingWs, setSavingWs] = React.useState(false);
   const [savedWs, setSavedWs] = React.useState(false);
+  const [integrations, setIntegrations] = React.useState<WorkspaceIntegrations | null>(null);
+  const [loadingIntegrations, setLoadingIntegrations] = React.useState(true);
+  const [togglingPostiz, setTogglingPostiz] = React.useState(false);
 
   React.useEffect(() => {
     if (!activeWorkspace) return;
     setWorkspaceName(activeWorkspace.name);
     setLoadingProfile(true);
     setError('');
+    workspacesApi.getIntegrations(activeWorkspace.id)
+      .then(setIntegrations)
+      .catch(console.error)
+      .finally(() => setLoadingIntegrations(false));
+    
     workspacesApi
       .getBrandProfile(activeWorkspace.id)
       .then((p) => {
@@ -80,6 +89,20 @@ export default function SettingsPage() {
       setError('Failed to save brand profile. Please try again.');
     } finally {
       setSaving(false);
+    }
+  }
+
+  async function handleTogglePostiz(connect: boolean) {
+    if (!activeWorkspace) return;
+    setTogglingPostiz(true);
+    try {
+      await workspacesApi.togglePostiz(activeWorkspace.id, connect);
+      const updated = await workspacesApi.getIntegrations(activeWorkspace.id);
+      setIntegrations(updated);
+    } catch {
+      alert('Failed to configure Postiz. Check if server configuration exists.');
+    } finally {
+      setTogglingPostiz(false);
     }
   }
 
@@ -241,20 +264,82 @@ export default function SettingsPage() {
           <CardDescription>Connect external platforms. Integrations are configured via environment variables.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
-            <div>
-              <p className="font-medium">Google Search Console</p>
-              <p className="text-sm text-gray-500">Import SEO performance data</p>
-            </div>
-            <Badge variant="secondary">Requires Admin Setup</Badge>
-          </div>
-          <div className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
-            <div>
-              <p className="font-medium">Postiz (Social Publishing)</p>
-              <p className="text-sm text-gray-500">Publish content to social platforms</p>
-            </div>
-            <Badge variant="secondary">Requires Admin Setup</Badge>
-          </div>
+          {loadingIntegrations ? (
+            <p className="text-gray-500">Loading integrations...</p>
+          ) : (
+            <>
+              {/* Google Search Console */}
+              <div className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                <div>
+                  <p className="font-medium">Google Search Console</p>
+                  <p className="text-sm text-gray-500">Import SEO performance data</p>
+                  
+                  <div className="mt-2 text-sm">
+                    {!integrations?.gsc.serverConfigured ? (
+                      <div className="text-amber-700">
+                        <span className="font-medium">Status: Admin configuration required</span>
+                        <p className="mt-1 text-xs">Google Search Console OAuth has not been configured by the application administrator.</p>
+                      </div>
+                    ) : integrations?.gsc.connected ? (
+                      <div>
+                        <span className="text-green-700 font-medium">Status: Connected</span>
+                        {integrations.gsc.propertyUrl && (
+                          <p className="text-xs text-gray-600 mt-1">Property: {integrations.gsc.propertyUrl}</p>
+                        )}
+                      </div>
+                    ) : (
+                      <span className="text-gray-600 font-medium">Status: Not Connected</span>
+                    )}
+                  </div>
+                </div>
+
+                <div className="flex gap-2">
+                  {!integrations?.gsc.serverConfigured ? (
+                    <Button variant="outline" disabled>Requires Admin Setup</Button>
+                  ) : integrations?.gsc.connected ? (
+                    <Link href={`/workspaces/${activeWorkspace.id}/search-console`}>
+                      <Button variant="outline">Manage Connection</Button>
+                    </Link>
+                  ) : (
+                    <Link href={`/workspaces/${activeWorkspace.id}/search-console`}>
+                      <Button variant="default">Connect GSC</Button>
+                    </Link>
+                  )}
+                </div>
+              </div>
+
+              {/* Postiz */}
+              <div className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                <div>
+                  <p className="font-medium">Postiz (Social Publishing)</p>
+                  <p className="text-sm text-gray-500">Publish content to social platforms</p>
+
+                  <div className="mt-2 text-sm">
+                    {!integrations?.postiz.serverConfigured ? (
+                      <div className="text-amber-700">
+                        <span className="font-medium">Status: Admin configuration required</span>
+                        <p className="mt-1 text-xs">Postiz integration URL/Key has not been configured by the application administrator.</p>
+                      </div>
+                    ) : integrations?.postiz.connected ? (
+                      <span className="text-green-700 font-medium">Status: Connected</span>
+                    ) : (
+                      <span className="text-gray-600 font-medium">Status: Available</span>
+                    )}
+                  </div>
+                </div>
+
+                <div className="flex gap-2">
+                  {!integrations?.postiz.serverConfigured ? (
+                    <Button variant="outline" disabled>Requires Admin Setup</Button>
+                  ) : integrations?.postiz.connected ? (
+                    <Button variant="outline" disabled={togglingPostiz} onClick={() => handleTogglePostiz(false)}>Disconnect</Button>
+                  ) : (
+                    <Button variant="default" disabled={togglingPostiz} onClick={() => handleTogglePostiz(true)}>Connect Postiz</Button>
+                  )}
+                </div>
+              </div>
+            </>
+          )}
         </CardContent>
       </Card>
     </div>

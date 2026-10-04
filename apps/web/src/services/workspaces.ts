@@ -5,6 +5,7 @@ import type {
   CreateWorkspacePayload,
   BrandProfile,
   UpsertBrandProfilePayload,
+  WorkspaceIntegrations
 } from '@/types/api';
 
 export const workspacesApi = {
@@ -35,4 +36,12 @@ export const workspacesApi = {
   upsertBrandProfile(workspaceId: string, data: UpsertBrandProfilePayload) {
     return apiClient.put<BrandProfile>(`/workspaces/${workspaceId}/brand-profile`, data);
   },
+
+  getIntegrations(workspaceId: string) {
+    return apiClient.get<WorkspaceIntegrations>(`/workspaces/${workspaceId}/integrations`);
+  },
+
+  togglePostiz(workspaceId: string, connect: boolean) {
+    return apiClient.post(`/workspaces/${workspaceId}/integrations/postiz`, { connect });
+  }
 };

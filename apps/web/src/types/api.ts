@@ -243,3 +243,14 @@ export interface ApiErrorBody {
   statusCode?: number;
   error?: string;
 }
+
+export interface IntegrationStatus {
+  serverConfigured: boolean;
+  connected: boolean;
+  propertyUrl?: string;
+}
+
+export interface WorkspaceIntegrations {
+  gsc: IntegrationStatus;
+  postiz: IntegrationStatus;
+}

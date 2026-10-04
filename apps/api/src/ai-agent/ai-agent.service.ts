@@ -44,7 +44,7 @@ export class AiAgentService {
         description: 'Get the brand profile, target audience, tone, and services',
         parameters: { type: 'object', properties: {} },
         execute: async () => {
-          return p.brandProfile.findUnique({ where: { workspaceId } });
+          return p.brandProfile.findFirst({ where: { workspaceId } });
         }
       },
       {

@@ -7,31 +7,19 @@ export class UpsertBrandProfileDto {
 
   @IsString()
   @IsNotEmpty()
-  description!: string;
+  industry!: string;
 
   @IsString()
   @IsNotEmpty()
   targetAudience!: string;
 
   @IsString()
-  @IsNotEmpty()
-  location!: string;
-
-  @IsString()
-  @IsNotEmpty()
-  tone!: string;
-
-  @IsString()
-  @IsNotEmpty()
-  language!: string;
+  @IsOptional()
+  brandVoice?: string;
 
   @IsString()
   @IsOptional()
-  industry?: string;
-
-  @IsString()
-  @IsOptional()
-  services?: string;
+  primaryKeywords?: string;
 
   @IsString()
   @IsOptional()

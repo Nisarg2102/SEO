@@ -96,10 +96,10 @@ MEDICAL SAFETY RULES MUST BE FOLLOWED:
       brandContext = `
 BRAND VOICE CONTEXT:
 Business Name: ${brandProfile.businessName}
-Description: ${brandProfile.description}
-Services: ${brandProfile.services || 'N/A'}
-Brand Tone: ${brandProfile.tone}
-Language: ${brandProfile.language}
+Industry: ${brandProfile.industry}
+Target Audience: ${brandProfile.targetAudience}
+Brand Voice: ${brandProfile.brandVoice || 'Professional'}
+Primary Keywords: ${brandProfile.primaryKeywords || 'N/A'}
 `;
     }
     const security = `

@@ -61,4 +61,46 @@ export class WorkspacesService {
       scheduledPosts
     };
   }
+
+  async getIntegrations(workspaceId: string) {
+    const integrations = await (this.prisma as any).integration.findMany({
+      where: { workspaceId }
+    });
+
+    const gsc = integrations.find((i: any) => i.provider === 'google_search_console');
+    const postiz = integrations.find((i: any) => i.provider === 'postiz');
+
+    let gscPropertyUrl = null;
+    if (gsc?.config) {
+      try { gscPropertyUrl = JSON.parse(gsc.config).propertyUrl; } catch {}
+    }
+
+    return {
+      gsc: {
+        serverConfigured: !!process.env.GOOGLE_CLIENT_ID,
+        connected: !!gsc,
+        propertyUrl: gscPropertyUrl,
+      },
+      postiz: {
+        serverConfigured: !!process.env.POSTIZ_API_KEY,
+        connected: !!postiz,
+      }
+    };
+  }
+
+  async togglePostiz(workspaceId: string, connect: boolean) {
+    if (connect) {
+      if (!process.env.POSTIZ_API_KEY) throw new Error('Server not configured for Postiz');
+      await (this.prisma as any).integration.upsert({
+        where: { workspaceId_provider: { workspaceId, provider: 'postiz' } },
+        update: {},
+        create: { workspaceId, provider: 'postiz' }
+      });
+    } else {
+      await (this.prisma as any).integration.deleteMany({
+        where: { workspaceId, provider: 'postiz' }
+      });
+    }
+    return { success: true };
+  }
 }
