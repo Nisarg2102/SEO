@@ -3,7 +3,7 @@
 ## 1. Executive Summary
 The AI Marketing/SEO Assistant has reached a significant level of completion. The core multi-tenant architecture, frontend interfaces, and major modules (Research, Content Packs, SEO, Analytics) are structurally in place and integrated into the NestJS backend and Next.js frontend.
 
-However, the system is **NOT safe to deploy to production** in its current state. There is a critical architectural misconfiguration in the production Docker environment (missing Redis) that will cause the application to crash on startup. Furthermore, several integrations (OpenSEO, Meta, GA4) are missing or entirely mocked out, and heavy AI tasks are being executed synchronously on the main API threads, which will lead to timeouts and poor performance.
+However, the system is **NOT safe to deploy to production** in its current state. There is a critical architectural misconfiguration in the production Docker environment (missing Redis) that will cause the application to crash on startup. Furthermore, several integrations (Free SEO Tools, Meta, GA4) are missing or entirely mocked out, and heavy AI tasks are being executed synchronously on the main API threads, which will lead to timeouts and poor performance.
 
 ## 2. Feature Matrix
 
@@ -20,8 +20,8 @@ However, the system is **NOT safe to deploy to production** in its current state
 | Content ideas | IMPLEMENTED | `ContentIdea` model, UI screens | None | Yes |
 | AI content generation | IMPLEMENTED | `ContentPacksService.generate` | Heavy AI runs synchronously | No |
 | Content packs | IMPLEMENTED | `ContentPacksService` | None | Yes |
-| SEO | PARTIALLY IMPLEMENTED | `SeoService`, `@ai-marketing/seo` | Only uses a mock wrapper for OpenSEO | No |
-| OpenSEO integration | MOCK/PLACEHOLDER | `openseo.adapter.ts` | No real API; acts as mock wrapper | No |
+| SEO | PARTIALLY IMPLEMENTED | `SeoService`, `@ai-marketing/seo` | Only uses a mock wrapper for Free SEO Tools | No |
+| Free SEO Tools integration | MOCK/PLACEHOLDER | `Free SEO Tools.adapter.ts` | No real API; acts as mock wrapper | No |
 | SEO opportunities | IMPLEMENTED | `SeoOpportunitiesService` | Uses GSC metrics successfully | Yes |
 | Google Search Console | IMPLEMENTED | `GscService`, `googleapis` | None | Yes |
 | Content calendar | IMPLEMENTED | Scheduling logic in `ContentPacksService` | None | Yes |
@@ -87,7 +87,7 @@ However, the system is **NOT safe to deploy to production** in its current state
 - **Agent Risks:** The Agent tools for generation and scheduling are currently returning mock strings. If wired up to the real services, they will run synchronously inside the chat loop, which is dangerous.
 
 ## 7. Integration Audit
-- **OpenSEO:** PLACEHOLDER. The codebase notes there is no real OpenSEO SDK/spec, so it mocks data when no API key is present and acts as a generic REST wrapper if one is.
+- **Free SEO Tools:** PLACEHOLDER. The codebase notes there is no real Free SEO Tools SDK/spec, so it mocks data when no API key is present and acts as a generic REST wrapper if one is.
 - **Google Search Console:** IMPLEMENTED. Fully functional via `googleapis` and OAuth2.
 - **GA4, Meta, YouTube:** NOT IMPLEMENTED. Completely missing from the codebase.
 - **n8n:** PARTIALLY IMPLEMENTED. Webhook receiver exists, but no workflow logic.

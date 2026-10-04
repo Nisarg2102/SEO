@@ -17,10 +17,14 @@ describe('GscService', () => {
         findUnique: jest.fn(),
         upsert: jest.fn(),
         update: jest.fn(),
+        findMany: jest.fn().mockResolvedValue([]),
       },
       gscMetric: {
         upsert: jest.fn(),
-      }
+        findMany: jest.fn().mockResolvedValue([]),
+        groupBy: jest.fn().mockResolvedValue([]),
+        aggregate: jest.fn().mockResolvedValue({ _sum: { clicks: 0, impressions: 0 }, _avg: { ctr: 0, position: 0 } }),
+      },
     };
 
     mockSeoOppsService = {
@@ -107,13 +111,13 @@ describe('GscService', () => {
       });
 
       const res = await service.sync('ws-1', 7);
-      
+
       expect(res.success).toBe(true);
       expect(res.count).toBe(2);
-      
+
       // Ensure upsert was called on GscMetric table
       expect(mockPrisma.gscMetric.upsert).toHaveBeenCalledTimes(2);
-      
+
       // Ensure analyzeMetrics was called on SeoOpportunities engine
       expect(mockSeoOppsService.analyzeMetrics).toHaveBeenCalledWith('ws-1', expect.any(Array));
 
@@ -124,6 +128,45 @@ describe('GscService', () => {
           data: expect.objectContaining({ lastSyncAt: expect.any(Date) })
         })
       );
+    });
+  });
+
+  describe('Analytics queries', () => {
+    it('getKeywordHistory should filter by workspaceId and date', async () => {
+      await service.getKeywordHistory('ws-1', 'test query', 30);
+      expect(mockPrisma.gscMetric.findMany).toHaveBeenCalledWith(expect.objectContaining({
+        where: expect.objectContaining({ workspaceId: 'ws-1', query: 'test query' })
+      }));
+    });
+
+    it('getPerformance should aggregate metrics for date range', async () => {
+      mockPrisma.gscMetric.aggregate.mockResolvedValue({
+        _sum: { clicks: 10, impressions: 100 },
+        _avg: { ctr: 10, position: 2.5 }
+      });
+      const res = await service.getPerformance('ws-1', new Date('2023-01-01'), new Date('2023-01-31'));
+      expect(res).toEqual({ clicks: 10, impressions: 100, ctr: 10, averagePosition: 2.5 });
+    });
+
+    it('getTopQueries should return query-grouped results', async () => {
+      mockPrisma.gscMetric.groupBy.mockResolvedValue([{
+        query: 'seo tool',
+        _sum: { clicks: 50, impressions: 2000 },
+        _avg: { ctr: 2.5, position: 8.3 },
+      }]);
+      const result = await service.getTopQueries('ws-1', 30);
+      expect(result[0].query).toBe('seo tool');
+      expect(result[0].clicks).toBe(50);
+    });
+
+    it('getTopPages should return page-grouped results', async () => {
+      mockPrisma.gscMetric.groupBy.mockResolvedValue([{
+        page: 'https://example.com/blog',
+        _sum: { clicks: 30, impressions: 1500 },
+        _avg: { ctr: 2.0, position: 6.1 },
+      }]);
+      const result = await service.getTopPages('ws-1', 30);
+      expect(result[0].page).toBe('https://example.com/blog');
     });
   });
 });

@@ -34,7 +34,7 @@ External Integrations
 │
 ├── Google Search Console (OAuth & Analytics)
 ├── Postiz (Social Publishing)
-├── OpenSEO (SEO metrics)
+├── Free SEO Tools (SEO metrics)
 └── n8n (External Workflow Automation)
 ```
 

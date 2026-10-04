@@ -1,7 +1,7 @@
 # Vercel Environment Variable Audit
 
 ## 1. Executive Summary
-This audit comprehensively reviews all environment variables used, referenced, and documented across the SEO Monorepo (Next.js frontend + NestJS serverless API). The purpose is to map out the exact configuration required for deploying to Vercel with Neon PostgreSQL and Upstash QStash, while securely managing API keys for external integrations (AI, Google, Postiz, OpenSEO, n8n).
+This audit comprehensively reviews all environment variables used, referenced, and documented across the SEO Monorepo (Next.js frontend + NestJS serverless API). The purpose is to map out the exact configuration required for deploying to Vercel with Neon PostgreSQL and Upstash QStash, while securely managing API keys for external integrations (AI, Google, Postiz, Free SEO Tools, n8n).
 
 No sensitive production keys or passwords are exposed in this document. Tracked Git files and `.gitignore` directives are correctly implemented to prevent secret leakage.
 
@@ -26,8 +26,8 @@ No sensitive production keys or passwords are exposed in this document. Tracked 
 | `GOOGLE_CLIENT_ID` | Backend (`gsc.service.ts`) | CONDITIONAL | ALL | SECRET | SERVER-ONLY | Google OAuth | REQUIRES EXTERNAL ACCOUNT |
 | `GOOGLE_CLIENT_SECRET` | Backend (`gsc.service.ts`) | CONDITIONAL | ALL | SECRET | SERVER-ONLY | Google OAuth | REQUIRES EXTERNAL ACCOUNT |
 | `GOOGLE_CALLBACK_URL` | Backend (`gsc.service.ts`) | CONDITIONAL | ALL | NON-SECRET | SERVER-ONLY | Google OAuth Redirect | REQUIRES EXTERNAL ACCOUNT |
-| `OPENSEO_URL` | Backend (`openseo.service.ts`)| CONDITIONAL | ALL | NON-SECRET | SERVER-ONLY | API base | REQUIRES EXTERNAL ACCOUNT |
-| `OPENSEO_API_KEY` | Backend (`openseo.service.ts`)| CONDITIONAL | ALL | SECRET | SERVER-ONLY | API auth | REQUIRES EXTERNAL ACCOUNT |
+| `Free SEO Tools_LOGIN` | Backend (`Free SEO Tools.service.ts`)| CONDITIONAL | ALL | NON-SECRET | SERVER-ONLY | API base | REQUIRES EXTERNAL ACCOUNT |
+| `Free SEO Tools_PASSWORD` | Backend (`Free SEO Tools.service.ts`)| CONDITIONAL | ALL | SECRET | SERVER-ONLY | API auth | REQUIRES EXTERNAL ACCOUNT |
 | `N8N_WEBHOOK_SECRET` | Backend (`n8n.guard.ts`) | CONDITIONAL | ALL | SECRET | SERVER-ONLY | Secure n8n invocations | REQUIRES CONFIGURATION |
 | `POSTIZ_URL` | Backend (`postiz.service.ts`) | CONDITIONAL | ALL | NON-SECRET | SERVER-ONLY | Social publishing API | REQUIRES EXTERNAL ACCOUNT |
 | `POSTIZ_API_KEY` | Backend (`postiz.service.ts`) | CONDITIONAL | ALL | SECRET | SERVER-ONLY | Postiz API auth | REQUIRES EXTERNAL ACCOUNT |
@@ -79,9 +79,9 @@ These variables are structurally required for the NestJS API and Next.js fronten
 * `POSTIZ_API_KEY`
 * `POSTIZ_WEBHOOK_SECRET`
 
-## 10. Required for OpenSEO
-* `OPENSEO_URL`
-* `OPENSEO_API_KEY`
+## 10. Required for Free SEO Tools
+* `Free SEO Tools_LOGIN`
+* `Free SEO Tools_PASSWORD`
 
 ## 11. Required for n8n
 * `N8N_WEBHOOK_SECRET`

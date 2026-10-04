@@ -73,4 +73,35 @@ export class GscController {
       jobId: res.messageId,
     };
   }
+
+  @Get('history/keyword')
+  getKeywordHistory(@Param('workspaceId') workspaceId: string, @Query('q') query: string, @Query('days') days?: string) {
+    return this.gscService.getKeywordHistory(workspaceId, query, days ? parseInt(days, 10) : 30);
+  }
+
+  @Get('history/property')
+  getPropertyHistory(@Param('workspaceId') workspaceId: string, @Query('days') days?: string) {
+    return this.gscService.getPropertyHistory(workspaceId, days ? parseInt(days, 10) : 30);
+  }
+
+  @Get('performance')
+  getPerformance(
+    @Param('workspaceId') workspaceId: string, 
+    @Query('start') start: string, 
+    @Query('end') end: string
+  ) {
+    const startDate = new Date(start);
+    const endDate = new Date(end);
+    return this.gscService.getPerformance(workspaceId, startDate, endDate);
+  }
+
+  @Get('top-queries')
+  getTopQueries(@Param('workspaceId') workspaceId: string, @Query('days') days?: string) {
+    return this.gscService.getTopQueries(workspaceId, days ? parseInt(days, 10) : 30);
+  }
+
+  @Get('top-pages')
+  getTopPages(@Param('workspaceId') workspaceId: string, @Query('days') days?: string) {
+    return this.gscService.getTopPages(workspaceId, days ? parseInt(days, 10) : 30);
+  }
 }

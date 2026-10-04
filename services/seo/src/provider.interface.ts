@@ -24,10 +24,20 @@ export interface CompetitorData {
   topKeywords: string[];
 }
 
-export interface SEOProvider {
-  healthCheck(): Promise<boolean>;
+// Breaking down the giant SEOProvider into specific provider interfaces
+
+export interface KeywordResearchProvider {
   keywordResearch(query: string): Promise<KeywordData[]>;
+}
+
+export interface SiteAuditProvider {
   siteAudit(url: string): Promise<AuditResult>;
-  competitorResearch(domain: string): Promise<CompetitorData[]>;
+}
+
+export interface RankTrackingProvider {
   rankTracking(domain: string, keywords: string[]): Promise<RankData[]>;
+}
+
+export interface CompetitorResearchProvider {
+  competitorResearch(domain: string): Promise<CompetitorData[]>;
 }

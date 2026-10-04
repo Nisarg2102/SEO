@@ -2,6 +2,7 @@ import { Controller, Post, Body, UseGuards, Logger, HttpCode, HttpStatus } from 
 import { QStashGuard } from './qstash.guard';
 import { GscService } from '../gsc/gsc.service';
 import { ResearchService } from '../research/research.service';
+import { SeoAuditService } from '../seo-audit/seo-audit.service';
 import { SeoOpportunitiesService, RawMetric } from '../seo-opportunities/seo-opportunities.service';
 import { SocialService } from '../social/social.service';
 import { PrismaService } from '../prisma/prisma.service';
@@ -15,6 +16,7 @@ export class QueuesController {
     private readonly gscService: GscService,
     private readonly researchService: ResearchService,
     private readonly seoOpportunitiesService: SeoOpportunitiesService,
+    private readonly seoAuditService: SeoAuditService,
     private readonly socialService: SocialService,
     private readonly prisma: PrismaService,
   ) {}
@@ -116,5 +118,35 @@ export class QueuesController {
     }
     this.logger.log(`Completed postiz sync. Updated ${updated} packs.`);
     return { updated };
+  }
+
+  @Post('analytics/sync-all-gsc')
+  @HttpCode(HttpStatus.OK)
+  async syncAllGsc() {
+    this.logger.log(`Processing fan-out GSC sync for all workspaces`);
+    try {
+      const result = await this.gscService.syncAll();
+      this.logger.log(`[sync-all-gsc] totalQueued=${result.queuedCount}`);
+      return result;
+    } catch (error) {
+      this.logger.error(`[sync-all-gsc] failed`, (error as Error).stack);
+      throw error;
+    }
+  }
+  @Post('seo/audit-run')
+  @HttpCode(HttpStatus.OK)
+  async runSeoAudit(@Body() data: { workspaceId: string; auditId: string }) {
+    this.logger.log(`Processing SEO audit run for ${data.auditId} in workspace ${data.workspaceId}`);
+    if (!data.workspaceId || !data.auditId) {
+      this.logger.warn('audit-run job missing workspaceId or auditId, discarding');
+      return { status: 'discarded' };
+    }
+    try {
+      await this.seoAuditService.runAudit(data.workspaceId, data.auditId);
+      return { status: 'completed' };
+    } catch (error) {
+      this.logger.error(`Error running SEO audit ${data.auditId}:`, error);
+      throw error;
+    }
   }
 }

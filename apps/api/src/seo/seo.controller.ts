@@ -11,7 +11,7 @@ export class SeoController {
     const isHealthy = await this.seoService.healthCheck();
     return {
       status: isHealthy ? 'ok' : 'error',
-      service: 'openseo'
+      service: 'local-free'
     };
   }
 

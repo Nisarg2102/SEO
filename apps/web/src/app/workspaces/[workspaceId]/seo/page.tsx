@@ -54,7 +54,7 @@ export default function SeoDashboard({ params }: { params: { workspaceId: string
       <div className="flex justify-between items-center bg-white p-4 rounded shadow-sm border border-gray-200">
         <div>
           <h1 className="text-xl font-bold">SEO Tools</h1>
-          <p className="text-sm text-gray-500">Powered by OpenSEO API</p>
+          <p className="text-sm text-gray-500">Powered by Local Free Tools</p>
         </div>
         <div className="flex items-center gap-2">
           <span className="text-sm font-medium text-gray-700">Service Status:</span>

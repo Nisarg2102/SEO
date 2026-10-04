@@ -1,177 +1,253 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
-import { GscAnalyticsAdapter, AnalyticsProvider } from '@ai-marketing/analytics';
+import { AiService } from '../ai/ai.service';
+import { Prisma } from '@prisma/client';
+import { z } from 'zod';
 
 @Injectable()
 export class AnalyticsService {
-  private readonly logger = new Logger(AnalyticsService.name);
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly aiService: AiService,
+  ) {}
 
-  constructor(private readonly prisma: PrismaService) {}
-
-  private getProvider(sourceName: string): AnalyticsProvider {
-    if (sourceName === 'google_search_console') {
-      return new GscAnalyticsAdapter();
-    }
-    throw new Error(`Unsupported analytics source: ${sourceName}`);
+  private parseDates(start?: string, end?: string) {
+    const endDate = end ? new Date(end) : new Date();
+    const startDate = start ? new Date(start) : new Date(endDate.getTime() - 30 * 24 * 60 * 60 * 1000);
+    return { startDate, endDate };
   }
 
-  async getDashboardData(workspaceId: string) {
-    const p = this.prisma as any;
-    
-    // Get all accounts for this workspace
-    const accounts = await p.analyticsAccount.findMany({
-      where: { workspaceId },
-      include: { source: true }
+  async getOverview(workspaceId: string, start?: string, end?: string) {
+    const { startDate, endDate } = this.parseDates(start, end);
+
+    const metrics = await this.prisma.gscMetric.findMany({
+      where: {
+        workspaceId,
+        date: { gte: startDate, lte: endDate },
+      },
     });
 
-    if (accounts.length === 0) {
-      return { snapshots: [], postMetrics: [] };
+    if (metrics.length === 0) {
+      return { hasData: false, summary: null, trends: [] };
     }
-    
-    const accountIds = accounts.map((a: any) => a.id);
 
-        const snapshots = await p.analyticsSnapshot.findMany({
-      where: { accountId: { in: accountIds } },
-      orderBy: { date: 'asc' }
-    });
-
-    const postMetrics = await p.postMetric.findMany({
-      where: { accountId: { in: accountIds } },
-      orderBy: { clicks: 'desc' },
-      take: 10
-    });
-
-    const totalClicks = snapshots.reduce((acc: number, curr: any) => acc + (curr.clicks || 0), 0);
-    const totalImpressions = snapshots.reduce((acc: number, curr: any) => acc + (curr.impressions || 0), 0);
-
+    let totalClicks = 0;
+    let totalImpressions = 0;
     let sumPosition = 0;
     let sumCtr = 0;
-    let count = 0;
-    snapshots.forEach((s: any) => {
-      if (s.metadata) {
-        try {
-          const meta = JSON.parse(s.metadata);
-          if (meta.position) { sumPosition += meta.position; count++; }
-          if (meta.ctr) { sumCtr += meta.ctr; }
-        } catch(e) {}
-      }
-    });
 
-    return { 
-      totalClicks, 
-      totalImpressions, 
-      averagePosition: count > 0 ? sumPosition / count : null,
-      averageCtr: count > 0 ? sumCtr / count : null,
-      snapshots, 
-      recentMetrics: postMetrics 
+    const trendsMap = new Map<string, any>();
+
+    for (const m of metrics) {
+      totalClicks += m.clicks;
+      totalImpressions += m.impressions;
+      sumPosition += m.position;
+      sumCtr += m.ctr;
+
+      const dString = m.date.toISOString().split('T')[0];
+      if (!trendsMap.has(dString)) {
+        trendsMap.set(dString, { date: dString, clicks: 0, impressions: 0 });
+      }
+      const day = trendsMap.get(dString)!;
+      day.clicks += m.clicks;
+      day.impressions += m.impressions;
+    }
+
+    const trends = Array.from(trendsMap.values()).sort((a, b) => a.date.localeCompare(b.date));
+
+    return {
+      hasData: true,
+      summary: {
+        clicks: totalClicks,
+        impressions: totalImpressions,
+        ctr: totalImpressions > 0 ? (sumCtr / metrics.length) : 0,
+        averagePosition: metrics.length > 0 ? (sumPosition / metrics.length) : 0,
+      },
+      trends,
     };
   }
 
-  async syncAccount(accountId: string) {
-    const p = this.prisma as any;
-    const account = await p.analyticsAccount.findUnique({
-      where: { id: accountId },
-      include: { source: true }
+  async getSeoMetrics(workspaceId: string, start?: string, end?: string) {
+    return this.getOverview(workspaceId, start, end);
+  }
+
+  async getKeywords(workspaceId: string, start?: string, end?: string) {
+    const { startDate, endDate } = this.parseDates(start, end);
+
+    const metrics = await this.prisma.gscMetric.groupBy({
+      by: ['query'],
+      where: { workspaceId, date: { gte: startDate, lte: endDate } },
+      _sum: { clicks: true, impressions: true },
+      _avg: { position: true, ctr: true },
+      orderBy: { _sum: { clicks: 'desc' } },
+      take: 50,
     });
 
-    if (!account) throw new Error('Account not found');
+    return metrics.map(m => ({
+      query: m.query,
+      clicks: m._sum.clicks || 0,
+      impressions: m._sum.impressions || 0,
+      position: m._avg.position || 0,
+      ctr: m._avg.ctr || 0,
+      trend: 'Stable', // Simplified trend without secondary date math
+    }));
+  }
 
-    const provider = this.getProvider(account.source.name);
-    const config = account.config ? JSON.parse(account.config) : {};
+  async getPages(workspaceId: string, start?: string, end?: string) {
+    const { startDate, endDate } = this.parseDates(start, end);
 
-    // Get integration token if needed (assuming GSC)
-    if (account.source.name === 'google_search_console') {
-      const integration = await p.integration.findFirst({
-        where: { workspaceId: account.workspaceId, provider: 'google_search_console' }
-      });
-      if (integration) {
-        config.accessToken = integration.accessToken;
+    const metrics = await this.prisma.gscMetric.groupBy({
+      by: ['page'],
+      where: { workspaceId, date: { gte: startDate, lte: endDate } },
+      _sum: { clicks: true, impressions: true },
+      _avg: { position: true, ctr: true },
+      orderBy: { _sum: { clicks: 'desc' } },
+      take: 50,
+    });
+
+    return metrics.map(m => ({
+      page: m.page,
+      clicks: m._sum.clicks || 0,
+      impressions: m._sum.impressions || 0,
+      position: m._avg.position || 0,
+      ctr: m._avg.ctr || 0,
+    }));
+  }
+
+  async getOpportunities(workspaceId: string, start?: string, end?: string) {
+    const pages = await this.getPages(workspaceId, start, end);
+
+    const opportunities = [];
+
+    for (const p of pages) {
+      if (p.impressions > 500 && p.ctr < 0.02) {
+        opportunities.push({
+          type: 'Low CTR',
+          description: `High impressions but low CTR. Potential title/meta improvement.`,
+          page: p.page,
+          metrics: { impressions: p.impressions, ctr: p.ctr }
+        });
+      }
+      if (p.impressions > 100 && p.position >= 11 && p.position <= 25) {
+        opportunities.push({
+          type: 'Striking Distance',
+          description: `Ranking on page 2 or 3 with decent impressions. Optimization could push to page 1.`,
+          page: p.page,
+          metrics: { impressions: p.impressions, position: p.position }
+        });
       }
     }
 
-    const endDate = new Date();
-    const startDate = new Date();
-    startDate.setDate(startDate.getDate() - 7); // Last 7 days
+    return opportunities;
+  }
 
-    try {
-      const snapshots = await provider.getAccountSnapshots(config, startDate, endDate);
-      const postMetrics = await provider.getPostMetrics(config, startDate, endDate);
+  async getTechnical(workspaceId: string) {
+    const audit = await this.prisma.seoAudit.findFirst({
+      where: { workspaceId },
+      orderBy: { createdAt: 'desc' }
+    });
 
-      for (const snap of snapshots) {
-        await p.analyticsSnapshot.upsert({
-          where: {
-            accountId_date: { accountId: account.id, date: snap.date }
-          },
-          update: {
-            impressions: snap.impressions,
-            reach: snap.reach,
-            views: snap.views,
-            likes: snap.likes,
-            comments: snap.comments,
-            shares: snap.shares,
-            saves: snap.saves,
-            clicks: snap.clicks,
-            conversions: snap.conversions,
-            metadata: JSON.stringify(snap.metadata)
-          },
-          create: {
-            accountId: account.id,
-            date: snap.date,
-            impressions: snap.impressions,
-            reach: snap.reach,
-            views: snap.views,
-            likes: snap.likes,
-            comments: snap.comments,
-            shares: snap.shares,
-            saves: snap.saves,
-            clicks: snap.clicks,
-            conversions: snap.conversions,
-            metadata: JSON.stringify(snap.metadata)
-          }
-        });
-      }
+    if (!audit) return { hasData: false };
 
-      for (const post of postMetrics) {
-        if (!post.externalId) continue;
-        await p.postMetric.upsert({
-          where: {
-            accountId_externalId_date: { accountId: account.id, externalId: post.externalId, date: post.date }
-          },
-          update: {
-            impressions: post.impressions,
-            reach: post.reach,
-            views: post.views,
-            likes: post.likes,
-            comments: post.comments,
-            shares: post.shares,
-            saves: post.saves,
-            clicks: post.clicks,
-            conversions: post.conversions,
-            metadata: JSON.stringify(post.metadata)
-          },
-          create: {
-            accountId: account.id,
-            externalId: post.externalId,
-            externalUrl: post.externalUrl,
-            date: post.date,
-            impressions: post.impressions,
-            reach: post.reach,
-            views: post.views,
-            likes: post.likes,
-            comments: post.comments,
-            shares: post.shares,
-            saves: post.saves,
-            clicks: post.clicks,
-            conversions: post.conversions,
-            metadata: JSON.stringify(post.metadata)
-          }
-        });
-      }
+    return {
+      hasData: true,
+      lastAuditDate: audit.createdAt,
+      pagesCrawled: audit.pagesCrawled,
+      criticalIssues: audit.criticalCount,
+      warnings: audit.warningCount,
+      passed: audit.passedCount,
+    };
+  }
 
-      return { success: true, snapshotsCount: snapshots.length, postsCount: postMetrics.length };
-    } catch (e) {
-      this.logger.error(`Failed to sync analytics for account ${accountId}`, e);
-      throw e;
+  async getLinks(workspaceId: string) {
+    const audit = await this.prisma.seoAudit.findFirst({
+      where: { workspaceId },
+      orderBy: { createdAt: 'desc' },
+      select: { id: true }
+    });
+
+    if (!audit) return { hasData: false, message: 'Complete backlink discovery is not available from the current free data sources.' };
+
+    const internalCount = await this.prisma.seoLink.count({ where: { auditId: audit.id, linkType: 'INTERNAL' } });
+    const externalCount = await this.prisma.seoLink.count({ where: { auditId: audit.id, linkType: 'EXTERNAL' } });
+    const brokenCount = await this.prisma.seoLink.count({ where: { auditId: audit.id, statusCode: { gte: 400 } } });
+
+    return {
+      hasData: true,
+      message: 'Complete backlink discovery is not available from the current free data sources.',
+      internalLinks: internalCount,
+      externalLinks: externalCount,
+      brokenLinks: brokenCount,
+    };
+  }
+
+  async getContent(workspaceId: string) {
+    const briefs = await this.prisma.seoContentBrief.count({ where: { workspaceId } });
+    const drafts = await this.prisma.seoContentDraft.count({ where: { workspaceId } });
+    const analyses = await this.prisma.seoContentAnalysis.count({ where: { workspaceId } });
+
+    return {
+      briefs,
+      drafts,
+      analyses,
+    };
+  }
+
+  async getSocial(workspaceId: string) {
+    const posts = await this.prisma.socialPost.groupBy({
+      by: ['platform', 'status'],
+      where: { workspaceId },
+      _count: { id: true }
+    });
+
+    const summary = posts.map(p => ({
+      platform: p.platform,
+      status: p.status,
+      count: p._count.id
+    }));
+
+    return {
+      hasData: summary.length > 0,
+      posts: summary,
+      message: 'Social performance metrics are not currently available from the connected provider.'
+    };
+  }
+
+  async generateInsights(workspaceId: string, start?: string, end?: string) {
+    const workspace = await this.prisma.workspace.findUnique({ where: { id: workspaceId } });
+    if (!workspace) throw new NotFoundException('Workspace not found');
+
+    const overview = await this.getOverview(workspaceId, start, end);
+    const opps = await this.getOpportunities(workspaceId, start, end);
+
+    let safety = '';
+    if (workspace.type === 'psychiatrist' || workspace.type === 'medical') {
+      safety = `
+MEDICAL SAFETY RULES MUST BE FOLLOWED:
+- Do NOT generate medical advice.
+- Do NOT evaluate patients.
+- Do NOT infer patient health information.
+- Provide analytics strictly about traffic, content, and publishing.
+`;
     }
+
+    const prompt = `
+You are an expert Data Analyst. Produce a short Performance Summary and Recommended Next Actions based ONLY on the provided JSON data.
+
+Do not invent metrics, search volume, or keyword difficulty.
+State facts based only on the numbers.
+${safety}
+
+DATA:
+Overview: ${JSON.stringify(overview.summary)}
+Opportunities: ${JSON.stringify(opps.slice(0, 5))}
+    `;
+
+    const schema = z.object({
+      summary: z.string().describe('2-3 sentence performance summary.'),
+      recommendedActions: z.array(z.string()).describe('2-3 bullet points for next actions.')
+    });
+
+    return this.aiService.generateStructuredOutput<{summary: string, recommendedActions: string[]}>(prompt, schema, 'AnalyticsInsightsSchema');
   }
 }

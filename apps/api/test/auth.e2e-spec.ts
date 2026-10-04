@@ -12,7 +12,7 @@ describe('AuthController (e2e)', () => {
       imports: [AppModule],
     }).compile();
 
-    app = moduleFixture.createNestApplication();
+    app = moduleFixture.createNestApplication() as any;
     app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
     app.use(cookieParser());
     await app.init();

@@ -66,7 +66,7 @@ This document outlines the step-by-step phased approach for migrating the curren
 - **Objective:** Verify AI responses.
 - **Action:** Configure `AI_API_KEY` and test synchronous text generation routes to ensure they complete within Vercel's `maxDuration` window.
 
-## PHASE 11: Research & OpenSEO & Postiz & n8n
+## PHASE 11: Research & Free SEO Tools & Postiz & n8n
 - **Objective:** Connect external platforms.
 - **Action:** Add API keys and verify outbound network requests succeed from the Vercel edge/serverless environment.
 

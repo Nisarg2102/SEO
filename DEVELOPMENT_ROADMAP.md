@@ -40,7 +40,7 @@ This roadmap defines the incremental development strategy for the AI Marketing a
 ## Phase 5: SEO Integration
 **Goal:** Integrate SEO capabilities via abstraction.
 - [ ] Define the `ISEOService` interface.
-- [ ] Build the `OpenSEOAdapter` for the external OpenSEO service.
+- [ ] Build the `Free SEO ToolsAdapter` for the external Free SEO Tools service.
 - [ ] Implement Website SEO Analysis feature.
 - [ ] Implement SEO Keyword Research and tracking features.
 - [ ] Generate SEO titles and meta descriptions via AI.

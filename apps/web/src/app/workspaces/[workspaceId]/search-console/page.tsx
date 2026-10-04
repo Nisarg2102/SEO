@@ -8,13 +8,41 @@ export default function SearchConsolePage({ params }: { params: { workspaceId: s
   const [loading, setLoading] = useState(true);
   const [syncing, setSyncing] = useState(false);
 
+  // New Data States
+  const [performance, setPerformance] = useState<{clicks: number; impressions: number; ctr: number; averagePosition: number} | null>(null);
+  const [topQueries, setTopQueries] = useState<{query?: string; page?: string; clicks: number; impressions: number; ctr: number; position: number}[]>([]);
+  const [topPages, setTopPages] = useState<{query?: string; page?: string; clicks: number; impressions: number; ctr: number; position: number}[]>([]);
+
   const fetchStatus = async () => {
     setLoading(true);
     try {
       const data = await apiClient.get<{ connected: boolean; propertyUrl?: string; lastSyncAt?: string }>(`workspaces/${params.workspaceId}/gsc/status`);
       setStatus(data);
+      if (data.connected && data.propertyUrl) {
+        fetchDashboardData();
+      }
     } catch {}
     setLoading(false);
+  };
+
+  const fetchDashboardData = async () => {
+    try {
+      // 30 days default
+      const end = new Date().toISOString().split('T')[0];
+      const start = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+      
+      const perf = await apiClient.get<{clicks: number; impressions: number; ctr: number; averagePosition: number}>(`workspaces/${params.workspaceId}/gsc/performance?start=${start}&end=${end}`);
+      setPerformance(perf);
+
+      const queries = await apiClient.get<{query?: string; page?: string; clicks: number; impressions: number; ctr: number; position: number}[]>(`workspaces/${params.workspaceId}/gsc/top-queries?days=30`);
+      setTopQueries(queries);
+
+      const pages = await apiClient.get<{query?: string; page?: string; clicks: number; impressions: number; ctr: number; position: number}[]>(`workspaces/${params.workspaceId}/gsc/top-pages?days=30`);
+      setTopPages(pages);
+
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -46,7 +74,7 @@ export default function SearchConsolePage({ params }: { params: { workspaceId: s
   if (loading) return <div>Loading...</div>;
 
   return (
-    <div className="max-w-4xl space-y-6">
+    <div className="max-w-6xl space-y-6">
       <div>
         <h1 className="text-2xl font-bold">Google Search Console Integration</h1>
         <p className="text-gray-500">Connect your website to import SEO metrics and generate actionable opportunities.</p>
@@ -86,54 +114,135 @@ export default function SearchConsolePage({ params }: { params: { workspaceId: s
           )}
         </div>
       ) : (
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-          <div className="flex justify-between items-start mb-6">
-            <div>
-              <h2 className="text-xl font-bold text-gray-900">Connected Property</h2>
-              <p className="text-blue-600 font-medium">{status.propertyUrl}</p>
+        <div className="space-y-6">
+          <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+            <div className="flex justify-between items-start mb-6">
+              <div>
+                <h2 className="text-xl font-bold text-gray-900">Connected Property</h2>
+                <p className="text-blue-600 font-medium">{status.propertyUrl}</p>
+              </div>
+              <div className="text-right">
+                <div className="text-sm text-gray-500 mb-1">Last Synchronization</div>
+                <div className="font-medium text-gray-900">
+                  {status.lastSyncAt ? new Date(status.lastSyncAt).toLocaleString() : 'Never'}
+                </div>
+              </div>
             </div>
-            <div className="text-right">
-              <div className="text-sm text-gray-500 mb-1">Last Synchronization</div>
-              <div className="font-medium text-gray-900">
-                {status.lastSyncAt ? new Date(status.lastSyncAt).toLocaleString() : 'Never'}
+
+            <div className="bg-gray-50 p-4 rounded-lg border border-gray-200 flex justify-between items-center">
+              <div>
+                <h3 className="font-bold text-gray-800">Synchronize Data</h3>
+                <p className="text-sm text-gray-500">Pulls the latest Search Console metrics.</p>
+              </div>
+              <div className="flex gap-4 items-center">
+                <select 
+                  id="syncDays" 
+                  className="border p-2 rounded text-sm bg-white"
+                  defaultValue="28"
+                >
+                  <option value="7">Last 7 Days</option>
+                  <option value="28">Last 28 Days</option>
+                  <option value="90">Last 90 Days</option>
+                </select>
+                <button 
+                  onClick={async () => {
+                    const days = parseInt((document.getElementById('syncDays') as HTMLSelectElement).value, 10);
+                    setSyncing(true);
+                    try {
+                      const data = await apiClient.post<{ message: string, jobId: string }>(`workspaces/${params.workspaceId}/gsc/sync`, { days });
+                      alert(`${data.message}. Job ID: ${data.jobId}`);
+                      fetchDashboardData();
+                    } catch {
+                      alert('Network error during sync');
+                    }
+                    setSyncing(false);
+                  }}
+                  disabled={syncing}
+                  className="bg-blue-600 text-white px-6 py-2 rounded font-bold hover:bg-blue-700 disabled:opacity-50"
+                >
+                  {syncing ? 'Syncing...' : 'Sync Now'}
+                </button>
               </div>
             </div>
           </div>
 
-        <div className="bg-gray-50 p-4 rounded-lg border border-gray-200 flex justify-between items-center">
-            <div>
-              <h3 className="font-bold text-gray-800">Synchronize Data</h3>
-              <p className="text-sm text-gray-500">Pulls the latest Search Console metrics.</p>
+          {/* Performance Overview */}
+          {performance && (
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="bg-white p-4 rounded shadow-sm border">
+                <div className="text-sm text-gray-500 font-bold uppercase">Total Clicks</div>
+                <div className="text-2xl font-black">{performance.clicks.toLocaleString()}</div>
+              </div>
+              <div className="bg-white p-4 rounded shadow-sm border">
+                <div className="text-sm text-gray-500 font-bold uppercase">Total Impressions</div>
+                <div className="text-2xl font-black">{performance.impressions.toLocaleString()}</div>
+              </div>
+              <div className="bg-white p-4 rounded shadow-sm border">
+                <div className="text-sm text-gray-500 font-bold uppercase">Avg. CTR</div>
+                <div className="text-2xl font-black">{performance.ctr.toFixed(2)}%</div>
+              </div>
+              <div className="bg-white p-4 rounded shadow-sm border">
+                <div className="text-sm text-gray-500 font-bold uppercase">Avg. Position</div>
+                <div className="text-2xl font-black">{performance.averagePosition.toFixed(1)}</div>
+              </div>
             </div>
-            <div className="flex gap-4 items-center">
-              <select 
-                id="syncDays" 
-                className="border p-2 rounded text-sm bg-white"
-                defaultValue="28"
-              >
-                <option value="7">Last 7 Days</option>
-                <option value="28">Last 28 Days</option>
-                <option value="90">Last 90 Days</option>
-              </select>
-              <button 
-                onClick={async () => {
-                  const days = parseInt((document.getElementById('syncDays') as HTMLSelectElement).value, 10);
-                  setSyncing(true);
-                  try {
-                    const data = await apiClient.post<{ message: string, jobId: string }>(`workspaces/${params.workspaceId}/gsc/sync`, { days });
-                    alert(`${data.message}. Job ID: ${data.jobId}`);
-                    fetchStatus();
-                  } catch {
-                    alert('Network error during sync');
-                  }
-                  setSyncing(false);
-                }}
-                disabled={syncing}
-                className="bg-blue-600 text-white px-6 py-2 rounded font-bold hover:bg-blue-700 disabled:opacity-50"
-              >
-                {syncing ? 'Syncing...' : 'Sync Now'}
-              </button>
-            </div>
+          )}
+
+          {/* Top Queries and Pages */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {topQueries.length > 0 && (
+              <div className="bg-white p-6 rounded shadow-sm border">
+                <h3 className="font-bold text-lg mb-4">Top Queries (30 Days)</h3>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-sm">
+                    <thead>
+                      <tr className="border-b text-gray-500">
+                        <th className="pb-2">Query</th>
+                        <th className="pb-2">Clicks</th>
+                        <th className="pb-2">Impr.</th>
+                        <th className="pb-2">Pos.</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {topQueries.map((q, i) => (
+                        <tr key={i} className="border-b last:border-0">
+                          <td className="py-2 font-medium">{q.query}</td>
+                          <td className="py-2">{q.clicks}</td>
+                          <td className="py-2">{q.impressions}</td>
+                          <td className="py-2">{q.position.toFixed(1)}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+
+            {topPages.length > 0 && (
+              <div className="bg-white p-6 rounded shadow-sm border">
+                <h3 className="font-bold text-lg mb-4">Top Pages (30 Days)</h3>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-sm">
+                    <thead>
+                      <tr className="border-b text-gray-500">
+                        <th className="pb-2">Page</th>
+                        <th className="pb-2">Clicks</th>
+                        <th className="pb-2">Pos.</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {topPages.map((p, i) => (
+                        <tr key={i} className="border-b last:border-0">
+                          <td className="py-2 font-medium truncate max-w-[200px]" title={p.page}>{p.page}</td>
+                          <td className="py-2">{p.clicks}</td>
+                          <td className="py-2">{p.position.toFixed(1)}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       )}

@@ -5,6 +5,7 @@ import { ResearchModule } from '../research/research.module';
 import { PrismaModule } from '../prisma/prisma.module';
 import { SocialModule } from '../social/social.module';
 import { SeoOpportunitiesModule } from '../seo-opportunities/seo-opportunities.module';
+import { SeoAuditModule } from '../seo-audit/seo-audit.module';
 
 @Global()
 @Module({
@@ -14,6 +15,7 @@ import { SeoOpportunitiesModule } from '../seo-opportunities/seo-opportunities.m
     PrismaModule,
     SocialModule,
     SeoOpportunitiesModule,
+    SeoAuditModule,
   ],
   controllers: [QueuesController],
   providers: [],

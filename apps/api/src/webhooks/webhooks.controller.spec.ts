@@ -1,39 +1,47 @@
+// Mock QStash Client so tests never make real network calls
+const mockPublishJSON = jest.fn().mockResolvedValue({ messageId: 'queued-123' });
+jest.mock('@upstash/qstash', () => ({
+  Client: jest.fn().mockImplementation(() => ({ publishJSON: mockPublishJSON })),
+}));
+
 import { Test, TestingModule } from '@nestjs/testing';
 import { PostizWebhooksController, WebhooksController } from './webhooks.controller';
 
 describe('WebhooksControllers', () => {
   let postizController: PostizWebhooksController;
   let n8nController: WebhooksController;
-  let mockResearchQueue: any;
-  let mockWebhooksQueue: any;
 
   beforeEach(async () => {
-    mockResearchQueue = {
-      add: jest.fn().mockResolvedValue({ id: 'res-job-1' }),
-    };
-    mockWebhooksQueue = {
-      add: jest.fn().mockResolvedValue({ id: 'web-job-1' }),
-    };
+    mockPublishJSON.mockClear();
 
     const module: TestingModule = await Test.createTestingModule({
       controllers: [WebhooksController, PostizWebhooksController],
-      providers: [
-      ],
+      providers: [],
     }).compile();
 
     n8nController = module.get<WebhooksController>(WebhooksController);
     postizController = module.get<PostizWebhooksController>(PostizWebhooksController);
   });
 
-  it('n8n should enqueue research sync', async () => {
+  it('n8n should enqueue research sync via QStash and return a jobId', async () => {
     const res = await n8nController.syncResearch();
-    expect(mockResearchQueue.add).toHaveBeenCalledWith('sync-all', {});
-    expect(res.jobId).toBe('res-job-1');
+    expect(mockPublishJSON).toHaveBeenCalledWith(
+      expect.objectContaining({
+        body: {},
+      }),
+    );
+    expect(res.jobId).toBe('queued-123');
+    expect(res.message).toBe('Research sync queued');
   });
 
-  it('postiz should enqueue postiz sync', async () => {
+  it('postiz should enqueue postiz sync via QStash and return a jobId', async () => {
     const res = await postizController.syncPostizStatuses();
-    expect(mockWebhooksQueue.add).toHaveBeenCalledWith('sync-postiz', {});
-    expect(res.jobId).toBe('web-job-1');
+    expect(mockPublishJSON).toHaveBeenCalledWith(
+      expect.objectContaining({
+        body: {},
+      }),
+    );
+    expect(res.jobId).toBe('queued-123');
+    expect(res.message).toBe('Postiz sync queued');
   });
 });

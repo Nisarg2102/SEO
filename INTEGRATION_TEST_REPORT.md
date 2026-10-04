@@ -12,7 +12,7 @@ Attempting to start the complete local stack using `docker compose up -d` failed
 - **NestJS/API backend (Port 3001):** FAILED. Will crash loop on startup. `BullModule` is configured to connect to Redis synchronously on boot. Because `docker-compose.production.yml` completely omits the Redis container, the backend will continuously throw `ECONNREFUSED` and fail to initialize.
 - **PostgreSQL (Port 5432):** SUCCESS (Theoretically). Configured correctly with pgvector in the docker-compose file.
 - **Redis (Port 6379):** FAILED. Container is missing from the production deployment configuration.
-- **n8n / OpenSEO / Postiz:** External APIs. Only Postiz is implemented as a real REST API; OpenSEO is merely a mock wrapper.
+- **n8n / Free SEO Tools / Postiz:** External APIs. Only Postiz is implemented as a real REST API; Free SEO Tools is merely a mock wrapper.
 
 ## Authentication
 *(Tested via API code paths)*

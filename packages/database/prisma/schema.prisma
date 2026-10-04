@@ -38,8 +38,16 @@ model Workspace {
   integrations     Integration[]
   gscMetrics       GscMetric[]
   analyticsAccounts AnalyticsAccount[]
+  agentConversations AgentConversation[]
+  automations        Automation[]
   weeklyReports    WeeklyReport[]
   contentIdeas     ContentIdea[]
+  seoAudits        SeoAudit[]
+  seoLinks         SeoLink[]
+  seoContentAnalyses SeoContentAnalysis[]
+  seoContentBriefs SeoContentBrief[]
+  seoContentDrafts SeoContentDraft[]
+  socialPosts SocialPost[]
 
   @@map("workspaces")
 }
@@ -349,4 +357,260 @@ model WeeklyReport {
 
   @@index([workspaceId])
   @@map("weekly_reports")
+}
+
+model SeoAudit {
+  id          String   @id @default(uuid()) @db.Uuid
+  workspaceId String   @map("workspace_id") @db.Uuid
+  baseUrl     String   @map("base_url")
+  status      String   @default("pending")  // pending|running|completed|failed
+  maxPages    Int      @default(25)          @map("max_pages")
+  maxDepth    Int      @default(2)           @map("max_depth")
+  pagesCrawled Int     @default(0)          @map("pages_crawled")
+  pagesFailed  Int     @default(0)          @map("pages_failed")
+  issueCount   Int     @default(0)          @map("issue_count")
+  criticalCount Int    @default(0)          @map("critical_count")
+  warningCount  Int    @default(0)          @map("warning_count")
+  passedCount   Int    @default(0)          @map("passed_count")
+  errorMessage  String? @map("error_message") @db.Text
+  startedAt    DateTime? @map("started_at")
+  completedAt  DateTime? @map("completed_at")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  workspace    Workspace      @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  pages        SeoAuditPage[]
+  issues       SeoAuditIssue[]
+  links        SeoLink[]
+
+  @@index([workspaceId])
+  @@map("seo_audits")
+}
+
+model SeoAuditPage {
+  id           String   @id @default(uuid()) @db.Uuid
+  auditId      String   @map("audit_id") @db.Uuid
+  url          String
+  finalUrl     String?  @map("final_url")
+  statusCode   Int?     @map("status_code")
+  contentType  String?  @map("content_type")
+  responseTime Int?     @map("response_time")  // ms
+  pageSize     Int?     @map("page_size")       // bytes
+  wordCount    Int?     @map("word_count")
+  title        String?  @db.Text
+  metaDesc     String?  @map("meta_desc") @db.Text
+  h1           String?  @db.Text
+  isIndexable  Boolean? @map("is_indexable")
+  hasCanonical Boolean? @map("has_canonical")
+  canonicalUrl String?  @map("canonical_url")
+  crawlDepth   Int      @default(0) @map("crawl_depth")
+  failed       Boolean  @default(false)
+  failReason   String?  @map("fail_reason")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  audit        SeoAudit       @relation(fields: [auditId], references: [id], onDelete: Cascade)
+  issues       SeoAuditIssue[]
+
+  @@index([auditId])
+  @@map("seo_audit_pages")
+}
+
+model SeoAuditIssue {
+  id           String   @id @default(uuid()) @db.Uuid
+  auditId      String   @map("audit_id") @db.Uuid
+  pageId       String?  @map("page_id") @db.Uuid
+  code         String
+  severity     String   // critical|warning|info|pass
+  title        String
+  description  String   @db.Text
+  evidence     String?  @db.Text
+  recommendation String @map("recommendation") @db.Text
+  url          String?
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  audit        SeoAudit      @relation(fields: [auditId], references: [id], onDelete: Cascade)
+  page         SeoAuditPage? @relation(fields: [pageId], references: [id], onDelete: Cascade)
+
+  @@index([auditId])
+  @@index([pageId])
+  @@map("seo_audit_issues")
+}
+
+model SeoLink {
+  id           String   @id @default(uuid()) @db.Uuid
+  workspaceId  String   @map("workspace_id") @db.Uuid
+  auditId      String   @map("audit_id") @db.Uuid
+  sourceUrl    String   @map("source_url")
+  targetUrl    String   @map("target_url")
+  linkType     String   @map("link_type") // INTERNAL | EXTERNAL
+  anchorText   String?  @map("anchor_text") @db.Text
+  rel          String?  
+  isNofollow   Boolean  @default(false) @map("is_nofollow")
+  isSponsored  Boolean  @default(false) @map("is_sponsored")
+  isUgc        Boolean  @default(false) @map("is_ugc")
+  statusCode   Int?     @map("status_code")
+  discoveredAt DateTime @default(now()) @map("discovered_at")
+
+  audit        SeoAudit @relation(fields: [auditId], references: [id], onDelete: Cascade)
+  workspace    Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+
+  @@index([workspaceId])
+  @@index([auditId])
+  @@map("seo_links")
+}
+
+model SeoContentAnalysis {
+  id                String   @id @default(uuid()) @db.Uuid
+  workspaceId       String   @map("workspace_id") @db.Uuid
+  url               String
+  primaryKeyword    String   @map("primary_keyword")
+  secondaryKeywords String[] @map("secondary_keywords")
+  country           String?
+  language          String?
+  searchIntent      String?  @map("search_intent")
+  sourceSnapshot    Json     @map("source_snapshot")
+  analysisResult    Json?    @map("analysis_result")
+  status            String   @default("pending") // pending | completed | failed
+  errorMessage      String?  @map("error_message")
+  createdAt         DateTime @default(now()) @map("created_at")
+  updatedAt         DateTime @updatedAt @map("updated_at")
+
+  workspace         Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+
+  @@index([workspaceId])
+  @@map("seo_content_analyses")
+}
+
+model SeoContentBrief {
+  id                String   @id @default(uuid()) @db.Uuid
+  workspaceId       String   @map("workspace_id") @db.Uuid
+  primaryKeyword    String   @map("primary_keyword")
+  secondaryKeywords String[] @map("secondary_keywords")
+  topic             String?
+  country           String?
+  language          String?
+  contentType       String?  @map("content_type")
+  searchIntent      String?  @map("search_intent")
+  briefData         Json?    @map("brief_data")
+  status            String   @default("pending") // pending | completed | failed | approved
+  errorMessage      String?  @map("error_message")
+  createdAt         DateTime @default(now()) @map("created_at")
+  updatedAt         DateTime @updatedAt @map("updated_at")
+
+  workspace         Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  drafts            SeoContentDraft[]
+
+  @@index([workspaceId])
+  @@map("seo_content_briefs")
+}
+
+model SeoContentDraft {
+  id                String   @id @default(uuid()) @db.Uuid
+  workspaceId       String   @map("workspace_id") @db.Uuid
+  briefId           String   @map("brief_id") @db.Uuid
+  title             String
+  content           String   @db.Text
+  metadata          Json?
+  status            String   @default("draft") // draft | approved | published
+  version           Int      @default(1)
+  createdAt         DateTime @default(now()) @map("created_at")
+  updatedAt         DateTime @updatedAt @map("updated_at")
+
+  workspace         Workspace       @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  brief             SeoContentBrief @relation(fields: [briefId], references: [id], onDelete: Cascade)
+
+  @@index([workspaceId])
+  @@index([briefId])
+  @@map("seo_content_drafts")
+}
+
+model SocialPost {
+  id                String    @id @default(uuid()) @db.Uuid
+  workspaceId       String    @map("workspace_id") @db.Uuid
+  sourceType        String?   @map("source_type") // draft | brief | url | topic
+  sourceId          String?   @map("source_id") @db.Uuid
+  sourceUrl         String?   @map("source_url")
+  platform          String
+  connectedAccountId String?  @map("connected_account_id")
+  content           Json      // { text, hook, cta, mediaSuggestion, notes }
+  hashtags          String[]
+  status            String    @default("draft") // draft | scheduled | published | failed
+  approvalStatus    String    @default("pending") // pending | approved | rejected
+  scheduledAt       DateTime? @map("scheduled_at")
+  publishedAt       DateTime? @map("published_at")
+  externalPostId    String?   @map("external_post_id")
+  errorMessage      String?   @map("error_message")
+  createdAt         DateTime  @default(now()) @map("created_at")
+  updatedAt         DateTime  @updatedAt @map("updated_at")
+
+  workspace         Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+
+  @@index([workspaceId])
+  @@index([sourceId])
+  @@map("social_posts")
+}
+
+
+model AgentConversation {
+  id          String   @id @default(uuid()) @db.Uuid
+  workspaceId String   @map("workspace_id") @db.Uuid
+  title       String?
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  messages    AgentMessage[]
+
+  @@index([workspaceId])
+  @@map("agent_conversations")
+}
+
+model AgentMessage {
+  id             String   @id @default(uuid()) @db.Uuid
+  conversationId String   @map("conversation_id") @db.Uuid
+  role           String   // SYSTEM | USER | ASSISTANT | TOOL
+  content        String   @db.Text
+  toolCalls      Json?    @map("tool_calls")
+  createdAt      DateTime @default(now()) @map("created_at")
+
+  conversation   AgentConversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  @@index([conversationId])
+  @@map("agent_messages")
+}
+
+
+model Automation {
+  id          String   @id @default(uuid()) @db.Uuid
+  workspaceId String   @map("workspace_id") @db.Uuid
+  name        String
+  type        String
+  enabled     Boolean  @default(false)
+  schedule    String?
+  config      Json?
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  runs        AutomationRun[]
+
+  @@index([workspaceId])
+  @@map("automations")
+}
+
+model AutomationRun {
+  id           String    @id @default(uuid()) @db.Uuid
+  automationId String    @map("automation_id") @db.Uuid
+  workspaceId  String    @map("workspace_id") @db.Uuid
+  status       String
+  startedAt    DateTime? @map("started_at")
+  completedAt  DateTime? @map("completed_at")
+  error        String?   @db.Text
+  metadata     Json?
+  createdAt    DateTime  @default(now()) @map("created_at")
+
+  automation   Automation @relation(fields: [automationId], references: [id], onDelete: Cascade)
+
+  @@index([automationId])
+  @@index([workspaceId])
+  @@map("automation_runs")
 }

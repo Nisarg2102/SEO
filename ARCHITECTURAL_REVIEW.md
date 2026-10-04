@@ -59,10 +59,10 @@
 
 ## 4. Integration & Extensibility
 
-### 4.1 "OpenSEO" and External Tool Integrations
+### 4.1 "Free SEO Tools" and External Tool Integrations
 **Problem:** The `GscAnalyticsAdapter` mocks GSC if an access token is missing, but otherwise makes raw `fetch` calls. `SocialService` calls a hardcoded `POSTIZ_API_URL`.
 **Impact:** Lack of retry mechanisms, exponential backoff, or circuit breakers. If GSC or Postiz is down, the application simply fails.
-**Recommended Solution:** Wrap all external API integrations (GSC, OpenSEO, Postiz) in a resilience layer (e.g., using `@nestjs/axios` with RxJS retry operators or a dedicated circuit breaker package like `opossum`).
+**Recommended Solution:** Wrap all external API integrations (GSC, Free SEO Tools, Postiz) in a resilience layer (e.g., using `@nestjs/axios` with RxJS retry operators or a dedicated circuit breaker package like `opossum`).
 **Priority:** **Medium**
 
 ### 4.2 AI Model Hardcoding

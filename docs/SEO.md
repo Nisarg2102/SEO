@@ -3,17 +3,17 @@
 ## Architecture Overview
 
 The SEO system consists of two primary components:
-1. **SEO Service Adapter** (`@ai-marketing/seo`): An adapter layer integrating with OpenSEO.
+1. **SEO Service Adapter** (`@ai-marketing/seo`): An adapter layer integrating with Free SEO Tools.
 2. **SEO Opportunities Engine** (`SeoOpportunitiesService`): An analytical engine that evaluates search metrics and uses AI to generate actionable optimization recommendations.
 
-## Provider Adapter Design (OpenSEO)
+## Provider Adapter Design (Free SEO Tools)
 
-We implement the `SEOProvider` interface in `services/seo/src/openseo.adapter.ts`.
-This ensures controllers and services communicate with an abstract interface rather than raw OpenSEO endpoints.
+We implement the `SEOProvider` interface in `services/seo/src/Free SEO Tools.adapter.ts`.
+This ensures controllers and services communicate with an abstract interface rather than raw Free SEO Tools endpoints.
 
 ### Setup and Environment Variables
-OpenSEO configuration is injected via environment variables:
-- `OPENSEO_URL`: The base REST URL (e.g., `https://api.openseo.example.com`)
+Free SEO Tools configuration is injected via environment variables:
+- `OPENSEO_URL`: The base REST URL (e.g., `https://api.Free SEO Tools.example.com`)
 - `OPENSEO_API_KEY`: The bearer token for authentication.
 
 **Note:** If `OPENSEO_API_KEY` is not provided (or in `NODE_ENV=test`), the adapter automatically runs in **Mock Mode**, returning synthetic realistic data for Keyword Research, Rank Tracking, and Site Audits. This prevents development blockers and ensures credentials are never hardcoded or leaked.

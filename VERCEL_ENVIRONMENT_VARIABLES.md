@@ -29,8 +29,8 @@ The following environment variables must be configured in the Vercel dashboard p
 | `AI_MODEL` | Default model string | e.g., `gpt-4o`, `claude-3-opus` | Prod | No |
 | `AI_API_KEY` | Authentication for AI generations | OpenAI / Anthropic Dashboard | Prod | **Yes** |
 | **External Integrations** |
-| `OPENSEO_URL` | OpenSEO base API URL | OpenSEO Documentation | Prod | No |
-| `OPENSEO_API_KEY` | OpenSEO Authentication | OpenSEO Dashboard | Prod | **Yes** |
+| `OPENSEO_URL` | Free SEO Tools base API URL | Free SEO Tools Documentation | Prod | No |
+| `OPENSEO_API_KEY` | Free SEO Tools Authentication | Free SEO Tools Dashboard | Prod | **Yes** |
 | `POSTIZ_URL` | Social publishing platform URL | Postiz Hosting | Prod | No |
 | `POSTIZ_API_KEY` | Social publishing auth | Postiz Dashboard | Prod | **Yes** |
 | `POSTIZ_WEBHOOK_SECRET` | Validate incoming Postiz webhooks | Generated manually and shared with Postiz | Prod | **Yes** |
