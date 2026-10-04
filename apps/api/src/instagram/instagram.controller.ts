@@ -5,11 +5,11 @@ import { WorkspaceGuard } from '../auth/workspace.guard';
 
 const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
-@Controller('instagram')
+@Controller()
 export class InstagramPublicController {
   constructor(private readonly instagramService: InstagramService) {}
 
-  @Get('callback')
+  @Get(['instagram/callback', 'social/instagram/callback', 'v1/instagram/callback'])
   async callback(@Query('code') code: string, @Query('state') workspaceId: string, @Res() res: any) {
     const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
 
