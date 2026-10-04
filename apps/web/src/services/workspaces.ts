@@ -37,7 +37,20 @@ export const workspacesApi = {
     return apiClient.put<BrandProfile>(`/workspaces/${workspaceId}/brand-profile`, data);
   },
 
+
   getIntegrations(workspaceId: string) {
     return apiClient.get<WorkspaceIntegrations>(`/workspaces/${workspaceId}/integrations`);
+  },
+
+  getInstagramAuthUrl(workspaceId: string) {
+    return apiClient.get<{ url: string }>(`/workspaces/${workspaceId}/social/instagram/auth-url`);
+  },
+
+  syncInstagram(workspaceId: string) {
+    return apiClient.post(`/workspaces/${workspaceId}/social/instagram/sync`);
+  },
+
+  disconnectInstagram(workspaceId: string) {
+    return apiClient.post(`/workspaces/${workspaceId}/social/instagram/disconnect`);
   }
 };

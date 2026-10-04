@@ -5,7 +5,7 @@ import * as React from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
-import { AlertCircle, Check } from 'lucide-react';
+import { AlertCircle, Check, Instagram } from 'lucide-react';
 import { useWorkspace } from '@/context/WorkspaceContext';
 import { workspacesApi } from '@/services/workspaces';
 import type { BrandProfile, UpsertBrandProfilePayload, WorkspaceIntegrations } from '@/types/api';
@@ -33,16 +33,26 @@ export default function SettingsPage() {
   const [savedWs, setSavedWs] = React.useState(false);
   const [integrations, setIntegrations] = React.useState<WorkspaceIntegrations | null>(null);
   const [loadingIntegrations, setLoadingIntegrations] = React.useState(true);
+  const [connectingInstagram, setConnectingInstagram] = React.useState(false);
+  const [syncingInstagram, setSyncingInstagram] = React.useState(false);
+  const [disconnectingInstagram, setDisconnectingInstagram] = React.useState(false);
+
+  const fetchIntegrations = React.useCallback(async () => {
+    if (!activeWorkspace) return;
+    try {
+      const ints = await workspacesApi.getIntegrations(activeWorkspace.id);
+      setIntegrations(ints);
+    } catch (e) {
+      console.error(e);
+    }
+  }, [activeWorkspace]);
   
   React.useEffect(() => {
     if (!activeWorkspace) return;
     setWorkspaceName(activeWorkspace.name);
     setLoadingProfile(true);
     setError('');
-    workspacesApi.getIntegrations(activeWorkspace.id)
-      .then(setIntegrations)
-      .catch(console.error)
-      .finally(() => setLoadingIntegrations(false));
+    fetchIntegrations().finally(() => setLoadingIntegrations(false));
     
     workspacesApi
       .getBrandProfile(activeWorkspace.id)
@@ -63,7 +73,7 @@ export default function SettingsPage() {
         }
       })
       .finally(() => setLoadingProfile(false));
-  }, [activeWorkspace]);
+  }, [activeWorkspace, fetchIntegrations]);
 
   async function handleSaveProfile(e: React.FormEvent) {
     e.preventDefault();
@@ -91,7 +101,52 @@ export default function SettingsPage() {
     }
   }
 
-    async function handleSaveWorkspace(e: React.FormEvent) {
+    
+  const handleConnectInstagram = async () => {
+    if (!activeWorkspace) return;
+    setConnectingInstagram(true);
+    try {
+      const res = await workspacesApi.getInstagramAuthUrl(activeWorkspace.id);
+      if (res.url) {
+        window.location.href = res.url;
+      }
+    } catch (e) {
+      console.error('Failed to get Instagram Auth URL', e);
+      alert('Failed to connect to Instagram.');
+      setConnectingInstagram(false);
+    }
+  };
+
+  const handleSyncInstagram = async () => {
+    if (!activeWorkspace) return;
+    setSyncingInstagram(true);
+    try {
+      await workspacesApi.syncInstagram(activeWorkspace.id);
+      await fetchIntegrations();
+      alert('Instagram synced successfully!');
+    } catch (e) {
+      console.error('Failed to sync Instagram', e);
+      alert('Failed to sync Instagram.');
+    } finally {
+      setSyncingInstagram(false);
+    }
+  };
+
+  const handleDisconnectInstagram = async () => {
+    if (!activeWorkspace || !confirm('Are you sure you want to disconnect Instagram?')) return;
+    setDisconnectingInstagram(true);
+    try {
+      await workspacesApi.disconnectInstagram(activeWorkspace.id);
+      await fetchIntegrations();
+    } catch (e) {
+      console.error('Failed to disconnect Instagram', e);
+      alert('Failed to disconnect Instagram.');
+    } finally {
+      setDisconnectingInstagram(false);
+    }
+  };
+
+async function handleSaveWorkspace(e: React.FormEvent) {
     e.preventDefault();
     if (!activeWorkspace || !workspaceName.trim()) return;
     setSavingWs(true);
@@ -277,6 +332,57 @@ export default function SettingsPage() {
                     )}
                   </div>
                 </div>
+
+
+              {/* Instagram */}
+              <div className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                <div className="flex items-start gap-3">
+                  <div className="p-2 bg-pink-100 text-pink-600 rounded-md mt-1">
+                    <Instagram className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <p className="font-medium">Instagram</p>
+                    <p className="text-sm text-gray-500">Connect your Instagram Professional account</p>
+                    
+                    <div className="mt-2 text-sm">
+                      {!integrations?.instagram?.serverConfigured ? (
+                        <div className="text-amber-700">
+                          <span className="font-medium">Status: Admin configuration required</span>
+                          <p className="mt-1 text-xs">Instagram OAuth has not been configured by the application administrator.</p>
+                        </div>
+                      ) : integrations?.instagram.connected ? (
+                        <div>
+                          <span className="text-green-700 font-medium">Status: Connected</span>
+                          {integrations.instagram.username && (
+                            <p className="text-xs text-gray-600 mt-1">Account: @{integrations.instagram.username}</p>
+                          )}
+                        </div>
+                      ) : (
+                        <span className="text-gray-600 font-medium">Status: Not Connected</span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex gap-2">
+                  {!integrations?.instagram?.serverConfigured ? (
+                    <Button variant="outline" disabled>Requires Admin Setup</Button>
+                  ) : integrations?.instagram.connected ? (
+                    <div className="flex gap-2 flex-col sm:flex-row">
+                      <Button variant="outline" onClick={handleSyncInstagram} disabled={syncingInstagram}>
+                        {syncingInstagram ? 'Syncing...' : 'Sync Instagram'}
+                      </Button>
+                      <Button variant="outline" onClick={handleDisconnectInstagram} disabled={disconnectingInstagram} className="text-red-600 hover:text-red-700 hover:bg-red-50">
+                        {disconnectingInstagram ? '...' : 'Disconnect'}
+                      </Button>
+                    </div>
+                  ) : (
+                    <Button variant="default" onClick={handleConnectInstagram} disabled={connectingInstagram}>
+                      {connectingInstagram ? 'Connecting...' : 'Connect Instagram'}
+                    </Button>
+                  )}
+                </div>
+              </div>
 
                 <div className="flex gap-2">
                   {!integrations?.gsc.serverConfigured ? (
