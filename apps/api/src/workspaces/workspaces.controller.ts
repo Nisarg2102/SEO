@@ -43,9 +43,4 @@ export class WorkspacesController {
     return this.workspacesService.getIntegrations(id);
   }
 
-  @UseGuards(WorkspaceGuard)
-  @Post(':workspaceId/integrations/postiz')
-  togglePostiz(@Param('workspaceId') id: string, @Body('connect') connect: boolean) {
-    return this.workspacesService.togglePostiz(id, connect);
-  }
 }

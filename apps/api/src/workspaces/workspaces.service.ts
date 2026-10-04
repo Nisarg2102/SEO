@@ -68,7 +68,7 @@ export class WorkspacesService {
     });
 
     const gsc = integrations.find((i: any) => i.provider === 'google_search_console');
-    const postiz = integrations.find((i: any) => i.provider === 'postiz');
+    const instagram = integrations.find((i: any) => i.provider === 'instagram');
 
     let gscPropertyUrl = null;
     if (gsc?.config) {
@@ -81,26 +81,13 @@ export class WorkspacesService {
         connected: !!gsc,
         propertyUrl: gscPropertyUrl,
       },
-      postiz: {
-        serverConfigured: !!process.env.POSTIZ_API_KEY,
-        connected: !!postiz,
+      instagram: {
+        serverConfigured: !!process.env.META_APP_ID && !!process.env.META_APP_SECRET,
+        connected: !!instagram,
+        username: instagram?.config ? JSON.parse(instagram.config).username : null,
       }
     };
   }
 
-  async togglePostiz(workspaceId: string, connect: boolean) {
-    if (connect) {
-      if (!process.env.POSTIZ_API_KEY) throw new Error('Server not configured for Postiz');
-      await (this.prisma as any).integration.upsert({
-        where: { workspaceId_provider: { workspaceId, provider: 'postiz' } },
-        update: {},
-        create: { workspaceId, provider: 'postiz' }
-      });
-    } else {
-      await (this.prisma as any).integration.deleteMany({
-        where: { workspaceId, provider: 'postiz' }
-      });
-    }
-    return { success: true };
-  }
+  
 }

@@ -3,7 +3,7 @@ import { QueuesController } from './queues.controller';
 import { GscModule } from '../gsc/gsc.module';
 import { ResearchModule } from '../research/research.module';
 import { PrismaModule } from '../prisma/prisma.module';
-import { SocialModule } from '../social/social.module';
+
 import { SeoOpportunitiesModule } from '../seo-opportunities/seo-opportunities.module';
 import { SeoAuditModule } from '../seo-audit/seo-audit.module';
 
@@ -13,7 +13,7 @@ import { SeoAuditModule } from '../seo-audit/seo-audit.module';
     GscModule,
     ResearchModule,
     PrismaModule,
-    SocialModule,
+    
     SeoOpportunitiesModule,
     SeoAuditModule,
   ],

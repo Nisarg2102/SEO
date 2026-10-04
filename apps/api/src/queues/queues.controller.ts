@@ -4,7 +4,7 @@ import { GscService } from '../gsc/gsc.service';
 import { ResearchService } from '../research/research.service';
 import { SeoAuditService } from '../seo-audit/seo-audit.service';
 import { SeoOpportunitiesService, RawMetric } from '../seo-opportunities/seo-opportunities.service';
-import { SocialService } from '../social/social.service';
+
 import { PrismaService } from '../prisma/prisma.service';
 
 @Controller('internal/queues')
@@ -17,7 +17,7 @@ export class QueuesController {
     private readonly researchService: ResearchService,
     private readonly seoOpportunitiesService: SeoOpportunitiesService,
     private readonly seoAuditService: SeoAuditService,
-    private readonly socialService: SocialService,
+    
     private readonly prisma: PrismaService,
   ) {}
 
@@ -86,39 +86,6 @@ export class QueuesController {
     }
   }
 
-  @Post('webhooks/sync-postiz')
-  @HttpCode(HttpStatus.OK)
-  async syncPostiz() {
-    this.logger.log(`Processing Postiz sync`);
-    const scheduledPacks = await (this.prisma as any).contentPack.findMany({
-      where: { status: 'SCHEDULED', externalPostId: { not: null } }
-    });
-
-    let updated = 0;
-    for (const pack of scheduledPacks) {
-      if (!pack.externalPostId) continue;
-      try {
-        const externalStatus = await this.socialService.syncStatus(pack.externalPostId);
-        if (externalStatus === 'published') {
-          await (this.prisma as any).contentPack.update({
-            where: { id: pack.id },
-            data: { status: 'PUBLISHED' }
-          });
-          updated++;
-        } else if (externalStatus === 'failed') {
-          await (this.prisma as any).contentPack.update({
-            where: { id: pack.id },
-            data: { status: 'REJECTED' }
-          });
-          updated++;
-        }
-      } catch (e) {
-        this.logger.error(`Failed to sync postiz status for pack ${pack.id}`, (e as Error).stack);
-      }
-    }
-    this.logger.log(`Completed postiz sync. Updated ${updated} packs.`);
-    return { updated };
-  }
 
   @Post('analytics/sync-all-gsc')
   @HttpCode(HttpStatus.OK)

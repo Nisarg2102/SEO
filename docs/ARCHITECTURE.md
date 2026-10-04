@@ -15,6 +15,6 @@ A Next.js + NestJS monorepo for Zero-Cost AI SEO & Marketing orchestration.
 - **Google Search Console**: Data source for true organic performance (Phase 1).
 - **SEO Crawler**: Local lightweight fetcher bounded to prevent unbounded crawling (Phase 3).
 - **AI Provider (Gemini/OpenAI)**: Abstraction handling structured generation and Agent loops.
-- **Postiz**: Handles final scheduling and native publishing to X, LinkedIn, etc (Phase 7).
+- **Instagram**: Handles final scheduling and native publishing to X, LinkedIn, etc (Phase 7).
 - **QStash**: Reliable application-level micro-execution queue. (Used for GSC retries, SEO queues, etc).
 - **n8n**: High-level macro orchestration (e.g. "Run Weekly SEO workflow"). App receives a secure ping, handles the logic natively, and returns completion.

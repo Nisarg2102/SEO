@@ -252,5 +252,5 @@ export interface IntegrationStatus {
 
 export interface WorkspaceIntegrations {
   gsc: IntegrationStatus;
-  postiz: IntegrationStatus;
+  instagram: IntegrationStatus & { username?: string };
 }

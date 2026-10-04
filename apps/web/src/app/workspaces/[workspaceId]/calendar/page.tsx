@@ -5,15 +5,6 @@ import Link from 'next/link';
 
 import { apiClient } from '../../../../lib/apiClient';
 
-interface SocialPost {
-  id: string;
-  topic?: string;
-  platform: string;
-  status: string;
-  scheduledAt?: string;
-  isSocialPost?: boolean;
-}
-
 interface ContentPack {
   id: string;
   topic: string;
@@ -25,7 +16,7 @@ interface ContentPack {
 const STATUSES = ['DRAFT', 'IN_REVIEW', 'APPROVED', 'SCHEDULED', 'PUBLISHED', 'REJECTED'];
 
 export default function CalendarPage({ params }: { params: { workspaceId: string } }) {
-  const [packs, setPacks] = useState<(ContentPack | SocialPost)[]>([]);
+  const [packs, setPacks] = useState<ContentPack[]>([]);
   const [loading, setLoading] = useState(true);
   const [view, setView] = useState<'list' | 'month' | 'week'>('list');
 
@@ -33,20 +24,9 @@ export default function CalendarPage({ params }: { params: { workspaceId: string
     setLoading(true);
     try {
       const packData = await apiClient.get<ContentPack[]>(`workspaces/${params.workspaceId}/content-packs`);
-      let socialData: SocialPost[] = [];
-      try {
-        const posts = await apiClient.get<any[]>(`workspaces/${params.workspaceId}/social/posts`);
-        socialData = posts.map(p => ({
-          id: p.id,
-          topic: p.content?.text?.substring(0, 30) + '...',
-          platform: p.platform,
-          status: p.status,
-          scheduledAt: p.scheduledAt,
-          isSocialPost: true
-        }));
-      } catch (e) { console.error('Failed to fetch social posts', e); }
       
-      const combined = [...packData, ...socialData].sort((a, b) => {
+      
+      const combined = [...packData].sort((a, b) => {
         if (!a.scheduledAt) return 1;
         if (!b.scheduledAt) return -1;
         return new Date(a.scheduledAt).getTime() - new Date(b.scheduledAt).getTime();
@@ -60,14 +40,10 @@ export default function CalendarPage({ params }: { params: { workspaceId: string
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { fetchPacks(); }, [params.workspaceId]);
 
-  const updatePack = async (id: string, updates: Partial<ContentPack & SocialPost>) => {
+  const updatePack = async (id: string, updates: Partial<ContentPack>) => {
     try {
-      if ((updates as any).isSocialPost) {
-        // Social posts are updated via different endpoints, read-only here for now or redirect
-        alert('Social Posts must be updated from the Social Studio.');
-      } else {
+      
         await apiClient.put(`workspaces/${params.workspaceId}/content-packs/${id}`, updates);
-      }
       fetchPacks();
     } catch (e) {
       alert(`Error: ${(e as Error).message || 'Failed to update'}`);
@@ -118,7 +94,7 @@ export default function CalendarPage({ params }: { params: { workspaceId: string
                   <td className="px-6 py-4">
                     <select 
                       value={pack.status.toUpperCase()} 
-                      onChange={e => updatePack(pack.id, { status: e.target.value, isSocialPost: (pack as any).isSocialPost })}
+                      onChange={e => updatePack(pack.id, { status: e.target.value})}
                       className="border-gray-300 rounded text-sm p-1 font-medium bg-gray-50"
                     >
                       {STATUSES.map(s => <option key={s} value={s}>{s.replace('_', ' ')}</option>)}
@@ -128,12 +104,12 @@ export default function CalendarPage({ params }: { params: { workspaceId: string
                     <input 
                       type="datetime-local" 
                       value={pack.scheduledAt ? new Date(pack.scheduledAt).toISOString().slice(0,16) : ''}
-                      onChange={e => updatePack(pack.id, { scheduledAt: new Date(e.target.value).toISOString(), isSocialPost: (pack as any).isSocialPost })}
+                      onChange={e => updatePack(pack.id, { scheduledAt: new Date(e.target.value).toISOString()})}
                       className="border p-1 rounded text-sm bg-gray-50"
                     />
                   </td>
                   <td className="px-6 py-4 text-right">
-                    <Link href={(pack as any).isSocialPost ? `/workspaces/${params.workspaceId}/social-studio` : `/workspaces/${params.workspaceId}/content/${pack.id}`} className="text-blue-600 hover:underline font-medium">
+                    <Link href={`/workspaces/${params.workspaceId}/content/${pack.id}`} className="text-blue-600 hover:underline font-medium">
                       Open Content
                     </Link>
                   </td>

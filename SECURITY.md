@@ -26,7 +26,7 @@ Browser ──HTTPS──▶ Next.js (frontend)
                     │   │   │
              ┌──────┘   │   └──────────┐
              ▼          ▼              ▼
-        JwtAuthGuard  WorkspaceGuard  N8nGuard / PostizWebhookGuard
+        JwtAuthGuard  WorkspaceGuard  N8nGuard / InstagramWebhookGuard
              │          │
              └──────────┴──▶ PrismaService ──▶ PostgreSQL
 ```
@@ -109,7 +109,7 @@ The `WorkspaceGuard` attaches `req.workspaceRole` on every request but currently
 | # | Finding | Fix Applied |
 |---|---|---|
 | C1 | **Hardcoded JWT fallback** — `JWT_SECRET \|\| 'super-secret-jwt-key'` would allow a known secret in any deployment missing an env var | `AuthModule` now calls `process.exit(1)` if `JWT_SECRET` is absent or < 32 chars |
-| C2 | **Postiz webhook endpoint completely unauthenticated** — `POST /webhooks/postiz/sync` had no guard at all | `PostizWebhookGuard` created and applied; uses `timingSafeEqual`; fails if `POSTIZ_WEBHOOK_SECRET` not set |
+| C2 | **Instagram webhook endpoint completely unauthenticated** — `POST /webhooks/Instagram/sync` had no guard at all | `InstagramWebhookGuard` created and applied; uses `timingSafeEqual`; fails if `Instagram_WEBHOOK_SECRET` not set |
 | C3 | **n8n webhook hardcoded fallback secret** — `N8N_WEBHOOK_SECRET \|\| 'dev_n8n_secret_123'` | Fallback removed; app throws if env var absent |
 
 ### 🟠 High
@@ -193,7 +193,7 @@ There are no file upload endpoints at present. If added in future, implement: MI
 |---|---|---|
 | `JWT_SECRET` | JWT signing key (≥32 chars) | `openssl rand -hex 32` |
 | `N8N_WEBHOOK_SECRET` | Shared secret for n8n webhooks | `openssl rand -hex 32` |
-| `POSTIZ_WEBHOOK_SECRET` | Shared secret for Postiz webhooks | `openssl rand -hex 32` |
+| `Instagram_WEBHOOK_SECRET` | Shared secret for Instagram webhooks | `openssl rand -hex 32` |
 | `POSTGRES_PASSWORD` | Database password | Use a password manager |
 | `AI_API_KEY` | OpenAI API key | OpenAI dashboard |
 | `GOOGLE_CLIENT_ID` | Google OAuth client ID | Google Cloud Console |

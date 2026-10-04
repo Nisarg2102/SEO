@@ -3,7 +3,7 @@
 ## Overview
 The AI Marketing and SEO Assistant is a multi-tenant web application designed to help businesses manage their SEO, social media, and content marketing through AI-driven insights and automation.
 
-The core principle of this architecture is that **the application is the main product**. Third-party services (Free SEO Tools, Postiz, n8n, AI APIs) are supporting services. The system interacts with these services strictly through clean interfaces and adapters to prevent vendor lock-in and decouple business logic from external implementation details.
+The core principle of this architecture is that **the application is the main product**. Third-party services (Free SEO Tools, Instagram, n8n, AI APIs) are supporting services. The system interacts with these services strictly through clean interfaces and adapters to prevent vendor lock-in and decouple business logic from external implementation details.
 
 ## High-Level Architecture
 
@@ -20,7 +20,7 @@ flowchart TD
     
     AIModule -.->|Provider Abstraction| OpenAI/Anthropic/Ollama
     SEOModule -.->|External API| Free SEO Tools
-    SocialModule -.->|External API| Postiz
+    SocialModule -.->|External API| Instagram
     WorkflowModule -.->|Webhooks/API| n8n
 ```
 
@@ -55,8 +55,8 @@ Data isolation between workspaces (e.g., *Drashti Softex* vs *Psychiatrist*) is 
 - **Compliance Tiers:** Workspaces will have a `compliance_level` flag. The medical workspace will trigger strict human-in-the-loop (HITL) approval rules for all generated content.
 
 ### 2. The Adapter Pattern for External Services
-To ensure the app does not tightly couple with Free SEO Tools, Postiz, or n8n, we will define strict internal interfaces:
-- `ISocialPublisher` -> Implemented by `PostizAdapter`
+To ensure the app does not tightly couple with Free SEO Tools, Instagram, or n8n, we will define strict internal interfaces:
+- `ISocialPublisher` -> Implemented by `InstagramAdapter`
 - `ISEOService` -> Implemented by `Free SEO ToolsAdapter`
 - `IWorkflowEngine` -> Implemented by `n8nAdapter`
 

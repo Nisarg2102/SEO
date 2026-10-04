@@ -18,7 +18,7 @@ const mockPrisma = {
   seoContentBrief: { count: jest.fn() },
   seoContentDraft: { count: jest.fn() },
   seoContentAnalysis: { count: jest.fn() },
-  socialPost: {
+  socialContent: {
     groupBy: jest.fn(),
   },
   workspace: {

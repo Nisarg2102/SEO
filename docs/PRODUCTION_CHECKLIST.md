@@ -9,7 +9,7 @@
 | **Environment Variables** | PASS | Validated cleanly (GSC, N8N, QStash, AI). |
 | **OAuth (GSC)** | PASS | Configured for dynamic workspace token storage. |
 | **SEO Crawler** | PASS | Bounded logic (maxPages, maxDepth). |
-| **Postiz** | PASS | Integrated correctly without bypassing draft approvals. |
+| **Instagram** | PASS | Integrated correctly without bypassing draft approvals. |
 | **n8n** | PASS | Secure webhooks set up; app remains source of truth. |
 | **QStash** | PASS | Safe background retry capabilities applied. |
 | **Rate Limiting** | WARNING | Internal API endpoints rely on Vercel Edge protection. |

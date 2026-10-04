@@ -21,7 +21,7 @@ import { QueuesModule } from './queues/queues.module';
 import { SeoAuditModule } from './seo-audit/seo-audit.module';
 import { SeoContentModule } from './seo-content/seo-content.module';
 import { SeoStudioModule } from './seo-studio/seo-studio.module';
-import { SocialStudioModule } from './social-studio/social-studio.module';
+import { InstagramModule } from './instagram/instagram.module';
 import { AiAgentModule } from './ai-agent/ai-agent.module';
 import { KeywordResearchModule } from './keyword-research/keyword-research.module';
 
@@ -35,7 +35,7 @@ import { KeywordResearchModule } from './keyword-research/keyword-research.modul
     SeoAuditModule,
     SeoContentModule,
     SeoStudioModule,
-    SocialStudioModule, KeywordResearchModule
+    InstagramModule, KeywordResearchModule
   ],
   controllers: [AppController],
   providers: [AppService],

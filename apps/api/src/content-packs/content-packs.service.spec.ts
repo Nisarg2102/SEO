@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { ContentPacksService } from './content-packs.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { AiService } from '../ai/ai.service';
-import { SocialService } from '../social/social.service';
+
 import { GenerateContentPackDto } from './dto';
 
 jest.mock('@prisma/client', () => ({
@@ -40,7 +40,6 @@ describe('ContentPacksService', () => {
         ContentPacksService,
         { provide: PrismaService, useValue: mockPrismaService },
         { provide: AiService, useValue: mockAiService },
-        { provide: SocialService, useValue: {} },
       ],
     }).compile();
 

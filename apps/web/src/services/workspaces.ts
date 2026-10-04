@@ -39,9 +39,5 @@ export const workspacesApi = {
 
   getIntegrations(workspaceId: string) {
     return apiClient.get<WorkspaceIntegrations>(`/workspaces/${workspaceId}/integrations`);
-  },
-
-  togglePostiz(workspaceId: string, connect: boolean) {
-    return apiClient.post(`/workspaces/${workspaceId}/integrations/postiz`, { connect });
   }
 };

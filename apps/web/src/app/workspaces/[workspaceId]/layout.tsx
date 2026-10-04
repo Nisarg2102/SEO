@@ -31,6 +31,7 @@ export default function WorkspaceLayout({
               { name: 'Research', path: '/research' },
               { name: 'SEO', path: '/seo' },
               { name: 'Content', path: '/content' },
+              { name: 'Instagram', path: '/social' },
               { name: 'Calendar', path: '/calendar' },
               { name: 'Analytics', path: '/analytics' },
               { name: 'Reports', path: '/reports' },

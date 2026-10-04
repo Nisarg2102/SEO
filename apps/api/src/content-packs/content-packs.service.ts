@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { AiService } from '../ai/ai.service';
-import { SocialService } from '../social/social.service';
+
 import { GenerateContentPackDto, UpdateContentPackDto } from './dto';
 import { z } from 'zod';
 
@@ -46,8 +46,7 @@ const MedicalContentPackSchema = z.object({
 export class ContentPacksService {
   constructor(
     private readonly prisma: PrismaService,
-    private readonly aiService: AiService,
-    private readonly socialService: SocialService
+    private readonly aiService: AiService
   ) {}
 
   async generate(workspaceId: string, dto: GenerateContentPackDto) {
@@ -130,39 +129,17 @@ export class ContentPacksService {
 
     let externalPostId = existing.externalPostId;
 
-    // Transitioning TO SCHEDULED for the first time
-    if (dto.status === 'SCHEDULED' && existing.status !== 'SCHEDULED' && data.scheduledAt) {
-      externalPostId = await this.socialService.schedulePost({
-        id: existing.id,
-        platform: existing.platform,
-        caption: data.caption || existing.caption || '',
-        scheduledAt: data.scheduledAt,
-      });
-      data.externalPostId = externalPostId;
-    }
-    // Updating an ALREADY SCHEDULED post
-    else if (existing.status === 'SCHEDULED' && existing.externalPostId && (dto.caption || dto.scheduledAt)) {
-      await this.socialService.updatePost(existing.externalPostId, {
-        id: existing.id,
-        platform: existing.platform,
-        caption: data.caption || existing.caption || '',
-        scheduledAt: data.scheduledAt || existing.scheduledAt,
-      });
-    }
-    // Transitioning AWAY from SCHEDULED (e.g. cancelled / rejected)
-    else if (existing.status === 'SCHEDULED' && dto.status && dto.status !== 'SCHEDULED' && existing.externalPostId) {
-      await this.socialService.cancelPost(existing.externalPostId);
-      data.externalPostId = null;
-    }
+    // The social publishing integration (Postiz) was removed.
+    // If the content is scheduled, we just save the status.
 
-    return this.prisma.withWorkspace(workspaceId).contentPack.update({
+    return this.prisma.contentPack.update({
       where: { id },
       data
     });
   }
 
   async remove(workspaceId: string, id: string) {
-    return this.prisma.withWorkspace(workspaceId).contentPack.delete({
+    return this.prisma.contentPack.delete({
       where: { id }
     });
   }

@@ -33,8 +33,7 @@ export default function SettingsPage() {
   const [savedWs, setSavedWs] = React.useState(false);
   const [integrations, setIntegrations] = React.useState<WorkspaceIntegrations | null>(null);
   const [loadingIntegrations, setLoadingIntegrations] = React.useState(true);
-  const [togglingPostiz, setTogglingPostiz] = React.useState(false);
-
+  
   React.useEffect(() => {
     if (!activeWorkspace) return;
     setWorkspaceName(activeWorkspace.name);
@@ -92,21 +91,7 @@ export default function SettingsPage() {
     }
   }
 
-  async function handleTogglePostiz(connect: boolean) {
-    if (!activeWorkspace) return;
-    setTogglingPostiz(true);
-    try {
-      await workspacesApi.togglePostiz(activeWorkspace.id, connect);
-      const updated = await workspacesApi.getIntegrations(activeWorkspace.id);
-      setIntegrations(updated);
-    } catch {
-      alert('Failed to configure Postiz. Check if server configuration exists.');
-    } finally {
-      setTogglingPostiz(false);
-    }
-  }
-
-  async function handleSaveWorkspace(e: React.FormEvent) {
+    async function handleSaveWorkspace(e: React.FormEvent) {
     e.preventDefault();
     if (!activeWorkspace || !workspaceName.trim()) return;
     setSavingWs(true);
@@ -308,36 +293,7 @@ export default function SettingsPage() {
                 </div>
               </div>
 
-              {/* Postiz */}
-              <div className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
-                <div>
-                  <p className="font-medium">Postiz (Social Publishing)</p>
-                  <p className="text-sm text-gray-500">Publish content to social platforms</p>
-
-                  <div className="mt-2 text-sm">
-                    {!integrations?.postiz.serverConfigured ? (
-                      <div className="text-amber-700">
-                        <span className="font-medium">Status: Admin configuration required</span>
-                        <p className="mt-1 text-xs">Postiz integration URL/Key has not been configured by the application administrator.</p>
-                      </div>
-                    ) : integrations?.postiz.connected ? (
-                      <span className="text-green-700 font-medium">Status: Connected</span>
-                    ) : (
-                      <span className="text-gray-600 font-medium">Status: Available</span>
-                    )}
-                  </div>
-                </div>
-
-                <div className="flex gap-2">
-                  {!integrations?.postiz.serverConfigured ? (
-                    <Button variant="outline" disabled>Requires Admin Setup</Button>
-                  ) : integrations?.postiz.connected ? (
-                    <Button variant="outline" disabled={togglingPostiz} onClick={() => handleTogglePostiz(false)}>Disconnect</Button>
-                  ) : (
-                    <Button variant="default" disabled={togglingPostiz} onClick={() => handleTogglePostiz(true)}>Connect Postiz</Button>
-                  )}
-                </div>
-              </div>
+              
             </>
           )}
         </CardContent>

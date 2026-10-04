@@ -47,7 +47,8 @@ model Workspace {
   seoContentAnalyses SeoContentAnalysis[]
   seoContentBriefs SeoContentBrief[]
   seoContentDrafts SeoContentDraft[]
-  socialPosts SocialPost[]
+  socialContent  SocialContent[]
+  socialAccountMetrics SocialAccountMetric[]
 
   @@map("workspaces")
 }
@@ -520,31 +521,7 @@ model SeoContentDraft {
   @@map("seo_content_drafts")
 }
 
-model SocialPost {
-  id                String    @id @default(uuid()) @db.Uuid
-  workspaceId       String    @map("workspace_id") @db.Uuid
-  sourceType        String?   @map("source_type") // draft | brief | url | topic
-  sourceId          String?   @map("source_id") @db.Uuid
-  sourceUrl         String?   @map("source_url")
-  platform          String
-  connectedAccountId String?  @map("connected_account_id")
-  content           Json      // { text, hook, cta, mediaSuggestion, notes }
-  hashtags          String[]
-  status            String    @default("draft") // draft | scheduled | published | failed
-  approvalStatus    String    @default("pending") // pending | approved | rejected
-  scheduledAt       DateTime? @map("scheduled_at")
-  publishedAt       DateTime? @map("published_at")
-  externalPostId    String?   @map("external_post_id")
-  errorMessage      String?   @map("error_message")
-  createdAt         DateTime  @default(now()) @map("created_at")
-  updatedAt         DateTime  @updatedAt @map("updated_at")
 
-  workspace         Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
-
-  @@index([workspaceId])
-  @@index([sourceId])
-  @@map("social_posts")
-}
 
 
 model AgentConversation {
@@ -610,4 +587,69 @@ model AutomationRun {
   @@index([automationId])
   @@index([workspaceId])
   @@map("automation_runs")
+}
+
+model SocialContent {
+  id                String   @id @default(uuid()) @db.Uuid
+  workspaceId       String   @map("workspace_id") @db.Uuid
+  integrationId     String   @map("integration_id") @db.Uuid
+  provider          String   @default("instagram")
+  providerContentId String   @map("provider_content_id")
+  contentType       String   @map("content_type")
+  caption           String?  @db.Text
+  permalink         String?
+  mediaUrl          String?  @map("media_url")
+  thumbnailUrl      String?  @map("thumbnail_url")
+  publishedAt       DateTime @map("published_at")
+  metadata          Json?
+  createdAt         DateTime @default(now()) @map("created_at")
+  updatedAt         DateTime @updatedAt @map("updated_at")
+
+  workspace         Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  metrics           SocialContentMetric[]
+
+  @@unique([workspaceId, provider, providerContentId])
+  @@index([workspaceId])
+  @@map("social_content")
+}
+
+model SocialContentMetric {
+  id              String   @id @default(uuid()) @db.Uuid
+  workspaceId     String   @map("workspace_id") @db.Uuid
+  contentId       String   @map("content_id") @db.Uuid
+  collectedAt     DateTime @map("collected_at")
+  likes           Int      @default(0)
+  comments        Int      @default(0)
+  shares          Int      @default(0)
+  saves           Int      @default(0)
+  views           Int      @default(0)
+  reach           Int      @default(0)
+  impressions     Int      @default(0)
+  replies         Int      @default(0)
+  engagementRate  Float?   @map("engagement_rate")
+  otherMetrics    Json?    @map("other_metrics")
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  content         SocialContent @relation(fields: [contentId], references: [id], onDelete: Cascade)
+
+  @@index([contentId])
+  @@index([workspaceId])
+  @@map("social_content_metrics")
+}
+
+model SocialAccountMetric {
+  id              String   @id @default(uuid()) @db.Uuid
+  workspaceId     String   @map("workspace_id") @db.Uuid
+  integrationId   String   @map("integration_id") @db.Uuid
+  collectedAt     DateTime @map("collected_at")
+  metricName      String   @map("metric_name")
+  metricValue     Float    @map("metric_value")
+  metadata        Json?
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  workspace       Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+
+  @@index([workspaceId])
+  @@index([integrationId])
+  @@map("social_account_metrics")
 }
