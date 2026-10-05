@@ -87,7 +87,7 @@ export function WorkspaceSwitcher({ currentWorkspaceId }: { currentWorkspaceId: 
   const ref = React.useRef<HTMLDivElement>(null);
 
   const activeWorkspace = workspaces.find((w) => w.id === currentWorkspaceId) || workspaces[0];
-  const initials = activeWorkspace?.name?.substring(0, 2).toUpperCase() || 'WS';
+  const initials = activeWorkspace?.name ? activeWorkspace.name.substring(0, 2).toUpperCase() : 'WS';
 
   React.useEffect(() => {
     function handleClick(e: MouseEvent) {
@@ -142,7 +142,7 @@ export function WorkspaceSwitcher({ currentWorkspaceId }: { currentWorkspaceId: 
                 )}
               >
                 <div className="h-6 w-6 bg-blue-600 rounded text-white flex items-center justify-center text-xs font-bold shrink-0">
-                  {ws.name.substring(0, 2).toUpperCase()}
+                  {ws.name ? ws.name.substring(0, 2).toUpperCase() : 'WS'}
                 </div>
                 <span className="truncate">{ws.name}</span>
                 {ws.type === 'MEDICAL' && (
