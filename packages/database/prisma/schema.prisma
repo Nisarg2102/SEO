@@ -49,6 +49,9 @@ model Workspace {
   seoContentDrafts SeoContentDraft[]
   socialContent  SocialContent[]
   socialAccountMetrics SocialAccountMetric[]
+  googleConnections GoogleConnection[]
+  searchConsoleProperties SearchConsoleProperty[]
+  syncRuns SyncRun[]
 
   @@map("workspaces")
 }
@@ -652,4 +655,159 @@ model SocialAccountMetric {
   @@index([workspaceId])
   @@index([integrationId])
   @@map("social_account_metrics")
+}
+
+
+model GoogleConnection {
+  id                    String    @id @default(uuid()) @db.Uuid
+  workspaceId           String    @map("workspace_id") @db.Uuid
+  googleAccountId       String?   @map("google_account_id")
+  email                 String?
+  accessTokenEncrypted  String    @map("access_token_encrypted") @db.Text
+  refreshTokenEncrypted String?   @map("refresh_token_encrypted") @db.Text
+  expiresAt             DateTime? @map("expires_at")
+  createdAt             DateTime  @default(now()) @map("created_at")
+  updatedAt             DateTime  @updatedAt @map("updated_at")
+
+  workspace             Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  properties            SearchConsoleProperty[]
+
+  @@unique([workspaceId, email])
+  @@index([workspaceId])
+  @@map("google_connections")
+}
+
+model SearchConsoleProperty {
+  id                 String    @id @default(uuid()) @db.Uuid
+  workspaceId        String    @map("workspace_id") @db.Uuid
+  googleConnectionId String    @map("google_connection_id") @db.Uuid
+  siteUrl            String    @map("site_url")
+  permissionLevel    String?   @map("permission_level")
+  lastSyncAt         DateTime? @map("last_sync_at")
+  createdAt          DateTime  @default(now()) @map("created_at")
+
+  workspace          Workspace        @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  googleConnection   GoogleConnection @relation(fields: [googleConnectionId], references: [id], onDelete: Cascade)
+  
+  dailyMetrics       SearchConsoleDaily[]
+  queryMetrics       SearchConsoleQuery[]
+  pageMetrics        SearchConsolePage[]
+  deviceMetrics      SearchConsoleDevice[]
+  countryMetrics     SearchConsoleCountry[]
+  appearanceMetrics  SearchConsoleSearchAppearance[]
+
+  @@unique([workspaceId, siteUrl])
+  @@index([workspaceId])
+  @@map("search_console_properties")
+}
+
+model SearchConsoleDaily {
+  id          String   @id @default(uuid()) @db.Uuid
+  propertyId  String   @map("property_id") @db.Uuid
+  date        DateTime
+  clicks      Int      @default(0)
+  impressions Int      @default(0)
+  ctr         Float    @default(0)
+  position    Float    @default(0)
+
+  property    SearchConsoleProperty @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+
+  @@unique([propertyId, date])
+  @@map("search_console_daily")
+}
+
+model SearchConsoleQuery {
+  id          String   @id @default(uuid()) @db.Uuid
+  propertyId  String   @map("property_id") @db.Uuid
+  date        DateTime
+  query       String
+  clicks      Int      @default(0)
+  impressions Int      @default(0)
+  ctr         Float    @default(0)
+  position    Float    @default(0)
+
+  property    SearchConsoleProperty @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+
+  @@unique([propertyId, date, query])
+  @@map("search_console_queries")
+}
+
+model SearchConsolePage {
+  id          String   @id @default(uuid()) @db.Uuid
+  propertyId  String   @map("property_id") @db.Uuid
+  date        DateTime
+  page        String
+  clicks      Int      @default(0)
+  impressions Int      @default(0)
+  ctr         Float    @default(0)
+  position    Float    @default(0)
+
+  property    SearchConsoleProperty @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+
+  @@unique([propertyId, date, page])
+  @@map("search_console_pages")
+}
+
+model SearchConsoleDevice {
+  id          String   @id @default(uuid()) @db.Uuid
+  propertyId  String   @map("property_id") @db.Uuid
+  date        DateTime
+  device      String
+  clicks      Int      @default(0)
+  impressions Int      @default(0)
+  ctr         Float    @default(0)
+  position    Float    @default(0)
+
+  property    SearchConsoleProperty @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+
+  @@unique([propertyId, date, device])
+  @@map("search_console_devices")
+}
+
+model SearchConsoleCountry {
+  id          String   @id @default(uuid()) @db.Uuid
+  propertyId  String   @map("property_id") @db.Uuid
+  date        DateTime
+  country     String
+  clicks      Int      @default(0)
+  impressions Int      @default(0)
+  ctr         Float    @default(0)
+  position    Float    @default(0)
+
+  property    SearchConsoleProperty @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+
+  @@unique([propertyId, date, country])
+  @@map("search_console_countries")
+}
+
+model SearchConsoleSearchAppearance {
+  id               String   @id @default(uuid()) @db.Uuid
+  propertyId       String   @map("property_id") @db.Uuid
+  date             DateTime
+  searchAppearance String   @map("search_appearance")
+  clicks           Int      @default(0)
+  impressions      Int      @default(0)
+  ctr              Float    @default(0)
+  position         Float    @default(0)
+
+  property         SearchConsoleProperty @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+
+  @@unique([propertyId, date, searchAppearance])
+  @@map("search_console_search_appearances")
+}
+
+model SyncRun {
+  id          String    @id @default(uuid()) @db.Uuid
+  workspaceId String    @map("workspace_id") @db.Uuid
+  provider    String    // e.g., 'google_search_console'
+  status      String    // pending | running | completed | failed
+  startedAt   DateTime  @default(now()) @map("started_at")
+  completedAt DateTime? @map("completed_at")
+  error       String?   @db.Text
+  metrics     Json?     // e.g., { "pages_synced": 100 }
+
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+
+  @@index([workspaceId])
+  @@map("sync_runs")
 }
