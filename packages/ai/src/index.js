@@ -15,6 +15,8 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./provider.interface"), exports);
-__exportStar(require("./openai.provider"), exports);
+__exportStar(require("./ollama.provider"), exports);
 __exportStar(require("./mock.provider"), exports);
+// OpenAIProvider kept as a non-exported internal file for historical reference.
+// It is NOT re-exported and must NOT be used in production code.
 //# sourceMappingURL=index.js.map

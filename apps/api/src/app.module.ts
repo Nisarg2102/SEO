@@ -1,5 +1,3 @@
-import { AutomationsModule } from './automations/automations.module';
-
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -8,6 +6,7 @@ import { AuthModule } from './auth/auth.module';
 import { WorkspacesModule } from './workspaces/workspaces.module';
 import { BrandProfilesModule } from './brand-profiles/brand-profiles.module';
 import { AiModule } from './ai/ai.module';
+import { AiService } from './ai/ai.service';
 import { ContentPacksModule } from './content-packs/content-packs.module';
 import { SourcesModule } from './sources/sources.module';
 import { ResearchModule } from './research/research.module';
@@ -24,6 +23,7 @@ import { SeoStudioModule } from './seo-studio/seo-studio.module';
 import { InstagramModule } from './instagram/instagram.module';
 import { AiAgentModule } from './ai-agent/ai-agent.module';
 import { KeywordResearchModule } from './keyword-research/keyword-research.module';
+import { AutomationsModule } from './automations/automations.module';
 
 @Module({
   imports: [
@@ -38,6 +38,7 @@ import { KeywordResearchModule } from './keyword-research/keyword-research.modul
     InstagramModule, KeywordResearchModule
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, AiService],
 })
 export class AppModule {}
+

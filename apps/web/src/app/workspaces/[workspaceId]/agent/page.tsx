@@ -52,9 +52,17 @@ export default function AgentChat({ params }: { params: { workspaceId: string } 
       if ((res as any).conversationId) {
         await fetchHistory((res as any).conversationId);
       }
-    } catch (e) {
-      console.error(e);
-      setMessages(prev => [...prev, { id: 'error', role: 'ASSISTANT', content: 'Sorry, I encountered an error.' }]);
+    } catch (e: unknown) {
+      const msg = (e as Error).message || '';
+      let userMsg = 'Sorry, I encountered an error. Please try again.';
+      if (msg.toLowerCase().includes('unavailable') || msg.toLowerCase().includes('ollama') || msg.toLowerCase().includes('start ollama')) {
+        userMsg = '⚠ Local AI is unavailable. Start Ollama and try again.';
+      } else if (msg.toLowerCase().includes('not installed') || msg.toLowerCase().includes('model')) {
+        userMsg = '⚠ The configured local AI model is not installed. Run: ollama pull llama3.2';
+      } else if (msg.toLowerCase().includes('timeout') || msg.toLowerCase().includes('too long')) {
+        userMsg = '⚠ Local AI took too long to respond. Please try again.';
+      }
+      setMessages(prev => [...prev, { id: 'error-' + Date.now(), role: 'ASSISTANT', content: userMsg }]);
     }
     setLoading(false);
   };

@@ -40,20 +40,37 @@ export default function AnalyticsDashboard({ params }: { params: { workspaceId: 
     fetchData();
   }, [fetchData]);
 
-    const generateInsights = async () => {
+    const [insightError, setInsightError] = useState<string | null>(null);
+
+  const generateInsights = async () => {
     if (!data?.overview?.hasData) {
-      alert("No analytics data is available for this date range. Sync Search Console/analytics data first, then generate insights.");
+      setInsightError('No analytics data is available for this date range. Sync Search Console data first, then generate insights.');
       return;
     }
     setGenerating(true);
+    setInsightError(null);
     try {
-      const res = await apiClient.post<any>(`workspaces/${params.workspaceId}/analytics/insights`, { start: dateRange });
+      const res = await apiClient.post<{summary: string; recommendedActions: string[]}>(
+        `workspaces/${params.workspaceId}/analytics/insights`,
+        { start: dateRange }
+      );
       setInsights(res);
     } catch (e: unknown) {
-      alert(`AI Insight Generation Failed: ${(e as Error).message || 'Unknown error. Check AI configuration.'}`);
+      const msg = (e as Error).message || '';
+      // Surface Ollama-specific messages clearly
+      if (msg.toLowerCase().includes('unavailable') || msg.toLowerCase().includes('ollama') || msg.toLowerCase().includes('start ollama')) {
+        setInsightError('Local AI is unavailable. Start Ollama and try again.');
+      } else if (msg.toLowerCase().includes('not installed') || msg.toLowerCase().includes('model')) {
+        setInsightError('The configured local AI model is not installed. Run: ollama pull llama3.2');
+      } else if (msg.toLowerCase().includes('timeout') || msg.toLowerCase().includes('too long')) {
+        setInsightError('Local AI took too long to respond. Please try again.');
+      } else {
+        setInsightError(`AI Insight Generation Failed: ${msg || 'Unknown error.'}`);
+      }
     }
     setGenerating(false);
   };
+
 
   if (loading) return <div className="p-8">Loading dashboard...</div>;
 
@@ -82,22 +99,34 @@ export default function AnalyticsDashboard({ params }: { params: { workspaceId: 
 
       {insights ? (
         <div className="bg-blue-50 p-6 rounded-xl border border-blue-100">
-          <h3 className="font-bold text-blue-900 mb-2">AI Performance Summary</h3>
+          <h3 className="font-bold text-blue-900 mb-2">Local AI Performance Summary</h3>
           <p className="text-blue-800 mb-4">{insights.summary}</p>
           <h4 className="font-semibold text-sm text-blue-900 uppercase">Recommended Actions</h4>
           <ul className="list-disc pl-5 mt-2 space-y-1 text-sm text-blue-800">
             {insights.recommendedActions?.map((a: string, i: number) => <li key={i}>{a}</li>)}
           </ul>
+          <button onClick={() => setInsights(null)} className="mt-4 text-xs text-blue-600 hover:underline">
+            Regenerate
+          </button>
         </div>
       ) : (
-        <button 
-          onClick={generateInsights}
-          disabled={generating}
-          className="bg-indigo-600 text-white px-4 py-2 rounded font-medium hover:bg-indigo-700 disabled:opacity-50"
-        >
-          {generating ? 'Generating Insights...' : 'Generate AI Insights'}
-        </button>
+        <div className="space-y-2">
+          {insightError && (
+            <div className="p-3 bg-amber-50 border border-amber-200 rounded text-sm text-amber-800">
+              ⚠ {insightError}
+            </div>
+          )}
+          <button
+            onClick={generateInsights}
+            disabled={generating}
+            className="bg-indigo-600 text-white px-4 py-2 rounded font-medium hover:bg-indigo-700 disabled:opacity-50"
+          >
+            {generating ? 'Generating with Local AI...' : 'Generate Local AI Insights'}
+          </button>
+          <p className="text-xs text-gray-400">Powered by Ollama — runs locally, zero API cost.</p>
+        </div>
       )}
+
 
       {overview?.hasData ? (
         <div className="grid grid-cols-4 gap-4">
