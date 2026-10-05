@@ -22,23 +22,23 @@ import {
 import { cn } from '@/lib/utils';
 import { useAuth } from '@/context/AuthContext';
 import { useWorkspace } from '@/context/WorkspaceContext';
-import { workspacesApi } from '@/services/workspaces';
 import { MedicalWorkspaceBanner } from './MedicalBanner';
 
-const navigation = [
-  { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
-  { name: 'Research', href: '/research', icon: Search },
-  { name: 'SEO', href: '/seo', icon: PenTool },
-  { name: 'Content', href: '/content', icon: FileText },
-  { name: 'Calendar', href: '/calendar', icon: Calendar },
-  { name: 'Analytics', href: '/analytics', icon: BarChart3 },
-  { name: 'Sources', href: '/sources', icon: LinkIcon },
-  { name: 'AI Assistant', href: '/assistant', icon: Bot },
-  { name: 'Settings', href: '/settings', icon: Settings },
+const getNavigation = (wsId: string) => [
+  { name: 'Dashboard', href: `/workspaces/${wsId}`, icon: LayoutDashboard },
+  { name: 'Research', href: `/workspaces/${wsId}/research`, icon: Search },
+  { name: 'SEO', href: `/workspaces/${wsId}/seo`, icon: PenTool },
+  { name: 'Content', href: `/workspaces/${wsId}/content`, icon: FileText },
+  { name: 'Calendar', href: `/workspaces/${wsId}/calendar`, icon: Calendar },
+  { name: 'Analytics', href: `/workspaces/${wsId}/analytics`, icon: BarChart3 },
+  { name: 'Sources', href: `/workspaces/${wsId}/sources`, icon: LinkIcon },
+  { name: 'AI Assistant', href: `/workspaces/${wsId}/agent`, icon: Bot },
+  { name: 'Settings', href: `/workspaces/${wsId}/settings`, icon: Settings },
 ];
 
-export function Sidebar() {
+export function Sidebar({ workspaceId }: { workspaceId: string }) {
   const pathname = usePathname();
+  const navigation = getNavigation(workspaceId);
 
   return (
     <div className="flex h-full flex-col border-r border-gray-200 bg-white">
@@ -50,7 +50,7 @@ export function Sidebar() {
       <div className="flex flex-1 flex-col overflow-y-auto px-4 py-6">
         <nav className="flex-1 space-y-1">
           {navigation.map((item) => {
-            const isActive = pathname.startsWith(item.href);
+            const isActive = pathname === item.href || pathname?.startsWith(item.href + '/');
             return (
               <Link
                 key={item.name}
@@ -58,14 +58,14 @@ export function Sidebar() {
                 className={cn(
                   isActive
                     ? 'bg-blue-50 text-blue-700'
-                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900',
-                  'group flex items-center rounded-md px-3 py-2.5 text-sm font-medium transition-colors',
+                    : 'text-gray-700 hover:bg-gray-50 hover:text-blue-600',
+                  'group flex items-center gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 transition-colors'
                 )}
               >
                 <item.icon
                   className={cn(
-                    isActive ? 'text-blue-700' : 'text-gray-400 group-hover:text-gray-500',
-                    'mr-3 h-5 w-5 flex-shrink-0',
+                    isActive ? 'text-blue-600' : 'text-gray-400 group-hover:text-blue-600',
+                    'h-5 w-5 shrink-0 transition-colors'
                   )}
                   aria-hidden="true"
                 />
@@ -79,67 +79,30 @@ export function Sidebar() {
   );
 }
 
-function WorkspaceSwitcher() {
-  const { workspaces, activeWorkspace, setActiveWorkspace, refreshWorkspaces, isCreateModalOpen, setCreateModalOpen } = useWorkspace();
+export function WorkspaceSwitcher({ currentWorkspaceId }: { currentWorkspaceId: string }) {
+  const { workspaces, setCreateModalOpen } = useWorkspace();
+  const router = useRouter();
+  const pathname = usePathname();
   const [open, setOpen] = React.useState(false);
-  const [creating, setCreating] = React.useState(false);
-  const [newName, setNewName] = React.useState('');
-  const [newType, setNewType] = React.useState<'GENERAL' | 'MEDICAL'>('GENERAL');
   const ref = React.useRef<HTMLDivElement>(null);
 
-  React.useEffect(() => {
-    if (isCreateModalOpen) {
-      setOpen(true);
-      setCreating(true);
-    }
-  }, [isCreateModalOpen]);
+  const activeWorkspace = workspaces.find((w) => w.id === currentWorkspaceId) || workspaces[0];
+  const initials = activeWorkspace?.name?.substring(0, 2).toUpperCase() || 'WS';
 
   React.useEffect(() => {
     function handleClick(e: MouseEvent) {
       if (ref.current && !ref.current.contains(e.target as Node)) {
         setOpen(false);
-        if (creating) {
-          setCreating(false);
-          setCreateModalOpen(false);
-        }
       }
     }
     document.addEventListener('mousedown', handleClick);
     return () => document.removeEventListener('mousedown', handleClick);
-  }, [creating, setCreateModalOpen]);
-
-  const initials = activeWorkspace?.name
-    ? activeWorkspace.name.substring(0, 2).toUpperCase()
-    : '??';
-
-  async function handleCreate() {
-    if (!newName.trim()) return;
-    try {
-      const ws = await workspacesApi.create({ name: newName.trim(), type: newType });
-      await refreshWorkspaces();
-      setActiveWorkspace(ws);
-      setCreating(false);
-      setCreateModalOpen(false);
-      setOpen(false);
-      setNewName('');
-    } catch (err: unknown) {
-      const message = err instanceof Error ? err.message : 'Failed to create workspace';
-      alert(message);
-    }
-  }
+  }, []);
 
   return (
     <div className="relative" ref={ref}>
       <button
-        onClick={() => {
-          if (open) {
-            setCreating(false);
-            setCreateModalOpen(false);
-            setOpen(false);
-          } else {
-            setOpen(true);
-          }
-        }}
+        onClick={() => setOpen(!open)}
         className="flex items-center gap-2 px-3 py-2 rounded-md bg-gray-50 border border-gray-200 cursor-pointer hover:bg-gray-100 transition-colors"
       >
         <div className="h-6 w-6 bg-blue-600 rounded text-white flex items-center justify-center text-xs font-bold">
@@ -158,10 +121,18 @@ function WorkspaceSwitcher() {
               <button
                 key={ws.id}
                 onClick={() => { 
-                  setActiveWorkspace(ws); 
                   setOpen(false); 
-                  setCreating(false);
-                  setCreateModalOpen(false);
+                  
+                  // Keep subpath if changing workspaces
+                  let newPath = `/workspaces/${ws.id}`;
+                  if (pathname) {
+                    const parts = pathname.split('/');
+                    if (parts.length > 3) { // e.g. /workspaces/[id]/settings
+                       const subPath = parts.slice(3).join('/');
+                       newPath = `/workspaces/${ws.id}/${subPath}`;
+                    }
+                  }
+                  router.push(newPath);
                 }}
                 className={cn(
                   'w-full flex items-center gap-3 p-2 rounded-md text-left text-sm transition-colors',
@@ -183,51 +154,16 @@ function WorkspaceSwitcher() {
             ))}
           </div>
           <div className="border-t border-gray-100 p-2">
-            {creating ? (
-              <div className="space-y-2 p-1">
-                <input
-                  autoFocus
-                  type="text"
-                  placeholder="Workspace name"
-                  value={newName}
-                  onChange={(e) => setNewName(e.target.value)}
-                  className="w-full text-sm text-black bg-white placeholder:text-gray-500 border border-gray-300 rounded px-2 py-1.5 focus:outline-none focus:ring-1 focus:ring-blue-500"
-                />
-                <select
-                  value={newType}
-                  onChange={(e) => setNewType(e.target.value as 'GENERAL' | 'MEDICAL')}
-                  className="w-full text-sm text-black bg-white placeholder:text-gray-500 border border-gray-300 rounded px-2 py-1.5 focus:outline-none focus:ring-1 focus:ring-blue-500"
-                >
-                  <option value="GENERAL">General</option>
-                  <option value="MEDICAL">Medical / Health</option>
-                </select>
-                <div className="flex gap-2">
-                  <button
-                    onClick={handleCreate}
-                    className="flex-1 text-xs bg-blue-600 text-white rounded py-1.5 hover:bg-blue-700"
-                  >
-                    Create
-                  </button>
-                  <button
-                    onClick={() => {
-                      setCreating(false);
-                      setCreateModalOpen(false);
-                    }}
-                    className="flex-1 text-xs bg-gray-100 text-gray-700 rounded py-1.5 hover:bg-gray-200"
-                  >
-                    Cancel
-                  </button>
-                </div>
-              </div>
-            ) : (
-              <button
-                onClick={() => setCreating(true)}
-                className="w-full flex items-center gap-2 p-2 rounded-md text-sm text-gray-600 hover:bg-gray-50"
-              >
-                <Plus className="h-4 w-4" />
-                New Workspace
-              </button>
-            )}
+            <button
+              onClick={() => {
+                setOpen(false);
+                setCreateModalOpen(true);
+              }}
+              className="w-full flex items-center gap-2 p-2 rounded-md text-sm text-gray-600 hover:bg-gray-50"
+            >
+              <Plus className="h-4 w-4" />
+              New Workspace
+            </button>
           </div>
         </div>
       )}
@@ -235,27 +171,7 @@ function WorkspaceSwitcher() {
   );
 }
 
-export function AppShell({ children }: { children: React.ReactNode }) {
-  const { activeWorkspace } = useWorkspace();
-  const isMedical = activeWorkspace?.type === 'MEDICAL';
-
-  return (
-    <div className="flex h-screen w-full bg-gray-50 overflow-hidden">
-      <div className="hidden lg:block lg:w-72 lg:shrink-0">
-        <Sidebar />
-      </div>
-      <div className="flex flex-1 flex-col overflow-hidden">
-        <Topbar />
-        {isMedical && <MedicalWorkspaceBanner />}
-        <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
-          <div className="mx-auto max-w-7xl">{children}</div>
-        </main>
-      </div>
-    </div>
-  );
-}
-
-export function Topbar() {
+export function Topbar({ workspaceId }: { workspaceId: string }) {
   const { user, logout } = useAuth();
   const router = useRouter();
   const [userMenuOpen, setUserMenuOpen] = React.useState(false);
@@ -279,7 +195,7 @@ export function Topbar() {
   return (
     <div className="sticky top-0 z-10 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
       <div className="flex flex-1 gap-x-4 self-stretch lg:gap-x-6 justify-between items-center">
-        <WorkspaceSwitcher />
+        <WorkspaceSwitcher currentWorkspaceId={workspaceId} />
         <div className="flex items-center gap-x-4 lg:gap-x-6">
           <button 
             type="button" 
@@ -324,6 +240,27 @@ export function Topbar() {
             )}
           </div>
         </div>
+      </div>
+    </div>
+  );
+}
+
+export function WorkspaceAppShell({ children, workspaceId }: { children: React.ReactNode, workspaceId: string }) {
+  const { workspaces } = useWorkspace();
+  const activeWorkspace = workspaces.find(w => w.id === workspaceId);
+  const isMedical = activeWorkspace?.type === 'MEDICAL';
+
+  return (
+    <div className="flex h-screen w-full bg-gray-50 overflow-hidden">
+      <div className="hidden lg:block lg:w-72 lg:shrink-0">
+        <Sidebar workspaceId={workspaceId} />
+      </div>
+      <div className="flex flex-1 flex-col overflow-hidden">
+        <Topbar workspaceId={workspaceId} />
+        {isMedical && <MedicalWorkspaceBanner />}
+        <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
+          <div className="mx-auto max-w-7xl">{children}</div>
+        </main>
       </div>
     </div>
   );

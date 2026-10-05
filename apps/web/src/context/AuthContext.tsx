@@ -47,13 +47,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const login = useCallback(async (email: string, password: string) => {
     const { user: u } = await authApi.login({ email, password });
     setUser(u);
-    router.push('/dashboard');
+    router.push('/workspaces');
   }, [router]);
 
   const register = useCallback(async (email: string, name: string, password: string) => {
     const { user: u } = await authApi.register({ email, name, password });
     setUser(u);
-    router.push('/dashboard');
+    router.push('/workspaces');
   }, [router]);
 
   const logout = useCallback(async () => {
