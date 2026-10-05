@@ -94,7 +94,7 @@ export default function SourcesPage({ params }: { params: { workspaceId: string 
     setSyncingAll(false);
   };
 
-  const tierLabel = (tier: string) => SOURCE_TIERS.find(t => t.value === tier)?.label.split(' – ')[0] || tier;
+  const tierLabel = (tier: string) => SOURCE_TIERS.find(t => t.value === tier)?.label?.split(' – ')[0] || tier;
   const typeLabel = (type: string) => SOURCE_TYPES.find(t => t.value === type)?.label || type;
   const canAutoCollect = (type: string) => ['rss', 'atom', 'news'].includes(type);
 
