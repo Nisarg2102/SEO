@@ -88,8 +88,8 @@ export default function SourcesPage({ params }: { params: { workspaceId: string 
         `workspaces/${params.workspaceId}/research/sync`,
       );
       setSyncMessage(`✓ ${result.message}`);
-    } catch (err: any) {
-      setSyncMessage(`Sync failed: ${err.message || 'Unknown error'}`);
+    } catch (err: unknown) {
+      setSyncMessage(`Sync failed: ${(err as Error).message || 'Unknown error'}`);
     }
     setSyncingAll(false);
   };

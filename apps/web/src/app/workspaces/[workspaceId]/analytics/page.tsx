@@ -49,8 +49,8 @@ export default function AnalyticsDashboard({ params }: { params: { workspaceId: 
     try {
       const res = await apiClient.post<any>(`workspaces/${params.workspaceId}/analytics/insights`, { start: dateRange });
       setInsights(res);
-    } catch (e: any) {
-      alert(`AI Insight Generation Failed: ${e.message || 'Unknown error. Check AI configuration.'}`);
+    } catch (e: unknown) {
+      alert(`AI Insight Generation Failed: ${(e as Error).message || 'Unknown error. Check AI configuration.'}`);
     }
     setGenerating(false);
   };
