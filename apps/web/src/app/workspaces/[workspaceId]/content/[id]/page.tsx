@@ -87,8 +87,10 @@ export default function ContentPackDetail({ params }: { params: { workspaceId: s
       // Navigate to the new one and delete the old one.
       await apiClient.delete(`workspaces/${params.workspaceId}/content-packs/${params.id}`);
       router.push(`/workspaces/${params.workspaceId}/content/${newPack.id}`);
-    } catch {
-      alert('Error regenerating');
+    } catch (e: unknown) {
+      const err = e as any;
+      const apiMsg = err.data?.details || err.data?.message || err.message || 'Unknown error';
+      alert(`Error regenerating: ${apiMsg}`);
       setSaving(false);
     }
   };

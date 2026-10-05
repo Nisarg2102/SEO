@@ -37,14 +37,19 @@ export default function NewContentPack({ params }: { params: { workspaceId: stri
     fetchWs();
   }, [params.workspaceId]);
 
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+
   const handleGenerate = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setErrorMsg(null);
     try {
       const data = await apiClient.post<{ id: string }>(`workspaces/${params.workspaceId}/content-packs/generate`, formData);
       router.push(`/workspaces/${params.workspaceId}/content/${data.id}`);
-    } catch {
-      alert('Error communicating with server');
+    } catch (e: unknown) {
+      const err = e as any;
+      const apiMsg = err.data?.details || err.data?.message || err.message || 'Unknown error';
+      setErrorMsg(`Generation failed: ${apiMsg}`);
       setLoading(false);
     }
   };
@@ -52,6 +57,12 @@ export default function NewContentPack({ params }: { params: { workspaceId: stri
   return (
     <div className="max-w-2xl mx-auto">
       <h1 className="text-2xl font-bold mb-2">Create Content Pack</h1>
+
+      {errorMsg && (
+        <div className="mb-6 p-4 bg-red-50 border border-red-200 text-red-700 rounded-lg">
+          <p className="font-semibold text-sm">⚠ {errorMsg}</p>
+        </div>
+      )}
 
       {workspaceType === 'MEDICAL' && (
         <div className="mb-6 bg-blue-50 border border-blue-200 rounded-lg p-4">
