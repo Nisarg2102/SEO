@@ -10,6 +10,7 @@ import {
   HttpStatus,
   UsePipes,
   ValidationPipe,
+  HttpException
 } from '@nestjs/common';
 import { ResearchService } from './research.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
