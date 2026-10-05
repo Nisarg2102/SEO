@@ -73,12 +73,22 @@ export class AnalyticsController {
     return this.analyticsService.getSocial(workspaceId);
   }
 
-  @Post('insights')
-  generateInsights(
+    @Post('insights')
+  async generateInsights(
     @Param('workspaceId') workspaceId: string,
     @Query('start') start?: string,
     @Query('end') end?: string,
   ) {
-    return this.analyticsService.generateInsights(workspaceId, start, end);
+    try {
+      return await this.analyticsService.generateInsights(workspaceId, start, end);
+    } catch (error: any) {
+      if (error instanceof HttpException) {
+        throw error;
+      }
+      throw new HttpException(
+        `AI Generation failed: ${error.message || 'Unknown provider error'}`,
+        HttpStatus.INTERNAL_SERVER_ERROR
+      );
+    }
   }
 }

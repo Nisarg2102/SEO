@@ -40,13 +40,17 @@ export default function AnalyticsDashboard({ params }: { params: { workspaceId: 
     fetchData();
   }, [fetchData]);
 
-  const generateInsights = async () => {
+    const generateInsights = async () => {
+    if (!data?.overview?.hasData) {
+      alert("No analytics data is available for this date range. Sync Search Console/analytics data first, then generate insights.");
+      return;
+    }
     setGenerating(true);
     try {
-      const res = await apiClient.post(`workspaces/${params.workspaceId}/analytics/insights`, {});
+      const res = await apiClient.post<any>(`workspaces/${params.workspaceId}/analytics/insights`, { start: dateRange });
       setInsights(res);
-    } catch (e) {
-      alert('Failed to generate insights');
+    } catch (e: any) {
+      alert(`AI Insight Generation Failed: ${e.message || 'Unknown error. Check AI configuration.'}`);
     }
     setGenerating(false);
   };

@@ -80,7 +80,7 @@ export default function SourcesPage({ params }: { params: { workspaceId: string 
     } catch {}
   };
 
-  const handleSyncAll = async () => {
+    const handleSyncAll = async () => {
     setSyncingAll(true);
     setSyncMessage(null);
     try {
@@ -88,8 +88,8 @@ export default function SourcesPage({ params }: { params: { workspaceId: string 
         `workspaces/${params.workspaceId}/research/sync`,
       );
       setSyncMessage(`✓ ${result.message}`);
-    } catch {
-      setSyncMessage('Failed to queue sync. Please try again.');
+    } catch (err: any) {
+      setSyncMessage(`Sync failed: ${err.message || 'Unknown error'}`);
     }
     setSyncingAll(false);
   };
