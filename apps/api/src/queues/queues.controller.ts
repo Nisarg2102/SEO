@@ -28,7 +28,7 @@ export class QueuesController {
     try {
       const days = data.days || 28;
       const result = await this.gscService.sync(data.workspaceId, days);
-      this.logger.log(`Successfully completed GSC sync for workspace ${data.workspaceId} (${days} days). Count: ${result.count}`);
+      this.logger.log(`Successfully completed GSC sync for workspace ${data.workspaceId} (${days} days).`);
       return result;
     } catch (error) {
       this.logger.error(`Failed to process GSC sync for workspace ${data.workspaceId}`, (error as Error).stack);
