@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { apiClient } from '../../../../../lib/apiClient';
+import { apiClient, getApiErrorMessage } from '../../../../../lib/apiClient';
 
 const MEDICAL_ALLOWED_TOPICS = [
   'Mental health awareness',
@@ -47,8 +47,7 @@ export default function NewContentPack({ params }: { params: { workspaceId: stri
       const data = await apiClient.post<{ id: string }>(`workspaces/${params.workspaceId}/content-packs/generate`, formData);
       router.push(`/workspaces/${params.workspaceId}/content/${data.id}`);
     } catch (e: unknown) {
-      const err = e as any;
-      const apiMsg = err.data?.details || err.data?.message || err.message || 'Unknown error';
+      const apiMsg = getApiErrorMessage(e);
       setErrorMsg(`Generation failed: ${apiMsg}`);
       setLoading(false);
     }

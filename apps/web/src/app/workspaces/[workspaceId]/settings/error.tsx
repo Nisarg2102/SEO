@@ -9,7 +9,7 @@ export default function SettingsError({
 }) {
   return (
     <div className="p-8 border border-red-200 bg-red-50 rounded-lg max-w-2xl mt-12 mx-auto">
-      <h1 className="text-xl font-bold text-red-900 mb-2">Settings couldn't load</h1>
+      <h1 className="text-xl font-bold text-red-900 mb-2">Settings couldn&apos;t load</h1>
       <p className="text-red-800 mb-4">
         Something went wrong while loading or displaying your settings.
       </p>

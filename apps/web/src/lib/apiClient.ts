@@ -10,6 +10,19 @@ export class ApiError extends Error {
   }
 }
 
+export function getApiErrorMessage(error: unknown): string {
+  if (error instanceof ApiError && typeof error.data === 'object' && error.data !== null) {
+    for (const key of ['details', 'message'] as const) {
+      const value = key in error.data ? (error.data as Record<string, unknown>)[key] : undefined;
+      if (typeof value === 'string' && value) return value;
+      if (Array.isArray(value) && value.length > 0 && value.every(item => typeof item === 'string')) {
+        return value.join(', ');
+      }
+    }
+  }
+  return error instanceof Error && error.message ? error.message : 'Unknown error';
+}
+
 interface RequestOptions extends RequestInit {
   params?: Record<string, string>;
   rawResponse?: boolean;

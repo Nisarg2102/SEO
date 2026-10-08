@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { apiClient } from '../../../../../lib/apiClient';
+import { apiClient, getApiErrorMessage } from '../../../../../lib/apiClient';
 
 interface ContentPack {
   id: string;
@@ -88,8 +88,7 @@ export default function ContentPackDetail({ params }: { params: { workspaceId: s
       await apiClient.delete(`workspaces/${params.workspaceId}/content-packs/${params.id}`);
       router.push(`/workspaces/${params.workspaceId}/content/${newPack.id}`);
     } catch (e: unknown) {
-      const err = e as any;
-      const apiMsg = err.data?.details || err.data?.message || err.message || 'Unknown error';
+      const apiMsg = getApiErrorMessage(e);
       alert(`Error regenerating: ${apiMsg}`);
       setSaving(false);
     }
