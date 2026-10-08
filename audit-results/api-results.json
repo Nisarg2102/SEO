@@ -1,0 +1,4701 @@
+[
+  {
+    "name": "register A",
+    "path": "/auth/register",
+    "method": "POST",
+    "status": 201,
+    "data": {
+      "user": {
+        "id": "e708cd54-34f9-47af-bd84-5d6a57a1574f",
+        "email": "audit-owner@example.test",
+        "name": "Audit Owner",
+        "role": "USER"
+      }
+    },
+    "location": null,
+    "cookie": "[present]",
+    "expected": [
+      201
+    ],
+    "pass": true
+  },
+  {
+    "name": "register B",
+    "path": "/auth/register",
+    "method": "POST",
+    "status": 201,
+    "data": {
+      "user": {
+        "id": "faeddfb3-2029-42ae-85b0-664e185c63de",
+        "email": "audit-other@example.test",
+        "name": "Audit Other",
+        "role": "USER"
+      }
+    },
+    "location": null,
+    "cookie": "[present]",
+    "expected": [
+      201
+    ],
+    "pass": true
+  },
+  {
+    "name": "duplicate registration",
+    "path": "/auth/register",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      400,
+      409
+    ],
+    "pass": false
+  },
+  {
+    "name": "bad login",
+    "path": "/auth/login",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "valid login",
+    "path": "/auth/login",
+    "method": "POST",
+    "status": 200,
+    "data": {
+      "user": {
+        "id": "e708cd54-34f9-47af-bd84-5d6a57a1574f",
+        "email": "audit-owner@example.test",
+        "name": "Audit Owner",
+        "role": "USER"
+      }
+    },
+    "location": null,
+    "cookie": "[present]",
+    "expected": [
+      200
+    ],
+    "pass": true
+  },
+  {
+    "name": "invalid registration",
+    "path": "/auth/register",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      400
+    ],
+    "pass": false
+  },
+  {
+    "name": "session",
+    "path": "/auth/me",
+    "method": "GET",
+    "status": 200,
+    "data": {
+      "user": {
+        "userId": "e708cd54-34f9-47af-bd84-5d6a57a1574f",
+        "email": "audit-owner@example.test",
+        "role": "USER"
+      }
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      200
+    ],
+    "pass": true
+  },
+  {
+    "name": "create A",
+    "path": "/workspaces",
+    "method": "POST",
+    "status": 201,
+    "data": {
+      "id": "c21eaae9-e1e2-444e-89ca-e408312f35ed",
+      "name": "Audit A",
+      "type": "GENERAL",
+      "createdAt": "2026-10-08T15:00:34.522Z",
+      "updatedAt": "2026-10-08T15:00:34.522Z"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      201
+    ],
+    "pass": true
+  },
+  {
+    "name": "create B",
+    "path": "/workspaces",
+    "method": "POST",
+    "status": 201,
+    "data": {
+      "id": "b6930841-aeda-4e1f-b3ad-2f35c3c219b0",
+      "name": "Audit B",
+      "type": "GENERAL",
+      "createdAt": "2026-10-08T15:00:34.529Z",
+      "updatedAt": "2026-10-08T15:00:34.529Z"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      201
+    ],
+    "pass": true
+  },
+  {
+    "name": "create medical",
+    "path": "/workspaces",
+    "method": "POST",
+    "status": 201,
+    "data": {
+      "id": "16327bb4-dee6-4ae6-bdf2-610623193cb5",
+      "name": "Audit Medical",
+      "type": "MEDICAL",
+      "createdAt": "2026-10-08T15:00:34.534Z",
+      "updatedAt": "2026-10-08T15:00:34.534Z"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      201
+    ],
+    "pass": true
+  },
+  {
+    "name": "unauth POST /workspaces",
+    "path": "/workspaces",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces",
+    "path": "/workspaces",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/stats",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/stats",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/stats",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/stats",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth PATCH /workspaces/:workspaceId",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed",
+    "method": "PATCH",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember PATCH /workspaces/:workspaceId",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed",
+    "method": "PATCH",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/integrations",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/integrations",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/integrations",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/integrations",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/brand-profile",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/brand-profile",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/brand-profile",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/brand-profile",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth PUT /workspaces/:workspaceId/brand-profile",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/brand-profile",
+    "method": "PUT",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember PUT /workspaces/:workspaceId/brand-profile",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/brand-profile",
+    "method": "PUT",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth POST /ai/test",
+    "path": "/ai/test",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth POST /workspaces/:workspaceId/content-packs/generate",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/content-packs/generate",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember POST /workspaces/:workspaceId/content-packs/generate",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/content-packs/generate",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/content-packs",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/content-packs",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/content-packs",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/content-packs",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/content-packs/:id",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/content-packs/00000000-0000-4000-8000-000000000001",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/content-packs/:id",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/content-packs/00000000-0000-4000-8000-000000000001",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth PUT /workspaces/:workspaceId/content-packs/:id",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/content-packs/00000000-0000-4000-8000-000000000001",
+    "method": "PUT",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember PUT /workspaces/:workspaceId/content-packs/:id",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/content-packs/00000000-0000-4000-8000-000000000001",
+    "method": "PUT",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth DELETE /workspaces/:workspaceId/content-packs/:id",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/content-packs/00000000-0000-4000-8000-000000000001",
+    "method": "DELETE",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember DELETE /workspaces/:workspaceId/content-packs/:id",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/content-packs/00000000-0000-4000-8000-000000000001",
+    "method": "DELETE",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth POST /workspaces/:workspaceId/sources",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/sources",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember POST /workspaces/:workspaceId/sources",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/sources",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/sources",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/sources",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/sources",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/sources",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/sources/:id",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/sources/00000000-0000-4000-8000-000000000001",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/sources/:id",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/sources/00000000-0000-4000-8000-000000000001",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth PUT /workspaces/:workspaceId/sources/:id",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/sources/00000000-0000-4000-8000-000000000001",
+    "method": "PUT",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember PUT /workspaces/:workspaceId/sources/:id",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/sources/00000000-0000-4000-8000-000000000001",
+    "method": "PUT",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth DELETE /workspaces/:workspaceId/sources/:id",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/sources/00000000-0000-4000-8000-000000000001",
+    "method": "DELETE",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember DELETE /workspaces/:workspaceId/sources/:id",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/sources/00000000-0000-4000-8000-000000000001",
+    "method": "DELETE",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/research",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/research",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/research",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/research",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/research/:id",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/research/00000000-0000-4000-8000-000000000001",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/research/:id",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/research/00000000-0000-4000-8000-000000000001",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth POST /workspaces/:workspaceId/research/sync",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/research/sync",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember POST /workspaces/:workspaceId/research/sync",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/research/sync",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth POST /workspaces/:workspaceId/research/:id/convert",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/research/00000000-0000-4000-8000-000000000001/convert",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember POST /workspaces/:workspaceId/research/:id/convert",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/research/00000000-0000-4000-8000-000000000001/convert",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /seo/keywords",
+    "path": "/seo/keywords",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth POST /seo/audit",
+    "path": "/seo/audit",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /seo/competitors",
+    "path": "/seo/competitors",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth POST /seo/rank",
+    "path": "/seo/rank",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/seo-opportunities",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo-opportunities",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/seo-opportunities",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo-opportunities",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth POST /workspaces/:workspaceId/seo-opportunities/analyze",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo-opportunities/analyze",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember POST /workspaces/:workspaceId/seo-opportunities/analyze",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo-opportunities/analyze",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth POST /workspaces/:workspaceId/seo-opportunities/:id/convert",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo-opportunities/00000000-0000-4000-8000-000000000001/convert",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember POST /workspaces/:workspaceId/seo-opportunities/:id/convert",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo-opportunities/00000000-0000-4000-8000-000000000001/convert",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/gsc/auth-url",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/gsc/auth-url",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/gsc/auth-url",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/gsc/auth-url",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/gsc/status",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/gsc/status",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/gsc/status",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/gsc/status",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/gsc/properties",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/gsc/properties",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/gsc/properties",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/gsc/properties",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth POST /workspaces/:workspaceId/gsc/connect-property",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/gsc/connect-property",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember POST /workspaces/:workspaceId/gsc/connect-property",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/gsc/connect-property",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth POST /workspaces/:workspaceId/gsc/sync",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/gsc/sync",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember POST /workspaces/:workspaceId/gsc/sync",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/gsc/sync",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/gsc/history/keyword",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/gsc/history/keyword",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/gsc/history/keyword",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/gsc/history/keyword",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/gsc/history/property",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/gsc/history/property",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/gsc/history/property",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/gsc/history/property",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/gsc/performance",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/gsc/performance",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/gsc/performance",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/gsc/performance",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/gsc/top-queries",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/gsc/top-queries",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/gsc/top-queries",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/gsc/top-queries",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/gsc/top-pages",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/gsc/top-pages",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/gsc/top-pages",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/gsc/top-pages",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/analytics/overview",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/analytics/overview",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/analytics/overview",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/analytics/overview",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/analytics/seo",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/analytics/seo",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/analytics/seo",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/analytics/seo",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/analytics/keywords",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/analytics/keywords",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/analytics/keywords",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/analytics/keywords",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/analytics/pages",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/analytics/pages",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/analytics/pages",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/analytics/pages",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/analytics/opportunities",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/analytics/opportunities",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/analytics/opportunities",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/analytics/opportunities",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/analytics/technical",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/analytics/technical",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/analytics/technical",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/analytics/technical",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/analytics/links",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/analytics/links",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/analytics/links",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/analytics/links",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/analytics/content",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/analytics/content",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/analytics/content",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/analytics/content",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/analytics/social",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/analytics/social",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/analytics/social",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/analytics/social",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth POST /workspaces/:workspaceId/analytics/insights",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/analytics/insights",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember POST /workspaces/:workspaceId/analytics/insights",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/analytics/insights",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/reports",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/reports",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/reports",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/reports",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/reports/:id",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/reports/00000000-0000-4000-8000-000000000001",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/reports/:id",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/reports/00000000-0000-4000-8000-000000000001",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth POST /workspaces/:workspaceId/reports/generate",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/reports/generate",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember POST /workspaces/:workspaceId/reports/generate",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/reports/generate",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth POST /workspaces/:workspaceId/agent/chat",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/agent/chat",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember POST /workspaces/:workspaceId/agent/chat",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/agent/chat",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/automations",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/automations",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/automations",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/automations",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth POST /workspaces/:workspaceId/automations",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/automations",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember POST /workspaces/:workspaceId/automations",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/automations",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/automations/:automationId",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/automations/00000000-0000-4000-8000-000000000001",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/automations/:automationId",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/automations/00000000-0000-4000-8000-000000000001",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth PATCH /workspaces/:workspaceId/automations/:automationId",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/automations/00000000-0000-4000-8000-000000000001",
+    "method": "PATCH",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember PATCH /workspaces/:workspaceId/automations/:automationId",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/automations/00000000-0000-4000-8000-000000000001",
+    "method": "PATCH",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth POST /workspaces/:workspaceId/automations/:automationId/run",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/automations/00000000-0000-4000-8000-000000000001/run",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember POST /workspaces/:workspaceId/automations/:automationId/run",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/automations/00000000-0000-4000-8000-000000000001/run",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/automations/:automationId/runs",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/automations/00000000-0000-4000-8000-000000000001/runs",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/automations/:automationId/runs",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/automations/00000000-0000-4000-8000-000000000001/runs",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth POST /workspaces/:workspaceId/seo/audits",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/audits",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember POST /workspaces/:workspaceId/seo/audits",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/audits",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/seo/audits",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/audits",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/seo/audits",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/audits",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/seo/audits/:auditId",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/audits/00000000-0000-4000-8000-000000000001",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/seo/audits/:auditId",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/audits/00000000-0000-4000-8000-000000000001",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/seo/audits/links/summary",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/audits/links/summary",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/seo/audits/links/summary",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/audits/links/summary",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/seo/audits/links/internal",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/audits/links/internal",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/seo/audits/links/internal",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/audits/links/internal",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/seo/audits/links/external",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/audits/links/external",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/seo/audits/links/external",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/audits/links/external",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/seo/audits/links/broken",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/audits/links/broken",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/seo/audits/links/broken",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/audits/links/broken",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/seo/audits/links/orphans",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/audits/links/orphans",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/seo/audits/links/orphans",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/audits/links/orphans",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/seo/audits/links/sitemap",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/audits/links/sitemap",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/seo/audits/links/sitemap",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/audits/links/sitemap",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/seo/audits/backlinks",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/audits/backlinks",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/seo/audits/backlinks",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/audits/backlinks",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth POST /workspaces/:workspaceId/seo/content/analyze",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/content/analyze",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember POST /workspaces/:workspaceId/seo/content/analyze",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/content/analyze",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/seo/content/analyses",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/content/analyses",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/seo/content/analyses",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/content/analyses",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/seo/content/analyses/:analysisId",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/content/analyses/00000000-0000-4000-8000-000000000001",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/seo/content/analyses/:analysisId",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/content/analyses/00000000-0000-4000-8000-000000000001",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth POST /workspaces/:workspaceId/seo/content/analyses/:analysisId/reanalyze",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/content/analyses/00000000-0000-4000-8000-000000000001/reanalyze",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember POST /workspaces/:workspaceId/seo/content/analyses/:analysisId/reanalyze",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/content/analyses/00000000-0000-4000-8000-000000000001/reanalyze",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth POST /workspaces/:workspaceId/seo/content-briefs",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/content-briefs",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember POST /workspaces/:workspaceId/seo/content-briefs",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/content-briefs",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/seo/content-briefs",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/content-briefs",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/seo/content-briefs",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/content-briefs",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/seo/content-briefs/:briefId",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/content-briefs/00000000-0000-4000-8000-000000000001",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/seo/content-briefs/:briefId",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/content-briefs/00000000-0000-4000-8000-000000000001",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth POST /workspaces/:workspaceId/seo/content-briefs/:briefId/generate-draft",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/content-briefs/00000000-0000-4000-8000-000000000001/generate-draft",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember POST /workspaces/:workspaceId/seo/content-briefs/:briefId/generate-draft",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/content-briefs/00000000-0000-4000-8000-000000000001/generate-draft",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/seo/content-briefs/:briefId/drafts",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/content-briefs/00000000-0000-4000-8000-000000000001/drafts",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/seo/content-briefs/:briefId/drafts",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/content-briefs/00000000-0000-4000-8000-000000000001/drafts",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/seo/content-drafts/:draftId",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/content-drafts/00000000-0000-4000-8000-000000000001",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/seo/content-drafts/:draftId",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/content-drafts/00000000-0000-4000-8000-000000000001",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth PATCH /workspaces/:workspaceId/seo/content-drafts/:draftId",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/content-drafts/00000000-0000-4000-8000-000000000001",
+    "method": "PATCH",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember PATCH /workspaces/:workspaceId/seo/content-drafts/:draftId",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/content-drafts/00000000-0000-4000-8000-000000000001",
+    "method": "PATCH",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth POST /workspaces/:workspaceId/seo/content-drafts/:draftId/regenerate-section",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/content-drafts/00000000-0000-4000-8000-000000000001/regenerate-section",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember POST /workspaces/:workspaceId/seo/content-drafts/:draftId/regenerate-section",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/content-drafts/00000000-0000-4000-8000-000000000001/regenerate-section",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/social/instagram/auth-url",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/social/instagram/auth-url",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/social/instagram/auth-url",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/social/instagram/auth-url",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/social/instagram/status",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/social/instagram/status",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/social/instagram/status",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/social/instagram/status",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth POST /workspaces/:workspaceId/social/instagram/sync",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/social/instagram/sync",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember POST /workspaces/:workspaceId/social/instagram/sync",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/social/instagram/sync",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/social/instagram/top-content",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/social/instagram/top-content",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/social/instagram/top-content",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/social/instagram/top-content",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/social/instagram/insights",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/social/instagram/insights",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/social/instagram/insights",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/social/instagram/insights",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth POST /workspaces/:workspaceId/social/instagram/analyze",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/social/instagram/analyze",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember POST /workspaces/:workspaceId/social/instagram/analyze",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/social/instagram/analyze",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth POST /workspaces/:workspaceId/social/instagram/disconnect",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/social/instagram/disconnect",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember POST /workspaces/:workspaceId/social/instagram/disconnect",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/social/instagram/disconnect",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/keyword-research",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/keyword-research",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/keyword-research",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/keyword-research",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/keyword-research/suggestions",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/keyword-research/suggestions",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/keyword-research/suggestions",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/keyword-research/suggestions",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/keyword-research/trends",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/keyword-research/trends",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/keyword-research/trends",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/keyword-research/trends",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/keyword-research/related",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/keyword-research/related",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/keyword-research/related",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/keyword-research/related",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "unauth GET /workspaces/:workspaceId/keyword-research/compare",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/keyword-research/compare",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "nonmember GET /workspaces/:workspaceId/keyword-research/compare",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/keyword-research/compare",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed",
+    "method": "GET",
+    "status": 200,
+    "data": {
+      "id": "c21eaae9-e1e2-444e-89ca-e408312f35ed",
+      "name": "Audit A",
+      "type": "GENERAL",
+      "createdAt": "2026-10-08T15:00:34.522Z",
+      "updatedAt": "2026-10-08T15:00:34.522Z"
+    },
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/stats",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/stats",
+    "method": "GET",
+    "status": 200,
+    "data": {
+      "researchIdeas": 0,
+      "draftContent": 0,
+      "pendingApprovals": 0,
+      "scheduledPosts": 0
+    },
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/integrations",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/integrations",
+    "method": "GET",
+    "status": 200,
+    "data": {
+      "gsc": {
+        "serverConfigured": false,
+        "connected": false,
+        "propertyUrl": null
+      },
+      "instagram": {
+        "serverConfigured": false,
+        "connected": false,
+        "username": null
+      }
+    },
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/brand-profile",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/brand-profile",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/content-packs",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/content-packs",
+    "method": "GET",
+    "status": 200,
+    "data": [],
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/content-packs/:id",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/content-packs/00000000-0000-4000-8000-000000000001",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/sources",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/sources",
+    "method": "GET",
+    "status": 200,
+    "data": [],
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/sources/:id",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/sources/00000000-0000-4000-8000-000000000001",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/research",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/research",
+    "method": "GET",
+    "status": 200,
+    "data": [],
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/research/:id",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/research/00000000-0000-4000-8000-000000000001",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/seo-opportunities",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo-opportunities",
+    "method": "GET",
+    "status": 200,
+    "data": [],
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/gsc/auth-url",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/gsc/auth-url",
+    "method": "GET",
+    "status": 200,
+    "data": {
+      "url": "https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&prompt=consent&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fwebmasters.readonly%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&state=c21eaae9-e1e2-444e-89ca-e408312f35ed&response_type=code&client_id=mock_client_id&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fgsc%2Fcallback"
+    },
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/gsc/status",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/gsc/status",
+    "method": "GET",
+    "status": 200,
+    "data": {
+      "connected": false
+    },
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/gsc/properties",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/gsc/properties",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/gsc/history/keyword",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/gsc/history/keyword",
+    "method": "GET",
+    "status": 200,
+    "data": [],
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/gsc/history/property",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/gsc/history/property",
+    "method": "GET",
+    "status": 200,
+    "data": [],
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/gsc/performance",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/gsc/performance?start=2026-09-01&end=2026-10-08",
+    "method": "GET",
+    "status": 200,
+    "data": {
+      "clicks": 0,
+      "impressions": 0,
+      "ctr": 0,
+      "averagePosition": 0
+    },
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/gsc/top-queries",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/gsc/top-queries",
+    "method": "GET",
+    "status": 200,
+    "data": [],
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/gsc/top-pages",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/gsc/top-pages",
+    "method": "GET",
+    "status": 200,
+    "data": [],
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/analytics/overview",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/analytics/overview",
+    "method": "GET",
+    "status": 200,
+    "data": {
+      "hasData": false,
+      "summary": null,
+      "trends": []
+    },
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/analytics/seo",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/analytics/seo",
+    "method": "GET",
+    "status": 200,
+    "data": {
+      "hasData": false,
+      "summary": null,
+      "trends": []
+    },
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/analytics/keywords",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/analytics/keywords",
+    "method": "GET",
+    "status": 200,
+    "data": [],
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/analytics/pages",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/analytics/pages",
+    "method": "GET",
+    "status": 200,
+    "data": [],
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/analytics/opportunities",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/analytics/opportunities",
+    "method": "GET",
+    "status": 200,
+    "data": [],
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/analytics/technical",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/analytics/technical",
+    "method": "GET",
+    "status": 200,
+    "data": {
+      "hasData": false
+    },
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/analytics/links",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/analytics/links",
+    "method": "GET",
+    "status": 200,
+    "data": {
+      "hasData": false,
+      "message": "Complete backlink discovery is not available from the current free data sources."
+    },
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/analytics/content",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/analytics/content",
+    "method": "GET",
+    "status": 200,
+    "data": {
+      "briefs": 0,
+      "drafts": 0,
+      "analyses": 0
+    },
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/analytics/social",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/analytics/social",
+    "method": "GET",
+    "status": 200,
+    "data": {
+      "hasData": false,
+      "posts": [],
+      "message": "Instagram analytics ready."
+    },
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/reports",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/reports",
+    "method": "GET",
+    "status": 200,
+    "data": [],
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/reports/:id",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/reports/00000000-0000-4000-8000-000000000001",
+    "method": "GET",
+    "status": 200,
+    "data": "",
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/automations",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/automations",
+    "method": "GET",
+    "status": 200,
+    "data": [],
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/automations/:automationId",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/automations/00000000-0000-4000-8000-000000000001",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/automations/:automationId/runs",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/automations/00000000-0000-4000-8000-000000000001/runs",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/seo/audits",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/audits",
+    "method": "GET",
+    "status": 200,
+    "data": [],
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/seo/audits/:auditId",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/audits/00000000-0000-4000-8000-000000000001",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/seo/audits/links/summary",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/audits/links/summary",
+    "method": "GET",
+    "status": 200,
+    "data": {
+      "available": false
+    },
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/seo/audits/links/internal",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/audits/links/internal",
+    "method": "GET",
+    "status": 200,
+    "data": [],
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/seo/audits/links/external",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/audits/links/external",
+    "method": "GET",
+    "status": 200,
+    "data": [],
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/seo/audits/links/broken",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/audits/links/broken",
+    "method": "GET",
+    "status": 200,
+    "data": [],
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/seo/audits/links/orphans",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/audits/links/orphans",
+    "method": "GET",
+    "status": 200,
+    "data": [],
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/seo/audits/links/sitemap",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/audits/links/sitemap",
+    "method": "GET",
+    "status": 200,
+    "data": {
+      "available": false,
+      "message": "Sitemap data not persisted in free architecture."
+    },
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/seo/audits/backlinks",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/audits/backlinks",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/seo/content/analyses",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/content/analyses",
+    "method": "GET",
+    "status": 200,
+    "data": [],
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/seo/content/analyses/:analysisId",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/content/analyses/00000000-0000-4000-8000-000000000001",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/seo/content-briefs",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/content-briefs",
+    "method": "GET",
+    "status": 200,
+    "data": [],
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/seo/content-briefs/:briefId",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/content-briefs/00000000-0000-4000-8000-000000000001",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/seo/content-briefs/:briefId/drafts",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/content-briefs/00000000-0000-4000-8000-000000000001/drafts",
+    "method": "GET",
+    "status": 200,
+    "data": [],
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/seo/content-drafts/:draftId",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/content-drafts/00000000-0000-4000-8000-000000000001",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/social/instagram/auth-url",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/social/instagram/auth-url",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/social/instagram/status",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/social/instagram/status",
+    "method": "GET",
+    "status": 200,
+    "data": {
+      "connected": false
+    },
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/social/instagram/top-content",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/social/instagram/top-content",
+    "method": "GET",
+    "status": 200,
+    "data": [],
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/social/instagram/insights",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/social/instagram/insights",
+    "method": "GET",
+    "status": 200,
+    "data": {
+      "recentReach": 0,
+      "recentImpressions": 0,
+      "history": {
+        "reach": [],
+        "impressions": []
+      }
+    },
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/keyword-research",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/keyword-research",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/keyword-research/suggestions",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/keyword-research/suggestions",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/keyword-research/trends",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/keyword-research/trends",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/keyword-research/related",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/keyword-research/related",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "member GET /workspaces/:workspaceId/keyword-research/compare",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/keyword-research/compare",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "brand create",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/brand-profile",
+    "method": "PUT",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      200
+    ],
+    "pass": false
+  },
+  {
+    "name": "brand read",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/brand-profile",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      200
+    ],
+    "pass": false
+  },
+  {
+    "name": "source create",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/sources",
+    "method": "POST",
+    "status": 201,
+    "data": {
+      "id": "786385e4-6e3e-4231-a188-ca296c665349",
+      "workspaceId": "c21eaae9-e1e2-444e-89ca-e408312f35ed",
+      "name": "Audit RSS",
+      "url": "https://example.com/feed.xml",
+      "sourceType": "rss",
+      "sourceTier": "tier1",
+      "active": true,
+      "createdAt": "2026-10-08T15:00:35.110Z"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      201
+    ],
+    "pass": true
+  },
+  {
+    "name": "source duplicate",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/sources",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      409
+    ],
+    "pass": false
+  },
+  {
+    "name": "source update",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/sources/786385e4-6e3e-4231-a188-ca296c665349",
+    "method": "PUT",
+    "status": 200,
+    "data": {
+      "id": "786385e4-6e3e-4231-a188-ca296c665349",
+      "workspaceId": "c21eaae9-e1e2-444e-89ca-e408312f35ed",
+      "name": "Updated source",
+      "url": "https://example.com/feed.xml",
+      "sourceType": "rss",
+      "sourceTier": "tier1",
+      "active": false,
+      "createdAt": "2026-10-08T15:00:35.110Z"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      200
+    ],
+    "pass": true
+  },
+  {
+    "name": "cross tenant source read",
+    "path": "/workspaces/b6930841-aeda-4e1f-b3ad-2f35c3c219b0/sources/786385e4-6e3e-4231-a188-ca296c665349",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      404
+    ],
+    "pass": false
+  },
+  {
+    "name": "cross tenant source delete",
+    "path": "/workspaces/b6930841-aeda-4e1f-b3ad-2f35c3c219b0/sources/786385e4-6e3e-4231-a188-ca296c665349",
+    "method": "DELETE",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      404
+    ],
+    "pass": false
+  },
+  {
+    "name": "source invalid",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/sources",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      400
+    ],
+    "pass": false
+  },
+  {
+    "name": "pack generation test-provider",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/content-packs/generate",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      201
+    ],
+    "pass": false
+  },
+  {
+    "name": "pack read",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/content-packs/bf3e4d24-017b-4213-a6ab-c391283edee8",
+    "method": "GET",
+    "status": 200,
+    "data": {
+      "id": "bf3e4d24-017b-4213-a6ab-c391283edee8",
+      "workspaceId": "c21eaae9-e1e2-444e-89ca-e408312f35ed",
+      "contentIdeaId": null,
+      "topic": "Fixture only",
+      "objective": null,
+      "audience": null,
+      "intent": null,
+      "platform": "LinkedIn",
+      "hook": null,
+      "caption": null,
+      "script": null,
+      "visualDirection": null,
+      "cta": null,
+      "hashtags": null,
+      "seoTitle": null,
+      "metaDescription": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": null,
+      "complianceNotes": null,
+      "status": "DRAFT",
+      "scheduledAt": null,
+      "externalPostId": null,
+      "createdAt": "2026-10-08T15:00:35.142Z",
+      "updatedAt": "2026-10-08T15:00:35.142Z"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      200
+    ],
+    "pass": true
+  },
+  {
+    "name": "reject schedule draft",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/content-packs/bf3e4d24-017b-4213-a6ab-c391283edee8",
+    "method": "PUT",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      400,
+      409,
+      422
+    ],
+    "pass": false
+  },
+  {
+    "name": "approve draft",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/content-packs/bf3e4d24-017b-4213-a6ab-c391283edee8",
+    "method": "PUT",
+    "status": 200,
+    "data": {
+      "id": "bf3e4d24-017b-4213-a6ab-c391283edee8",
+      "workspaceId": "c21eaae9-e1e2-444e-89ca-e408312f35ed",
+      "contentIdeaId": null,
+      "topic": "Fixture only",
+      "objective": null,
+      "audience": null,
+      "intent": null,
+      "platform": "LinkedIn",
+      "hook": null,
+      "caption": null,
+      "script": null,
+      "visualDirection": null,
+      "cta": null,
+      "hashtags": null,
+      "seoTitle": null,
+      "metaDescription": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": null,
+      "complianceNotes": null,
+      "status": "APPROVED",
+      "scheduledAt": null,
+      "externalPostId": null,
+      "createdAt": "2026-10-08T15:00:35.142Z",
+      "updatedAt": "2026-10-08T15:00:35.161Z"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      200
+    ],
+    "pass": true
+  },
+  {
+    "name": "schedule approved",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/content-packs/bf3e4d24-017b-4213-a6ab-c391283edee8",
+    "method": "PUT",
+    "status": 200,
+    "data": {
+      "id": "bf3e4d24-017b-4213-a6ab-c391283edee8",
+      "workspaceId": "c21eaae9-e1e2-444e-89ca-e408312f35ed",
+      "contentIdeaId": null,
+      "topic": "Fixture only",
+      "objective": null,
+      "audience": null,
+      "intent": null,
+      "platform": "LinkedIn",
+      "hook": null,
+      "caption": null,
+      "script": null,
+      "visualDirection": null,
+      "cta": null,
+      "hashtags": null,
+      "seoTitle": null,
+      "metaDescription": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": null,
+      "complianceNotes": null,
+      "status": "SCHEDULED",
+      "scheduledAt": "2026-12-01T10:00:00.000Z",
+      "externalPostId": null,
+      "createdAt": "2026-10-08T15:00:35.142Z",
+      "updatedAt": "2026-10-08T15:00:35.166Z"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      200
+    ],
+    "pass": true
+  },
+  {
+    "name": "medical reject direct approval",
+    "path": "/workspaces/16327bb4-dee6-4ae6-bdf2-610623193cb5/content-packs/cf434477-3f3c-48a1-a4d6-59c8d203056f",
+    "method": "PUT",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      400,
+      409,
+      422
+    ],
+    "pass": false
+  },
+  {
+    "name": "medical arbitrary published status",
+    "path": "/workspaces/16327bb4-dee6-4ae6-bdf2-610623193cb5/content-packs/cf434477-3f3c-48a1-a4d6-59c8d203056f",
+    "method": "PUT",
+    "status": 200,
+    "data": {
+      "id": "cf434477-3f3c-48a1-a4d6-59c8d203056f",
+      "workspaceId": "16327bb4-dee6-4ae6-bdf2-610623193cb5",
+      "contentIdeaId": null,
+      "topic": "Medical fixture",
+      "objective": null,
+      "audience": null,
+      "intent": null,
+      "platform": "LinkedIn",
+      "hook": null,
+      "caption": null,
+      "script": null,
+      "visualDirection": null,
+      "cta": null,
+      "hashtags": null,
+      "seoTitle": null,
+      "metaDescription": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": null,
+      "complianceNotes": null,
+      "status": "PUBLISHED",
+      "scheduledAt": null,
+      "externalPostId": null,
+      "createdAt": "2026-10-08T15:00:35.147Z",
+      "updatedAt": "2026-10-08T15:00:35.176Z"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      400,
+      409,
+      422
+    ],
+    "pass": false
+  },
+  {
+    "name": "cross tenant pack read",
+    "path": "/workspaces/b6930841-aeda-4e1f-b3ad-2f35c3c219b0/content-packs/bf3e4d24-017b-4213-a6ab-c391283edee8",
+    "method": "GET",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      404
+    ],
+    "pass": false
+  },
+  {
+    "name": "cross tenant pack DELETE",
+    "path": "/workspaces/b6930841-aeda-4e1f-b3ad-2f35c3c219b0/content-packs/89767820-2642-4cc0-acf6-982950532052",
+    "method": "DELETE",
+    "status": 200,
+    "data": {
+      "id": "89767820-2642-4cc0-acf6-982950532052",
+      "workspaceId": "c21eaae9-e1e2-444e-89ca-e408312f35ed",
+      "contentIdeaId": null,
+      "topic": "Cross tenant deletion fixture",
+      "objective": null,
+      "audience": null,
+      "intent": null,
+      "platform": "LinkedIn",
+      "hook": null,
+      "caption": null,
+      "script": null,
+      "visualDirection": null,
+      "cta": null,
+      "hashtags": null,
+      "seoTitle": null,
+      "metaDescription": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": null,
+      "complianceNotes": null,
+      "status": "DRAFT",
+      "scheduledAt": null,
+      "externalPostId": null,
+      "createdAt": "2026-10-08T15:00:35.180Z",
+      "updatedAt": "2026-10-08T15:00:35.180Z"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      404
+    ],
+    "pass": false
+  },
+  {
+    "name": "viewer edits workspace",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed",
+    "method": "PATCH",
+    "status": 200,
+    "data": {
+      "id": "c21eaae9-e1e2-444e-89ca-e408312f35ed",
+      "name": "Viewer modified workspace",
+      "type": "GENERAL",
+      "createdAt": "2026-10-08T15:00:34.522Z",
+      "updatedAt": "2026-10-08T15:00:35.202Z"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "viewer deletes source",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/sources/786385e4-6e3e-4231-a188-ca296c665349",
+    "method": "DELETE",
+    "status": 204,
+    "data": "",
+    "location": null,
+    "cookie": null,
+    "expected": [
+      403
+    ],
+    "pass": false
+  },
+  {
+    "name": "audit invalid payload",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/audits",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      400
+    ],
+    "pass": false
+  },
+  {
+    "name": "analysis invalid payload",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/content/analyze",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      400
+    ],
+    "pass": false
+  },
+  {
+    "name": "brief invalid payload",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/content-briefs",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      400
+    ],
+    "pass": false
+  },
+  {
+    "name": "agent missing message",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/agent/chat",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      400
+    ],
+    "pass": false
+  },
+  {
+    "name": "agent chat test-provider",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/agent/chat",
+    "method": "POST",
+    "status": 201,
+    "data": {
+      "role": "assistant",
+      "content": "This is a mocked chat response."
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      200,
+      201
+    ],
+    "pass": true
+  },
+  {
+    "name": "conversations route",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/agent/conversations",
+    "method": "GET",
+    "status": 404,
+    "data": {
+      "message": "Cannot GET /api/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/agent/conversations",
+      "error": "Not Found",
+      "statusCode": 404
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      200
+    ],
+    "pass": false
+  },
+  {
+    "name": "n8n missing secret",
+    "path": "/webhooks/n8n",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "automation missing secret",
+    "path": "/internal/automation/webhook",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "queue no signature /internal/queues/analytics/sync-gsc",
+    "path": "/internal/queues/analytics/sync-gsc",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "queue no signature /internal/queues/research/sync-workspace",
+    "path": "/internal/queues/research/sync-workspace",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "queue no signature /internal/queues/research/sync-all",
+    "path": "/internal/queues/research/sync-all",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "queue no signature /internal/queues/seo/analyze-metrics",
+    "path": "/internal/queues/seo/analyze-metrics",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "queue no signature /internal/queues/analytics/sync-all-gsc",
+    "path": "/internal/queues/analytics/sync-all-gsc",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "queue no signature /internal/queues/seo/audit-run",
+    "path": "/internal/queues/seo/audit-run",
+    "method": "POST",
+    "status": 500,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      401
+    ],
+    "pass": false
+  },
+  {
+    "name": "public GSC callback guessed state",
+    "path": "/gsc/callback?code=audit-fake&state=b6930841-aeda-4e1f-b3ad-2f35c3c219b0",
+    "method": "GET",
+    "status": 302,
+    "data": "Found. Redirecting to http://localhost:3000/workspaces/b6930841-aeda-4e1f-b3ad-2f35c3c219b0/search-console?success=true",
+    "location": "http://localhost:3000/workspaces/b6930841-aeda-4e1f-b3ad-2f35c3c219b0/search-console?success=true",
+    "cookie": null,
+    "expected": [
+      302
+    ],
+    "pass": true
+  },
+  {
+    "name": "GSC status after unauth callback",
+    "path": "/workspaces/b6930841-aeda-4e1f-b3ad-2f35c3c219b0/gsc/status",
+    "method": "GET",
+    "status": 200,
+    "data": {
+      "connected": true,
+      "propertyUrl": null,
+      "lastSyncAt": null,
+      "email": "mock@example.com"
+    },
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "connect property",
+    "path": "/workspaces/b6930841-aeda-4e1f-b3ad-2f35c3c219b0/gsc/connect-property",
+    "method": "POST",
+    "status": 201,
+    "data": {
+      "success": true
+    },
+    "location": null,
+    "cookie": null,
+    "expected": [
+      201
+    ],
+    "pass": true
+  },
+  {
+    "name": "integrations view after GSC connect",
+    "path": "/workspaces/b6930841-aeda-4e1f-b3ad-2f35c3c219b0/integrations",
+    "method": "GET",
+    "status": 200,
+    "data": {
+      "gsc": {
+        "serverConfigured": false,
+        "connected": false,
+        "propertyUrl": null
+      },
+      "instagram": {
+        "serverConfigured": false,
+        "connected": false,
+        "username": null
+      }
+    },
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "automation seed",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/automations",
+    "method": "POST",
+    "status": 201,
+    "data": [
+      {
+        "id": "2dddc413-b1c3-48c8-ba90-c78d6890db3f",
+        "workspaceId": "c21eaae9-e1e2-444e-89ca-e408312f35ed",
+        "name": "Weekly GSC Sync",
+        "type": "gsc-sync",
+        "enabled": true,
+        "schedule": "0 0 * * 0",
+        "config": null,
+        "createdAt": "2026-10-08T15:00:35.253Z",
+        "updatedAt": "2026-10-08T15:00:35.253Z",
+        "runs": []
+      },
+      {
+        "id": "bfb1eafa-7e49-4165-86b3-10dd23f0b2fe",
+        "workspaceId": "c21eaae9-e1e2-444e-89ca-e408312f35ed",
+        "name": "Weekly SEO Audit",
+        "type": "seo-audit",
+        "enabled": false,
+        "schedule": "0 1 * * 0",
+        "config": null,
+        "createdAt": "2026-10-08T15:00:35.254Z",
+        "updatedAt": "2026-10-08T15:00:35.254Z",
+        "runs": []
+      },
+      {
+        "id": "0bb65592-982b-4913-8c7d-4d27cddc7fa7",
+        "workspaceId": "c21eaae9-e1e2-444e-89ca-e408312f35ed",
+        "name": "Weekly Performance Report",
+        "type": "performance-report",
+        "enabled": true,
+        "schedule": "0 8 * * 1",
+        "config": null,
+        "createdAt": "2026-10-08T15:00:35.255Z",
+        "updatedAt": "2026-10-08T15:00:35.255Z",
+        "runs": []
+      },
+      {
+        "id": "888ac5c2-ddd3-4cf9-ac62-6ecf1aae5cbd",
+        "workspaceId": "c21eaae9-e1e2-444e-89ca-e408312f35ed",
+        "name": "SEO Opportunity Detection",
+        "type": "opportunity-detection",
+        "enabled": true,
+        "schedule": "0 9 * * 1",
+        "config": null,
+        "createdAt": "2026-10-08T15:00:35.256Z",
+        "updatedAt": "2026-10-08T15:00:35.256Z",
+        "runs": []
+      }
+    ],
+    "location": null,
+    "cookie": null,
+    "expected": [
+      201
+    ],
+    "pass": true
+  },
+  {
+    "name": "automation run gsc-sync",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/automations/2dddc413-b1c3-48c8-ba90-c78d6890db3f/run",
+    "method": "POST",
+    "status": 201,
+    "data": {
+      "id": "450d020d-0741-4440-a600-a31f6b5323d1",
+      "automationId": "2dddc413-b1c3-48c8-ba90-c78d6890db3f",
+      "workspaceId": "c21eaae9-e1e2-444e-89ca-e408312f35ed",
+      "status": "failed",
+      "startedAt": "2026-10-08T15:00:35.263Z",
+      "completedAt": "2026-10-08T15:00:35.267Z",
+      "error": "Not connected",
+      "metadata": null,
+      "createdAt": "2026-10-08T15:00:35.264Z"
+    },
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "automation runs gsc-sync",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/automations/2dddc413-b1c3-48c8-ba90-c78d6890db3f/runs",
+    "method": "GET",
+    "status": 200,
+    "data": [
+      {
+        "id": "450d020d-0741-4440-a600-a31f6b5323d1",
+        "automationId": "2dddc413-b1c3-48c8-ba90-c78d6890db3f",
+        "workspaceId": "c21eaae9-e1e2-444e-89ca-e408312f35ed",
+        "status": "failed",
+        "startedAt": "2026-10-08T15:00:35.263Z",
+        "completedAt": "2026-10-08T15:00:35.267Z",
+        "error": "Not connected",
+        "metadata": null,
+        "createdAt": "2026-10-08T15:00:35.264Z"
+      }
+    ],
+    "location": null,
+    "cookie": null,
+    "expected": [
+      200
+    ],
+    "pass": true
+  },
+  {
+    "name": "automation run seo-audit",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/automations/bfb1eafa-7e49-4165-86b3-10dd23f0b2fe/run",
+    "method": "POST",
+    "status": 201,
+    "data": {
+      "id": "283e00de-98ae-4acb-a850-599ebf436e2d",
+      "automationId": "bfb1eafa-7e49-4165-86b3-10dd23f0b2fe",
+      "workspaceId": "c21eaae9-e1e2-444e-89ca-e408312f35ed",
+      "status": "completed",
+      "startedAt": "2026-10-08T15:00:35.275Z",
+      "completedAt": "2026-10-08T15:00:35.276Z",
+      "error": null,
+      "metadata": {
+        "message": "Audit triggered. Crawl process relies on core QStash queue."
+      },
+      "createdAt": "2026-10-08T15:00:35.276Z"
+    },
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "automation runs seo-audit",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/automations/bfb1eafa-7e49-4165-86b3-10dd23f0b2fe/runs",
+    "method": "GET",
+    "status": 200,
+    "data": [
+      {
+        "id": "283e00de-98ae-4acb-a850-599ebf436e2d",
+        "automationId": "bfb1eafa-7e49-4165-86b3-10dd23f0b2fe",
+        "workspaceId": "c21eaae9-e1e2-444e-89ca-e408312f35ed",
+        "status": "completed",
+        "startedAt": "2026-10-08T15:00:35.275Z",
+        "completedAt": "2026-10-08T15:00:35.276Z",
+        "error": null,
+        "metadata": {
+          "message": "Audit triggered. Crawl process relies on core QStash queue."
+        },
+        "createdAt": "2026-10-08T15:00:35.276Z"
+      }
+    ],
+    "location": null,
+    "cookie": null,
+    "expected": [
+      200
+    ],
+    "pass": true
+  },
+  {
+    "name": "automation run performance-report",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/automations/0bb65592-982b-4913-8c7d-4d27cddc7fa7/run",
+    "method": "POST",
+    "status": 201,
+    "data": {
+      "id": "9384d63c-d14a-4cde-b332-3a6f81933205",
+      "automationId": "0bb65592-982b-4913-8c7d-4d27cddc7fa7",
+      "workspaceId": "c21eaae9-e1e2-444e-89ca-e408312f35ed",
+      "status": "completed",
+      "startedAt": "2026-10-08T15:00:35.288Z",
+      "completedAt": "2026-10-08T15:00:35.290Z",
+      "error": null,
+      "metadata": {
+        "overviewSummary": null
+      },
+      "createdAt": "2026-10-08T15:00:35.288Z"
+    },
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "automation runs performance-report",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/automations/0bb65592-982b-4913-8c7d-4d27cddc7fa7/runs",
+    "method": "GET",
+    "status": 200,
+    "data": [
+      {
+        "id": "9384d63c-d14a-4cde-b332-3a6f81933205",
+        "automationId": "0bb65592-982b-4913-8c7d-4d27cddc7fa7",
+        "workspaceId": "c21eaae9-e1e2-444e-89ca-e408312f35ed",
+        "status": "completed",
+        "startedAt": "2026-10-08T15:00:35.288Z",
+        "completedAt": "2026-10-08T15:00:35.290Z",
+        "error": null,
+        "metadata": {
+          "overviewSummary": null
+        },
+        "createdAt": "2026-10-08T15:00:35.288Z"
+      }
+    ],
+    "location": null,
+    "cookie": null,
+    "expected": [
+      200
+    ],
+    "pass": true
+  },
+  {
+    "name": "automation run opportunity-detection",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/automations/888ac5c2-ddd3-4cf9-ac62-6ecf1aae5cbd/run",
+    "method": "POST",
+    "status": 201,
+    "data": {
+      "id": "39e5911b-9e88-440b-9390-0d6596f5b2fb",
+      "automationId": "888ac5c2-ddd3-4cf9-ac62-6ecf1aae5cbd",
+      "workspaceId": "c21eaae9-e1e2-444e-89ca-e408312f35ed",
+      "status": "completed",
+      "startedAt": "2026-10-08T15:00:35.299Z",
+      "completedAt": "2026-10-08T15:00:35.302Z",
+      "error": null,
+      "metadata": {
+        "detectedOpportunities": 0
+      },
+      "createdAt": "2026-10-08T15:00:35.300Z"
+    },
+    "location": null,
+    "cookie": null
+  },
+  {
+    "name": "automation runs opportunity-detection",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/automations/888ac5c2-ddd3-4cf9-ac62-6ecf1aae5cbd/runs",
+    "method": "GET",
+    "status": 200,
+    "data": [
+      {
+        "id": "39e5911b-9e88-440b-9390-0d6596f5b2fb",
+        "automationId": "888ac5c2-ddd3-4cf9-ac62-6ecf1aae5cbd",
+        "workspaceId": "c21eaae9-e1e2-444e-89ca-e408312f35ed",
+        "status": "completed",
+        "startedAt": "2026-10-08T15:00:35.299Z",
+        "completedAt": "2026-10-08T15:00:35.302Z",
+        "error": null,
+        "metadata": {
+          "detectedOpportunities": 0
+        },
+        "createdAt": "2026-10-08T15:00:35.300Z"
+      }
+    ],
+    "location": null,
+    "cookie": null,
+    "expected": [
+      200
+    ],
+    "pass": true
+  },
+  {
+    "name": "logout",
+    "path": "/auth/logout",
+    "method": "POST",
+    "status": 200,
+    "data": {
+      "success": true
+    },
+    "location": null,
+    "cookie": "[present]",
+    "expected": [
+      200
+    ],
+    "pass": true
+  }
+]

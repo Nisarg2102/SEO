@@ -1,0 +1,1222 @@
+[
+  {
+    "test": "browser login",
+    "pass": true
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "errors": [],
+    "failed": [],
+    "title": "AI Marketing & SEO Assistant",
+    "text": "AI Marketing\nDashboard\nResearch\nSEO\nContent\nCalendar\nAnalytics\nSources\nAI Assistant\nSettings\nVI\nViewer modified workspace\nNotifications\nDashboard\n+ New Content Idea\nResearch Ideas\n0\nDraft Content\n0\nPending Approvals\n0\nScheduled Posts\n0\nRecent Activity\nNo data found\n\nGet started by setting up your brand profile and research sources.\n\nSetup Brand Profile",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "navLinks": [
+      "Dashboard",
+      "Research",
+      "SEO",
+      "Content",
+      "Calendar",
+      "Analytics",
+      "Sources",
+      "AI Assistant",
+      "Settings"
+    ],
+    "unlabelledInputs": 0,
+    "unlabelledButtons": 1,
+    "overflow": []
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/research",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "errors": [],
+    "failed": [],
+    "title": "AI Marketing & SEO Assistant",
+    "text": "AI Marketing\nDashboard\nResearch\nSEO\nContent\nCalendar\nAnalytics\nSources\nAI Assistant\nSettings\nVI\nViewer modified workspace\nNotifications\nResearch Engine\n\nIndustry monitoring and AI analysis of your configured sources.\n\nSync Sources Now\nAll sources\nAny confidence\n≥ 80%\n≥ 60%\n≥ 40%\n–\n\nNo research items collected yet.\n\nAdd RSS/Atom sources in the Sources page, then click Sync Sources Now.\n\nRun a sync",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "navLinks": [
+      "Dashboard",
+      "Research",
+      "SEO",
+      "Content",
+      "Calendar",
+      "Analytics",
+      "Sources",
+      "AI Assistant",
+      "Settings"
+    ],
+    "unlabelledInputs": 5,
+    "unlabelledButtons": 1,
+    "overflow": []
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "errors": [],
+    "failed": [],
+    "title": "AI Marketing & SEO Assistant",
+    "text": "AI Marketing\nDashboard\nResearch\nSEO\nContent\nCalendar\nAnalytics\nSources\nAI Assistant\nSettings\nVI\nViewer modified workspace\nNotifications\nSEO Tools\n\nPowered by Local Free Tools\n\nService Status:\nOK\nKeyword Research\nAnalyze\nSite Audit\nRun Audit",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "navLinks": [
+      "Dashboard",
+      "Research",
+      "SEO",
+      "Content",
+      "Calendar",
+      "Analytics",
+      "Sources",
+      "AI Assistant",
+      "Settings"
+    ],
+    "unlabelledInputs": 2,
+    "unlabelledButtons": 1,
+    "overflow": []
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/content",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "errors": [],
+    "failed": [],
+    "title": "AI Marketing & SEO Assistant",
+    "text": "AI Marketing\nDashboard\nResearch\nSEO\nContent\nCalendar\nAnalytics\nSources\nAI Assistant\nSettings\nVI\nViewer modified workspace\nNotifications\nContent Packs\n+ Create Content Pack\nLinkedIn\nSCHEDULED\nFixture only\n\n08/10/2026",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "navLinks": [
+      "Dashboard",
+      "Research",
+      "SEO",
+      "Content",
+      "Calendar",
+      "Analytics",
+      "Sources",
+      "AI Assistant",
+      "Settings"
+    ],
+    "unlabelledInputs": 0,
+    "unlabelledButtons": 1,
+    "overflow": []
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/calendar",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "errors": [],
+    "failed": [],
+    "title": "AI Marketing & SEO Assistant",
+    "text": "AI Marketing\nDashboard\nResearch\nSEO\nContent\nCalendar\nAnalytics\nSources\nAI Assistant\nSettings\nVI\nViewer modified workspace\nNotifications\nContent Calendar\n\nSchedule and manage your approval workflow.\n\nList\nWeek\nMonth\nCONTENT\tPLATFORM\tSTATUS\tSCHEDULED DATE\tACTIONS\nFixture only\tLinkedIn\t\nDRAFT\nIN REVIEW\nAPPROVED\nSCHEDULED\nPUBLISHED\nREJECTED\n\t\tOpen Content",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "navLinks": [
+      "Dashboard",
+      "Research",
+      "SEO",
+      "Content",
+      "Calendar",
+      "Analytics",
+      "Sources",
+      "AI Assistant",
+      "Settings"
+    ],
+    "unlabelledInputs": 2,
+    "unlabelledButtons": 1,
+    "overflow": []
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/analytics",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "errors": [],
+    "failed": [],
+    "title": "AI Marketing & SEO Assistant",
+    "text": "AI Marketing\nDashboard\nResearch\nSEO\nContent\nCalendar\nAnalytics\nSources\nAI Assistant\nSettings\nVI\nViewer modified workspace\nNotifications\nAnalytics & Performance\n\nComprehensive overview of your workspace performance.\n\nLast 7 days\nLast 28 days\nLast 30 days\nLast 90 days\nGenerate Local AI Insights\n\nPowered by Ollama — runs locally, zero API cost.\n\nNo SEO data available for this date range.\nTop Keywords\n\nNo data\n\nSEO Opportunities\n\nNo immediate opportunities detected.\n\nTechnical SEO\n\nNo audit data\n\nLink Intelligence\n\nNo link data\n\nContent Studio\nAnalyses Run:\n0\nActive Briefs:\n0\nDrafts:\n0\nSocial Media Overview\n\nNo social posts have been generated yet. Instagram analytics ready.",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "navLinks": [
+      "Dashboard",
+      "Research",
+      "SEO",
+      "Content",
+      "Calendar",
+      "Analytics",
+      "Sources",
+      "AI Assistant",
+      "Settings"
+    ],
+    "unlabelledInputs": 1,
+    "unlabelledButtons": 1,
+    "overflow": []
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/sources",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "errors": [],
+    "failed": [],
+    "title": "AI Marketing & SEO Assistant",
+    "text": "AI Marketing\nDashboard\nResearch\nSEO\nContent\nCalendar\nAnalytics\nSources\nAI Assistant\nSettings\nVI\nViewer modified workspace\nNotifications\nResearch Sources\n\nManage RSS/Atom feeds and other sources for research collection.\n\nSync All Active\n+ Add Source\n\nNo sources configured yet.\n\nAdd an RSS or Atom feed URL. The research engine will automatically collect and analyze articles from active sources.\n\n+ Add your first source",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "navLinks": [
+      "Dashboard",
+      "Research",
+      "SEO",
+      "Content",
+      "Calendar",
+      "Analytics",
+      "Sources",
+      "AI Assistant",
+      "Settings"
+    ],
+    "unlabelledInputs": 0,
+    "unlabelledButtons": 1,
+    "overflow": []
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/agent",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "errors": [
+      "destroy is not a function",
+      "destroy is not a function",
+      "destroy is not a function",
+      "destroy is not a function",
+      "destroy is not a function",
+      "destroy is not a function",
+      "destroy is not a function",
+      "destroy is not a function",
+      "destroy is not a function",
+      "destroy is not a function",
+      "destroy is not a function",
+      "destroy is not a function",
+      "destroy is not a function",
+      "destroy is not a function",
+      "destroy is not a function",
+      "destroy is not a function"
+    ],
+    "failed": [],
+    "title": "",
+    "text": "",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "navLinks": [],
+    "unlabelledInputs": 0,
+    "unlabelledButtons": 0,
+    "overflow": []
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/settings",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "error": "page.goto: net::ERR_ABORTED at http://localhost:3000/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/settings\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/settings\", waiting until \"networkidle\"\u001b[22m\n"
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/brand-profile",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "errors": [],
+    "failed": [],
+    "title": "AI Marketing & SEO Assistant",
+    "text": "AI Marketing\nDashboard\nResearch\nSEO\nContent\nCalendar\nAnalytics\nSources\nAI Assistant\nSettings\nVI\nViewer modified workspace\nNotifications\nBrand Profile\nBusiness Name\nDescription\nTarget Audience\nLocation\nTone of Voice\nLanguage\nIndustry\nServices\nWebsite\nSave Brand Profile",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "navLinks": [
+      "Dashboard",
+      "Research",
+      "SEO",
+      "Content",
+      "Calendar",
+      "Analytics",
+      "Sources",
+      "AI Assistant",
+      "Settings"
+    ],
+    "unlabelledInputs": 9,
+    "unlabelledButtons": 1,
+    "overflow": []
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/reports",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "errors": [],
+    "failed": [],
+    "title": "AI Marketing & SEO Assistant",
+    "text": "AI Marketing\nDashboard\nResearch\nSEO\nContent\nCalendar\nAnalytics\nSources\nAI Assistant\nSettings\nVI\nViewer modified workspace\nNotifications\nAI Performance Reports\n\nDeep analysis of your content and SEO telemetry to uncover actionable patterns.\n\nGenerate New Report\n\nNo AI reports have been generated yet.\n\nGenerate your first report",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "navLinks": [
+      "Dashboard",
+      "Research",
+      "SEO",
+      "Content",
+      "Calendar",
+      "Analytics",
+      "Sources",
+      "AI Assistant",
+      "Settings"
+    ],
+    "unlabelledInputs": 0,
+    "unlabelledButtons": 1,
+    "overflow": []
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo-audit",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "errors": [],
+    "failed": [],
+    "title": "AI Marketing & SEO Assistant",
+    "text": "AI Marketing\nDashboard\nResearch\nSEO\nContent\nCalendar\nAnalytics\nSources\nAI Assistant\nSettings\nVI\nViewer modified workspace\nNotifications\nTechnical SEO Audit\n\nRun a local on-page crawler to analyze basic technical SEO factors like broken links, metadata, and headings. This is a crawler-based technical audit and does not replace Google Search Console data.\n\nNote: Crawl limits are restricted for the free tier. Exact search volumes and competitor metrics are not available.\nStart New Audit\nBase URL\nMax Pages (Max 100)\nMax Depth (Max 5)\nRun Audit\nPast Audits\n\nNo audits found.\n\nSelect an audit from the list to view details",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "navLinks": [
+      "Dashboard",
+      "Research",
+      "SEO",
+      "Content",
+      "Calendar",
+      "Analytics",
+      "Sources",
+      "AI Assistant",
+      "Settings"
+    ],
+    "unlabelledInputs": 3,
+    "unlabelledButtons": 1,
+    "overflow": []
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/automations",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "errors": [],
+    "failed": [],
+    "title": "AI Marketing & SEO Assistant",
+    "text": "AI Marketing\nDashboard\nResearch\nSEO\nContent\nCalendar\nAnalytics\nSources\nAI Assistant\nSettings\nVI\nViewer modified workspace\nNotifications\nWorkflows & Automations\n\nManage scheduled n8n workflows and background syncs for this workspace.\n\nNote on Webhooks: You can trigger any of these automations securely from your n8n instance by sending a POST request to /internal/automation/webhook with {\"workspaceId\": \"c21eaae9-e1e2-444e-89ca-e408312f35ed\", \"type\": \"workflow-type\"} in the body, and your N8N_WEBHOOK_SECRET in the x-n8n-webhook-secret header.\nWeekly GSC Sync\ngsc-sync\nSCHEDULE\nCron: 0 0 * * 0\nLAST RUN\nfailed (08/10/2026)\nRun Now\nWeekly SEO Audit\nseo-audit\nSCHEDULE\nCron: 0 1 * * 0\nLAST RUN\ncompleted (08/10/2026)\nRun Now\nWeekly Performance Report\nperformance-report\nSCHEDULE\nCron: 0 8 * * 1\nLAST RUN\ncompleted (08/10/2026)\nRun Now\nSEO Opportunity Detection\nopportunity-detection\nSCHEDULE\nCron: 0 9 * * 1\nLAST RUN\ncompleted (08/10/2026)\nRun Now",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "navLinks": [
+      "Dashboard",
+      "Research",
+      "SEO",
+      "Content",
+      "Calendar",
+      "Analytics",
+      "Sources",
+      "AI Assistant",
+      "Settings"
+    ],
+    "unlabelledInputs": 0,
+    "unlabelledButtons": 1,
+    "overflow": []
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo-opportunities",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "errors": [],
+    "failed": [],
+    "title": "AI Marketing & SEO Assistant",
+    "text": "AI Marketing\nDashboard\nResearch\nSEO\nContent\nCalendar\nAnalytics\nSources\nAI Assistant\nSettings\nVI\nViewer modified workspace\nNotifications\nSEO Opportunities\n\nActionable insights from your Search Console metrics.\n\nRun GSC Analysis (Mock Data)\nAll Types\nLow CTR\nPage Optimization\n\nNo SEO opportunities found.\n\nAnalyze recent metrics",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "navLinks": [
+      "Dashboard",
+      "Research",
+      "SEO",
+      "Content",
+      "Calendar",
+      "Analytics",
+      "Sources",
+      "AI Assistant",
+      "Settings"
+    ],
+    "unlabelledInputs": 2,
+    "unlabelledButtons": 1,
+    "overflow": []
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo-links",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "errors": [],
+    "failed": [
+      {
+        "url": "http://localhost:3001/api/workspaces/$%7Bparams.workspaceId%7D/seo/links/summary",
+        "status": 404
+      },
+      {
+        "url": "http://localhost:3001/api/workspaces/$%7Bparams.workspaceId%7D/seo/links/internal",
+        "status": 404
+      },
+      {
+        "url": "http://localhost:3001/api/workspaces/$%7Bparams.workspaceId%7D/seo/links/external",
+        "status": 404
+      },
+      {
+        "url": "http://localhost:3001/api/workspaces/$%7Bparams.workspaceId%7D/seo/links/orphans",
+        "status": 404
+      },
+      {
+        "url": "http://localhost:3001/api/workspaces/$%7Bparams.workspaceId%7D/seo/links/broken",
+        "status": 404
+      },
+      {
+        "url": "http://localhost:3001/api/workspaces/$%7Bparams.workspaceId%7D/seo/backlinks",
+        "status": 404
+      },
+      {
+        "url": "http://localhost:3001/api/workspaces/$%7Bparams.workspaceId%7D/seo/links/summary",
+        "status": 404
+      },
+      {
+        "url": "http://localhost:3001/api/workspaces/$%7Bparams.workspaceId%7D/seo/links/external",
+        "status": 404
+      },
+      {
+        "url": "http://localhost:3001/api/workspaces/$%7Bparams.workspaceId%7D/seo/links/internal",
+        "status": 404
+      },
+      {
+        "url": "http://localhost:3001/api/workspaces/$%7Bparams.workspaceId%7D/seo/links/orphans",
+        "status": 404
+      },
+      {
+        "url": "http://localhost:3001/api/workspaces/$%7Bparams.workspaceId%7D/seo/links/broken",
+        "status": 404
+      },
+      {
+        "url": "http://localhost:3001/api/workspaces/$%7Bparams.workspaceId%7D/seo/backlinks",
+        "status": 404
+      }
+    ],
+    "title": "AI Marketing & SEO Assistant",
+    "text": "AI Marketing\nDashboard\nResearch\nSEO\nContent\nCalendar\nAnalytics\nSources\nAI Assistant\nSettings\nVI\nViewer modified workspace\nNotifications\nLink Intelligence\n\nAnalyze internal linking structure and outbound links discovered from your most recent Technical SEO Audit.\n\nLimitation: Complete backlink discovery (sites linking TO you) is not available with the free architecture. Google Search Console and our crawler can only discover links originating from your own pages or data provided via API.\n0\nINTERNAL LINKS\n0\nOUTBOUND EXTERNAL\n0\nBROKEN PAGES\n0\nPOTENTIAL ORPHANS\nInternal Links\nSource URL\tTarget URL\tAnchor\tAttributes\nNo internal links found\nOutbound External Links\nSource URL\tTarget Domain\tAnchor\tAttributes\nNo external links found\nPotential Orphan Pages\n\nThese pages were crawled but no internal inbound links were found pointing to them.\n\nURL\nNo orphan pages detected\nBacklinks (External Inbound)\n\nSource: Free Architecture",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "navLinks": [
+      "Dashboard",
+      "Research",
+      "SEO",
+      "Content",
+      "Calendar",
+      "Analytics",
+      "Sources",
+      "AI Assistant",
+      "Settings"
+    ],
+    "unlabelledInputs": 0,
+    "unlabelledButtons": 1,
+    "overflow": []
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/social",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "errors": [],
+    "failed": [],
+    "title": "AI Marketing & SEO Assistant",
+    "text": "AI Marketing\nDashboard\nResearch\nSEO\nContent\nCalendar\nAnalytics\nSources\nAI Assistant\nSettings\nVI\nViewer modified workspace\nNotifications\nInstagram Analytics\n\nConnect your Instagram Professional account to import and analyze content.\n\nInstagram Not Connected\n\nYou need to connect an Instagram Professional account to view analytics.\n\nGo to Settings",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "navLinks": [
+      "Dashboard",
+      "Research",
+      "SEO",
+      "Content",
+      "Calendar",
+      "Analytics",
+      "Sources",
+      "AI Assistant",
+      "Settings"
+    ],
+    "unlabelledInputs": 0,
+    "unlabelledButtons": 1,
+    "overflow": []
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo-studio",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "errors": [],
+    "failed": [
+      {
+        "url": "http://localhost:3001/api/workspaces/$%7Bparams.workspaceId%7D/seo/content-briefs",
+        "status": 500
+      },
+      {
+        "url": "http://localhost:3001/api/workspaces/$%7Bparams.workspaceId%7D/seo/content-briefs",
+        "status": 500
+      }
+    ],
+    "title": "AI Marketing & SEO Assistant",
+    "text": "AI Marketing\nDashboard\nResearch\nSEO\nContent\nCalendar\nAnalytics\nSources\nAI Assistant\nSettings\nVI\nViewer modified workspace\nNotifications\nSEO Content Studio\n\nGenerate SEO-optimized content briefs and drafts using existing audit and keyword data.\n\nImportant: AI-generated content is a drafting aid, not a guarantee of search rankings. All content requires human review and approval.\nContent Briefs\nCreate Brief\nSelect or create a brief to view details.\nContent Editor\nNo draft available.",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "navLinks": [
+      "Dashboard",
+      "Research",
+      "SEO",
+      "Content",
+      "Calendar",
+      "Analytics",
+      "Sources",
+      "AI Assistant",
+      "Settings"
+    ],
+    "unlabelledInputs": 1,
+    "unlabelledButtons": 1,
+    "overflow": []
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/keyword-research",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "errors": [],
+    "failed": [],
+    "title": "AI Marketing & SEO Assistant",
+    "text": "AI Marketing\nDashboard\nResearch\nSEO\nContent\nCalendar\nAnalytics\nSources\nAI Assistant\nSettings\nVI\nViewer modified workspace\nNotifications\nKeyword Research\n\nFree keyword insights powered by Google Autocomplete & Google Trends.No paid APIs. No fake search volumes.\n\nUS\nIndia\nUK\nAustralia\nCanada\nResearch",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "navLinks": [
+      "Dashboard",
+      "Research",
+      "SEO",
+      "Content",
+      "Calendar",
+      "Analytics",
+      "Sources",
+      "AI Assistant",
+      "Settings"
+    ],
+    "unlabelledInputs": 2,
+    "unlabelledButtons": 1,
+    "overflow": []
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo-content",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "errors": [],
+    "failed": [
+      {
+        "url": "http://localhost:3001/api/workspaces/$%7Bparams.workspaceId%7D/seo/content/analyses",
+        "status": 500
+      },
+      {
+        "url": "http://localhost:3001/api/workspaces/$%7Bparams.workspaceId%7D/seo/content/analyses",
+        "status": 500
+      }
+    ],
+    "title": "AI Marketing & SEO Assistant",
+    "text": "AI Marketing\nDashboard\nResearch\nSEO\nContent\nCalendar\nAnalytics\nSources\nAI Assistant\nSettings\nVI\nViewer modified workspace\nNotifications\nSEO Content Optimizer\n\nAI-assisted content optimization using your local technical audit and search console data.\n\nWorkflow: This tool provides recommendations based on available crawl data. It does not automatically apply changes to your website. You must review and approve all AI suggestions.\nAnalyze Page\nTarget URL *\nPrimary Keyword *\nSecondary Keywords (comma separated)\nSearch Intent\nAuto-detect\nInformational\nTransactional\nCommercial\nNavigational\nRun Analysis\nPast Analyses\n\nNo analyses found.\n\nSelect an analysis from the list to view recommendations",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "navLinks": [
+      "Dashboard",
+      "Research",
+      "SEO",
+      "Content",
+      "Calendar",
+      "Analytics",
+      "Sources",
+      "AI Assistant",
+      "Settings"
+    ],
+    "unlabelledInputs": 4,
+    "unlabelledButtons": 1,
+    "overflow": []
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/search-console",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "errors": [],
+    "failed": [],
+    "title": "AI Marketing & SEO Assistant",
+    "text": "AI Marketing\nDashboard\nResearch\nSEO\nContent\nCalendar\nAnalytics\nSources\nAI Assistant\nSettings\nVI\nViewer modified workspace\nNotifications\nGoogle Search Console Integration\n\nConnect your website to import SEO metrics and generate actionable opportunities.\n\nConnect Google Account\n\nAuthorize this application to read your Search Console data. We only request read-only permissions.\n\nSign in with Google",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "navLinks": [
+      "Dashboard",
+      "Research",
+      "SEO",
+      "Content",
+      "Calendar",
+      "Analytics",
+      "Sources",
+      "AI Assistant",
+      "Settings"
+    ],
+    "unlabelledInputs": 0,
+    "unlabelledButtons": 1,
+    "overflow": []
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/content/new",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "errors": [],
+    "failed": [],
+    "title": "AI Marketing & SEO Assistant",
+    "text": "AI Marketing\nDashboard\nResearch\nSEO\nContent\nCalendar\nAnalytics\nSources\nAI Assistant\nSettings\nVI\nViewer modified workspace\nNotifications\nCreate Content Pack\nTopic\nTarget Audience\nPlatform\nLinkedIn\nInstagram\nFacebook\nYouTube\nBlog\nGoogle Business Profile\n\nAI will automatically construct the rest of the pack based on these inputs.\n\n✨ Generate",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "navLinks": [
+      "Dashboard",
+      "Research",
+      "SEO",
+      "Content",
+      "Calendar",
+      "Analytics",
+      "Sources",
+      "AI Assistant",
+      "Settings"
+    ],
+    "unlabelledInputs": 3,
+    "unlabelledButtons": 1,
+    "overflow": []
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/content/bf3e4d24-017b-4213-a6ab-c391283edee8",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "errors": [],
+    "failed": [],
+    "title": "AI Marketing & SEO Assistant",
+    "text": "AI Marketing\nDashboard\nResearch\nSEO\nContent\nCalendar\nAnalytics\nSources\nAI Assistant\nSettings\nVI\nViewer modified workspace\nNotifications\n← Back to list\nFixture only\nLinkedIn\nRegenerate AI\nSave Draft\nSubmit for Approval\nDelete\nAUDIENCE\nOBJECTIVE\nPRIMARY KEYWORD\nHook\nMain Caption / Body\nCall to Action (CTA)\nHashtags\nVisual Direction",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "navLinks": [
+      "Dashboard",
+      "Research",
+      "SEO",
+      "Content",
+      "Calendar",
+      "Analytics",
+      "Sources",
+      "AI Assistant",
+      "Settings"
+    ],
+    "unlabelledInputs": 8,
+    "unlabelledButtons": 1,
+    "overflow": []
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "errors": [],
+    "failed": [],
+    "title": "AI Marketing & SEO Assistant",
+    "text": "VI\nViewer modified workspace\nNotifications\nDashboard\n+ New Content Idea\nResearch Ideas\n0\nDraft Content\n0\nPending Approvals\n0\nScheduled Posts\n0\nRecent Activity\nNo data found\n\nGet started by setting up your brand profile and research sources.\n\nSetup Brand Profile",
+    "width": 390,
+    "scrollWidth": 390,
+    "navLinks": [],
+    "unlabelledInputs": 0,
+    "unlabelledButtons": 1,
+    "overflow": []
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/research",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "errors": [],
+    "failed": [],
+    "title": "AI Marketing & SEO Assistant",
+    "text": "VI\nViewer modified workspace\nNotifications\nResearch Engine\n\nIndustry monitoring and AI analysis of your configured sources.\n\nSync Sources Now\nAll sources\nAny confidence\n≥ 80%\n≥ 60%\n≥ 40%\n–\n\nNo research items collected yet.\n\nAdd RSS/Atom sources in the Sources page, then click Sync Sources Now.\n\nRun a sync",
+    "width": 390,
+    "scrollWidth": 390,
+    "navLinks": [],
+    "unlabelledInputs": 5,
+    "unlabelledButtons": 1,
+    "overflow": []
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "errors": [],
+    "failed": [],
+    "title": "AI Marketing & SEO Assistant",
+    "text": "VI\nViewer modified workspace\nNotifications\nSEO Tools\n\nPowered by Local Free Tools\n\nService Status:\nOK\nKeyword Research\nAnalyze\nSite Audit\nRun Audit",
+    "width": 390,
+    "scrollWidth": 390,
+    "navLinks": [],
+    "unlabelledInputs": 2,
+    "unlabelledButtons": 1,
+    "overflow": []
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/content",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "errors": [],
+    "failed": [],
+    "title": "AI Marketing & SEO Assistant",
+    "text": "VI\nViewer modified workspace\nNotifications\nContent Packs\n+ Create Content Pack\nLinkedIn\nSCHEDULED\nFixture only\n\n08/10/2026",
+    "width": 390,
+    "scrollWidth": 390,
+    "navLinks": [],
+    "unlabelledInputs": 0,
+    "unlabelledButtons": 1,
+    "overflow": []
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/calendar",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "errors": [],
+    "failed": [],
+    "title": "AI Marketing & SEO Assistant",
+    "text": "VI\nViewer modified workspace\nNotifications\nContent Calendar\n\nSchedule and manage your approval workflow.\n\nList\nWeek\nMonth\nCONTENT\tPLATFORM\tSTATUS\tSCHEDULED DATE\tACTIONS\nFixture only\tLinkedIn\t\nDRAFT\nIN REVIEW\nAPPROVED\nSCHEDULED\nPUBLISHED\nREJECTED\n\t\tOpen Content",
+    "width": 390,
+    "scrollWidth": 390,
+    "navLinks": [],
+    "unlabelledInputs": 2,
+    "unlabelledButtons": 1,
+    "overflow": [
+      {
+        "tag": "TABLE",
+        "text": "ContentPlatformStatusScheduled DateActionsFixture onlyLinkedInDRAFTIN ",
+        "right": 799.296875
+      },
+      {
+        "tag": "THEAD",
+        "text": "ContentPlatformStatusScheduled DateActions",
+        "right": 799.296875
+      },
+      {
+        "tag": "TR",
+        "text": "ContentPlatformStatusScheduled DateActions",
+        "right": 799.296875
+      },
+      {
+        "tag": "TH",
+        "text": "Status",
+        "right": 434.15625
+      },
+      {
+        "tag": "TH",
+        "text": "Scheduled Date",
+        "right": 684.15625
+      },
+      {
+        "tag": "TH",
+        "text": "Actions",
+        "right": 799.296875
+      },
+      {
+        "tag": "TBODY",
+        "text": "Fixture onlyLinkedInDRAFTIN REVIEWAPPROVEDSCHEDULEDPUBLISHEDREJECTEDOp",
+        "right": 799.296875
+      },
+      {
+        "tag": "TR",
+        "text": "Fixture onlyLinkedInDRAFTIN REVIEWAPPROVEDSCHEDULEDPUBLISHEDREJECTEDOp",
+        "right": 799.296875
+      },
+      {
+        "tag": "TD",
+        "text": "DRAFTIN REVIEWAPPROVEDSCHEDULEDPUBLISHEDREJECTED",
+        "right": 434.15625
+      },
+      {
+        "tag": "SELECT",
+        "text": "DRAFTIN REVIEWAPPROVEDSCHEDULEDPUBLISHEDREJECTED",
+        "right": 410.15625
+      }
+    ]
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/analytics",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "errors": [],
+    "failed": [],
+    "title": "AI Marketing & SEO Assistant",
+    "text": "VI\nViewer modified workspace\nNotifications\nAnalytics & Performance\n\nComprehensive overview of your workspace performance.\n\nLast 7 days\nLast 28 days\nLast 30 days\nLast 90 days\nGenerate Local AI Insights\n\nPowered by Ollama — runs locally, zero API cost.\n\nNo SEO data available for this date range.\nTop Keywords\n\nNo data\n\nSEO Opportunities\n\nNo immediate opportunities detected.\n\nTechnical SEO\n\nNo audit data\n\nLink Intelligence\n\nNo link data\n\nContent Studio\nAnalyses Run:\n0\nActive Briefs:\n0\nDrafts:\n0\nSocial Media Overview\n\nNo social posts have been generated yet. Instagram analytics ready.",
+    "width": 390,
+    "scrollWidth": 390,
+    "navLinks": [],
+    "unlabelledInputs": 1,
+    "unlabelledButtons": 1,
+    "overflow": []
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/sources",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "errors": [],
+    "failed": [],
+    "title": "AI Marketing & SEO Assistant",
+    "text": "VI\nViewer modified workspace\nNotifications\nResearch Sources\n\nManage RSS/Atom feeds and other sources for research collection.\n\nSync All Active\n+ Add Source\n\nNo sources configured yet.\n\nAdd an RSS or Atom feed URL. The research engine will automatically collect and analyze articles from active sources.\n\n+ Add your first source",
+    "width": 390,
+    "scrollWidth": 390,
+    "navLinks": [],
+    "unlabelledInputs": 0,
+    "unlabelledButtons": 1,
+    "overflow": []
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/agent",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "errors": [
+      "destroy is not a function",
+      "destroy is not a function",
+      "destroy is not a function",
+      "destroy is not a function",
+      "destroy is not a function",
+      "destroy is not a function",
+      "destroy is not a function",
+      "destroy is not a function",
+      "destroy is not a function",
+      "destroy is not a function",
+      "destroy is not a function",
+      "destroy is not a function",
+      "destroy is not a function",
+      "destroy is not a function",
+      "destroy is not a function",
+      "destroy is not a function"
+    ],
+    "failed": [],
+    "title": "",
+    "text": "",
+    "width": 390,
+    "scrollWidth": 390,
+    "navLinks": [],
+    "unlabelledInputs": 0,
+    "unlabelledButtons": 0,
+    "overflow": []
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/settings",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "errors": [],
+    "failed": [],
+    "title": "AI Marketing & SEO Assistant",
+    "text": "VI\nViewer modified workspace\nNotifications\nWorkspace Settings\nWorkspace Name\nWorkspace Type\nMarketing\nE-commerce\nSaaS\nLocal Business\nSave Settings",
+    "width": 390,
+    "scrollWidth": 390,
+    "navLinks": [],
+    "unlabelledInputs": 2,
+    "unlabelledButtons": 1,
+    "overflow": []
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/brand-profile",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "errors": [],
+    "failed": [],
+    "title": "AI Marketing & SEO Assistant",
+    "text": "VI\nViewer modified workspace\nNotifications\nBrand Profile\nBusiness Name\nDescription\nTarget Audience\nLocation\nTone of Voice\nLanguage\nIndustry\nServices\nWebsite\nSave Brand Profile",
+    "width": 390,
+    "scrollWidth": 390,
+    "navLinks": [],
+    "unlabelledInputs": 9,
+    "unlabelledButtons": 1,
+    "overflow": []
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/reports",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "errors": [],
+    "failed": [],
+    "title": "AI Marketing & SEO Assistant",
+    "text": "VI\nViewer modified workspace\nNotifications\nAI Performance Reports\n\nDeep analysis of your content and SEO telemetry to uncover actionable patterns.\n\nGenerate New Report\n\nNo AI reports have been generated yet.\n\nGenerate your first report",
+    "width": 390,
+    "scrollWidth": 390,
+    "navLinks": [],
+    "unlabelledInputs": 0,
+    "unlabelledButtons": 1,
+    "overflow": []
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo-audit",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "errors": [],
+    "failed": [],
+    "title": "AI Marketing & SEO Assistant",
+    "text": "VI\nViewer modified workspace\nNotifications\nTechnical SEO Audit\n\nRun a local on-page crawler to analyze basic technical SEO factors like broken links, metadata, and headings. This is a crawler-based technical audit and does not replace Google Search Console data.\n\nNote: Crawl limits are restricted for the free tier. Exact search volumes and competitor metrics are not available.\nStart New Audit\nBase URL\nMax Pages (Max 100)\nMax Depth (Max 5)\nRun Audit\nPast Audits\n\nNo audits found.\n\nSelect an audit from the list to view details",
+    "width": 390,
+    "scrollWidth": 390,
+    "navLinks": [],
+    "unlabelledInputs": 3,
+    "unlabelledButtons": 1,
+    "overflow": []
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/automations",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "errors": [],
+    "failed": [],
+    "title": "AI Marketing & SEO Assistant",
+    "text": "VI\nViewer modified workspace\nNotifications\nWorkflows & Automations\n\nManage scheduled n8n workflows and background syncs for this workspace.\n\nNote on Webhooks: You can trigger any of these automations securely from your n8n instance by sending a POST request to /internal/automation/webhook with {\"workspaceId\": \"c21eaae9-e1e2-444e-89ca-e408312f35ed\", \"type\": \"workflow-type\"} in the body, and your N8N_WEBHOOK_SECRET in the x-n8n-webhook-secret header.\nWeekly GSC Sync\ngsc-sync\nSCHEDULE\nCron: 0 0 * * 0\nLAST RUN\nfailed (08/10/2026)\nRun Now\nWeekly SEO Audit\nseo-audit\nSCHEDULE\nCron: 0 1 * * 0\nLAST RUN\ncompleted (08/10/2026)\nRun Now\nWeekly Performance Report\nperformance-report\nSCHEDULE\nCron: 0 8 * * 1\nLAST RUN\ncompleted (08/10/2026)\nRun Now\nSEO Opportunity Detection\nopportunity-detection\nSCHEDULE\nCron: 0 9 * * 1\nLAST RUN\ncompleted (08/10/2026)\nRun Now",
+    "width": 390,
+    "scrollWidth": 390,
+    "navLinks": [],
+    "unlabelledInputs": 0,
+    "unlabelledButtons": 1,
+    "overflow": []
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo-opportunities",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "errors": [],
+    "failed": [],
+    "title": "AI Marketing & SEO Assistant",
+    "text": "VI\nViewer modified workspace\nNotifications\nSEO Opportunities\n\nActionable insights from your Search Console metrics.\n\nRun GSC Analysis (Mock Data)\nAll Types\nLow CTR\nPage Optimization\n\nNo SEO opportunities found.\n\nAnalyze recent metrics",
+    "width": 390,
+    "scrollWidth": 390,
+    "navLinks": [],
+    "unlabelledInputs": 2,
+    "unlabelledButtons": 1,
+    "overflow": []
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo-links",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "errors": [],
+    "failed": [
+      {
+        "url": "http://localhost:3001/api/workspaces/$%7Bparams.workspaceId%7D/seo/links/summary",
+        "status": 404
+      },
+      {
+        "url": "http://localhost:3001/api/workspaces/$%7Bparams.workspaceId%7D/seo/links/internal",
+        "status": 404
+      },
+      {
+        "url": "http://localhost:3001/api/workspaces/$%7Bparams.workspaceId%7D/seo/links/external",
+        "status": 404
+      },
+      {
+        "url": "http://localhost:3001/api/workspaces/$%7Bparams.workspaceId%7D/seo/links/orphans",
+        "status": 404
+      },
+      {
+        "url": "http://localhost:3001/api/workspaces/$%7Bparams.workspaceId%7D/seo/links/broken",
+        "status": 404
+      },
+      {
+        "url": "http://localhost:3001/api/workspaces/$%7Bparams.workspaceId%7D/seo/backlinks",
+        "status": 404
+      },
+      {
+        "url": "http://localhost:3001/api/workspaces/$%7Bparams.workspaceId%7D/seo/links/summary",
+        "status": 404
+      },
+      {
+        "url": "http://localhost:3001/api/workspaces/$%7Bparams.workspaceId%7D/seo/links/internal",
+        "status": 404
+      },
+      {
+        "url": "http://localhost:3001/api/workspaces/$%7Bparams.workspaceId%7D/seo/links/external",
+        "status": 404
+      },
+      {
+        "url": "http://localhost:3001/api/workspaces/$%7Bparams.workspaceId%7D/seo/links/orphans",
+        "status": 404
+      },
+      {
+        "url": "http://localhost:3001/api/workspaces/$%7Bparams.workspaceId%7D/seo/links/broken",
+        "status": 404
+      },
+      {
+        "url": "http://localhost:3001/api/workspaces/$%7Bparams.workspaceId%7D/seo/backlinks",
+        "status": 404
+      }
+    ],
+    "title": "AI Marketing & SEO Assistant",
+    "text": "VI\nViewer modified workspace\nNotifications\nLink Intelligence\n\nAnalyze internal linking structure and outbound links discovered from your most recent Technical SEO Audit.\n\nLimitation: Complete backlink discovery (sites linking TO you) is not available with the free architecture. Google Search Console and our crawler can only discover links originating from your own pages or data provided via API.\n0\nINTERNAL LINKS\n0\nOUTBOUND EXTERNAL\n0\nBROKEN PAGES\n0\nPOTENTIAL ORPHANS\nInternal Links\nSource URL\tTarget URL\tAnchor\tAttributes\nNo internal links found\nOutbound External Links\nSource URL\tTarget Domain\tAnchor\tAttributes\nNo external links found\nPotential Orphan Pages\n\nThese pages were crawled but no internal inbound links were found pointing to them.\n\nURL\nNo orphan pages detected\nBacklinks (External Inbound)\n\nSource: Free Architecture",
+    "width": 390,
+    "scrollWidth": 390,
+    "navLinks": [],
+    "unlabelledInputs": 0,
+    "unlabelledButtons": 1,
+    "overflow": []
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/social",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "errors": [],
+    "failed": [],
+    "title": "AI Marketing & SEO Assistant",
+    "text": "VI\nViewer modified workspace\nNotifications\nInstagram Analytics\n\nConnect your Instagram Professional account to import and analyze content.\n\nInstagram Not Connected\n\nYou need to connect an Instagram Professional account to view analytics.\n\nGo to Settings",
+    "width": 390,
+    "scrollWidth": 390,
+    "navLinks": [],
+    "unlabelledInputs": 0,
+    "unlabelledButtons": 1,
+    "overflow": []
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo-studio",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "errors": [],
+    "failed": [
+      {
+        "url": "http://localhost:3001/api/workspaces/$%7Bparams.workspaceId%7D/seo/content-briefs",
+        "status": 500
+      },
+      {
+        "url": "http://localhost:3001/api/workspaces/$%7Bparams.workspaceId%7D/seo/content-briefs",
+        "status": 500
+      }
+    ],
+    "title": "AI Marketing & SEO Assistant",
+    "text": "VI\nViewer modified workspace\nNotifications\nSEO Content Studio\n\nGenerate SEO-optimized content briefs and drafts using existing audit and keyword data.\n\nImportant: AI-generated content is a drafting aid, not a guarantee of search rankings. All content requires human review and approval.\nContent Briefs\nCreate Brief\nSelect or create a brief to view details.\nContent Editor\nNo draft available.",
+    "width": 390,
+    "scrollWidth": 390,
+    "navLinks": [],
+    "unlabelledInputs": 1,
+    "unlabelledButtons": 1,
+    "overflow": []
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/keyword-research",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "errors": [],
+    "failed": [],
+    "title": "AI Marketing & SEO Assistant",
+    "text": "VI\nViewer modified workspace\nNotifications\nKeyword Research\n\nFree keyword insights powered by Google Autocomplete & Google Trends.No paid APIs. No fake search volumes.\n\nUS\nIndia\nUK\nAustralia\nCanada\nResearch",
+    "width": 390,
+    "scrollWidth": 390,
+    "navLinks": [],
+    "unlabelledInputs": 2,
+    "unlabelledButtons": 1,
+    "overflow": []
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo-content",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "errors": [],
+    "failed": [
+      {
+        "url": "http://localhost:3001/api/workspaces/$%7Bparams.workspaceId%7D/seo/content/analyses",
+        "status": 500
+      },
+      {
+        "url": "http://localhost:3001/api/workspaces/$%7Bparams.workspaceId%7D/seo/content/analyses",
+        "status": 500
+      }
+    ],
+    "title": "AI Marketing & SEO Assistant",
+    "text": "VI\nViewer modified workspace\nNotifications\nSEO Content Optimizer\n\nAI-assisted content optimization using your local technical audit and search console data.\n\nWorkflow: This tool provides recommendations based on available crawl data. It does not automatically apply changes to your website. You must review and approve all AI suggestions.\nAnalyze Page\nTarget URL *\nPrimary Keyword *\nSecondary Keywords (comma separated)\nSearch Intent\nAuto-detect\nInformational\nTransactional\nCommercial\nNavigational\nRun Analysis\nPast Analyses\n\nNo analyses found.\n\nSelect an analysis from the list to view recommendations",
+    "width": 390,
+    "scrollWidth": 390,
+    "navLinks": [],
+    "unlabelledInputs": 4,
+    "unlabelledButtons": 1,
+    "overflow": []
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/search-console",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "errors": [],
+    "failed": [],
+    "title": "AI Marketing & SEO Assistant",
+    "text": "VI\nViewer modified workspace\nNotifications\nGoogle Search Console Integration\n\nConnect your website to import SEO metrics and generate actionable opportunities.\n\nConnect Google Account\n\nAuthorize this application to read your Search Console data. We only request read-only permissions.\n\nSign in with Google",
+    "width": 390,
+    "scrollWidth": 390,
+    "navLinks": [],
+    "unlabelledInputs": 0,
+    "unlabelledButtons": 1,
+    "overflow": []
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/content/new",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "errors": [],
+    "failed": [],
+    "title": "AI Marketing & SEO Assistant",
+    "text": "VI\nViewer modified workspace\nNotifications\nCreate Content Pack\nTopic\nTarget Audience\nPlatform\nLinkedIn\nInstagram\nFacebook\nYouTube\nBlog\nGoogle Business Profile\n\nAI will automatically construct the rest of the pack based on these inputs.\n\n✨ Generate",
+    "width": 390,
+    "scrollWidth": 390,
+    "navLinks": [],
+    "unlabelledInputs": 3,
+    "unlabelledButtons": 1,
+    "overflow": []
+  },
+  {
+    "test": "page",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/content/bf3e4d24-017b-4213-a6ab-c391283edee8",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "errors": [],
+    "failed": [],
+    "title": "AI Marketing & SEO Assistant",
+    "text": "VI\nViewer modified workspace\nNotifications\n← Back to list\nFixture only\nLinkedIn\nRegenerate AI\nSave Draft\nSubmit for Approval\nDelete\nAUDIENCE\nOBJECTIVE\nPRIMARY KEYWORD\nHook\nMain Caption / Body\nCall to Action (CTA)\nHashtags\nVisual Direction",
+    "width": 390,
+    "scrollWidth": 390,
+    "navLinks": [],
+    "unlabelledInputs": 8,
+    "unlabelledButtons": 1,
+    "overflow": []
+  },
+  {
+    "test": "Save Settings",
+    "calls": [],
+    "valueAfterReload": ""
+  },
+  {
+    "test": "Save Brand Profile",
+    "calls": [],
+    "valueAfterReload": ""
+  },
+  {
+    "test": "calendar month",
+    "underConstruction": true
+  }
+]

@@ -1,0 +1,296 @@
+register A 201
+register B 201
+duplicate registration 500
+bad login 500
+valid login 200
+invalid registration 500
+session 200
+create A 201
+create B 201
+create medical 201
+unauth POST /workspaces 500
+unauth GET /workspaces 500
+unauth GET /workspaces/:workspaceId 500
+nonmember GET /workspaces/:workspaceId 500
+unauth GET /workspaces/:workspaceId/stats 500
+nonmember GET /workspaces/:workspaceId/stats 500
+unauth PATCH /workspaces/:workspaceId 500
+nonmember PATCH /workspaces/:workspaceId 500
+unauth GET /workspaces/:workspaceId/integrations 500
+nonmember GET /workspaces/:workspaceId/integrations 500
+unauth GET /workspaces/:workspaceId/brand-profile 500
+nonmember GET /workspaces/:workspaceId/brand-profile 500
+unauth PUT /workspaces/:workspaceId/brand-profile 500
+nonmember PUT /workspaces/:workspaceId/brand-profile 500
+unauth POST /ai/test 500
+unauth POST /workspaces/:workspaceId/content-packs/generate 500
+nonmember POST /workspaces/:workspaceId/content-packs/generate 500
+unauth GET /workspaces/:workspaceId/content-packs 500
+nonmember GET /workspaces/:workspaceId/content-packs 500
+unauth GET /workspaces/:workspaceId/content-packs/:id 500
+nonmember GET /workspaces/:workspaceId/content-packs/:id 500
+unauth PUT /workspaces/:workspaceId/content-packs/:id 500
+nonmember PUT /workspaces/:workspaceId/content-packs/:id 500
+unauth DELETE /workspaces/:workspaceId/content-packs/:id 500
+nonmember DELETE /workspaces/:workspaceId/content-packs/:id 500
+unauth POST /workspaces/:workspaceId/sources 500
+nonmember POST /workspaces/:workspaceId/sources 500
+unauth GET /workspaces/:workspaceId/sources 500
+nonmember GET /workspaces/:workspaceId/sources 500
+unauth GET /workspaces/:workspaceId/sources/:id 500
+nonmember GET /workspaces/:workspaceId/sources/:id 500
+unauth PUT /workspaces/:workspaceId/sources/:id 500
+nonmember PUT /workspaces/:workspaceId/sources/:id 500
+unauth DELETE /workspaces/:workspaceId/sources/:id 500
+nonmember DELETE /workspaces/:workspaceId/sources/:id 500
+unauth GET /workspaces/:workspaceId/research 500
+nonmember GET /workspaces/:workspaceId/research 500
+unauth GET /workspaces/:workspaceId/research/:id 500
+nonmember GET /workspaces/:workspaceId/research/:id 500
+unauth POST /workspaces/:workspaceId/research/sync 500
+nonmember POST /workspaces/:workspaceId/research/sync 500
+unauth POST /workspaces/:workspaceId/research/:id/convert 500
+nonmember POST /workspaces/:workspaceId/research/:id/convert 500
+unauth GET /seo/keywords 500
+unauth POST /seo/audit 500
+unauth GET /seo/competitors 500
+unauth POST /seo/rank 500
+unauth GET /workspaces/:workspaceId/seo-opportunities 500
+nonmember GET /workspaces/:workspaceId/seo-opportunities 500
+unauth POST /workspaces/:workspaceId/seo-opportunities/analyze 500
+nonmember POST /workspaces/:workspaceId/seo-opportunities/analyze 500
+unauth POST /workspaces/:workspaceId/seo-opportunities/:id/convert 500
+nonmember POST /workspaces/:workspaceId/seo-opportunities/:id/convert 500
+unauth GET /workspaces/:workspaceId/gsc/auth-url 500
+nonmember GET /workspaces/:workspaceId/gsc/auth-url 500
+unauth GET /workspaces/:workspaceId/gsc/status 500
+nonmember GET /workspaces/:workspaceId/gsc/status 500
+unauth GET /workspaces/:workspaceId/gsc/properties 500
+nonmember GET /workspaces/:workspaceId/gsc/properties 500
+unauth POST /workspaces/:workspaceId/gsc/connect-property 500
+nonmember POST /workspaces/:workspaceId/gsc/connect-property 500
+unauth POST /workspaces/:workspaceId/gsc/sync 500
+nonmember POST /workspaces/:workspaceId/gsc/sync 500
+unauth GET /workspaces/:workspaceId/gsc/history/keyword 500
+nonmember GET /workspaces/:workspaceId/gsc/history/keyword 500
+unauth GET /workspaces/:workspaceId/gsc/history/property 500
+nonmember GET /workspaces/:workspaceId/gsc/history/property 500
+unauth GET /workspaces/:workspaceId/gsc/performance 500
+nonmember GET /workspaces/:workspaceId/gsc/performance 500
+unauth GET /workspaces/:workspaceId/gsc/top-queries 500
+nonmember GET /workspaces/:workspaceId/gsc/top-queries 500
+unauth GET /workspaces/:workspaceId/gsc/top-pages 500
+nonmember GET /workspaces/:workspaceId/gsc/top-pages 500
+unauth GET /workspaces/:workspaceId/analytics/overview 500
+nonmember GET /workspaces/:workspaceId/analytics/overview 500
+unauth GET /workspaces/:workspaceId/analytics/seo 500
+nonmember GET /workspaces/:workspaceId/analytics/seo 500
+unauth GET /workspaces/:workspaceId/analytics/keywords 500
+nonmember GET /workspaces/:workspaceId/analytics/keywords 500
+unauth GET /workspaces/:workspaceId/analytics/pages 500
+nonmember GET /workspaces/:workspaceId/analytics/pages 500
+unauth GET /workspaces/:workspaceId/analytics/opportunities 500
+nonmember GET /workspaces/:workspaceId/analytics/opportunities 500
+unauth GET /workspaces/:workspaceId/analytics/technical 500
+nonmember GET /workspaces/:workspaceId/analytics/technical 500
+unauth GET /workspaces/:workspaceId/analytics/links 500
+nonmember GET /workspaces/:workspaceId/analytics/links 500
+unauth GET /workspaces/:workspaceId/analytics/content 500
+nonmember GET /workspaces/:workspaceId/analytics/content 500
+unauth GET /workspaces/:workspaceId/analytics/social 500
+nonmember GET /workspaces/:workspaceId/analytics/social 500
+unauth POST /workspaces/:workspaceId/analytics/insights 500
+nonmember POST /workspaces/:workspaceId/analytics/insights 500
+unauth GET /workspaces/:workspaceId/reports 500
+nonmember GET /workspaces/:workspaceId/reports 500
+unauth GET /workspaces/:workspaceId/reports/:id 500
+nonmember GET /workspaces/:workspaceId/reports/:id 500
+unauth POST /workspaces/:workspaceId/reports/generate 500
+nonmember POST /workspaces/:workspaceId/reports/generate 500
+unauth POST /workspaces/:workspaceId/agent/chat 500
+nonmember POST /workspaces/:workspaceId/agent/chat 500
+unauth GET /workspaces/:workspaceId/automations 500
+nonmember GET /workspaces/:workspaceId/automations 500
+unauth POST /workspaces/:workspaceId/automations 500
+nonmember POST /workspaces/:workspaceId/automations 500
+unauth GET /workspaces/:workspaceId/automations/:automationId 500
+nonmember GET /workspaces/:workspaceId/automations/:automationId 500
+unauth PATCH /workspaces/:workspaceId/automations/:automationId 500
+nonmember PATCH /workspaces/:workspaceId/automations/:automationId 500
+unauth POST /workspaces/:workspaceId/automations/:automationId/run 500
+nonmember POST /workspaces/:workspaceId/automations/:automationId/run 500
+unauth GET /workspaces/:workspaceId/automations/:automationId/runs 500
+nonmember GET /workspaces/:workspaceId/automations/:automationId/runs 500
+unauth POST /workspaces/:workspaceId/seo/audits 500
+nonmember POST /workspaces/:workspaceId/seo/audits 500
+unauth GET /workspaces/:workspaceId/seo/audits 500
+nonmember GET /workspaces/:workspaceId/seo/audits 500
+unauth GET /workspaces/:workspaceId/seo/audits/:auditId 500
+nonmember GET /workspaces/:workspaceId/seo/audits/:auditId 500
+unauth GET /workspaces/:workspaceId/seo/audits/links/summary 500
+nonmember GET /workspaces/:workspaceId/seo/audits/links/summary 500
+unauth GET /workspaces/:workspaceId/seo/audits/links/internal 500
+nonmember GET /workspaces/:workspaceId/seo/audits/links/internal 500
+unauth GET /workspaces/:workspaceId/seo/audits/links/external 500
+nonmember GET /workspaces/:workspaceId/seo/audits/links/external 500
+unauth GET /workspaces/:workspaceId/seo/audits/links/broken 500
+nonmember GET /workspaces/:workspaceId/seo/audits/links/broken 500
+unauth GET /workspaces/:workspaceId/seo/audits/links/orphans 500
+nonmember GET /workspaces/:workspaceId/seo/audits/links/orphans 500
+unauth GET /workspaces/:workspaceId/seo/audits/links/sitemap 500
+nonmember GET /workspaces/:workspaceId/seo/audits/links/sitemap 500
+unauth GET /workspaces/:workspaceId/seo/audits/backlinks 500
+nonmember GET /workspaces/:workspaceId/seo/audits/backlinks 500
+unauth POST /workspaces/:workspaceId/seo/content/analyze 500
+nonmember POST /workspaces/:workspaceId/seo/content/analyze 500
+unauth GET /workspaces/:workspaceId/seo/content/analyses 500
+nonmember GET /workspaces/:workspaceId/seo/content/analyses 500
+unauth GET /workspaces/:workspaceId/seo/content/analyses/:analysisId 500
+nonmember GET /workspaces/:workspaceId/seo/content/analyses/:analysisId 500
+unauth POST /workspaces/:workspaceId/seo/content/analyses/:analysisId/reanalyze 500
+nonmember POST /workspaces/:workspaceId/seo/content/analyses/:analysisId/reanalyze 500
+unauth POST /workspaces/:workspaceId/seo/content-briefs 500
+nonmember POST /workspaces/:workspaceId/seo/content-briefs 500
+unauth GET /workspaces/:workspaceId/seo/content-briefs 500
+nonmember GET /workspaces/:workspaceId/seo/content-briefs 500
+unauth GET /workspaces/:workspaceId/seo/content-briefs/:briefId 500
+nonmember GET /workspaces/:workspaceId/seo/content-briefs/:briefId 500
+unauth POST /workspaces/:workspaceId/seo/content-briefs/:briefId/generate-draft 500
+nonmember POST /workspaces/:workspaceId/seo/content-briefs/:briefId/generate-draft 500
+unauth GET /workspaces/:workspaceId/seo/content-briefs/:briefId/drafts 500
+nonmember GET /workspaces/:workspaceId/seo/content-briefs/:briefId/drafts 500
+unauth GET /workspaces/:workspaceId/seo/content-drafts/:draftId 500
+nonmember GET /workspaces/:workspaceId/seo/content-drafts/:draftId 500
+unauth PATCH /workspaces/:workspaceId/seo/content-drafts/:draftId 500
+nonmember PATCH /workspaces/:workspaceId/seo/content-drafts/:draftId 500
+unauth POST /workspaces/:workspaceId/seo/content-drafts/:draftId/regenerate-section 500
+nonmember POST /workspaces/:workspaceId/seo/content-drafts/:draftId/regenerate-section 500
+unauth GET /workspaces/:workspaceId/social/instagram/auth-url 500
+nonmember GET /workspaces/:workspaceId/social/instagram/auth-url 500
+unauth GET /workspaces/:workspaceId/social/instagram/status 500
+nonmember GET /workspaces/:workspaceId/social/instagram/status 500
+unauth POST /workspaces/:workspaceId/social/instagram/sync 500
+nonmember POST /workspaces/:workspaceId/social/instagram/sync 500
+unauth GET /workspaces/:workspaceId/social/instagram/top-content 500
+nonmember GET /workspaces/:workspaceId/social/instagram/top-content 500
+unauth GET /workspaces/:workspaceId/social/instagram/insights 500
+nonmember GET /workspaces/:workspaceId/social/instagram/insights 500
+unauth POST /workspaces/:workspaceId/social/instagram/analyze 500
+nonmember POST /workspaces/:workspaceId/social/instagram/analyze 500
+unauth POST /workspaces/:workspaceId/social/instagram/disconnect 500
+nonmember POST /workspaces/:workspaceId/social/instagram/disconnect 500
+unauth GET /workspaces/:workspaceId/keyword-research 500
+nonmember GET /workspaces/:workspaceId/keyword-research 500
+unauth GET /workspaces/:workspaceId/keyword-research/suggestions 500
+nonmember GET /workspaces/:workspaceId/keyword-research/suggestions 500
+unauth GET /workspaces/:workspaceId/keyword-research/trends 500
+nonmember GET /workspaces/:workspaceId/keyword-research/trends 500
+unauth GET /workspaces/:workspaceId/keyword-research/related 500
+nonmember GET /workspaces/:workspaceId/keyword-research/related 500
+unauth GET /workspaces/:workspaceId/keyword-research/compare 500
+nonmember GET /workspaces/:workspaceId/keyword-research/compare 500
+member GET /workspaces/:workspaceId 200
+member GET /workspaces/:workspaceId/stats 200
+member GET /workspaces/:workspaceId/integrations 200
+member GET /workspaces/:workspaceId/brand-profile 500
+member GET /workspaces/:workspaceId/content-packs 200
+member GET /workspaces/:workspaceId/content-packs/:id 500
+member GET /workspaces/:workspaceId/sources 200
+member GET /workspaces/:workspaceId/sources/:id 500
+member GET /workspaces/:workspaceId/research 200
+member GET /workspaces/:workspaceId/research/:id 500
+member GET /workspaces/:workspaceId/seo-opportunities 200
+member GET /workspaces/:workspaceId/gsc/auth-url 200
+member GET /workspaces/:workspaceId/gsc/status 200
+member GET /workspaces/:workspaceId/gsc/properties 500
+member GET /workspaces/:workspaceId/gsc/history/keyword 200
+member GET /workspaces/:workspaceId/gsc/history/property 200
+member GET /workspaces/:workspaceId/gsc/performance 200
+member GET /workspaces/:workspaceId/gsc/top-queries 200
+member GET /workspaces/:workspaceId/gsc/top-pages 200
+member GET /workspaces/:workspaceId/analytics/overview 200
+member GET /workspaces/:workspaceId/analytics/seo 200
+member GET /workspaces/:workspaceId/analytics/keywords 200
+member GET /workspaces/:workspaceId/analytics/pages 200
+member GET /workspaces/:workspaceId/analytics/opportunities 200
+member GET /workspaces/:workspaceId/analytics/technical 200
+member GET /workspaces/:workspaceId/analytics/links 200
+member GET /workspaces/:workspaceId/analytics/content 200
+member GET /workspaces/:workspaceId/analytics/social 200
+member GET /workspaces/:workspaceId/reports 200
+member GET /workspaces/:workspaceId/reports/:id 200
+member GET /workspaces/:workspaceId/automations 200
+member GET /workspaces/:workspaceId/automations/:automationId 500
+member GET /workspaces/:workspaceId/automations/:automationId/runs 500
+member GET /workspaces/:workspaceId/seo/audits 200
+member GET /workspaces/:workspaceId/seo/audits/:auditId 500
+member GET /workspaces/:workspaceId/seo/audits/links/summary 200
+member GET /workspaces/:workspaceId/seo/audits/links/internal 200
+member GET /workspaces/:workspaceId/seo/audits/links/external 200
+member GET /workspaces/:workspaceId/seo/audits/links/broken 200
+member GET /workspaces/:workspaceId/seo/audits/links/orphans 200
+member GET /workspaces/:workspaceId/seo/audits/links/sitemap 200
+member GET /workspaces/:workspaceId/seo/audits/backlinks 500
+member GET /workspaces/:workspaceId/seo/content/analyses 200
+member GET /workspaces/:workspaceId/seo/content/analyses/:analysisId 500
+member GET /workspaces/:workspaceId/seo/content-briefs 200
+member GET /workspaces/:workspaceId/seo/content-briefs/:briefId 500
+member GET /workspaces/:workspaceId/seo/content-briefs/:briefId/drafts 200
+member GET /workspaces/:workspaceId/seo/content-drafts/:draftId 500
+member GET /workspaces/:workspaceId/social/instagram/auth-url 500
+member GET /workspaces/:workspaceId/social/instagram/status 200
+member GET /workspaces/:workspaceId/social/instagram/top-content 200
+member GET /workspaces/:workspaceId/social/instagram/insights 200
+member GET /workspaces/:workspaceId/keyword-research 500
+member GET /workspaces/:workspaceId/keyword-research/suggestions 500
+member GET /workspaces/:workspaceId/keyword-research/trends 500
+member GET /workspaces/:workspaceId/keyword-research/related 500
+member GET /workspaces/:workspaceId/keyword-research/compare 500
+brand create 500
+brand read 500
+source create 201
+source duplicate 500
+source update 200
+cross tenant source read 500
+cross tenant source delete 500
+source invalid 500
+pack generation test-provider 500
+pack read 200
+reject schedule draft 500
+approve draft 200
+schedule approved 200
+medical reject direct approval 500
+medical arbitrary published status 200
+cross tenant pack read 500
+cross tenant pack DELETE 200
+viewer edits workspace 200
+viewer deletes source 204
+audit invalid payload 500
+analysis invalid payload 500
+brief invalid payload 500
+agent missing message 500
+agent chat test-provider 201
+conversations route 404
+n8n missing secret 500
+automation missing secret 500
+queue no signature /internal/queues/analytics/sync-gsc 500
+queue no signature /internal/queues/research/sync-workspace 500
+queue no signature /internal/queues/research/sync-all 500
+queue no signature /internal/queues/seo/analyze-metrics 500
+queue no signature /internal/queues/analytics/sync-all-gsc 500
+queue no signature /internal/queues/seo/audit-run 500
+public GSC callback guessed state 302
+GSC status after unauth callback 200
+connect property 201
+integrations view after GSC connect 200
+automation seed 201
+automation run gsc-sync 201
+automation runs gsc-sync 200
+automation run seo-audit 201
+automation runs seo-audit 200
+automation run performance-report 201
+automation runs performance-report 200
+automation run opportunity-detection 201
+automation runs opportunity-detection 200
+logout 200
+TOTAL 295 ASSERTION FAILURES 211

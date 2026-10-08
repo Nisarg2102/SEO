@@ -1,0 +1,31 @@
+services/seo/src/providers/technical-seo.provider.ts:123:      page.issues.push({ code: 'TITLE_LENGTH', severity: 'warning', title: 'Title Length', description: 'Title is outside 10-70 character range.', evidence: `Length: \${page.title.length}`, recommendation: 'Keep title between 10-70 characters.' });
+services/seo/src/providers/technical-seo.provider.ts:139:         page.issues.push({ code: 'MULTIPLE_H1', severity: 'info', title: 'Multiple H1', description: 'Page has multiple H1 tags.', evidence: `Found \${h1Count}`, recommendation: 'Consider using a single H1.' });
+services/seo/src/providers/technical-seo.provider.ts:212:      throw new Error(`Invalid base URL: \${(e as Error).message}`);
+services/seo/src/providers/technical-seo.provider.ts:280:            description: `Page returned status \${response.status}`,
+services/seo/src/providers/technical-seo.provider.ts:323:           description: `Failed to fetch URL: \${(error as Error).message}`,
+apps/api/src/seo-audit/seo-audit.service.ts:39:            url: `\${baseUrlString}/api/internal/queues/seo/audit-run`,
+apps/api/src/seo-audit/seo-audit.service.ts:44:          this.logger.error(`Failed to enqueue audit job \${audit.id}`, e);
+apps/api/src/seo-audit/seo-audit.service.ts:57:    this.logger.log(`Starting audit \${auditId} for workspace \${workspaceId}`);
+apps/api/src/seo-audit/seo-audit.service.ts:158:      this.logger.log(`Completed audit \${auditId}`);
+apps/api/src/seo-audit/seo-audit.service.ts:161:      this.logger.error(`Audit \${auditId} failed`, e);
+apps/web/src/app/workspaces/[workspaceId]/seo-content/page.tsx:93:        `/workspaces/\${params.workspaceId}/seo/content/analyses`
+apps/web/src/app/workspaces/[workspaceId]/seo-content/page.tsx:119:      await apiClient.request(`/workspaces/\${params.workspaceId}/seo/content/analyze`, {
+apps/web/src/app/workspaces/[workspaceId]/seo-content/page.tsx:138:        `/workspaces/\${params.workspaceId}/seo/content/analyses/\${id}`
+apps/web/src/app/workspaces/[workspaceId]/seo-content/page.tsx:148:      await apiClient.request(`/workspaces/\${params.workspaceId}/seo/content/analyses/\${id}/reanalyze`, {
+apps/web/src/app/workspaces/[workspaceId]/seo-content/page.tsx:239:                  className={`p-3 border rounded-md cursor-pointer hover:bg-gray-50 \${selectedAnalysis?.id === a.id ? 'border-indigo-500 bg-indigo-50' : 'border-gray-200'}`}
+apps/web/src/app/workspaces/[workspaceId]/seo-content/page.tsx:268:                  <span className={`px-3 py-1 text-sm font-medium rounded-full \${selectedAnalysis.status === 'completed' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+apps/web/src/app/workspaces/[workspaceId]/seo-links/page.tsx:53:          apiClient.request(`/workspaces/\${params.workspaceId}/seo/links/summary`),
+apps/web/src/app/workspaces/[workspaceId]/seo-links/page.tsx:54:          apiClient.request(`/workspaces/\${params.workspaceId}/seo/links/internal`),
+apps/web/src/app/workspaces/[workspaceId]/seo-links/page.tsx:55:          apiClient.request(`/workspaces/\${params.workspaceId}/seo/links/external`),
+apps/web/src/app/workspaces/[workspaceId]/seo-links/page.tsx:56:          apiClient.request(`/workspaces/\${params.workspaceId}/seo/links/orphans`),
+apps/web/src/app/workspaces/[workspaceId]/seo-links/page.tsx:57:          apiClient.request(`/workspaces/\${params.workspaceId}/seo/links/broken`),
+apps/web/src/app/workspaces/[workspaceId]/seo-links/page.tsx:58:          apiClient.request(`/workspaces/\${params.workspaceId}/seo/backlinks`),
+apps/web/src/app/workspaces/[workspaceId]/seo-studio/page.tsx:49:      const data = await apiClient.request<BriefData[]>(`/workspaces/\${params.workspaceId}/seo/content-briefs`);
+apps/web/src/app/workspaces/[workspaceId]/seo-studio/page.tsx:63:      const b = await apiClient.request<BriefData>(`/workspaces/\${params.workspaceId}/seo/content-briefs/\${id}`);
+apps/web/src/app/workspaces/[workspaceId]/seo-studio/page.tsx:66:      const ds = await apiClient.request<DraftData[]>(`/workspaces/\${params.workspaceId}/seo/content-briefs/\${id}/drafts`);
+apps/web/src/app/workspaces/[workspaceId]/seo-studio/page.tsx:84:      const newBrief = await apiClient.request<BriefData>(`/workspaces/\${params.workspaceId}/seo/content-briefs`, {
+apps/web/src/app/workspaces/[workspaceId]/seo-studio/page.tsx:104:      await apiClient.request(`/workspaces/\${params.workspaceId}/seo/content-briefs/\${selectedBrief.id}/generate-draft`, {
+apps/web/src/app/workspaces/[workspaceId]/seo-studio/page.tsx:118:      const updated = await apiClient.request<DraftData>(`/workspaces/\${params.workspaceId}/seo/content-drafts/\${selectedDraft.id}`, {
+apps/web/src/app/workspaces/[workspaceId]/seo-studio/page.tsx:133:      const res = await apiClient.request<any>(`/workspaces/\${params.workspaceId}/seo/content-drafts/\${selectedDraft.id}/regenerate-section`, {
+apps/web/src/app/workspaces/[workspaceId]/seo-studio/page.tsx:185:                className={`p-3 border rounded cursor-pointer text-sm hover:bg-gray-50 \${selectedBrief?.id === b.id ? 'border-indigo-500 bg-indigo-50' : ''}`}
+apps/web/src/app/workspaces/[workspaceId]/seo-studio/page.tsx:235:                        <li key={i} className={`pl-\${(out.level - 1) * 4}`}>

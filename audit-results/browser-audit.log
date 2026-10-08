@@ -1,0 +1,57 @@
+1440 dashboard errors 0 failed 0 overflow 0
+1440 research errors 0 failed 0 overflow 0
+1440 seo errors 0 failed 0 overflow 0
+1440 content errors 0 failed 0 overflow 0
+1440 calendar errors 0 failed 0 overflow 0
+1440 analytics errors 0 failed 0 overflow 0
+1440 sources errors 0 failed 0 overflow 0
+1440 agent errors 16 failed 0 overflow 0
+ERROR /workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/settings page.goto: net::ERR_ABORTED at http://localhost:3000/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/settings
+Call log:
+[2m  - navigating to "http://localhost:3000/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/settings", waiting until "networkidle"[22m
+
+1440 brand-profile errors 0 failed 0 overflow 0
+1440 reports errors 0 failed 0 overflow 0
+1440 seo-audit errors 0 failed 0 overflow 0
+1440 automations errors 0 failed 0 overflow 0
+1440 seo-opportunities errors 0 failed 0 overflow 0
+1440 seo-links errors 0 failed 12 overflow 0
+1440 social errors 0 failed 0 overflow 0
+1440 seo-studio errors 0 failed 2 overflow 0
+1440 keyword-research errors 0 failed 0 overflow 0
+1440 seo-content errors 0 failed 2 overflow 0
+1440 search-console errors 0 failed 0 overflow 0
+1440 content/new errors 0 failed 0 overflow 0
+1440 content/bf3e4d24-017b-4213-a6ab-c391283edee8 errors 0 failed 0 overflow 0
+390 dashboard errors 0 failed 0 overflow 0
+390 research errors 0 failed 0 overflow 0
+390 seo errors 0 failed 0 overflow 0
+390 content errors 0 failed 0 overflow 0
+390 calendar errors 0 failed 0 overflow 10
+390 analytics errors 0 failed 0 overflow 0
+390 sources errors 0 failed 0 overflow 0
+390 agent errors 16 failed 0 overflow 0
+390 settings errors 0 failed 0 overflow 0
+390 brand-profile errors 0 failed 0 overflow 0
+390 reports errors 0 failed 0 overflow 0
+390 seo-audit errors 0 failed 0 overflow 0
+390 automations errors 0 failed 0 overflow 0
+390 seo-opportunities errors 0 failed 0 overflow 0
+390 seo-links errors 0 failed 12 overflow 0
+390 social errors 0 failed 0 overflow 0
+390 seo-studio errors 0 failed 2 overflow 0
+390 keyword-research errors 0 failed 0 overflow 0
+390 seo-content errors 0 failed 2 overflow 0
+390 search-console errors 0 failed 0 overflow 0
+390 content/new errors 0 failed 0 overflow 0
+390 content/bf3e4d24-017b-4213-a6ab-c391283edee8 errors 0 failed 0 overflow 0
+page.goto: Timeout 30000ms exceeded.
+Call log:
+[2m  - navigating to "http://127.0.0.1:3000/login", waiting until "networkidle"[22m
+
+    at /Users/mac/Desktop/SEO/audit-results/browser-audit.cjs:10:12 {
+  log: [
+    '  - navigating to "http://127.0.0.1:3000/login", waiting until "networkidle"'
+  ],
+  name: 'TimeoutError'
+}

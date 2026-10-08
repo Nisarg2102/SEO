@@ -1,0 +1,360 @@
+
+> ai-marketing-seo-assistant@0.1.0 test
+> npm run test --workspaces --if-present --runInBand
+
+npm warn Unknown cli config "--runInBand". This will stop working in the next major version of npm.
+
+> api@0.0.1 test
+> NODE_OPTIONS=--experimental-vm-modules jest
+
+[Nest] 35488  - 10/08/2026, 8:25:23 PM    WARN [ResearchService] AI returned invalid schema for item https://example.com: [
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "summary"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "audience"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "intent"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "relevanceReason"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "number",
+    "code": "invalid_type",
+    "path": [
+      "confidence"
+    ],
+    "message": "Invalid input: expected number, received undefined"
+  },
+  {
+    "expected": "array",
+    "code": "invalid_type",
+    "path": [
+      "suggestedContentFormats"
+    ],
+    "message": "Invalid input: expected array, received undefined"
+  }
+]
+[Nest] 35488  - 10/08/2026, 8:25:23 PM   ERROR [ResearchService] AI analysis failed for item https://example.com: AI timeout
+[Nest] 35488  - 10/08/2026, 8:25:23 PM     LOG [ResearchService] Sync complete for workspace ws-1. New items: 0, failed sources: 0
+[Nest] 35488  - 10/08/2026, 8:25:23 PM     LOG [ResearchService] Skipping source src-1 (type="website" not yet supported for auto-collection)
+[Nest] 35488  - 10/08/2026, 8:25:23 PM     LOG [ResearchService] Sync complete for workspace ws-1. New items: 0, failed sources: 0
+[Nest] 35488  - 10/08/2026, 8:25:23 PM   ERROR [ResearchService] Failed to collect from source "Bad Feed" (https://bad-feed.com): Cannot parse feed: Connection refused
+[Nest] 35488  - 10/08/2026, 8:25:23 PM     LOG [ResearchService] Feed "Good Feed" returned 0 items
+[Nest] 35488  - 10/08/2026, 8:25:23 PM     LOG [ResearchService] Sync complete for workspace ws-1. New items: 0, failed sources: 1
+[Nest] 35488  - 10/08/2026, 8:25:23 PM     LOG [ResearchService] Sync complete for workspace ws-1. New items: 0, failed sources: 0
+[Nest] 35488  - 10/08/2026, 8:25:23 PM     LOG [ResearchService] Sync complete for workspace ws-1. New items: 1, failed sources: 0
+[Nest] 35497  - 10/08/2026, 8:25:23 PM    WARN [AiService] Using MockAIProvider in test environment
+[Nest] 35497  - 10/08/2026, 8:25:23 PM    WARN [AiService] Using MockAIProvider in test environment
+[Nest] 35497  - 10/08/2026, 8:25:23 PM    WARN [AiService] Using MockAIProvider in test environment
+[Nest] 35497  - 10/08/2026, 8:25:23 PM    WARN [AiService] Using MockAIProvider in test environment
+[Nest] 35497  - 10/08/2026, 8:25:23 PM     LOG [AiService] [Ollama] Generating text (model: llama3.2)
+[Nest] 35497  - 10/08/2026, 8:25:23 PM     LOG [AiService] [Ollama] Text generation completed in 0ms
+[Nest] 35497  - 10/08/2026, 8:25:23 PM    WARN [AiService] Using MockAIProvider in test environment
+[Nest] 35489  - 10/08/2026, 8:25:23 PM   ERROR [SeoOpportunitiesService] AI Analysis failed for keyword key A
+[Nest] 35489  - 10/08/2026, 8:25:23 PM   ERROR [SeoOpportunitiesService] Error: AI Failed
+[Nest] 35497  - 10/08/2026, 8:25:23 PM     LOG [AiService] [Ollama] Generating structured output (Test)
+[Nest] 35497  - 10/08/2026, 8:25:23 PM     LOG [AiService] [Ollama] Structured generation completed in 0ms
+[Nest] 35497  - 10/08/2026, 8:25:23 PM    WARN [AiService] Using MockAIProvider in test environment
+[Nest] 35497  - 10/08/2026, 8:25:23 PM     LOG [AiService] [Ollama] Generating embedding (model: nomic-embed-text)
+[Nest] 35497  - 10/08/2026, 8:25:23 PM     LOG [AiService] [Ollama] Embedding generated in 0ms
+[Nest] 35497  - 10/08/2026, 8:25:23 PM    WARN [AiService] Using MockAIProvider in test environment
+[Nest] 35497  - 10/08/2026, 8:25:23 PM     LOG [AiService] [Ollama] Chat with 0 tools
+[Nest] 35497  - 10/08/2026, 8:25:23 PM     LOG [AiService] [Ollama] Chat completed in 0ms
+[Nest] 35497  - 10/08/2026, 8:25:23 PM    WARN [AiService] Using MockAIProvider in test environment
+[Nest] 35484  - 10/08/2026, 8:25:24 PM   ERROR [AutomationsService] Automation failed: DB Error
+Error: DB Error
+    at Object.<anonymous> (/Users/mac/Desktop/SEO/apps/api/src/automations/automations.service.spec.ts:54:60)
+    at Promise.finally.completed (/Users/mac/Desktop/SEO/node_modules/jest-circus/build/jestAdapterInit.js:1834:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (/Users/mac/Desktop/SEO/node_modules/jest-circus/build/jestAdapterInit.js:1774:10)
+    at _callCircusTest (/Users/mac/Desktop/SEO/node_modules/jest-circus/build/jestAdapterInit.js:1167:40)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at _runTestInContext (/Users/mac/Desktop/SEO/node_modules/jest-circus/build/jestAdapterInit.js:1103:3)
+    at runTestWithContext (/Users/mac/Desktop/SEO/node_modules/jest-circus/build/jestAdapterInit.js:996:5)
+    at _runTestsForDescribeBlockOnce (/Users/mac/Desktop/SEO/node_modules/jest-circus/build/jestAdapterInit.js:1008:11)
+    at _runTestsForDescribeBlock (/Users/mac/Desktop/SEO/node_modules/jest-circus/build/jestAdapterInit.js:824:5)
+    at _runTestsForDescribeBlockOnce (/Users/mac/Desktop/SEO/node_modules/jest-circus/build/jestAdapterInit.js:1003:11)
+    at _runTestsForDescribeBlock (/Users/mac/Desktop/SEO/node_modules/jest-circus/build/jestAdapterInit.js:824:5)
+    at run (/Users/mac/Desktop/SEO/node_modules/jest-circus/build/jestAdapterInit.js:789:3)
+    at runAndTransformResultsToJestFormat (/Users/mac/Desktop/SEO/node_modules/jest-circus/build/jestAdapterInit.js:2300:21)
+    at jestAdapter (/Users/mac/Desktop/SEO/node_modules/jest-circus/build/runner.js:111:19)
+    at runTestInternal (/Users/mac/Desktop/SEO/node_modules/jest-runner/build/testWorker.js:247:16)
+    at runTest (/Users/mac/Desktop/SEO/node_modules/jest-runner/build/testWorker.js:315:7)
+    at Object.worker (/Users/mac/Desktop/SEO/node_modules/jest-runner/build/testWorker.js:479:12)
+FAIL src/gsc/gsc.service.spec.ts
+  ● GscService › handleCallback › should upsert integration mock in test env
+
+    TypeError: Cannot read properties of undefined (reading 'upsert')
+
+      34 |   async handleCallback(code: string, workspaceId: string) {
+      35 |     if (process.env.NODE_ENV === 'test' || !process.env.GOOGLE_CLIENT_ID) {
+    > 36 |       await this.prisma.googleConnection.upsert({
+         |                                          ^
+      37 |         where: { workspaceId_email: { workspaceId, email: 'mock@example.com' } },
+      38 |         create: {
+      39 |           workspaceId,
+
+      at GscService.handleCallback (src/gsc/gsc.service.ts:36:42)
+      at Object.<anonymous> (src/gsc/gsc.service.spec.ts:59:21)
+
+  ● GscService › getProperties › should throw if not connected
+
+    expect(received).rejects.toThrow(expected)
+
+    Expected substring: "Not connected"
+    Received message:   "Cannot read properties of undefined (reading 'findFirst')"
+
+          82 |
+          83 |   async getProperties(workspaceId: string) {
+        > 84 |     const connection = await this.prisma.googleConnection.findFirst({
+             |                                                           ^
+          85 |       where: { workspaceId },
+          86 |       orderBy: { createdAt: 'desc' }
+          87 |     });
+
+      at GscService.getProperties (src/gsc/gsc.service.ts:84:59)
+      at Object.<anonymous> (src/gsc/gsc.service.spec.ts:71:28)
+      at Object.toThrow (../../node_modules/expect/build/index.js:2155:20)
+      at Object.<anonymous> (src/gsc/gsc.service.spec.ts:71:59)
+
+  ● GscService › getProperties › should return mock properties in test env
+
+    TypeError: Cannot read properties of undefined (reading 'findFirst')
+
+      82 |
+      83 |   async getProperties(workspaceId: string) {
+    > 84 |     const connection = await this.prisma.googleConnection.findFirst({
+         |                                                           ^
+      85 |       where: { workspaceId },
+      86 |       orderBy: { createdAt: 'desc' }
+      87 |     });
+
+      at GscService.getProperties (src/gsc/gsc.service.ts:84:59)
+      at Object.<anonymous> (src/gsc/gsc.service.spec.ts:78:35)
+
+  ● GscService › connectProperty › should update integration with selected property url
+
+    TypeError: Cannot read properties of undefined (reading 'findFirst')
+
+      105 |
+      106 |   async connectProperty(workspaceId: string, siteUrl: string) {
+    > 107 |     const connection = await this.prisma.googleConnection.findFirst({
+          |                                                           ^
+      108 |       where: { workspaceId },
+      109 |       orderBy: { createdAt: 'desc' }
+      110 |     });
+
+      at GscService.connectProperty (src/gsc/gsc.service.ts:107:59)
+      at Object.<anonymous> (src/gsc/gsc.service.spec.ts:86:21)
+
+  ● GscService › sync › should throw if not connected
+
+    expect(received).rejects.toThrow(expected)
+
+    Expected substring: "Not connected"
+    Received message:   "Cannot read properties of undefined (reading 'findFirst')"
+
+          149 |
+          150 |   async sync(workspaceId: string, days: number = 28) {
+        > 151 |     const property = await this.prisma.searchConsoleProperty.findFirst({
+              |                                                              ^
+          152 |       where: { workspaceId },
+          153 |       include: { googleConnection: true },
+          154 |       orderBy: { createdAt: 'desc' }
+
+      at GscService.sync (src/gsc/gsc.service.ts:151:62)
+      at Object.<anonymous> (src/gsc/gsc.service.spec.ts:99:28)
+      at Object.toThrow (../../node_modules/expect/build/index.js:2155:20)
+      at Object.<anonymous> (src/gsc/gsc.service.spec.ts:99:50)
+
+  ● GscService › sync › should throw if no property url selected
+
+    expect(received).rejects.toThrow(expected)
+
+    Expected substring: "No property selected"
+    Received message:   "Cannot read properties of undefined (reading 'findFirst')"
+
+          149 |
+          150 |   async sync(workspaceId: string, days: number = 28) {
+        > 151 |     const property = await this.prisma.searchConsoleProperty.findFirst({
+              |                                                              ^
+          152 |       where: { workspaceId },
+          153 |       include: { googleConnection: true },
+          154 |       orderBy: { createdAt: 'desc' }
+
+      at GscService.sync (src/gsc/gsc.service.ts:151:62)
+      at Object.<anonymous> (src/gsc/gsc.service.spec.ts:104:28)
+      at Object.toThrow (../../node_modules/expect/build/index.js:2155:20)
+      at Object.<anonymous> (src/gsc/gsc.service.spec.ts:104:50)
+
+  ● GscService › sync › should process mock metrics, upsert to gsc_metrics, call AI analysis, and update lastSyncAt
+
+    TypeError: Cannot read properties of undefined (reading 'findFirst')
+
+      149 |
+      150 |   async sync(workspaceId: string, days: number = 28) {
+    > 151 |     const property = await this.prisma.searchConsoleProperty.findFirst({
+          |                                                              ^
+      152 |       where: { workspaceId },
+      153 |       include: { googleConnection: true },
+      154 |       orderBy: { createdAt: 'desc' }
+
+      at GscService.sync (src/gsc/gsc.service.ts:151:62)
+      at Object.<anonymous> (src/gsc/gsc.service.spec.ts:113:33)
+
+  ● GscService › Analytics queries › getKeywordHistory should filter by workspaceId and date
+
+    TypeError: Cannot read properties of undefined (reading 'findFirst')
+
+      258 |
+      259 |   async getKeywordHistory(workspaceId: string, query: string, days: number = 30) {
+    > 260 |     const property = await this.prisma.searchConsoleProperty.findFirst({ where: { workspaceId }});
+          |                                                              ^
+      261 |     if (!property) return [];
+      262 |     
+      263 |     const startDate = new Date();
+
+      at GscService.getKeywordHistory (src/gsc/gsc.service.ts:260:62)
+      at Object.<anonymous> (src/gsc/gsc.service.spec.ts:136:21)
+
+  ● GscService › Analytics queries › getPerformance should aggregate metrics for date range
+
+    TypeError: Cannot read properties of undefined (reading 'findFirst')
+
+      292 |
+      293 |   async getPerformance(workspaceId: string, startDate: Date, endDate: Date) {
+    > 294 |     const property = await this.prisma.searchConsoleProperty.findFirst({ where: { workspaceId }});
+          |                                                              ^
+      295 |     if (!property) return { clicks: 0, impressions: 0, ctr: 0, averagePosition: 0 };
+      296 |
+      297 |     const metrics = await this.prisma.searchConsoleDaily.aggregate({
+
+      at GscService.getPerformance (src/gsc/gsc.service.ts:294:62)
+      at Object.<anonymous> (src/gsc/gsc.service.spec.ts:147:33)
+
+  ● GscService › Analytics queries › getTopQueries should return query-grouped results
+
+    TypeError: Cannot read properties of undefined (reading 'findFirst')
+
+      310 |
+      311 |   async getTopQueries(workspaceId: string, days: number = 30, limit: number = 10) {
+    > 312 |     const property = await this.prisma.searchConsoleProperty.findFirst({ where: { workspaceId }});
+          |                                                              ^
+      313 |     if (!property) return [];
+      314 |
+      315 |     const startDate = new Date();
+
+      at GscService.getTopQueries (src/gsc/gsc.service.ts:312:62)
+      at Object.<anonymous> (src/gsc/gsc.service.spec.ts:157:36)
+
+  ● GscService › Analytics queries › getTopPages should return page-grouped results
+
+    TypeError: Cannot read properties of undefined (reading 'findFirst')
+
+      335 |
+      336 |   async getTopPages(workspaceId: string, days: number = 30, limit: number = 10) {
+    > 337 |     const property = await this.prisma.searchConsoleProperty.findFirst({ where: { workspaceId }});
+          |                                                              ^
+      338 |     if (!property) return [];
+      339 |
+      340 |     const startDate = new Date();
+
+      at GscService.getTopPages (src/gsc/gsc.service.ts:337:62)
+      at Object.<anonymous> (src/gsc/gsc.service.spec.ts:168:36)
+
+Test Suites: 1 failed, 19 passed, 20 total
+Tests:       11 failed, 118 passed, 129 total
+Snapshots:   0 total
+Time:        4.629 s
+Ran all test suites.
+npm error Lifecycle script `test` failed with error:
+npm error code 1
+npm error path /Users/mac/Desktop/SEO/apps/api
+npm error workspace api@0.0.1
+npm error location /Users/mac/Desktop/SEO/apps/api
+npm error command failed
+npm error command sh -c NODE_OPTIONS=--experimental-vm-modules jest
+
+
+> @ai-marketing/ai@0.1.0 test
+> echo "Error: no test specified" && exit 1
+
+Error: no test specified
+npm error Lifecycle script `test` failed with error:
+npm error code 1
+npm error path /Users/mac/Desktop/SEO/packages/ai
+npm error workspace @ai-marketing/ai@0.1.0
+npm error location /Users/mac/Desktop/SEO/packages/ai
+npm error command failed
+npm error command sh -c echo "Error: no test specified" && exit 1
+
+
+> @ai-marketing/database@0.1.0 test
+> echo "Error: no test specified" && exit 1
+
+Error: no test specified
+npm error Lifecycle script `test` failed with error:
+npm error code 1
+npm error path /Users/mac/Desktop/SEO/packages/database
+npm error workspace @ai-marketing/database@0.1.0
+npm error location /Users/mac/Desktop/SEO/packages/database
+npm error command failed
+npm error command sh -c echo "Error: no test specified" && exit 1
+
+
+> @ai-marketing/shared@0.1.0 test
+> jest
+
+PASS src/ssrf.util.spec.ts
+  SSRF Protection
+    validateUrl
+      ✓ blocks localhost string (14 ms)
+      ✓ blocks if DNS resolves to private IP (1 ms)
+      ✓ allows valid public URL
+      ✓ blocks cloud metadata
+    safeFetch
+      ✓ validates URL before fetching (1 ms)
+      ✓ follows safe redirect (1 ms)
+      ✓ blocks unsafe redirect to private IP (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       7 passed, 7 total
+Snapshots:   0 total
+Time:        1.778 s
+Ran all test suites.
+
+> @ai-marketing/analytics@0.1.0 test
+> echo "Error: no test specified" && exit 1
+
+Error: no test specified
+npm error Lifecycle script `test` failed with error:
+npm error code 1
+npm error path /Users/mac/Desktop/SEO/services/analytics
+npm error workspace @ai-marketing/analytics@0.1.0
+npm error location /Users/mac/Desktop/SEO/services/analytics
+npm error command failed
+npm error command sh -c echo "Error: no test specified" && exit 1
+

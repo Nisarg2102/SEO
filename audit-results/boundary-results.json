@@ -1,0 +1,36 @@
+[
+  {
+    "test": "Instagram callback",
+    "path": "/instagram/callback?state=bad",
+    "method": "GET",
+    "status": 302,
+    "location": "http://localhost:3000?error=invalid_state"
+  },
+  {
+    "test": "Instagram callback",
+    "path": "/instagram/callback?state=c21eaae9-e1e2-444e-89ca-e408312f35ed",
+    "method": "GET",
+    "status": 302,
+    "location": "http://localhost:3000/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/settings?error=invalid_code"
+  },
+  {
+    "test": "Instagram callback",
+    "path": "/instagram/callback?state=c21eaae9-e1e2-444e-89ca-e408312f35ed&code=audit-fake",
+    "method": "GET",
+    "status": 302,
+    "location": "http://localhost:3000/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/settings?instagram=success"
+  },
+  {
+    "test": "QStash raw body",
+    "accepted": true
+  },
+  {
+    "test": "QStash parsed body",
+    "error": "Invalid upstash signature"
+  },
+  {
+    "test": "n8n workflow JSON",
+    "valid": false,
+    "error": "Bad escaped character in JSON at position 789 (line 35 column 29)"
+  }
+]

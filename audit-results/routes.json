@@ -1,0 +1,446 @@
+[
+  {
+    "path": "/health",
+    "method": "GET"
+  },
+  {
+    "path": "/health/ai",
+    "method": "GET"
+  },
+  {
+    "path": "/auth/register",
+    "method": "POST"
+  },
+  {
+    "path": "/auth/login",
+    "method": "POST"
+  },
+  {
+    "path": "/auth/logout",
+    "method": "POST"
+  },
+  {
+    "path": "/auth/me",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces",
+    "method": "POST"
+  },
+  {
+    "path": "/workspaces",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/stats",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId",
+    "method": "PATCH"
+  },
+  {
+    "path": "/workspaces/:workspaceId/integrations",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/brand-profile",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/brand-profile",
+    "method": "PUT"
+  },
+  {
+    "path": "/ai/test",
+    "method": "POST"
+  },
+  {
+    "path": "/workspaces/:workspaceId/content-packs/generate",
+    "method": "POST"
+  },
+  {
+    "path": "/workspaces/:workspaceId/content-packs",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/content-packs/:id",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/content-packs/:id",
+    "method": "PUT"
+  },
+  {
+    "path": "/workspaces/:workspaceId/content-packs/:id",
+    "method": "DELETE"
+  },
+  {
+    "path": "/workspaces/:workspaceId/sources",
+    "method": "POST"
+  },
+  {
+    "path": "/workspaces/:workspaceId/sources",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/sources/:id",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/sources/:id",
+    "method": "PUT"
+  },
+  {
+    "path": "/workspaces/:workspaceId/sources/:id",
+    "method": "DELETE"
+  },
+  {
+    "path": "/workspaces/:workspaceId/research",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/research/:id",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/research/sync",
+    "method": "POST"
+  },
+  {
+    "path": "/workspaces/:workspaceId/research/:id/convert",
+    "method": "POST"
+  },
+  {
+    "path": "/seo/health",
+    "method": "GET"
+  },
+  {
+    "path": "/seo/keywords",
+    "method": "GET"
+  },
+  {
+    "path": "/seo/audit",
+    "method": "POST"
+  },
+  {
+    "path": "/seo/competitors",
+    "method": "GET"
+  },
+  {
+    "path": "/seo/rank",
+    "method": "POST"
+  },
+  {
+    "path": "/workspaces/:workspaceId/seo-opportunities",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/seo-opportunities/analyze",
+    "method": "POST"
+  },
+  {
+    "path": "/workspaces/:workspaceId/seo-opportunities/:id/convert",
+    "method": "POST"
+  },
+  {
+    "path": "/workspaces/:workspaceId/gsc/auth-url",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/gsc/status",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/gsc/properties",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/gsc/connect-property",
+    "method": "POST"
+  },
+  {
+    "path": "/workspaces/:workspaceId/gsc/sync",
+    "method": "POST"
+  },
+  {
+    "path": "/workspaces/:workspaceId/gsc/history/keyword",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/gsc/history/property",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/gsc/performance",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/gsc/top-queries",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/gsc/top-pages",
+    "method": "GET"
+  },
+  {
+    "path": "/gsc/callback",
+    "method": "GET"
+  },
+  {
+    "path": "/webhooks/n8n",
+    "method": "POST"
+  },
+  {
+    "path": "/workspaces/:workspaceId/analytics/overview",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/analytics/seo",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/analytics/keywords",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/analytics/pages",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/analytics/opportunities",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/analytics/technical",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/analytics/links",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/analytics/content",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/analytics/social",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/analytics/insights",
+    "method": "POST"
+  },
+  {
+    "path": "/workspaces/:workspaceId/reports",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/reports/:id",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/reports/generate",
+    "method": "POST"
+  },
+  {
+    "path": "/workspaces/:workspaceId/agent/chat",
+    "method": "POST"
+  },
+  {
+    "path": "/internal/automation/webhook",
+    "method": "POST"
+  },
+  {
+    "path": "/workspaces/:workspaceId/automations",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/automations",
+    "method": "POST"
+  },
+  {
+    "path": "/workspaces/:workspaceId/automations/:automationId",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/automations/:automationId",
+    "method": "PATCH"
+  },
+  {
+    "path": "/workspaces/:workspaceId/automations/:automationId/run",
+    "method": "POST"
+  },
+  {
+    "path": "/workspaces/:workspaceId/automations/:automationId/runs",
+    "method": "GET"
+  },
+  {
+    "path": "/internal/queues/analytics/sync-gsc",
+    "method": "POST"
+  },
+  {
+    "path": "/internal/queues/research/sync-workspace",
+    "method": "POST"
+  },
+  {
+    "path": "/internal/queues/research/sync-all",
+    "method": "POST"
+  },
+  {
+    "path": "/internal/queues/seo/analyze-metrics",
+    "method": "POST"
+  },
+  {
+    "path": "/internal/queues/analytics/sync-all-gsc",
+    "method": "POST"
+  },
+  {
+    "path": "/internal/queues/seo/audit-run",
+    "method": "POST"
+  },
+  {
+    "path": "/workspaces/:workspaceId/seo/audits",
+    "method": "POST"
+  },
+  {
+    "path": "/workspaces/:workspaceId/seo/audits",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/seo/audits/:auditId",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/seo/audits/links/summary",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/seo/audits/links/internal",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/seo/audits/links/external",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/seo/audits/links/broken",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/seo/audits/links/orphans",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/seo/audits/links/sitemap",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/seo/audits/backlinks",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/seo/content/analyze",
+    "method": "POST"
+  },
+  {
+    "path": "/workspaces/:workspaceId/seo/content/analyses",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/seo/content/analyses/:analysisId",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/seo/content/analyses/:analysisId/reanalyze",
+    "method": "POST"
+  },
+  {
+    "path": "/workspaces/:workspaceId/seo/content-briefs",
+    "method": "POST"
+  },
+  {
+    "path": "/workspaces/:workspaceId/seo/content-briefs",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/seo/content-briefs/:briefId",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/seo/content-briefs/:briefId/generate-draft",
+    "method": "POST"
+  },
+  {
+    "path": "/workspaces/:workspaceId/seo/content-briefs/:briefId/drafts",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/seo/content-drafts/:draftId",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/seo/content-drafts/:draftId",
+    "method": "PATCH"
+  },
+  {
+    "path": "/workspaces/:workspaceId/seo/content-drafts/:draftId/regenerate-section",
+    "method": "POST"
+  },
+  {
+    "path": "/workspaces/:workspaceId/social/instagram/auth-url",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/social/instagram/status",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/social/instagram/sync",
+    "method": "POST"
+  },
+  {
+    "path": "/workspaces/:workspaceId/social/instagram/top-content",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/social/instagram/insights",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/social/instagram/analyze",
+    "method": "POST"
+  },
+  {
+    "path": "/workspaces/:workspaceId/social/instagram/disconnect",
+    "method": "POST"
+  },
+  {
+    "path": "/*instagram/callback",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/keyword-research",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/keyword-research/suggestions",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/keyword-research/trends",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/keyword-research/related",
+    "method": "GET"
+  },
+  {
+    "path": "/workspaces/:workspaceId/keyword-research/compare",
+    "method": "GET"
+  }
+]

@@ -1,0 +1,63 @@
+const fs=require('fs');const {PrismaClient}=require('@prisma/client');
+const base='http://127.0.0.1:3001/api';const db=new PrismaClient({datasources:{db:{url:'postgresql://seo_audit@127.0.0.1:55432/seo_audit'}}});
+const results=[];const nil='00000000-0000-4000-8000-000000000001';
+async function req(name,path,method='GET',body,cookie='',expected){let r;try{const res=await fetch(base+path,{method,headers:{'Content-Type':'application/json',...(cookie?{Cookie:cookie}:{})},body:body===undefined?undefined:JSON.stringify(body),redirect:'manual',signal:AbortSignal.timeout(15000)});const t=await res.text();let data;try{data=JSON.parse(t)}catch{data=t.slice(0,300)}r={name,path,method,status:res.status,data,location:res.headers.get('location'),cookie:res.headers.get('set-cookie'),expected,pass:expected?expected.includes(res.status):undefined};}catch(e){r={name,path,method,status:'ERROR',error:e.message,expected,pass:false}}results.push({...r,cookie:r.cookie?'[present]':null});console.log(name,r.status);return r;}
+(async()=>{
+const a=await req('register A','/auth/register','POST',{name:'Audit Owner',email:'audit-owner@example.test',password:'AuditPassword123!'},'',[201]);const ca=a.cookie.split(';')[0];
+const b=await req('register B','/auth/register','POST',{name:'Audit Other',email:'audit-other@example.test',password:'AuditPassword123!'},'',[201]);const cb=b.cookie.split(';')[0];
+await req('duplicate registration','/auth/register','POST',{name:'Audit',email:'audit-owner@example.test',password:'AuditPassword123!'},'',[400,409]);
+await req('bad login','/auth/login','POST',{email:'audit-owner@example.test',password:'wrong'},'',[401]);
+await req('valid login','/auth/login','POST',{email:'audit-owner@example.test',password:'AuditPassword123!'},'',[200]);
+await req('invalid registration','/auth/register','POST',{email:'bad',password:'a'},'',[400]);
+await req('session','/auth/me','GET',undefined,ca,[200]);
+const wa=(await req('create A','/workspaces','POST',{name:'Audit A',type:'GENERAL'},ca,[201])).data;
+const wb=(await req('create B','/workspaces','POST',{name:'Audit B',type:'GENERAL'},cb,[201])).data;
+const wm=(await req('create medical','/workspaces','POST',{name:'Audit Medical',type:'MEDICAL'},ca,[201])).data;
+const p='/workspaces/'+wa.id, pb='/workspaces/'+wb.id, pm='/workspaces/'+wm.id;
+fs.writeFileSync('audit-results/fixtures.json',JSON.stringify({workspaceA:wa.id,workspaceB:wb.id,medical:wm.id,email:'audit-owner@example.test',password:'AuditPassword123!'}));
+const routes=[...fs.readFileSync('audit-results/api-server.log','utf8').matchAll(/Mapped \{\/api([^,]*), (GET|POST|PUT|PATCH|DELETE)\}/g)].map(m=>({path:m[1],method:m[2]}));fs.writeFileSync('audit-results/routes.json',JSON.stringify(routes,null,2));
+for(const rt of routes){if(rt.path.startsWith('/workspaces')||rt.path.startsWith('/ai/')||['/seo/keywords','/seo/audit','/seo/competitors','/seo/rank'].includes(rt.path)){const path=rt.path.replace(':workspaceId',wa.id).replace(/:[A-Za-z]+/g,nil);await req('unauth '+rt.method+' '+rt.path,path,rt.method,rt.method==='GET'?undefined:{},'',[401]);if(rt.path.includes(':workspaceId'))await req('nonmember '+rt.method+' '+rt.path,path,rt.method,rt.method==='GET'?undefined:{},cb,[403]);}}
+for(const rt of routes.filter(x=>x.method==='GET'&&x.path.includes(':workspaceId'))){let path=rt.path.replace(':workspaceId',wa.id).replace(/:[A-Za-z]+/g,nil);if(path.includes('gsc/performance'))path+='?start=2026-09-01&end=2026-10-08';await req('member GET '+rt.path,path,'GET',undefined,ca);}
+await req('brand create',p+'/brand-profile','PUT',{businessName:'Audit brand',industry:'Software',targetAudience:'Engineers',brandVoice:'Clear',website:'https://example.com'},ca,[200]);
+await req('brand read',p+'/brand-profile','GET',undefined,ca,[200]);
+const src=(await req('source create',p+'/sources','POST',{name:'Audit RSS',url:'https://example.com/Feed.XML',sourceType:'rss',sourceTier:'tier1'},ca,[201])).data;
+await req('source duplicate',p+'/sources','POST',{name:'Duplicate',url:'https://example.com/Feed.XML'},ca,[409]);
+await req('source update',p+'/sources/'+src.id,'PUT',{name:'Updated source'},ca,[200]);
+await req('cross tenant source read',pb+'/sources/'+src.id,'GET',undefined,cb,[404]);
+await req('cross tenant source delete',pb+'/sources/'+src.id,'DELETE',undefined,cb,[404]);
+await req('source invalid',p+'/sources','POST',{name:'x',url:'nonsense'},ca,[400]);
+await req('pack generation test-provider',p+'/content-packs/generate','POST',{topic:'Audit',platform:'LinkedIn',audience:'Engineers'},ca,[201]);
+const pack=await db.contentPack.create({data:{workspaceId:wa.id,topic:'Fixture only',platform:'LinkedIn',status:'DRAFT'}});
+const med=await db.contentPack.create({data:{workspaceId:wm.id,topic:'Medical fixture',platform:'LinkedIn',status:'CLINICAL_REVIEW_REQUIRED'}});
+fs.writeFileSync('audit-results/content-fixtures.json',JSON.stringify({packId:pack.id,medicalPackId:med.id}));
+await req('pack read',p+'/content-packs/'+pack.id,'GET',undefined,ca,[200]);
+await req('reject schedule draft',p+'/content-packs/'+pack.id,'PUT',{status:'SCHEDULED'},ca,[400,409,422]);
+await req('approve draft',p+'/content-packs/'+pack.id,'PUT',{status:'APPROVED'},ca,[200]);
+await req('schedule approved',p+'/content-packs/'+pack.id,'PUT',{status:'SCHEDULED',scheduledAt:'2026-12-01T10:00:00Z'},ca,[200]);
+await req('medical reject direct approval',pm+'/content-packs/'+med.id,'PUT',{status:'APPROVED'},ca,[400,409,422]);
+await req('medical arbitrary published status',pm+'/content-packs/'+med.id,'PUT',{status:'PUBLISHED'},ca,[400,409,422]);
+await req('cross tenant pack read',pb+'/content-packs/'+pack.id,'GET',undefined,cb,[404]);
+const victim=await db.contentPack.create({data:{workspaceId:wa.id,topic:'Cross tenant deletion fixture',platform:'LinkedIn',status:'DRAFT'}});
+await req('cross tenant pack DELETE',pb+'/content-packs/'+victim.id,'DELETE',undefined,cb,[404]);
+const viewer=await db.user.findUnique({where:{email:'audit-other@example.test'}});await db.workspaceMember.create({data:{workspaceId:wa.id,userId:viewer.id,role:'VIEWER'}});
+await req('viewer edits workspace',p,'PATCH',{name:'Viewer modified workspace'},cb,[403]);
+await req('viewer deletes source',p+'/sources/'+src.id,'DELETE',undefined,cb,[403]);
+await req('audit invalid payload',p+'/seo/audits','POST',{url:'invalid'},ca,[400]);
+await req('analysis invalid payload',p+'/seo/content/analyze','POST',{},ca,[400]);
+await req('brief invalid payload',p+'/seo/content-briefs','POST',{},ca,[400]);
+await req('agent missing message',p+'/agent/chat','POST',{},ca,[400]);
+await req('agent chat test-provider',p+'/agent/chat','POST',{message:'What is my performance?',history:[]},ca,[200,201]);
+await req('conversations route',p+'/agent/conversations','GET',undefined,ca,[200]);
+await req('n8n missing secret','/webhooks/n8n','POST',{},'',[401]);
+await req('automation missing secret','/internal/automation/webhook','POST',{},'',[401]);
+for(const rt of routes.filter(x=>x.path.startsWith('/internal/queues')))await req('queue no signature '+rt.path,rt.path,'POST',{},'',[401]);
+await req('public GSC callback guessed state','/gsc/callback?code=audit-fake&state='+wb.id,'GET',undefined,'',[302]);
+await req('GSC status after unauth callback',pb+'/gsc/status','GET',undefined,cb);
+await req('connect property',pb+'/gsc/connect-property','POST',{propertyUrl:'https://example.com'},cb,[201]);
+await req('integrations view after GSC connect',pb+'/integrations','GET',undefined,cb);
+await req('automation seed',p+'/automations','POST',{},ca,[201]);
+const automations=await db.automation.findMany({where:{workspaceId:wa.id}});
+for(const auto of automations){await req('automation run '+auto.type,p+'/automations/'+auto.id+'/run','POST',{},ca);await req('automation runs '+auto.type,p+'/automations/'+auto.id+'/runs','GET',undefined,ca,[200]);}
+await req('logout','/auth/logout','POST',{},ca,[200]);
+fs.writeFileSync('audit-results/api-results.json',JSON.stringify(results,null,2));await db.$disconnect();console.log('TOTAL',results.length,'ASSERTION FAILURES',results.filter(x=>x.pass===false).length);
+})().catch(async e=>{console.error(e);fs.writeFileSync('audit-results/api-results.json',JSON.stringify(results,null,2));await db.$disconnect();process.exitCode=1});

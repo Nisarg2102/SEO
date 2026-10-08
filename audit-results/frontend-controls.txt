@@ -1,0 +1,259 @@
+apps/web/src/app/workspaces/page.tsx:17:          onClick={() => setCreateModalOpen(true)}
+apps/web/src/app/workspaces/page.tsx:28:            onClick={() => setCreateModalOpen(true)}
+apps/web/src/app/(auth)/login/page.tsx:8:import { ApiError } from '@/lib/apiClient';
+apps/web/src/app/(auth)/login/page.tsx:48:            <form onSubmit={handleSubmit} className="space-y-4">
+apps/web/src/app/(auth)/login/page.tsx:63:                  placeholder="you@example.com"
+apps/web/src/app/(auth)/login/page.tsx:80:                  placeholder="••••••••"
+apps/web/src/app/(auth)/login/page.tsx:87:                <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700" disabled={loading}>
+apps/web/src/app/(auth)/register/page.tsx:8:import { ApiError } from '@/lib/apiClient';
+apps/web/src/app/(auth)/register/page.tsx:53:            <form onSubmit={handleSubmit} className="space-y-4">
+apps/web/src/app/(auth)/register/page.tsx:68:                  placeholder="Jane Doe"
+apps/web/src/app/(auth)/register/page.tsx:83:                  placeholder="you@example.com"
+apps/web/src/app/(auth)/register/page.tsx:98:                  placeholder="••••••••"
+apps/web/src/app/(auth)/register/page.tsx:105:                <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700" disabled={loading}>
+apps/web/src/app/workspaces/[workspaceId]/seo-opportunities/page.tsx:2:import { useEffect, useState, useCallback } from 'react';
+apps/web/src/app/workspaces/[workspaceId]/seo-opportunities/page.tsx:3:import { apiClient } from '../../../../lib/apiClient';
+apps/web/src/app/workspaces/[workspaceId]/seo-opportunities/page.tsx:39:      const data = await apiClient.get<SeoOpportunity[]>(
+apps/web/src/app/workspaces/[workspaceId]/seo-opportunities/page.tsx:47:  useEffect(() => { 
+apps/web/src/app/workspaces/[workspaceId]/seo-opportunities/page.tsx:54:      const data = await apiClient.post<{ message: string, jobId: string }>(
+apps/web/src/app/workspaces/[workspaceId]/seo-opportunities/page.tsx:74:      await apiClient.post(`workspaces/${params.workspaceId}/seo-opportunities/${id}/convert`);
+apps/web/src/app/workspaces/[workspaceId]/seo-opportunities/page.tsx:94:          onClick={handleRunAnalysis}
+apps/web/src/app/workspaces/[workspaceId]/seo-opportunities/page.tsx:95:          disabled={!!analyzingStatus}
+apps/web/src/app/workspaces/[workspaceId]/seo-opportunities/page.tsx:96:          className="bg-purple-600 text-white px-4 py-2 rounded font-medium text-sm hover:bg-purple-700 disabled:opacity-50"
+apps/web/src/app/workspaces/[workspaceId]/seo-opportunities/page.tsx:112:          placeholder="Search keywords or URLs..."
+apps/web/src/app/workspaces/[workspaceId]/seo-opportunities/page.tsx:137:          <button onClick={handleRunAnalysis} className="text-blue-600 font-medium hover:underline text-sm">
+apps/web/src/app/workspaces/[workspaceId]/seo-opportunities/page.tsx:166:                  onClick={() => handleConvert(opp.id)}
+apps/web/src/app/workspaces/[workspaceId]/brand-profile/page.tsx:31:            <input type="text" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-2" placeholder="e.g. Professional, Witty" />
+apps/web/src/app/workspaces/[workspaceId]/reports/page.tsx:2:import { useEffect, useState } from 'react';
+apps/web/src/app/workspaces/[workspaceId]/reports/page.tsx:3:import { apiClient } from '../../../../lib/apiClient';
+apps/web/src/app/workspaces/[workspaceId]/reports/page.tsx:28:      const data = await apiClient.get<WeeklyReport[]>(`workspaces/${params.workspaceId}/reports`);
+apps/web/src/app/workspaces/[workspaceId]/reports/page.tsx:40:      await apiClient.post(`workspaces/${params.workspaceId}/reports/generate`);
+apps/web/src/app/workspaces/[workspaceId]/reports/page.tsx:49:  useEffect(() => { fetchReports(); }, [params.workspaceId]);
+apps/web/src/app/workspaces/[workspaceId]/reports/page.tsx:75:          onClick={generateReport}
+apps/web/src/app/workspaces/[workspaceId]/reports/page.tsx:76:          disabled={generating}
+apps/web/src/app/workspaces/[workspaceId]/reports/page.tsx:77:          className="bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded shadow-sm disabled:opacity-50"
+apps/web/src/app/workspaces/[workspaceId]/reports/page.tsx:89:            onClick={generateReport}
+apps/web/src/app/workspaces/[workspaceId]/reports/page.tsx:102:                onClick={() => setSelectedReport(report)}
+apps/web/src/app/workspaces/[workspaceId]/content/page.tsx:2:import { useEffect, useState } from 'react';
+apps/web/src/app/workspaces/[workspaceId]/content/page.tsx:4:import { apiClient } from '../../../../lib/apiClient';
+apps/web/src/app/workspaces/[workspaceId]/content/page.tsx:19:  useEffect(() => {
+apps/web/src/app/workspaces/[workspaceId]/content/page.tsx:20:    apiClient.get<ContentPackListItem[]>(`workspaces/${params.workspaceId}/content-packs`)
+apps/web/src/app/workspaces/[workspaceId]/analytics/page.tsx:4:import { useEffect, useState, useCallback } from 'react';
+apps/web/src/app/workspaces/[workspaceId]/analytics/page.tsx:5:import { apiClient } from '../../../../lib/apiClient';
+apps/web/src/app/workspaces/[workspaceId]/analytics/page.tsx:22:        apiClient.get(`workspaces/${params.workspaceId}/analytics/overview${q}`),
+apps/web/src/app/workspaces/[workspaceId]/analytics/page.tsx:23:        apiClient.get(`workspaces/${params.workspaceId}/analytics/keywords${q}`),
+apps/web/src/app/workspaces/[workspaceId]/analytics/page.tsx:24:        apiClient.get(`workspaces/${params.workspaceId}/analytics/pages${q}`),
+apps/web/src/app/workspaces/[workspaceId]/analytics/page.tsx:25:        apiClient.get(`workspaces/${params.workspaceId}/analytics/opportunities${q}`),
+apps/web/src/app/workspaces/[workspaceId]/analytics/page.tsx:26:        apiClient.get(`workspaces/${params.workspaceId}/analytics/technical`),
+apps/web/src/app/workspaces/[workspaceId]/analytics/page.tsx:27:        apiClient.get(`workspaces/${params.workspaceId}/analytics/links`),
+apps/web/src/app/workspaces/[workspaceId]/analytics/page.tsx:28:        apiClient.get(`workspaces/${params.workspaceId}/analytics/content`),
+apps/web/src/app/workspaces/[workspaceId]/analytics/page.tsx:29:        apiClient.get(`workspaces/${params.workspaceId}/analytics/social`)
+apps/web/src/app/workspaces/[workspaceId]/analytics/page.tsx:39:  useEffect(() => {
+apps/web/src/app/workspaces/[workspaceId]/analytics/page.tsx:53:      const res = await apiClient.post<{summary: string; recommendedActions: string[]}>(
+apps/web/src/app/workspaces/[workspaceId]/analytics/page.tsx:108:          <button onClick={() => setInsights(null)} className="mt-4 text-xs text-blue-600 hover:underline">
+apps/web/src/app/workspaces/[workspaceId]/analytics/page.tsx:120:            onClick={generateInsights}
+apps/web/src/app/workspaces/[workspaceId]/analytics/page.tsx:121:            disabled={generating}
+apps/web/src/app/workspaces/[workspaceId]/analytics/page.tsx:122:            className="bg-indigo-600 text-white px-4 py-2 rounded font-medium hover:bg-indigo-700 disabled:opacity-50"
+apps/web/src/app/workspaces/[workspaceId]/content/[id]/page.tsx:2:import { useEffect, useState } from 'react';
+apps/web/src/app/workspaces/[workspaceId]/content/[id]/page.tsx:4:import { apiClient } from '../../../../../lib/apiClient';
+apps/web/src/app/workspaces/[workspaceId]/content/[id]/page.tsx:32:  useEffect(() => {
+apps/web/src/app/workspaces/[workspaceId]/content/[id]/page.tsx:37:          apiClient.get(`workspaces/${params.workspaceId}`, { rawResponse: true }),
+apps/web/src/app/workspaces/[workspaceId]/content/[id]/page.tsx:38:          apiClient.get(`workspaces/${params.workspaceId}/content-packs/${params.id}`, { rawResponse: true })
+apps/web/src/app/workspaces/[workspaceId]/content/[id]/page.tsx:59:      await apiClient.put(`workspaces/${params.workspaceId}/content-packs/${params.id}`, { ...pack, status });
+apps/web/src/app/workspaces/[workspaceId]/content/[id]/page.tsx:70:      await apiClient.delete(`workspaces/${params.workspaceId}/content-packs/${params.id}`);
+apps/web/src/app/workspaces/[workspaceId]/content/[id]/page.tsx:82:      const newPack = await apiClient.post<{ id: string }>(`workspaces/${params.workspaceId}/content-packs/generate`, {
+apps/web/src/app/workspaces/[workspaceId]/content/[id]/page.tsx:88:      await apiClient.delete(`workspaces/${params.workspaceId}/content-packs/${params.id}`);
+apps/web/src/app/workspaces/[workspaceId]/content/[id]/page.tsx:105:          <button onClick={() => router.back()} className="text-gray-500 hover:text-gray-800 text-sm mb-2 block">
+apps/web/src/app/workspaces/[workspaceId]/content/[id]/page.tsx:129:          <button onClick={handleRegenerate} disabled={saving} className="bg-purple-100 text-purple-700 px-4 py-2 rounded font-medium hover:bg-purple-200">
+apps/web/src/app/workspaces/[workspaceId]/content/[id]/page.tsx:132:          <button onClick={() => handleSave('DRAFT')} disabled={saving} className="bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded font-medium hover:bg-gray-50">
+apps/web/src/app/workspaces/[workspaceId]/content/[id]/page.tsx:139:                <button onClick={() => handleSave('CLINICAL_REVIEW_REQUIRED')} disabled={saving} className="bg-yellow-500 text-white px-4 py-2 rounded font-medium hover:bg-yellow-600">
+apps/web/src/app/workspaces/[workspaceId]/content/[id]/page.tsx:144:                <button onClick={() => handleSave('PROFESSIONALLY_REVIEWED')} disabled={saving} className="bg-blue-500 text-white px-4 py-2 rounded font-medium hover:bg-blue-600">
+apps/web/src/app/workspaces/[workspaceId]/content/[id]/page.tsx:149:                <button onClick={() => handleSave('APPROVED')} disabled={saving} className="bg-green-600 text-white px-4 py-2 rounded font-medium hover:bg-green-700">
+apps/web/src/app/workspaces/[workspaceId]/content/[id]/page.tsx:155:            <button onClick={() => handleSave('IN_REVIEW')} disabled={saving} className="bg-blue-600 text-white px-4 py-2 rounded font-medium hover:bg-blue-700">
+apps/web/src/app/workspaces/[workspaceId]/content/[id]/page.tsx:160:          <button onClick={handleDelete} className="bg-red-100 text-red-700 px-4 py-2 rounded font-medium hover:bg-red-200">
+apps/web/src/app/workspaces/[workspaceId]/content/[id]/page.tsx:260:                  placeholder="e.g. Information sourced from WHO Mental Health Atlas 2023. This content is for educational purposes only and does not constitute medical advice..."
+apps/web/src/app/workspaces/[workspaceId]/page.tsx:2:import { useEffect, useState } from 'react';
+apps/web/src/app/workspaces/[workspaceId]/page.tsx:3:import { apiClient } from '../../../lib/apiClient';
+apps/web/src/app/workspaces/[workspaceId]/page.tsx:29:  useEffect(() => {
+apps/web/src/app/workspaces/[workspaceId]/page.tsx:31:    apiClient.get<{ researchIdeas: number; draftContent: number; pendingApprovals: number; scheduledPosts: number }>(`workspaces/${params.workspaceId}/stats`)
+apps/web/src/app/workspaces/[workspaceId]/content/new/page.tsx:2:import { useState, useEffect } from 'react';
+apps/web/src/app/workspaces/[workspaceId]/content/new/page.tsx:4:import { apiClient } from '../../../../../lib/apiClient';
+apps/web/src/app/workspaces/[workspaceId]/content/new/page.tsx:28:  useEffect(() => {
+apps/web/src/app/workspaces/[workspaceId]/content/new/page.tsx:31:        const ws = await apiClient.get<{ type?: string }>(`workspaces/${params.workspaceId}`);
+apps/web/src/app/workspaces/[workspaceId]/content/new/page.tsx:47:      const data = await apiClient.post<{ id: string }>(`workspaces/${params.workspaceId}/content-packs/generate`, formData);
+apps/web/src/app/workspaces/[workspaceId]/content/new/page.tsx:82:                  onClick={() => setFormData({ ...formData, topic: t })}
+apps/web/src/app/workspaces/[workspaceId]/content/new/page.tsx:93:      <form onSubmit={handleGenerate} className="bg-white p-6 rounded shadow-sm border border-gray-100 space-y-5">
+apps/web/src/app/workspaces/[workspaceId]/content/new/page.tsx:99:            placeholder={workspaceType === 'MEDICAL' ? 'e.g. Mental health awareness for caregivers' : 'e.g. 5 SEO Tips for Local Businesses'}
+apps/web/src/app/workspaces/[workspaceId]/content/new/page.tsx:111:            placeholder={workspaceType === 'MEDICAL' ? 'e.g. Family members of people with depression' : 'e.g. Small business owners, marketing managers'}
+apps/web/src/app/workspaces/[workspaceId]/content/new/page.tsx:139:            disabled={loading}
+apps/web/src/app/workspaces/[workspaceId]/content/new/page.tsx:140:            className="bg-blue-600 text-white px-6 py-2 rounded font-bold hover:bg-blue-700 disabled:opacity-50 flex items-center"
+apps/web/src/app/workspaces/[workspaceId]/seo/page.tsx:2:import { useEffect, useState } from 'react';
+apps/web/src/app/workspaces/[workspaceId]/seo/page.tsx:3:import { apiClient } from '../../../../lib/apiClient';
+apps/web/src/app/workspaces/[workspaceId]/seo/page.tsx:22:  useEffect(() => {
+apps/web/src/app/workspaces/[workspaceId]/seo/page.tsx:23:    apiClient.get<{ status: string }>('seo/health')
+apps/web/src/app/workspaces/[workspaceId]/seo/page.tsx:32:      const data = await apiClient.get<KeywordData[]>(`seo/keywords?q=${encodeURIComponent(keywordQuery)}`);
+apps/web/src/app/workspaces/[workspaceId]/seo/page.tsx:44:      const data = await apiClient.post(`seo/audit`, { url: auditUrl });
+apps/web/src/app/workspaces/[workspaceId]/seo/page.tsx:71:          <form onSubmit={handleKeywordResearch} className="flex gap-2 mb-4">
+apps/web/src/app/workspaces/[workspaceId]/seo/page.tsx:74:              placeholder="Enter seed keyword..." 
+apps/web/src/app/workspaces/[workspaceId]/seo/page.tsx:80:            <button type="submit" disabled={loading} className="bg-blue-600 text-white px-4 py-2 rounded font-medium disabled:opacity-50">
+apps/web/src/app/workspaces/[workspaceId]/seo/page.tsx:118:          <form onSubmit={handleSiteAudit} className="flex gap-2 mb-4">
+apps/web/src/app/workspaces/[workspaceId]/seo/page.tsx:121:              placeholder="https://example.com" 
+apps/web/src/app/workspaces/[workspaceId]/seo/page.tsx:127:            <button type="submit" disabled={loading} className="bg-blue-600 text-white px-4 py-2 rounded font-medium disabled:opacity-50">
+apps/web/src/app/workspaces/[workspaceId]/search-console/page.tsx:2:import { useEffect, useState } from 'react';
+apps/web/src/app/workspaces/[workspaceId]/search-console/page.tsx:3:import { apiClient } from '../../../../lib/apiClient';
+apps/web/src/app/workspaces/[workspaceId]/search-console/page.tsx:19:      const data = await apiClient.get<{ connected: boolean; propertyUrl?: string; lastSyncAt?: string }>(`workspaces/${params.workspaceId}/gsc/status`);
+apps/web/src/app/workspaces/[workspaceId]/search-console/page.tsx:34:      const perf = await apiClient.get<{clicks: number; impressions: number; ctr: number; averagePosition: number}>(`workspaces/${params.workspaceId}/gsc/performance?start=${start}&end=${end}`);
+apps/web/src/app/workspaces/[workspaceId]/search-console/page.tsx:37:      const queries = await apiClient.get<{query?: string; page?: string; clicks: number; impressions: number; ctr: number; position: number}[]>(`workspaces/${params.workspaceId}/gsc/top-queries?days=30`);
+apps/web/src/app/workspaces/[workspaceId]/search-console/page.tsx:40:      const pages = await apiClient.get<{query?: string; page?: string; clicks: number; impressions: number; ctr: number; position: number}[]>(`workspaces/${params.workspaceId}/gsc/top-pages?days=30`);
+apps/web/src/app/workspaces/[workspaceId]/search-console/page.tsx:49:  useEffect(() => { fetchStatus(); }, [params.workspaceId]);
+apps/web/src/app/workspaces/[workspaceId]/search-console/page.tsx:53:      const { url } = await apiClient.get<{ url: string }>(`workspaces/${params.workspaceId}/gsc/auth-url`);
+apps/web/src/app/workspaces/[workspaceId]/search-console/page.tsx:62:      const data = await apiClient.get<{ siteUrl: string }[]>(`workspaces/${params.workspaceId}/gsc/properties`);
+apps/web/src/app/workspaces/[workspaceId]/search-console/page.tsx:69:      await apiClient.post(`workspaces/${params.workspaceId}/gsc/connect-property`, { propertyUrl });
+apps/web/src/app/workspaces/[workspaceId]/search-console/page.tsx:92:          <button onClick={handleConnect} className="bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700">
+apps/web/src/app/workspaces/[workspaceId]/search-console/page.tsx:99:          <button onClick={loadProperties} className="bg-gray-100 text-gray-800 px-4 py-2 rounded mb-4 text-sm font-medium">
+apps/web/src/app/workspaces/[workspaceId]/search-console/page.tsx:108:                  <button onClick={() => selectProperty(p.siteUrl)} className="text-blue-600 font-medium text-sm">
+apps/web/src/app/workspaces/[workspaceId]/search-console/page.tsx:148:                  onClick={async () => {
+apps/web/src/app/workspaces/[workspaceId]/search-console/page.tsx:152:                      const data = await apiClient.post<{ message: string, jobId: string }>(`workspaces/${params.workspaceId}/gsc/sync`, { days });
+apps/web/src/app/workspaces/[workspaceId]/search-console/page.tsx:160:                  disabled={syncing}
+apps/web/src/app/workspaces/[workspaceId]/search-console/page.tsx:161:                  className="bg-blue-600 text-white px-6 py-2 rounded font-bold hover:bg-blue-700 disabled:opacity-50"
+apps/web/src/app/workspaces/[workspaceId]/automations/page.tsx:5:import { useEffect, useState, useCallback } from 'react';
+apps/web/src/app/workspaces/[workspaceId]/automations/page.tsx:6:import { apiClient } from '../../../../lib/apiClient';
+apps/web/src/app/workspaces/[workspaceId]/automations/page.tsx:26:      const res = await apiClient.post(`workspaces/${params.workspaceId}/automations`, {});
+apps/web/src/app/workspaces/[workspaceId]/automations/page.tsx:34:  useEffect(() => {
+apps/web/src/app/workspaces/[workspaceId]/automations/page.tsx:41:      await apiClient.patch(`workspaces/${params.workspaceId}/automations/${id}`, {
+apps/web/src/app/workspaces/[workspaceId]/automations/page.tsx:54:      await apiClient.post(`workspaces/${params.workspaceId}/automations/${id}/run`, {});
+apps/web/src/app/workspaces/[workspaceId]/automations/page.tsx:119:                onClick={() => runAutomation(a.id)}
+apps/web/src/app/workspaces/[workspaceId]/automations/page.tsx:120:                disabled={runningId === a.id}
+apps/web/src/app/workspaces/[workspaceId]/automations/page.tsx:121:                className="w-full bg-gray-50 hover:bg-gray-100 text-gray-700 font-medium py-2 px-4 border border-gray-200 rounded transition disabled:opacity-50"
+apps/web/src/app/workspaces/[workspaceId]/social/page.tsx:3:import { useEffect, useState } from 'react';
+apps/web/src/app/workspaces/[workspaceId]/social/page.tsx:4:import { apiClient } from '../../../../lib/apiClient';
+apps/web/src/app/workspaces/[workspaceId]/social/page.tsx:18:      const st = await apiClient.get<any>(`/workspaces/${params.workspaceId}/social/instagram/status`);
+apps/web/src/app/workspaces/[workspaceId]/social/page.tsx:21:        const ins = await apiClient.get<any>(`/workspaces/${params.workspaceId}/social/instagram/insights`);
+apps/web/src/app/workspaces/[workspaceId]/social/page.tsx:22:        const top = await apiClient.get<any[]>(`/workspaces/${params.workspaceId}/social/instagram/top-content`);
+apps/web/src/app/workspaces/[workspaceId]/social/page.tsx:32:  useEffect(() => {
+apps/web/src/app/workspaces/[workspaceId]/social/page.tsx:39:      await apiClient.post(`/workspaces/${params.workspaceId}/social/instagram/sync`, {});
+apps/web/src/app/workspaces/[workspaceId]/social/page.tsx:61:            <Button onClick={() => window.location.href = `/settings`}>
+apps/web/src/app/workspaces/[workspaceId]/social/page.tsx:77:        <Button onClick={handleSync} disabled={syncing}>
+apps/web/src/app/workspaces/[workspaceId]/seo-content/page.tsx:3:import { useState, useEffect } from 'react';
+apps/web/src/app/workspaces/[workspaceId]/seo-content/page.tsx:4:import { apiClient } from '../../../../lib/apiClient';
+apps/web/src/app/workspaces/[workspaceId]/seo-content/page.tsx:92:      const data = await apiClient.request<AnalysisRecord[]>(
+apps/web/src/app/workspaces/[workspaceId]/seo-content/page.tsx:101:  useEffect(() => {
+apps/web/src/app/workspaces/[workspaceId]/seo-content/page.tsx:119:      await apiClient.request(`/workspaces/\${params.workspaceId}/seo/content/analyze`, {
+apps/web/src/app/workspaces/[workspaceId]/seo-content/page.tsx:137:      const data = await apiClient.request<AnalysisRecord>(
+apps/web/src/app/workspaces/[workspaceId]/seo-content/page.tsx:148:      await apiClient.request(`/workspaces/\${params.workspaceId}/seo/content/analyses/\${id}/reanalyze`, {
+apps/web/src/app/workspaces/[workspaceId]/seo-content/page.tsx:179:              placeholder="https://example.com/page"
+apps/web/src/app/workspaces/[workspaceId]/seo-content/page.tsx:189:              placeholder="e.g. network security"
+apps/web/src/app/workspaces/[workspaceId]/seo-content/page.tsx:202:              placeholder="e.g. firewall, cyber defense"
+apps/web/src/app/workspaces/[workspaceId]/seo-content/page.tsx:219:              className="w-full px-6 py-2 bg-indigo-600 text-white font-medium rounded-md hover:bg-indigo-700 disabled:opacity-50"
+apps/web/src/app/workspaces/[workspaceId]/seo-content/page.tsx:220:              onClick={handleAnalyze}
+apps/web/src/app/workspaces/[workspaceId]/seo-content/page.tsx:221:              disabled={loading || !url || !primaryKeyword}
+apps/web/src/app/workspaces/[workspaceId]/seo-content/page.tsx:240:                  onClick={() => loadAnalysisDetails(a.id)}
+apps/web/src/app/workspaces/[workspaceId]/seo-content/page.tsx:267:                  <button onClick={() => handleReanalyze(selectedAnalysis.id)} className="px-4 py-2 border rounded text-sm font-medium hover:bg-gray-50 mr-2">Re-analyze</button>
+apps/web/src/app/workspaces/[workspaceId]/seo-studio/page.tsx:5:import { useState, useEffect } from 'react';
+apps/web/src/app/workspaces/[workspaceId]/seo-studio/page.tsx:6:import { apiClient } from '../../../../lib/apiClient';
+apps/web/src/app/workspaces/[workspaceId]/seo-studio/page.tsx:49:      const data = await apiClient.request<BriefData[]>(`/workspaces/\${params.workspaceId}/seo/content-briefs`);
+apps/web/src/app/workspaces/[workspaceId]/seo-studio/page.tsx:56:  useEffect(() => {
+apps/web/src/app/workspaces/[workspaceId]/seo-studio/page.tsx:63:      const b = await apiClient.request<BriefData>(`/workspaces/\${params.workspaceId}/seo/content-briefs/\${id}`);
+apps/web/src/app/workspaces/[workspaceId]/seo-studio/page.tsx:66:      const ds = await apiClient.request<DraftData[]>(`/workspaces/\${params.workspaceId}/seo/content-briefs/\${id}/drafts`);
+apps/web/src/app/workspaces/[workspaceId]/seo-studio/page.tsx:84:      const newBrief = await apiClient.request<BriefData>(`/workspaces/\${params.workspaceId}/seo/content-briefs`, {
+apps/web/src/app/workspaces/[workspaceId]/seo-studio/page.tsx:104:      await apiClient.request(`/workspaces/\${params.workspaceId}/seo/content-briefs/\${selectedBrief.id}/generate-draft`, {
+apps/web/src/app/workspaces/[workspaceId]/seo-studio/page.tsx:118:      const updated = await apiClient.request<DraftData>(`/workspaces/\${params.workspaceId}/seo/content-drafts/\${selectedDraft.id}`, {
+apps/web/src/app/workspaces/[workspaceId]/seo-studio/page.tsx:133:      const res = await apiClient.request<any>(`/workspaces/\${params.workspaceId}/seo/content-drafts/\${selectedDraft.id}/regenerate-section`, {
+apps/web/src/app/workspaces/[workspaceId]/seo-studio/page.tsx:166:              placeholder="Primary Keyword" 
+apps/web/src/app/workspaces/[workspaceId]/seo-studio/page.tsx:172:              onClick={handleCreateBrief} 
+apps/web/src/app/workspaces/[workspaceId]/seo-studio/page.tsx:173:              disabled={loading || !keyword}
+apps/web/src/app/workspaces/[workspaceId]/seo-studio/page.tsx:174:              className="w-full bg-indigo-600 text-white py-2 rounded text-sm font-medium hover:bg-indigo-700 disabled:opacity-50"
+apps/web/src/app/workspaces/[workspaceId]/seo-studio/page.tsx:184:                onClick={() => loadBrief(b.id)}
+apps/web/src/app/workspaces/[workspaceId]/seo-studio/page.tsx:205:                    onClick={handleGenerateDraft} 
+apps/web/src/app/workspaces/[workspaceId]/seo-studio/page.tsx:206:                    disabled={drafting}
+apps/web/src/app/workspaces/[workspaceId]/seo-studio/page.tsx:207:                    className="px-4 py-2 bg-green-600 text-white rounded text-sm font-medium hover:bg-green-700 disabled:opacity-50"
+apps/web/src/app/workspaces/[workspaceId]/seo-studio/page.tsx:276:                <button onClick={handleSaveDraft} className="text-indigo-600 font-medium hover:underline">Save New Version</button>
+apps/web/src/app/workspaces/[workspaceId]/seo-studio/page.tsx:294:                  <input type="text" placeholder="Heading (e.g. Intro)" className="border px-2 py-1 text-sm rounded w-1/3" value={regenHeading} onChange={e => setRegenHeading(e.target.value)} />
+apps/web/src/app/workspaces/[workspaceId]/seo-studio/page.tsx:295:                  <input type="text" placeholder="Instructions..." className="border px-2 py-1 text-sm rounded flex-1" value={regenInstructions} onChange={e => setRegenInstructions(e.target.value)} />
+apps/web/src/app/workspaces/[workspaceId]/seo-studio/page.tsx:296:                  <button onClick={handleRegenerateSection} className="bg-gray-800 text-white px-3 py-1 text-sm rounded hover:bg-gray-900">Run</button>
+apps/web/src/app/workspaces/[workspaceId]/seo-studio/page.tsx:302:                      <button onClick={() => setRegenResult('')} className="text-indigo-600">Clear</button>
+apps/web/src/app/workspaces/[workspaceId]/keyword-research/page.tsx:3:import { apiClient } from '../../../../lib/apiClient';
+apps/web/src/app/workspaces/[workspaceId]/keyword-research/page.tsx:89:      const data = await apiClient.get<KeywordResearchResult>(
+apps/web/src/app/workspaces/[workspaceId]/keyword-research/page.tsx:113:      <form onSubmit={handleResearch} className="bg-white p-5 rounded-lg shadow-sm border border-gray-200">
+apps/web/src/app/workspaces/[workspaceId]/keyword-research/page.tsx:117:            placeholder='e.g. "computer repair Ahmedabad"'
+apps/web/src/app/workspaces/[workspaceId]/keyword-research/page.tsx:137:            disabled={loading || !query.trim()}
+apps/web/src/app/workspaces/[workspaceId]/keyword-research/page.tsx:138:            className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded text-sm font-medium disabled:opacity-50"
+apps/web/src/app/workspaces/[workspaceId]/keyword-research/page.tsx:172:                        onClick={() => setQuery(s.keyword)}
+apps/web/src/app/workspaces/[workspaceId]/keyword-research/page.tsx:248:                        onClick={() => setQuery(rq.keyword)}
+apps/web/src/app/workspaces/[workspaceId]/calendar/page.tsx:3:import { useEffect, useState } from 'react';
+apps/web/src/app/workspaces/[workspaceId]/calendar/page.tsx:6:import { apiClient } from '../../../../lib/apiClient';
+apps/web/src/app/workspaces/[workspaceId]/calendar/page.tsx:26:      const packData = await apiClient.get<ContentPack[]>(`workspaces/${params.workspaceId}/content-packs`);
+apps/web/src/app/workspaces/[workspaceId]/calendar/page.tsx:41:  useEffect(() => { fetchPacks(); }, [params.workspaceId]);
+apps/web/src/app/workspaces/[workspaceId]/calendar/page.tsx:46:        await apiClient.put(`workspaces/${params.workspaceId}/content-packs/${id}`, updates);
+apps/web/src/app/workspaces/[workspaceId]/calendar/page.tsx:64:              onClick={() => setView(v)}
+apps/web/src/app/workspaces/[workspaceId]/calendar/page.tsx:124:          <button onClick={() => setView('list')} className="text-blue-600 font-medium hover:underline">
+apps/web/src/app/workspaces/[workspaceId]/sources/page.tsx:2:import { useEffect, useState, useCallback } from 'react';
+apps/web/src/app/workspaces/[workspaceId]/sources/page.tsx:3:import { apiClient } from '../../../../lib/apiClient';
+apps/web/src/app/workspaces/[workspaceId]/sources/page.tsx:42:      const data = await apiClient.get<Source[]>(`workspaces/${params.workspaceId}/sources`);
+apps/web/src/app/workspaces/[workspaceId]/sources/page.tsx:50:  useEffect(() => {
+apps/web/src/app/workspaces/[workspaceId]/sources/page.tsx:58:      await apiClient.post(`workspaces/${params.workspaceId}/sources`, formData);
+apps/web/src/app/workspaces/[workspaceId]/sources/page.tsx:70:      await apiClient.put(`workspaces/${params.workspaceId}/sources/${source.id}`, { active: !source.active });
+apps/web/src/app/workspaces/[workspaceId]/sources/page.tsx:78:      await apiClient.delete(`workspaces/${params.workspaceId}/sources/${id}`);
+apps/web/src/app/workspaces/[workspaceId]/sources/page.tsx:87:      const result = await apiClient.post<{ message: string; jobId: string }>(
+apps/web/src/app/workspaces/[workspaceId]/sources/page.tsx:110:            onClick={handleSyncAll}
+apps/web/src/app/workspaces/[workspaceId]/sources/page.tsx:111:            disabled={syncingAll || sources.filter(s => s.active).length === 0}
+apps/web/src/app/workspaces/[workspaceId]/sources/page.tsx:112:            className="border border-green-600 text-green-700 px-4 py-2 rounded font-medium text-sm hover:bg-green-50 disabled:opacity-40"
+apps/web/src/app/workspaces/[workspaceId]/sources/page.tsx:117:            onClick={() => { setShowModal(true); setFormError(null); }}
+apps/web/src/app/workspaces/[workspaceId]/sources/page.tsx:128:          <button onClick={() => setSyncMessage(null)} className="ml-2 opacity-50 hover:opacity-100">×</button>
+apps/web/src/app/workspaces/[workspaceId]/sources/page.tsx:147:          <button onClick={fetchSources} className="mt-2 text-red-600 underline text-sm">Retry</button>
+apps/web/src/app/workspaces/[workspaceId]/sources/page.tsx:155:          <button onClick={() => setShowModal(true)} className="text-blue-600 font-medium hover:underline text-sm">
+apps/web/src/app/workspaces/[workspaceId]/sources/page.tsx:201:                      onClick={() => toggleActive(source)}
+apps/web/src/app/workspaces/[workspaceId]/sources/page.tsx:209:                      onClick={() => handleDelete(source.id)}
+apps/web/src/app/workspaces/[workspaceId]/sources/page.tsx:232:            <form onSubmit={handleAdd} className="space-y-4">
+apps/web/src/app/workspaces/[workspaceId]/sources/page.tsx:240:                  placeholder="e.g. Search Engine Journal"
+apps/web/src/app/workspaces/[workspaceId]/sources/page.tsx:253:                  placeholder="https://www.searchenginejournal.com/feed/"
+apps/web/src/app/workspaces/[workspaceId]/sources/page.tsx:289:                  onClick={() => { setShowModal(false); setFormError(null); }}
+apps/web/src/app/workspaces/[workspaceId]/agent/page.tsx:4:import { useEffect, useState, useRef } from 'react';
+apps/web/src/app/workspaces/[workspaceId]/agent/page.tsx:5:import { apiClient } from '../../../../lib/apiClient';
+apps/web/src/app/workspaces/[workspaceId]/agent/page.tsx:22:  useEffect(() => scrollToBottom(), [messages]);
+apps/web/src/app/workspaces/[workspaceId]/agent/page.tsx:26:      const res = await apiClient.get(`workspaces/${params.workspaceId}/agent/conversations/${id}`);
+apps/web/src/app/workspaces/[workspaceId]/agent/page.tsx:43:      const res = await apiClient.post(`workspaces/${params.workspaceId}/agent/chat`, {
+apps/web/src/app/workspaces/[workspaceId]/agent/page.tsx:91:                <button key={p} onClick={() => sendMessage(p)} className="bg-white border border-gray-200 text-sm px-3 py-2 rounded shadow-sm hover:bg-indigo-50 hover:text-indigo-600 transition-colors">
+apps/web/src/app/workspaces/[workspaceId]/agent/page.tsx:139:        <form onSubmit={(e) => { e.preventDefault(); sendMessage(); }} className="flex gap-2">
+apps/web/src/app/workspaces/[workspaceId]/agent/page.tsx:144:            placeholder="Ask me anything..."
+apps/web/src/app/workspaces/[workspaceId]/agent/page.tsx:146:            disabled={loading}
+apps/web/src/app/workspaces/[workspaceId]/agent/page.tsx:150:            disabled={loading || !input.trim()}
+apps/web/src/app/workspaces/[workspaceId]/agent/page.tsx:151:            className="bg-indigo-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-indigo-700 disabled:opacity-50"
+apps/web/src/app/workspaces/[workspaceId]/research/page.tsx:2:import { useEffect, useState, useCallback } from 'react';
+apps/web/src/app/workspaces/[workspaceId]/research/page.tsx:3:import { apiClient } from '../../../../lib/apiClient';
+apps/web/src/app/workspaces/[workspaceId]/research/page.tsx:64:      const data = await apiClient.get<ResearchItem[]>(
+apps/web/src/app/workspaces/[workspaceId]/research/page.tsx:76:      const data = await apiClient.get<Source[]>(`workspaces/${params.workspaceId}/sources`);
+apps/web/src/app/workspaces/[workspaceId]/research/page.tsx:81:  useEffect(() => {
+apps/web/src/app/workspaces/[workspaceId]/research/page.tsx:89:      const result = await apiClient.post<{ message: string; jobId: string }>(
+apps/web/src/app/workspaces/[workspaceId]/research/page.tsx:107:      await apiClient.post(`workspaces/${params.workspaceId}/research/${item.id}/convert`, {
+apps/web/src/app/workspaces/[workspaceId]/research/page.tsx:138:          onClick={handleSync}
+apps/web/src/app/workspaces/[workspaceId]/research/page.tsx:139:          disabled={syncStatus === 'queuing'}
+apps/web/src/app/workspaces/[workspaceId]/research/page.tsx:140:          className="shrink-0 bg-green-600 text-white px-4 py-2 rounded font-medium text-sm hover:bg-green-700 disabled:opacity-50"
+apps/web/src/app/workspaces/[workspaceId]/research/page.tsx:158:            placeholder="Search title, topic, summary..."
+apps/web/src/app/workspaces/[workspaceId]/research/page.tsx:202:            <button onClick={handleClearFilters} className="text-xs text-gray-500 hover:text-gray-700 underline">
+apps/web/src/app/workspaces/[workspaceId]/research/page.tsx:223:          <button onClick={fetchResearch} className="text-red-600 font-medium hover:underline text-sm">
+apps/web/src/app/workspaces/[workspaceId]/research/page.tsx:238:            <button onClick={handleClearFilters} className="text-blue-600 font-medium hover:underline text-sm">
+apps/web/src/app/workspaces/[workspaceId]/research/page.tsx:242:            <button onClick={handleSync} className="text-blue-600 font-medium hover:underline text-sm">
+apps/web/src/app/workspaces/[workspaceId]/research/page.tsx:337:                        onClick={() => handleConvert(item)}
+apps/web/src/app/workspaces/[workspaceId]/research/page.tsx:338:                        disabled={converting === item.id}
+apps/web/src/app/workspaces/[workspaceId]/research/page.tsx:339:                        className="w-full bg-blue-50 text-blue-700 border border-blue-200 px-3 py-2 rounded text-sm font-medium hover:bg-blue-100 transition disabled:opacity-50"
+apps/web/src/app/workspaces/[workspaceId]/seo-audit/page.tsx:2:import { useState, useEffect } from 'react';
+apps/web/src/app/workspaces/[workspaceId]/seo-audit/page.tsx:3:import { apiClient } from '../../../../lib/apiClient';
+apps/web/src/app/workspaces/[workspaceId]/seo-audit/page.tsx:68:      const data = await apiClient.request<AuditRecord[]>(
+apps/web/src/app/workspaces/[workspaceId]/seo-audit/page.tsx:77:  useEffect(() => {
+apps/web/src/app/workspaces/[workspaceId]/seo-audit/page.tsx:88:      await apiClient.request(`/workspaces/${params.workspaceId}/seo/audits`, {
+apps/web/src/app/workspaces/[workspaceId]/seo-audit/page.tsx:104:      const data = await apiClient.request<AuditDetails>(
+apps/web/src/app/workspaces/[workspaceId]/seo-audit/page.tsx:136:              placeholder="https://example.com"
+apps/web/src/app/workspaces/[workspaceId]/seo-audit/page.tsx:165:          className="mt-4 px-6 py-2 bg-indigo-600 text-white font-medium rounded-md hover:bg-indigo-700 disabled:opacity-50"
+apps/web/src/app/workspaces/[workspaceId]/seo-audit/page.tsx:166:          onClick={handleRunAudit}
+apps/web/src/app/workspaces/[workspaceId]/seo-audit/page.tsx:167:          disabled={loading || !url}
+apps/web/src/app/workspaces/[workspaceId]/seo-audit/page.tsx:184:                  onClick={() => loadAuditDetails(a.id)}
+apps/web/src/app/workspaces/[workspaceId]/seo-links/page.tsx:4:import { apiClient } from '../../../../lib/apiClient';
+apps/web/src/app/workspaces/[workspaceId]/seo-links/page.tsx:6:import { useState, useEffect } from 'react';
+apps/web/src/app/workspaces/[workspaceId]/seo-links/page.tsx:49:  useEffect(() => {
+apps/web/src/app/workspaces/[workspaceId]/seo-links/page.tsx:53:          apiClient.request(`/workspaces/\${params.workspaceId}/seo/links/summary`),
+apps/web/src/app/workspaces/[workspaceId]/seo-links/page.tsx:54:          apiClient.request(`/workspaces/\${params.workspaceId}/seo/links/internal`),
+apps/web/src/app/workspaces/[workspaceId]/seo-links/page.tsx:55:          apiClient.request(`/workspaces/\${params.workspaceId}/seo/links/external`),
+apps/web/src/app/workspaces/[workspaceId]/seo-links/page.tsx:56:          apiClient.request(`/workspaces/\${params.workspaceId}/seo/links/orphans`),
+apps/web/src/app/workspaces/[workspaceId]/seo-links/page.tsx:57:          apiClient.request(`/workspaces/\${params.workspaceId}/seo/links/broken`),
+apps/web/src/app/workspaces/[workspaceId]/seo-links/page.tsx:58:          apiClient.request(`/workspaces/\${params.workspaceId}/seo/backlinks`),

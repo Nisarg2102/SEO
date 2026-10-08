@@ -1,0 +1,17 @@
+500 http://localhost:3001/api/auth/me {"statusCode":500,"message":"Internal server error"}
+500 http://localhost:3001/api/auth/me {"statusCode":500,"message":"Internal server error"}
+200 http://localhost:3001/api/auth/login {"user":{"id":"e708cd54-34f9-47af-bd84-5d6a57a1574f","email":"audit-owner@example.test","name":"Audit Owner","role":"USER"}}
+200 http://localhost:3001/api/workspaces [{"id":"c21eaae9-e1e2-444e-89ca-e408312f35ed","name":"Viewer modified workspace","type":"GENERAL","createdAt":"2026-10-08T15:00:34.522Z","updatedAt":"2026-10-08T15:00:35.202Z"},{"id":"16327bb4-dee6-4ae6-bdf2-610623193cb5","name":"Audit Medical","type":"MEDICAL","createdAt":"2026-10-08T15:00:34.534Z"
+FAILED http://localhost:3000/workspaces?_rsc=kzbv1 { errorText: 'net::ERR_ABORTED' }
+My Workspaces
++ Create Workspace
+Viewer modified workspace
+
+Type: GENERAL
+
+Open Workspace →
+Audit Medical
+
+Type: MEDICAL
+
+Open Workspace →

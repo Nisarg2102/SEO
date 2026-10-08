@@ -1,0 +1,53 @@
+
+> web@0.1.0 dev
+> next dev
+
+  ▲ Next.js 14.2.35
+  - Local:        http://localhost:3000
+  - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 2.4s
+ ○ Compiling / ...
+ ✓ Compiled / in 2.9s (531 modules)
+ ✓ Compiled in 265ms (248 modules)
+ GET / 307 in 3171ms
+ ○ Compiling /workspaces ...
+ ✓ Compiled /workspaces in 1005ms (505 modules)
+ GET /workspaces 200 in 1114ms
+ ✓ Compiled /favicon.ico in 121ms (301 modules)
+ GET /favicon.ico 200 in 177ms
+ ○ Compiling /login ...
+ ✓ Compiled /login in 882ms (601 modules)
+ GET /login 200 in 996ms
+ GET /favicon.ico 200 in 21ms
+ ✓ Compiled /register in 149ms (607 modules)
+ GET /register 200 in 235ms
+ GET /favicon.ico 200 in 12ms
+ GET /workspaces 200 in 18ms
+ GET /favicon.ico 200 in 6ms
+ GET /login 200 in 20ms
+ GET /favicon.ico 200 in 11ms
+ GET /favicon.ico 200 in 6ms
+ ✓ Compiled /workspaces/[workspaceId]/settings in 396ms (665 modules)
+ GET /workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/settings 200 in 707ms
+ GET /favicon.ico 200 in 9ms
+ ✓ Compiled /workspaces/[workspaceId]/research in 169ms (671 modules)
+ GET /workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/research 200 in 507ms
+ GET /favicon.ico 200 in 6ms
+ ✓ Compiled /workspaces/[workspaceId] in 172ms (677 modules)
+ GET /workspaces/16327bb4-dee6-4ae6-bdf2-610623193cb5 200 in 493ms
+ GET /favicon.ico 200 in 8ms
+ ✓ Compiled /workspaces/[workspaceId]/agent in 176ms (683 modules)
+ GET /workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/agent 200 in 496ms
+ GET /favicon.ico 200 in 7ms
+ GET /login 200 in 30ms
+ GET /favicon.ico 200 in 4ms
+ GET /register 200 in 19ms
+ GET /favicon.ico 200 in 4ms
+ GET /favicon.ico 200 in 6ms
+ GET /register 200 in 17ms
+ GET /favicon.ico 200 in 6ms
+ GET /register 200 in 16ms
+ GET /favicon.ico 200 in 9ms
+[?25h

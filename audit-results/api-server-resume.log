@@ -1,0 +1,459 @@
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [NestFactory] Starting Nest application...
+[Nest] 40576  - 10/09/2026, 4:21:00 AM    WARN [AiService] Using MockAIProvider in test environment
+[Nest] 40576  - 10/09/2026, 4:21:00 AM    WARN [AiService] Using MockAIProvider in test environment
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [InstanceLoader] PrismaModule dependencies initialized +24ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [InstanceLoader] PassportModule dependencies initialized +0ms
+[Upstash QStash] client token is not set. Either pass a token or set QSTASH_TOKEN env variable.
+[Upstash QStash] client token is not set. Either pass a token or set QSTASH_TOKEN env variable.
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [InstanceLoader] JwtModule dependencies initialized +22ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [InstanceLoader] WebhooksModule dependencies initialized +1ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [InstanceLoader] AppModule dependencies initialized +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [InstanceLoader] AiModule dependencies initialized +2ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [InstanceLoader] SeoModule dependencies initialized +1ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [InstanceLoader] QueuesModule dependencies initialized +0ms
+[Upstash QStash] client token is not set. Either pass a token or set QSTASH_TOKEN env variable.
+[Upstash QStash] client token is not set. Either pass a token or set QSTASH_TOKEN env variable.
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [InstanceLoader] WorkspacesModule dependencies initialized +1ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [InstanceLoader] BrandProfilesModule dependencies initialized +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [InstanceLoader] SourcesModule dependencies initialized +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [InstanceLoader] SeoAuditModule dependencies initialized +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [InstanceLoader] KeywordResearchModule dependencies initialized +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [InstanceLoader] ContentPacksModule dependencies initialized +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [InstanceLoader] ResearchModule dependencies initialized +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [InstanceLoader] SeoOpportunitiesModule dependencies initialized +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [InstanceLoader] AnalyticsModule dependencies initialized +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [InstanceLoader] AiReportsModule dependencies initialized +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [InstanceLoader] AiAgentModule dependencies initialized +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [InstanceLoader] SeoStudioModule dependencies initialized +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [InstanceLoader] InstagramModule dependencies initialized +0ms
+[Upstash QStash] client token is not set. Either pass a token or set QSTASH_TOKEN env variable.
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [InstanceLoader] AuthModule dependencies initialized +1ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [InstanceLoader] GscModule dependencies initialized +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [InstanceLoader] SeoContentModule dependencies initialized +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [InstanceLoader] AutomationsModule dependencies initialized +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM    WARN [Bootstrap] helmet not installed — security headers not applied. Run: npm install helmet
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RoutesResolver] AppController {/api}: +7ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/health, GET} route +2ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/health/ai, GET} route +1ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RoutesResolver] AuthController {/api/auth}: +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/auth/register, POST} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/auth/login, POST} route +1ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/auth/logout, POST} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/auth/me, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RoutesResolver] WorkspacesController {/api/workspaces}: +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces, POST} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces, GET} route +1ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/stats, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId, PATCH} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/integrations, GET} route +1ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RoutesResolver] BrandProfilesController {/api/workspaces/:workspaceId/brand-profile}: +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/brand-profile, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/brand-profile, PUT} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RoutesResolver] AiController {/api/ai}: +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/ai/test, POST} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RoutesResolver] ContentPacksController {/api/workspaces/:workspaceId/content-packs}: +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/content-packs/generate, POST} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/content-packs, GET} route +1ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/content-packs/:id, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/content-packs/:id, PUT} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/content-packs/:id, DELETE} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RoutesResolver] SourcesController {/api/workspaces/:workspaceId/sources}: +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/sources, POST} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/sources, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/sources/:id, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/sources/:id, PUT} route +1ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/sources/:id, DELETE} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RoutesResolver] ResearchController {/api/workspaces/:workspaceId/research}: +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/research, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/research/:id, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/research/sync, POST} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/research/:id/convert, POST} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RoutesResolver] SeoController {/api/seo}: +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/seo/health, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/seo/keywords, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/seo/audit, POST} route +1ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/seo/competitors, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/seo/rank, POST} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RoutesResolver] SeoOpportunitiesController {/api/workspaces/:workspaceId/seo-opportunities}: +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/seo-opportunities, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/seo-opportunities/analyze, POST} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/seo-opportunities/:id/convert, POST} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RoutesResolver] GscController {/api/workspaces/:workspaceId/gsc}: +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/gsc/auth-url, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/gsc/status, GET} route +1ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/gsc/properties, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/gsc/connect-property, POST} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/gsc/sync, POST} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/gsc/history/keyword, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/gsc/history/property, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/gsc/performance, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/gsc/top-queries, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/gsc/top-pages, GET} route +1ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RoutesResolver] GscPublicController {/api/gsc}: +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/gsc/callback, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RoutesResolver] WebhooksController {/api/webhooks}: +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/webhooks/n8n, POST} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RoutesResolver] AnalyticsController {/api/workspaces/:workspaceId/analytics}: +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/analytics/overview, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/analytics/seo, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/analytics/keywords, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/analytics/pages, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/analytics/opportunities, GET} route +1ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/analytics/technical, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/analytics/links, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/analytics/content, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/analytics/social, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/analytics/insights, POST} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RoutesResolver] AiReportsController {/api/workspaces/:workspaceId/reports}: +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/reports, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/reports/:id, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/reports/generate, POST} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RoutesResolver] AiAgentController {/api/workspaces/:workspaceId/agent}: +1ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/agent/chat, POST} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RoutesResolver] AutomationsController {/api}: +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/internal/automation/webhook, POST} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/automations, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/automations, POST} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/automations/:automationId, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/automations/:automationId, PATCH} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/automations/:automationId/run, POST} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/automations/:automationId/runs, GET} route +1ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RoutesResolver] QueuesController {/api/internal/queues}: +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/internal/queues/analytics/sync-gsc, POST} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/internal/queues/research/sync-workspace, POST} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/internal/queues/research/sync-all, POST} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/internal/queues/seo/analyze-metrics, POST} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/internal/queues/analytics/sync-all-gsc, POST} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/internal/queues/seo/audit-run, POST} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RoutesResolver] SeoAuditController {/api/workspaces/:workspaceId/seo/audits}: +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/seo/audits, POST} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/seo/audits, GET} route +1ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/seo/audits/:auditId, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/seo/audits/links/summary, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/seo/audits/links/internal, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/seo/audits/links/external, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/seo/audits/links/broken, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/seo/audits/links/orphans, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/seo/audits/links/sitemap, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/seo/audits/backlinks, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RoutesResolver] SeoContentController {/api/workspaces/:workspaceId/seo/content}: +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/seo/content/analyze, POST} route +1ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/seo/content/analyses, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/seo/content/analyses/:analysisId, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/seo/content/analyses/:analysisId/reanalyze, POST} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RoutesResolver] SeoStudioController {/api/workspaces/:workspaceId/seo}: +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/seo/content-briefs, POST} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/seo/content-briefs, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/seo/content-briefs/:briefId, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/seo/content-briefs/:briefId/generate-draft, POST} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/seo/content-briefs/:briefId/drafts, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/seo/content-drafts/:draftId, GET} route +1ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/seo/content-drafts/:draftId, PATCH} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/seo/content-drafts/:draftId/regenerate-section, POST} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RoutesResolver] InstagramController {/api/workspaces/:workspaceId/social/instagram}: +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/social/instagram/auth-url, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/social/instagram/status, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/social/instagram/sync, POST} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/social/instagram/top-content, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/social/instagram/insights, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/social/instagram/analyze, POST} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/social/instagram/disconnect, POST} route +1ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RoutesResolver] InstagramPublicController {/api}: +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/*instagram/callback, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RoutesResolver] KeywordResearchController {/api/workspaces/:workspaceId/keyword-research}: +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/keyword-research, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/keyword-research/suggestions, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/keyword-research/trends, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/keyword-research/related, GET} route +0ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [RouterExplorer] Mapped {/api/workspaces/:workspaceId/keyword-research/compare, GET} route +1ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [PrismaService] Successfully connected to the database.
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [NestApplication] Nest application successfully started +9ms
+[Nest] 40576  - 10/09/2026, 4:21:00 AM     LOG [Bootstrap] Application running on port 3001. CORS origin: http://localhost:3000
+[Nest] 40576  - 10/09/2026, 4:25:44 AM     LOG [AiService] [Ollama] Generating structured output (ContentDraft)
+[Nest] 40576  - 10/09/2026, 4:25:44 AM     LOG [AiService] [Ollama] Structured generation completed in 0ms
+[Nest] 40576  - 10/09/2026, 4:25:44 AM   ERROR [ExceptionsHandler] 
+Invalid `this.prisma.seoContentDraft.create()` invocation in
+/Users/mac/Desktop/SEO/apps/api/src/seo-studio/seo-studio.service.ts:217:40
+
+  214   'ContentDraft'
+  215 );
+  216 
+→ 217 return this.prisma.seoContentDraft.create({
+        data: {
+          workspaceId: "c21eaae9-e1e2-444e-89ca-e408312f35ed",
+          briefId: "0477c2b4-8c36-458e-bc6d-ac9512dfbb7e",
+          content: undefined,
+          metadata: undefined,
+          status: "draft",
+          version: 1,
+      +   title: String
+        }
+      })
+
+Argument `title` is missing.
+PrismaClientValidationError: 
+Invalid `this.prisma.seoContentDraft.create()` invocation in
+/Users/mac/Desktop/SEO/apps/api/src/seo-studio/seo-studio.service.ts:217:40
+
+  214   'ContentDraft'
+  215 );
+  216 
+→ 217 return this.prisma.seoContentDraft.create({
+        data: {
+          workspaceId: "c21eaae9-e1e2-444e-89ca-e408312f35ed",
+          briefId: "0477c2b4-8c36-458e-bc6d-ac9512dfbb7e",
+          content: undefined,
+          metadata: undefined,
+          status: "draft",
+          version: 1,
+      +   title: String
+        }
+      })
+
+Argument `title` is missing.
+    at wn (/Users/mac/Desktop/SEO/node_modules/@prisma/client/runtime/library.js:29:1363)
+    at $n.handleRequestError (/Users/mac/Desktop/SEO/node_modules/@prisma/client/runtime/library.js:121:6958)
+    at $n.handleAndLogRequestError (/Users/mac/Desktop/SEO/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/Users/mac/Desktop/SEO/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/Users/mac/Desktop/SEO/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async /Users/mac/Desktop/SEO/node_modules/@nestjs/core/router/router-execution-context.js:46:28
+    at async /Users/mac/Desktop/SEO/node_modules/@nestjs/core/router/router-proxy.js:9:17
+[Nest] 40576  - 10/09/2026, 4:25:44 AM     LOG [AiService] [Ollama] Generating text (model: llama3.2)
+[Nest] 40576  - 10/09/2026, 4:25:44 AM     LOG [AiService] [Ollama] Text generation completed in 0ms
+[Nest] 40576  - 10/09/2026, 4:25:44 AM     LOG [AiService] [Ollama] Generating structured output (ContentBrief)
+[Nest] 40576  - 10/09/2026, 4:25:44 AM     LOG [AiService] [Ollama] Structured generation completed in 0ms
+[Nest] 40576  - 10/09/2026, 4:25:44 AM     LOG [AiService] [Ollama] Generating structured output (WeeklyPerformanceReport)
+[Nest] 40576  - 10/09/2026, 4:25:44 AM     LOG [AiService] [Ollama] Structured generation completed in 0ms
+[Nest] 40576  - 10/09/2026, 4:25:44 AM   ERROR [ExceptionsHandler] 
+Invalid `p.weeklyReport.create()` invocation in
+/Users/mac/Desktop/SEO/apps/api/src/ai-reports/ai-reports.service.ts:82:27
+
+  79 
+  80 const generated = await this.aiService.generateStructuredOutput(prompt, ReportSchema, 'WeeklyPerformanceReport');
+  81 
+→ 82 return p.weeklyReport.create({
+       data: {
+         workspaceId: "c21eaae9-e1e2-444e-89ca-e408312f35ed",
+         weekStartDate: new Date("2026-10-01T22:55:44.911Z"),
+         weekEndDate: new Date("2026-10-08T22:55:44.911Z"),
+         weakPerformingContent: undefined,
+         observedPatterns: undefined,
+         seoOpportunities: undefined,
+         contentRefreshOpportunities: undefined,
+         suggestedExperiments: undefined,
+         nextWeekIdeas: undefined,
+     +   bestPerformingContent: String
+       }
+     })
+
+Argument `bestPerformingContent` is missing.
+PrismaClientValidationError: 
+Invalid `p.weeklyReport.create()` invocation in
+/Users/mac/Desktop/SEO/apps/api/src/ai-reports/ai-reports.service.ts:82:27
+
+  79 
+  80 const generated = await this.aiService.generateStructuredOutput(prompt, ReportSchema, 'WeeklyPerformanceReport');
+  81 
+→ 82 return p.weeklyReport.create({
+       data: {
+         workspaceId: "c21eaae9-e1e2-444e-89ca-e408312f35ed",
+         weekStartDate: new Date("2026-10-01T22:55:44.911Z"),
+         weekEndDate: new Date("2026-10-08T22:55:44.911Z"),
+         weakPerformingContent: undefined,
+         observedPatterns: undefined,
+         seoOpportunities: undefined,
+         contentRefreshOpportunities: undefined,
+         suggestedExperiments: undefined,
+         nextWeekIdeas: undefined,
+     +   bestPerformingContent: String
+       }
+     })
+
+Argument `bestPerformingContent` is missing.
+    at wn (/Users/mac/Desktop/SEO/node_modules/@prisma/client/runtime/library.js:29:1363)
+    at $n.handleRequestError (/Users/mac/Desktop/SEO/node_modules/@prisma/client/runtime/library.js:121:6958)
+    at $n.handleAndLogRequestError (/Users/mac/Desktop/SEO/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/Users/mac/Desktop/SEO/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/Users/mac/Desktop/SEO/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async /Users/mac/Desktop/SEO/node_modules/@nestjs/core/router/router-execution-context.js:46:28
+    at async /Users/mac/Desktop/SEO/node_modules/@nestjs/core/router/router-proxy.js:9:17
+[Nest] 40576  - 10/09/2026, 4:25:44 AM     LOG [AiService] [Ollama] Generating structured output (AnalyticsInsightsSchema)
+[Nest] 40576  - 10/09/2026, 4:25:44 AM     LOG [AiService] [Ollama] Structured generation completed in 0ms
+[Nest] 40576  - 10/09/2026, 4:25:44 AM     LOG [AiService] [Ollama] Generating text (model: llama3.2)
+[Nest] 40576  - 10/09/2026, 4:25:44 AM     LOG [AiService] [Ollama] Text generation completed in 1ms
+[Nest] 40576  - 10/09/2026, 4:25:44 AM   ERROR [ExceptionsHandler] QSTASH_TOKEN is missing in production environment variables. Cannot queue sync.
+HttpException: QSTASH_TOKEN is missing in production environment variables. Cannot queue sync.
+    at ResearchController.sync (/Users/mac/Desktop/SEO/apps/api/src/research/research.controller.ts:60:13)
+    at /Users/mac/Desktop/SEO/node_modules/@nestjs/core/router/router-execution-context.js:38:29
+    at async /Users/mac/Desktop/SEO/node_modules/@nestjs/core/router/router-execution-context.js:46:28
+    at async /Users/mac/Desktop/SEO/node_modules/@nestjs/core/router/router-proxy.js:9:17
+[Nest] 40576  - 10/09/2026, 4:25:45 AM   ERROR [ExceptionsHandler] {"error":"unable to authenticate: invalid token"}
+QstashError: {"error":"unable to authenticate: invalid token"}
+    at HttpClient.checkResponse (/Users/mac/Desktop/SEO/node_modules/@upstash/qstash/index.js:1582:13)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async HttpClient.requestWithBackoff (/Users/mac/Desktop/SEO/node_modules/@upstash/qstash/index.js:1518:5)
+    at async HttpClient.request (/Users/mac/Desktop/SEO/node_modules/@upstash/qstash/index.js:1463:26)
+    at async Client.publish (/Users/mac/Desktop/SEO/node_modules/@upstash/qstash/index.js:2361:22)
+    at async Client.publishJSON (/Users/mac/Desktop/SEO/node_modules/@upstash/qstash/index.js:2378:22)
+    at async GscController.sync (/Users/mac/Desktop/SEO/apps/api/src/gsc/gsc.controller.ts:67:17)
+    at async /Users/mac/Desktop/SEO/node_modules/@nestjs/core/router/router-execution-context.js:46:28
+    at async /Users/mac/Desktop/SEO/node_modules/@nestjs/core/router/router-proxy.js:9:17
+[Nest] 40576  - 10/09/2026, 4:25:45 AM   ERROR [ExceptionsHandler] {"error":"unable to authenticate: invalid token"}
+QstashError: {"error":"unable to authenticate: invalid token"}
+    at HttpClient.checkResponse (/Users/mac/Desktop/SEO/node_modules/@upstash/qstash/index.js:1582:13)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async HttpClient.requestWithBackoff (/Users/mac/Desktop/SEO/node_modules/@upstash/qstash/index.js:1518:5)
+    at async HttpClient.request (/Users/mac/Desktop/SEO/node_modules/@upstash/qstash/index.js:1463:26)
+    at async Client.publish (/Users/mac/Desktop/SEO/node_modules/@upstash/qstash/index.js:2361:22)
+    at async Client.publishJSON (/Users/mac/Desktop/SEO/node_modules/@upstash/qstash/index.js:2378:22)
+    at async SeoOpportunitiesController.analyze (/Users/mac/Desktop/SEO/apps/api/src/seo-opportunities/seo-opportunities.controller.ts:28:17)
+    at async /Users/mac/Desktop/SEO/node_modules/@nestjs/core/router/router-execution-context.js:46:28
+    at async /Users/mac/Desktop/SEO/node_modules/@nestjs/core/router/router-proxy.js:9:17
+[Nest] 40576  - 10/09/2026, 4:25:45 AM   ERROR [ExceptionsHandler] Not connected
+Error: Not connected
+    at InstagramService.sync (/Users/mac/Desktop/SEO/apps/api/src/instagram/instagram.service.ts:131:29)
+    at async /Users/mac/Desktop/SEO/node_modules/@nestjs/core/router/router-execution-context.js:46:28
+    at async /Users/mac/Desktop/SEO/node_modules/@nestjs/core/router/router-proxy.js:9:17
+[Nest] 40576  - 10/09/2026, 4:25:45 AM   ERROR [ExceptionsHandler] No content available for analysis
+Error: No content available for analysis
+    at InstagramService.analyze (/Users/mac/Desktop/SEO/apps/api/src/instagram/instagram.service.ts:249:40)
+    at async /Users/mac/Desktop/SEO/node_modules/@nestjs/core/router/router-execution-context.js:46:28
+    at async /Users/mac/Desktop/SEO/node_modules/@nestjs/core/router/router-proxy.js:9:17
+[Nest] 40576  - 10/09/2026, 4:25:45 AM   ERROR [ExceptionsHandler] SSRF or invalid URL: SSRF protection: Resolved to private IPv4: 127.0.0.1
+Error: SSRF or invalid URL: SSRF protection: Resolved to private IPv4: 127.0.0.1
+    at SeoContentService.analyze (/Users/mac/Desktop/SEO/apps/api/src/seo-content/seo-content.service.ts:83:13)
+[Nest] 40576  - 10/09/2026, 4:25:45 AM   ERROR [KeywordResearchService] Failed to fetch GSC data for keyword research
+
+Invalid `any).gscMetric.groupBy()` invocation in
+/Users/mac/Desktop/SEO/apps/api/src/keyword-research/keyword-research.service.ts:180:59
+
+  177 if (!query) return null;
+  178 
+  179 try {
+→ 180   const result = await (this.prisma as any).gscMetric.groupBy(
+Input error. Every field used for orderBy must be included in the by-arguments of the query. Missing fields: id
+[Nest] 40576  - 10/09/2026, 4:25:46 AM     LOG [SeoService] Performing keyword research for: seo
+[Nest] 40576  - 10/09/2026, 4:25:46 AM    WARN [SeoService] Competitor research is disabled in the free tier for domain: example.com
+[Nest] 40576  - 10/09/2026, 4:25:46 AM     LOG [SeoService] Performing rank tracking for: example.com
+[Nest] 40576  - 10/09/2026, 4:25:46 AM     LOG [SeoService] Performing site audit for: http://127.0.0.1:55433
+[Nest] 40576  - 10/09/2026, 4:26:24 AM   ERROR [ExceptionsHandler] Unauthorized
+UnauthorizedException: Unauthorized
+    at JwtAuthGuard.handleRequest (/Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:60:30)
+    at /Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:44:124
+    at /Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:83:24
+    at allFailed (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:110:18)
+    at attempt (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:183:28)
+    at JwtStrategy.strategy.fail (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:314:9)
+    at JwtStrategy.authenticate (/Users/mac/Desktop/SEO/node_modules/passport-jwt/lib/strategy.js:96:21)
+    at attempt (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:378:16)
+    at authenticate (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:379:7)
+    at /Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:88:3
+[Nest] 40576  - 10/09/2026, 4:26:24 AM   ERROR [ExceptionsHandler] Unauthorized
+UnauthorizedException: Unauthorized
+    at JwtAuthGuard.handleRequest (/Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:60:30)
+    at /Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:44:124
+    at /Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:83:24
+    at allFailed (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:110:18)
+    at attempt (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:183:28)
+    at JwtStrategy.strategy.fail (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:314:9)
+    at JwtStrategy.authenticate (/Users/mac/Desktop/SEO/node_modules/passport-jwt/lib/strategy.js:96:21)
+    at attempt (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:378:16)
+    at authenticate (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:379:7)
+    at /Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:88:3
+[Nest] 40576  - 10/09/2026, 4:26:26 AM   ERROR [ExceptionsHandler] Unauthorized
+UnauthorizedException: Unauthorized
+    at JwtAuthGuard.handleRequest (/Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:60:30)
+    at /Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:44:124
+    at /Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:83:24
+    at allFailed (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:110:18)
+    at attempt (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:183:28)
+    at JwtStrategy.strategy.fail (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:314:9)
+    at JwtStrategy.authenticate (/Users/mac/Desktop/SEO/node_modules/passport-jwt/lib/strategy.js:96:21)
+    at attempt (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:378:16)
+    at authenticate (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:379:7)
+    at /Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:88:3
+[Nest] 40576  - 10/09/2026, 4:26:26 AM   ERROR [ExceptionsHandler] Unauthorized
+UnauthorizedException: Unauthorized
+    at JwtAuthGuard.handleRequest (/Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:60:30)
+    at /Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:44:124
+    at /Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:83:24
+    at allFailed (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:110:18)
+    at attempt (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:183:28)
+    at JwtStrategy.strategy.fail (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:314:9)
+    at JwtStrategy.authenticate (/Users/mac/Desktop/SEO/node_modules/passport-jwt/lib/strategy.js:96:21)
+    at attempt (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:378:16)
+    at authenticate (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:379:7)
+    at /Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:88:3
+[Nest] 40576  - 10/09/2026, 4:26:28 AM   ERROR [ExceptionsHandler] Unauthorized
+UnauthorizedException: Unauthorized
+    at JwtAuthGuard.handleRequest (/Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:60:30)
+    at /Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:44:124
+    at /Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:83:24
+    at allFailed (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:110:18)
+    at attempt (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:183:28)
+    at JwtStrategy.strategy.fail (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:314:9)
+    at JwtStrategy.authenticate (/Users/mac/Desktop/SEO/node_modules/passport-jwt/lib/strategy.js:96:21)
+    at attempt (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:378:16)
+    at authenticate (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:379:7)
+    at /Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:88:3
+[Nest] 40576  - 10/09/2026, 4:26:28 AM   ERROR [ExceptionsHandler] Unauthorized
+UnauthorizedException: Unauthorized
+    at JwtAuthGuard.handleRequest (/Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:60:30)
+    at /Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:44:124
+    at /Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:83:24
+    at allFailed (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:110:18)
+    at attempt (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:183:28)
+    at JwtStrategy.strategy.fail (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:314:9)
+    at JwtStrategy.authenticate (/Users/mac/Desktop/SEO/node_modules/passport-jwt/lib/strategy.js:96:21)
+    at attempt (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:378:16)
+    at authenticate (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:379:7)
+    at /Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:88:3
+[Nest] 40576  - 10/09/2026, 4:26:29 AM   ERROR [ExceptionsHandler] Unauthorized
+UnauthorizedException: Unauthorized
+    at JwtAuthGuard.handleRequest (/Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:60:30)
+    at /Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:44:124
+    at /Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:83:24
+    at allFailed (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:110:18)
+    at attempt (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:183:28)
+    at JwtStrategy.strategy.fail (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:314:9)
+    at JwtStrategy.authenticate (/Users/mac/Desktop/SEO/node_modules/passport-jwt/lib/strategy.js:96:21)
+    at attempt (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:378:16)
+    at authenticate (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:379:7)
+    at /Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:88:3
+[Nest] 40576  - 10/09/2026, 4:26:29 AM   ERROR [ExceptionsHandler] Unauthorized
+UnauthorizedException: Unauthorized
+    at JwtAuthGuard.handleRequest (/Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:60:30)
+    at /Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:44:124
+    at /Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:83:24
+    at allFailed (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:110:18)
+    at attempt (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:183:28)
+    at JwtStrategy.strategy.fail (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:314:9)
+    at JwtStrategy.authenticate (/Users/mac/Desktop/SEO/node_modules/passport-jwt/lib/strategy.js:96:21)
+    at attempt (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:378:16)
+    at authenticate (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:379:7)
+    at /Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:88:3
+[Nest] 40576  - 10/09/2026, 4:26:30 AM   ERROR [ExceptionsHandler] Unauthorized
+UnauthorizedException: Unauthorized
+    at JwtAuthGuard.handleRequest (/Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:60:30)
+    at /Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:44:124
+    at /Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:83:24
+    at allFailed (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:110:18)
+    at attempt (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:183:28)
+    at JwtStrategy.strategy.fail (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:314:9)
+    at JwtStrategy.authenticate (/Users/mac/Desktop/SEO/node_modules/passport-jwt/lib/strategy.js:96:21)
+    at attempt (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:378:16)
+    at authenticate (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:379:7)
+    at /Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:88:3
+[Nest] 40576  - 10/09/2026, 4:26:30 AM   ERROR [ExceptionsHandler] Unauthorized
+UnauthorizedException: Unauthorized
+    at JwtAuthGuard.handleRequest (/Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:60:30)
+    at /Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:44:124
+    at /Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:83:24
+    at allFailed (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:110:18)
+    at attempt (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:183:28)
+    at JwtStrategy.strategy.fail (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:314:9)
+    at JwtStrategy.authenticate (/Users/mac/Desktop/SEO/node_modules/passport-jwt/lib/strategy.js:96:21)
+    at attempt (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:378:16)
+    at authenticate (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:379:7)
+    at /Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:88:3

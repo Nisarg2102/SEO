@@ -1,0 +1,56 @@
+
+> ai-marketing-seo-assistant@0.1.0 lint
+> npm run lint --workspaces --if-present
+
+
+> api@0.0.1 lint
+> oxlint --type-aware src/ test/
+
+src/seo/seo.service.ts:1:30: warning eslint(no-unused-vars): Identifier 'NotImplementedException' is imported but never used. help: Consider removing this import.
+src/queues/qstash.guard.ts:35:14: warning eslint(no-unused-vars): Catch parameter 'error' is caught but never used. help: Consider handling this error.
+src/ai-agent/ai-agent.service.ts:60:27: warning eslint(no-unused-vars): Parameter 'query' is declared but never used. Unused parameters should start with a '_'. help: Consider removing this parameter.
+src/ai-agent/ai-agent.service.ts:117:44: warning eslint(no-unused-vars): Parameter 'audience' is declared but never used. Unused parameters should start with a '_'. help: Consider removing this parameter.
+src/sources/sources.service.ts:1:60: warning eslint(no-unused-vars): Identifier 'BadRequestException' is imported but never used. help: Consider removing this import.
+src/research/research.service.spec.ts:155:13: warning eslint(no-unused-vars): Variable 'idea' is declared but never used. Unused variables should start with a '_'. help: Consider removing this declaration.
+src/prisma/prisma.service.ts:2:24: warning eslint(no-unused-vars): Identifier 'Prisma' is imported but never used. help: Consider removing this import.
+src/seo-content/seo-content.service.ts:168:14: warning eslint(no-unused-vars): Catch parameter 'e' is caught but never used. help: Consider handling this error.
+src/seo-studio/seo-studio.service.ts:264:11: warning eslint(no-unused-vars): Variable 'brief' is declared but never used. Unused variables should start with a '_'. help: Consider removing this declaration.
+src/analytics/analytics.service.ts:4:10: warning eslint(no-unused-vars): Identifier 'Prisma' is imported but never used. help: Consider removing this import.
+src/seo-opportunities/seo-opportunities.controller.ts:1:57: warning eslint(no-unused-vars): Identifier 'Inject' is imported but never used. help: Consider removing this import.
+src/analytics/analytics.service.spec.ts:5:10: warning eslint(no-unused-vars): Identifier 'NotFoundException' is imported but never used. help: Consider removing this import.
+src/content-packs/content-packs.service.ts:130:9: warning eslint(no-unused-vars): Variable 'externalPostId' is declared but never used. Unused variables should start with a '_'. help: Consider removing this declaration.
+src/seo-opportunities/seo-opportunities.service.spec.ts:32:7: warning eslint(no-unused-vars): Variable 'mockQueue' is assigned a value but never used. Unused variables should start with a '_'. help: Did you mean to use this variable?
+src/instagram/instagram.controller.ts:26:14: warning eslint(no-unused-vars): Catch parameter 'e' is caught but never used. help: Consider handling this error.
+src/instagram/instagram.controller.spec.ts:6:10: warning eslint(no-unused-vars): Identifier 'ExecutionContext' is imported but never used. help: Consider removing this import.
+src/seo-audit/seo-audit.service.ts:33:11: warning eslint(no-unused-vars): Variable 'baseUrlString' is declared but never used. Unused variables should start with a '_'. help: Consider removing this declaration.
+src/seo-audit/seo-audit.service.ts:252:24: warning eslint(no-unused-vars): Parameter 'workspaceId' is declared but never used. Unused parameters should start with a '_'. help: Consider removing this parameter.
+src/seo-audit/seo-audit.service.ts:258:22: warning eslint(no-unused-vars): Parameter 'workspaceId' is declared but never used. Unused parameters should start with a '_'. help: Consider removing this parameter.
+src/sources/sources.service.ts:21:15: warning typescript(no-misused-spread): Using the spread operator on class instances will lose their class prototype.
+src/sources/sources.service.ts:44:45: warning typescript(no-misused-spread): Using the spread operator on class instances will lose their class prototype.
+src/content-packs/content-packs.service.ts:125:25: warning typescript(no-misused-spread): Using the spread operator on class instances will lose their class prototype.
+src/instagram/instagram.controller.spec.ts:48:22: warning typescript(unbound-method): Avoid referencing unbound methods which may cause unintentional scoping of `this`. help: If your function does not access `this`, you can annotate it with `this: void`, or consider using an arrow function instead.
+src/instagram/instagram.controller.spec.ts:94:20: warning typescript(unbound-method): Avoid referencing unbound methods which may cause unintentional scoping of `this`. help: If your function does not access `this`, you can annotate it with `this: void`, or consider using an arrow function instead.
+src/instagram/instagram.service.spec.ts:80:21: warning typescript(unbound-method): Avoid referencing unbound methods which may cause unintentional scoping of `this`. help: If your function does not access `this`, you can annotate it with `this: void`, or consider using an arrow function instead.
+
+> web@0.1.0 lint
+> next lint
+
+
+./src/app/workspaces/[workspaceId]/content/[id]/page.tsx
+91:24  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/app/workspaces/[workspaceId]/content/new/page.tsx
+50:24  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/app/workspaces/[workspaceId]/settings/error.tsx
+12:74  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+npm error Lifecycle script `lint` failed with error:
+npm error code 1
+npm error path /Users/mac/Desktop/SEO/apps/web
+npm error workspace web@0.1.0
+npm error location /Users/mac/Desktop/SEO/apps/web
+npm error command failed
+npm error command sh -c next lint
+

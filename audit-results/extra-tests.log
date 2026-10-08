@@ -1,0 +1,125 @@
+FAIL services/seo/src/providers/technical-seo.provider.spec.ts
+  ● FreeTechnicalSeoProvider › crawls successfully and extracts title and description
+
+    Invalid base URL: ${(e as Error).message}
+
+      210 |       parsedBase = await validateUrl(baseUrl);
+      211 |     } catch (e) {
+    > 212 |       throw new Error(`Invalid base URL: \${(e as Error).message}`);
+          |             ^
+      213 |     }
+      214 |
+      215 |     // Normalize base URL
+
+      at FreeTechnicalSeoProvider.crawl (services/seo/src/providers/technical-seo.provider.ts:212:13)
+      at Object.<anonymous> (services/seo/src/providers/technical-seo.provider.spec.ts:48:20)
+
+  ● FreeTechnicalSeoProvider › detects missing tags as issues
+
+    Invalid base URL: ${(e as Error).message}
+
+      210 |       parsedBase = await validateUrl(baseUrl);
+      211 |     } catch (e) {
+    > 212 |       throw new Error(`Invalid base URL: \${(e as Error).message}`);
+          |             ^
+      213 |     }
+      214 |
+      215 |     // Normalize base URL
+
+      at FreeTechnicalSeoProvider.crawl (services/seo/src/providers/technical-seo.provider.ts:212:13)
+      at Object.<anonymous> (services/seo/src/providers/technical-seo.provider.spec.ts:78:20)
+
+  ● FreeTechnicalSeoProvider › blocks private IP SSRF attempts
+
+    expect(received).rejects.toThrow(expected)
+
+    Expected pattern: /SSRF protection: Resolved to private IPv4/
+    Received message: "Invalid base URL: ${(e as Error).message}"
+
+          210 |       parsedBase = await validateUrl(baseUrl);
+          211 |     } catch (e) {
+        > 212 |       throw new Error(`Invalid base URL: \${(e as Error).message}`);
+              |             ^
+          213 |     }
+          214 |
+          215 |     // Normalize base URL
+
+      at FreeTechnicalSeoProvider.crawl (services/seo/src/providers/technical-seo.provider.ts:212:13)
+      at Object.<anonymous> (services/seo/src/providers/technical-seo.provider.spec.ts:89:5)
+      at Object.toThrow (node_modules/expect/build/index.js:2155:20)
+      at Object.<anonymous> (services/seo/src/providers/technical-seo.provider.spec.ts:90:16)
+
+  ● FreeTechnicalSeoProvider › extracts and classifies links correctly
+
+    Invalid base URL: ${(e as Error).message}
+
+      210 |       parsedBase = await validateUrl(baseUrl);
+      211 |     } catch (e) {
+    > 212 |       throw new Error(`Invalid base URL: \${(e as Error).message}`);
+          |             ^
+      213 |     }
+      214 |
+      215 |     // Normalize base URL
+
+      at FreeTechnicalSeoProvider.crawl (services/seo/src/providers/technical-seo.provider.ts:212:13)
+      at Object.<anonymous> (services/seo/src/providers/technical-seo.provider.spec.ts:111:20)
+
+FAIL apps/web/src/lib/apiClient.test.ts
+  ● apiClient › uses NEXT_PUBLIC_API_URL when set
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: "https://api.example.com"
+    Received: "https://api.example.com/api"
+
+      19 |   it('uses NEXT_PUBLIC_API_URL when set', () => {
+      20 |     process.env.NEXT_PUBLIC_API_URL = 'https://api.example.com';
+    > 21 |     expect(apiClient.getBaseUrl()).toBe('https://api.example.com');
+         |                                    ^
+      22 |   });
+      23 |
+      24 |   it('defaults to http://localhost:3001 if no env is set', () => {
+
+      at Object.<anonymous> (apps/web/src/lib/apiClient.test.ts:21:36)
+
+  ● apiClient › defaults to http://localhost:3001 if no env is set
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: "http://localhost:3001"
+    Received: "http://localhost:3001/api"
+
+      23 |
+      24 |   it('defaults to http://localhost:3001 if no env is set', () => {
+    > 25 |     expect(apiClient.getBaseUrl()).toBe('http://localhost:3001');
+         |                                    ^
+      26 |   });
+      27 |
+      28 |   it('sends credentials with requests for cookie auth', async () => {
+
+      at Object.<anonymous> (apps/web/src/lib/apiClient.test.ts:25:36)
+
+  ● apiClient › sends credentials with requests for cookie auth
+
+    expect(jest.fn()).toHaveBeenCalledWith(...expected)
+
+    Expected: "http://localhost:3001/test", ObjectContaining {"credentials": "include"}
+    Received: "http://localhost:3001/api/test", {"credentials": "include", "headers": {"Content-Type": "application/json"}, "method": "GET"}
+
+    Number of calls: 1
+
+      35 |     await apiClient.get('/test');
+      36 |
+    > 37 |     expect(global.fetch).toHaveBeenCalledWith('http://localhost:3001/test', expect.objectContaining({
+         |                          ^
+      38 |       credentials: 'include',
+      39 |     }));
+      40 |   });
+
+      at Object.<anonymous> (apps/web/src/lib/apiClient.test.ts:37:26)
+
+Test Suites: 2 failed, 2 total
+Tests:       7 failed, 2 passed, 9 total
+Snapshots:   0 total
+Time:        0.707 s
+Ran all test suites.

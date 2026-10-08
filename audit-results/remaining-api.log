@@ -1,0 +1,38 @@
+login 200
+health 200
+AI health mock 200
+SEO health 200
+CORS preflight 204
+CORS foreign origin 204
+workspace stats with scheduled fixture 200
+research detail 200
+research convert 201
+brief detail 200
+brief drafts 200
+generate draft mock AI 500
+draft detail 200
+draft update 200
+draft regenerate snippet 201
+create brief mock AI 201
+generate report mock AI 500
+analytics insights mock AI 201
+AI test 201
+create technical audit no queue 201
+research queue missing configuration 500
+GSC queue missing configuration 500
+SEO opportunity queue missing configuration 500
+Instagram disconnected sync 500
+Instagram empty analyze 500
+Instagram disconnect 201
+automation detail 200
+automation disable 200
+SEO content SSRF rejection 500
+live keyword provider  200
+live keyword provider /suggestions 200
+live keyword provider /trends 200
+live keyword provider /related 200
+live keyword provider /compare 200
+legacy seo keywords 200
+legacy competitors 200
+legacy rank 201
+legacy audit SSRF 201

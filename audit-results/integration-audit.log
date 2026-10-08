@@ -1,0 +1,34 @@
+[Upstash QStash] client token is not set. Either pass a token or set QSTASH_TOKEN env variable.
+[Upstash QStash] client token is not set. Either pass a token or set QSTASH_TOKEN env variable.
+GSC sync mocked Google real DB {"success":true}
+GSC stored performance {"clicks":10,"impressions":100,"ctr":10,"averagePosition":5}
+analytics after GSC sync {"hasData":false,"summary":null,"trends":[]}
+GSC weighted CTR fixture {"actual":{"clicks":100,"impressions":9100,"ctr":5.5,"averagePosition":7.5},"expectedCtr":1.098901098901099}
+brand profile create scoped extension ERROR 
+Invalid `extension',()=>db.withWorkspace(f.workspaceA).brandProfile.create()` invocation in
+/Users/mac/Desktop/SEO/audit-results/integration-audit.cjs:7:101
+
+  4 (async()=>{await db.$connect();const opp=new SeoOpportunitiesService(db,ai);const gsc=new GscService(db,opp);const analytics=new AnalyticsService(db,ai);const audit=new SeoAuditService(db);const studio=new SeoStudioService(db,ai);
+  5 aw
+content create valid AI fixture ERROR 
+Invalid `this.prisma.withWorkspace(workspaceId).contentPack.create()` invocation in
+/Users/mac/Desktop/SEO/apps/api/src/content-packs/content-packs.service.ts:80:63
+
+  77   isMedical ? 'MedicalContentPack' : 'ContentPack'
+  78 );
+  79 
+→ 80 return this.prisma.withWorkspace(workspaceId).contentPack.create({
+       data: {
+         workspaceId: "c21eaae9-e1e2-444e-89ca-e408312f35ed",
+         platf
+SEO brief medical prompt {"id":"2970a164-0f97-4726-a476-0501ad3649b7","workspaceId":"16327bb4-dee6-4ae6-bdf2-610623193cb5","primaryKeyword":"education","secondaryKeywords":[],"topic":"Audit","country":null,"language":null,"contentType":null,"searchIntent":null,"briefData":{"topic":"Audit","audience":"Engineers","metadata":{"slug":"audit","title":"Audit","description":"Fixture"},"contentType":"Blog","searchIntent":{"intent":"informational","reason":"Fixture","confidence":"high"},"titleOptions":["Audit"],"relatedTopics":[],"primaryKeyword":"audit","contentGuidance":{"tone":"Clear","style":"Plain","thingsToAvoid":[],"imp
+SEO brief draft edit pipeline {"brief":"0477c2b4-8c36-458e-bc6d-ac9512dfbb7e","draft":"24b5ee11-d310-44d6-b646-7a7ee8e2feaf","version":2,"content":"Edited audit draft","section":{"newSectionContent":"A deterministic audit section.","originalDraftId":"6358c005-0aea-4fd5-a565-fb088b724052"}}
+audit missing QStash stays pending {"id":"61f80b76-8504-4b58-90f5-34b15b812f6b","status":"pending"}
+QStash audit target contract {"id":"064fcce4-662b-4736-8e85-efbb0ef45b6b","workspaceId":"c21eaae9-e1e2-444e-89ca-e408312f35ed","baseUrl":"https://example.com","status":"pending","maxPages":1,"maxDepth":0,"pagesCrawled":0,"pagesFailed":0,"issueCount":0,"criticalCount":0,"warningCount":0,"passedCount":0,"errorMessage":null,"startedAt":null,"completedAt":null,"createdAt":"2026-10-08T15:06:32.869Z"}
+QStash GSC target contract {"message":"Synchronization queued","jobId":"fixture"}
+[Nest] 38885  - 10/08/2026, 8:36:32 PM     LOG [ResearchService] Sync complete for workspace c21eaae9-e1e2-444e-89ca-e408312f35ed. New items: 1, failed sources: 0
+[Nest] 38885  - 10/08/2026, 8:36:32 PM     LOG [ResearchService] Sync complete for workspace c21eaae9-e1e2-444e-89ca-e408312f35ed. New items: 0, failed sources: 0
+RSS private network fetch {"hits":2,"first":{"success":true,"newItemsCount":1,"failedSources":0},"second":{"success":true,"newItemsCount":0,"failedSources":0},"privateNetworkFetched":true}
+[Nest] 38885  - 10/08/2026, 8:36:32 PM     LOG [WebhooksController] Received n8n webhook: {}
+n8n undefined secret {"success":true}
+Nest exception identity {"appVersion":"10.4.22","coreVersion":"10.4.15","sameExceptionClass":false,"instanceRecognized":false}

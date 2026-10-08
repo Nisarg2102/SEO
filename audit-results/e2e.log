@@ -1,0 +1,903 @@
+
+> api@0.0.1 test:e2e
+> NODE_OPTIONS=--experimental-vm-modules jest --config ./test/jest-e2e.json --runInBand
+
+[Nest] 37255  - 10/08/2026, 8:32:45 PM    WARN [AiService] Using MockAIProvider in test environment
+[Nest] 37255  - 10/08/2026, 8:32:45 PM    WARN [AiService] Using MockAIProvider in test environment
+[Nest] 37255  - 10/08/2026, 8:32:45 PM     LOG [PrismaService] Successfully connected to the database.
+[Nest] 37255  - 10/08/2026, 8:32:45 PM    WARN [AiService] Using MockAIProvider in test environment
+[Nest] 37255  - 10/08/2026, 8:32:45 PM    WARN [AiService] Using MockAIProvider in test environment
+[Nest] 37255  - 10/08/2026, 8:32:45 PM     LOG [PrismaService] Successfully connected to the database.
+[Nest] 37255  - 10/08/2026, 8:32:46 PM    WARN [AiService] Using MockAIProvider in test environment
+[Nest] 37255  - 10/08/2026, 8:32:46 PM    WARN [AiService] Using MockAIProvider in test environment
+[Nest] 37255  - 10/08/2026, 8:32:46 PM     LOG [PrismaService] Successfully connected to the database.
+[Nest] 37255  - 10/08/2026, 8:32:46 PM    WARN [AiService] Using MockAIProvider in test environment
+[Nest] 37255  - 10/08/2026, 8:32:46 PM    WARN [AiService] Using MockAIProvider in test environment
+[Nest] 37255  - 10/08/2026, 8:32:46 PM     LOG [PrismaService] Successfully connected to the database.
+[Nest] 37255  - 10/08/2026, 8:32:46 PM   ERROR [ExceptionsHandler] Unauthorized
+UnauthorizedException: Unauthorized
+    at JwtAuthGuard.handleRequest (/Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:60:30)
+    at /Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:44:124
+    at /Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:83:24
+    at allFailed (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:110:18)
+    at attempt (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:183:28)
+    at JwtStrategy.strategy.fail (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:314:9)
+    at JwtStrategy.authenticate (/Users/mac/Desktop/SEO/node_modules/passport-jwt/lib/strategy.js:96:21)
+    at attempt (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:378:16)
+    at authenticate (/Users/mac/Desktop/SEO/node_modules/passport/lib/middleware/authenticate.js:379:7)
+    at /Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:88:3
+    at new Promise (<anonymous>)
+    at /Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:80:83
+    at JwtAuthGuard.canActivate (/Users/mac/Desktop/SEO/apps/api/node_modules/@nestjs/passport/dist/auth.guard.js:44:32)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+[Nest] 37255  - 10/08/2026, 8:32:46 PM    WARN [AiService] Using MockAIProvider in test environment
+[Nest] 37255  - 10/08/2026, 8:32:46 PM    WARN [AiService] Using MockAIProvider in test environment
+[Nest] 37255  - 10/08/2026, 8:32:46 PM     LOG [PrismaService] Successfully connected to the database.
+FAIL test/auth.e2e-spec.ts
+  ● Console
+
+    console.warn
+      [Upstash QStash] client token is not set. Either pass a token or set QSTASH_TOKEN env variable.
+
+       7 | export class SeoAuditService {
+       8 |   private readonly logger = new Logger(SeoAuditService.name);
+    >  9 |   private readonly qstash = new Client({ token: process.env.QSTASH_TOKEN || '' });
+         |                             ^
+      10 |   private readonly provider = new FreeTechnicalSeoProvider();
+      11 |
+      12 |   constructor(private readonly prisma: PrismaService) {}
+
+      at verifyCredentials (../../../node_modules/@upstash/qstash/index.js:1133:13)
+      at getClientCredentials (../../../node_modules/@upstash/qstash/index.js:1079:10)
+      at new Client (../../../node_modules/@upstash/qstash/index.js:2244:32)
+      at SeoAuditService.<instance_members_initializer> (../src/seo-audit/seo-audit.service.ts:9:29)
+      at new SeoAuditService (../src/seo-audit/seo-audit.service.ts:12:3)
+      at TestingInjector.instantiateClass (../../../node_modules/@nestjs/core/injector/injector.js:373:19)
+      at callback (../../../node_modules/@nestjs/core/injector/injector.js:65:45)
+      at TestingInjector.resolveConstructorParams (../../../node_modules/@nestjs/core/injector/injector.js:145:24)
+      at TestingInjector.loadInstance (../../../node_modules/@nestjs/core/injector/injector.js:70:13)
+      at TestingInjector.loadProvider (../../../node_modules/@nestjs/core/injector/injector.js:98:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 3)
+      at TestingInstanceLoader.createInstancesOfProviders (../../../node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 22)
+      at TestingInstanceLoader.createInstances (../../../node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-module.builder.js:118:9)
+      at TestingModuleBuilder.compile (../../../node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at Object.<anonymous> (auth.e2e-spec.ts:11:42)
+
+    console.warn
+      [Upstash QStash] client token is not set. Either pass a token or set QSTASH_TOKEN env variable.
+
+      32 | export class SeoOpportunitiesService {
+      33 |   private readonly logger = new Logger(SeoOpportunitiesService.name);
+    > 34 |   private readonly qstash = new Client({ token: process.env.QSTASH_TOKEN || '' });
+         |                             ^
+      35 |
+      36 |   // Configurable Thresholds from Env
+      37 |   private readonly MIN_IMPRESSIONS = parseInt(process.env.SEO_OPPORTUNITY_MIN_IMPRESSIONS || '1000', 10);
+
+      at verifyCredentials (../../../node_modules/@upstash/qstash/index.js:1133:13)
+      at getClientCredentials (../../../node_modules/@upstash/qstash/index.js:1079:10)
+      at new Client (../../../node_modules/@upstash/qstash/index.js:2244:32)
+      at SeoOpportunitiesService.<instance_members_initializer> (../src/seo-opportunities/seo-opportunities.service.ts:34:29)
+      at new SeoOpportunitiesService (../src/seo-opportunities/seo-opportunities.service.ts:42:3)
+      at TestingInjector.instantiateClass (../../../node_modules/@nestjs/core/injector/injector.js:373:19)
+      at callback (../../../node_modules/@nestjs/core/injector/injector.js:65:45)
+      at TestingInjector.resolveConstructorParams (../../../node_modules/@nestjs/core/injector/injector.js:145:24)
+      at TestingInjector.loadInstance (../../../node_modules/@nestjs/core/injector/injector.js:70:13)
+      at TestingInjector.loadProvider (../../../node_modules/@nestjs/core/injector/injector.js:98:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 3)
+      at TestingInstanceLoader.createInstancesOfProviders (../../../node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 14)
+      at TestingInstanceLoader.createInstances (../../../node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-module.builder.js:118:9)
+      at TestingModuleBuilder.compile (../../../node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at Object.<anonymous> (auth.e2e-spec.ts:11:42)
+
+    console.warn
+      [Upstash QStash] client token is not set. Either pass a token or set QSTASH_TOKEN env variable.
+
+      23 | @Controller('workspaces/:workspaceId/research')
+      24 | export class ResearchController {
+    > 25 |   private readonly qstash = new Client({ token: process.env.QSTASH_TOKEN || '' });
+         |                             ^
+      26 |
+      27 |   constructor(
+      28 |     private readonly researchService: ResearchService
+
+      at verifyCredentials (../../../node_modules/@upstash/qstash/index.js:1133:13)
+      at getClientCredentials (../../../node_modules/@upstash/qstash/index.js:1079:10)
+      at new Client (../../../node_modules/@upstash/qstash/index.js:2244:32)
+      at ResearchController.<instance_members_initializer> (../src/research/research.controller.ts:25:29)
+      at new ResearchController (../src/research/research.controller.ts:27:3)
+      at TestingInjector.instantiateClass (../../../node_modules/@nestjs/core/injector/injector.js:373:19)
+      at callback (../../../node_modules/@nestjs/core/injector/injector.js:65:45)
+      at TestingInjector.resolveConstructorParams (../../../node_modules/@nestjs/core/injector/injector.js:145:24)
+      at TestingInjector.loadInstance (../../../node_modules/@nestjs/core/injector/injector.js:70:13)
+      at TestingInjector.loadController (../../../node_modules/@nestjs/core/injector/injector.js:89:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:68:13
+          at async Promise.all (index 0)
+      at TestingInstanceLoader.createInstancesOfControllers (../../../node_modules/@nestjs/core/injector/instance-loader.js:67:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:42:13
+          at async Promise.all (index 12)
+      at TestingInstanceLoader.createInstances (../../../node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-module.builder.js:118:9)
+      at TestingModuleBuilder.compile (../../../node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at Object.<anonymous> (auth.e2e-spec.ts:11:42)
+
+    console.warn
+      [Upstash QStash] client token is not set. Either pass a token or set QSTASH_TOKEN env variable.
+
+       8 | @Controller('workspaces/:workspaceId/seo-opportunities')
+       9 | export class SeoOpportunitiesController {
+    > 10 |   private readonly qstash = new Client({ token: process.env.QSTASH_TOKEN || '' });
+         |                             ^
+      11 |
+      12 |   constructor(
+      13 |     private readonly seoOppsService: SeoOpportunitiesService
+
+      at verifyCredentials (../../../node_modules/@upstash/qstash/index.js:1133:13)
+      at getClientCredentials (../../../node_modules/@upstash/qstash/index.js:1079:10)
+      at new Client (../../../node_modules/@upstash/qstash/index.js:2244:32)
+      at SeoOpportunitiesController.<instance_members_initializer> (../src/seo-opportunities/seo-opportunities.controller.ts:10:29)
+      at new SeoOpportunitiesController (../src/seo-opportunities/seo-opportunities.controller.ts:12:3)
+      at TestingInjector.instantiateClass (../../../node_modules/@nestjs/core/injector/injector.js:373:19)
+      at callback (../../../node_modules/@nestjs/core/injector/injector.js:65:45)
+      at TestingInjector.resolveConstructorParams (../../../node_modules/@nestjs/core/injector/injector.js:145:24)
+      at TestingInjector.loadInstance (../../../node_modules/@nestjs/core/injector/injector.js:70:13)
+      at TestingInjector.loadController (../../../node_modules/@nestjs/core/injector/injector.js:89:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:68:13
+          at async Promise.all (index 0)
+      at TestingInstanceLoader.createInstancesOfControllers (../../../node_modules/@nestjs/core/injector/instance-loader.js:67:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:42:13
+          at async Promise.all (index 14)
+      at TestingInstanceLoader.createInstances (../../../node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-module.builder.js:118:9)
+      at TestingModuleBuilder.compile (../../../node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at Object.<anonymous> (auth.e2e-spec.ts:11:42)
+
+    console.warn
+      [Upstash QStash] client token is not set. Either pass a token or set QSTASH_TOKEN env variable.
+
+      36 | @Controller('workspaces/:workspaceId/gsc')
+      37 | export class GscController {
+    > 38 |   private readonly qstash = new Client({ token: process.env.QSTASH_TOKEN || '' });
+         |                             ^
+      39 |   constructor(
+      40 |     private readonly gscService: GscService
+      41 |   ) {}
+
+      at verifyCredentials (../../../node_modules/@upstash/qstash/index.js:1133:13)
+      at getClientCredentials (../../../node_modules/@upstash/qstash/index.js:1079:10)
+      at new Client (../../../node_modules/@upstash/qstash/index.js:2244:32)
+      at GscController.<instance_members_initializer> (../src/gsc/gsc.controller.ts:38:29)
+      at new GscController (../src/gsc/gsc.controller.ts:39:3)
+      at TestingInjector.instantiateClass (../../../node_modules/@nestjs/core/injector/injector.js:373:19)
+      at callback (../../../node_modules/@nestjs/core/injector/injector.js:65:45)
+      at TestingInjector.resolveConstructorParams (../../../node_modules/@nestjs/core/injector/injector.js:145:24)
+      at TestingInjector.loadInstance (../../../node_modules/@nestjs/core/injector/injector.js:70:13)
+      at TestingInjector.loadController (../../../node_modules/@nestjs/core/injector/injector.js:89:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:68:13
+          at async Promise.all (index 0)
+      at TestingInstanceLoader.createInstancesOfControllers (../../../node_modules/@nestjs/core/injector/instance-loader.js:67:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:42:13
+          at async Promise.all (index 15)
+      at TestingInstanceLoader.createInstances (../../../node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-module.builder.js:118:9)
+      at TestingModuleBuilder.compile (../../../node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at Object.<anonymous> (auth.e2e-spec.ts:11:42)
+
+    console.warn
+      [Upstash QStash] client token is not set. Either pass a token or set QSTASH_TOKEN env variable.
+
+       7 | export class SeoAuditService {
+       8 |   private readonly logger = new Logger(SeoAuditService.name);
+    >  9 |   private readonly qstash = new Client({ token: process.env.QSTASH_TOKEN || '' });
+         |                             ^
+      10 |   private readonly provider = new FreeTechnicalSeoProvider();
+      11 |
+      12 |   constructor(private readonly prisma: PrismaService) {}
+
+      at verifyCredentials (../../../node_modules/@upstash/qstash/index.js:1133:13)
+      at getClientCredentials (../../../node_modules/@upstash/qstash/index.js:1079:10)
+      at new Client (../../../node_modules/@upstash/qstash/index.js:2244:32)
+      at SeoAuditService.<instance_members_initializer> (../src/seo-audit/seo-audit.service.ts:9:29)
+      at new SeoAuditService (../src/seo-audit/seo-audit.service.ts:12:3)
+      at TestingInjector.instantiateClass (../../../node_modules/@nestjs/core/injector/injector.js:373:19)
+      at callback (../../../node_modules/@nestjs/core/injector/injector.js:65:45)
+      at TestingInjector.resolveConstructorParams (../../../node_modules/@nestjs/core/injector/injector.js:145:24)
+      at TestingInjector.loadInstance (../../../node_modules/@nestjs/core/injector/injector.js:70:13)
+      at TestingInjector.loadProvider (../../../node_modules/@nestjs/core/injector/injector.js:98:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 3)
+      at TestingInstanceLoader.createInstancesOfProviders (../../../node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 22)
+      at TestingInstanceLoader.createInstances (../../../node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-module.builder.js:118:9)
+      at TestingModuleBuilder.compile (../../../node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at Object.<anonymous> (auth.e2e-spec.ts:11:42)
+
+    console.warn
+      [Upstash QStash] client token is not set. Either pass a token or set QSTASH_TOKEN env variable.
+
+      32 | export class SeoOpportunitiesService {
+      33 |   private readonly logger = new Logger(SeoOpportunitiesService.name);
+    > 34 |   private readonly qstash = new Client({ token: process.env.QSTASH_TOKEN || '' });
+         |                             ^
+      35 |
+      36 |   // Configurable Thresholds from Env
+      37 |   private readonly MIN_IMPRESSIONS = parseInt(process.env.SEO_OPPORTUNITY_MIN_IMPRESSIONS || '1000', 10);
+
+      at verifyCredentials (../../../node_modules/@upstash/qstash/index.js:1133:13)
+      at getClientCredentials (../../../node_modules/@upstash/qstash/index.js:1079:10)
+      at new Client (../../../node_modules/@upstash/qstash/index.js:2244:32)
+      at SeoOpportunitiesService.<instance_members_initializer> (../src/seo-opportunities/seo-opportunities.service.ts:34:29)
+      at new SeoOpportunitiesService (../src/seo-opportunities/seo-opportunities.service.ts:42:3)
+      at TestingInjector.instantiateClass (../../../node_modules/@nestjs/core/injector/injector.js:373:19)
+      at callback (../../../node_modules/@nestjs/core/injector/injector.js:65:45)
+      at TestingInjector.resolveConstructorParams (../../../node_modules/@nestjs/core/injector/injector.js:145:24)
+      at TestingInjector.loadInstance (../../../node_modules/@nestjs/core/injector/injector.js:70:13)
+      at TestingInjector.loadProvider (../../../node_modules/@nestjs/core/injector/injector.js:98:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 3)
+      at TestingInstanceLoader.createInstancesOfProviders (../../../node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 14)
+      at TestingInstanceLoader.createInstances (../../../node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-module.builder.js:118:9)
+      at TestingModuleBuilder.compile (../../../node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at Object.<anonymous> (auth.e2e-spec.ts:11:42)
+
+    console.warn
+      [Upstash QStash] client token is not set. Either pass a token or set QSTASH_TOKEN env variable.
+
+      23 | @Controller('workspaces/:workspaceId/research')
+      24 | export class ResearchController {
+    > 25 |   private readonly qstash = new Client({ token: process.env.QSTASH_TOKEN || '' });
+         |                             ^
+      26 |
+      27 |   constructor(
+      28 |     private readonly researchService: ResearchService
+
+      at verifyCredentials (../../../node_modules/@upstash/qstash/index.js:1133:13)
+      at getClientCredentials (../../../node_modules/@upstash/qstash/index.js:1079:10)
+      at new Client (../../../node_modules/@upstash/qstash/index.js:2244:32)
+      at ResearchController.<instance_members_initializer> (../src/research/research.controller.ts:25:29)
+      at new ResearchController (../src/research/research.controller.ts:27:3)
+      at TestingInjector.instantiateClass (../../../node_modules/@nestjs/core/injector/injector.js:373:19)
+      at callback (../../../node_modules/@nestjs/core/injector/injector.js:65:45)
+      at TestingInjector.resolveConstructorParams (../../../node_modules/@nestjs/core/injector/injector.js:145:24)
+      at TestingInjector.loadInstance (../../../node_modules/@nestjs/core/injector/injector.js:70:13)
+      at TestingInjector.loadController (../../../node_modules/@nestjs/core/injector/injector.js:89:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:68:13
+          at async Promise.all (index 0)
+      at TestingInstanceLoader.createInstancesOfControllers (../../../node_modules/@nestjs/core/injector/instance-loader.js:67:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:42:13
+          at async Promise.all (index 12)
+      at TestingInstanceLoader.createInstances (../../../node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-module.builder.js:118:9)
+      at TestingModuleBuilder.compile (../../../node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at Object.<anonymous> (auth.e2e-spec.ts:11:42)
+
+    console.warn
+      [Upstash QStash] client token is not set. Either pass a token or set QSTASH_TOKEN env variable.
+
+       8 | @Controller('workspaces/:workspaceId/seo-opportunities')
+       9 | export class SeoOpportunitiesController {
+    > 10 |   private readonly qstash = new Client({ token: process.env.QSTASH_TOKEN || '' });
+         |                             ^
+      11 |
+      12 |   constructor(
+      13 |     private readonly seoOppsService: SeoOpportunitiesService
+
+      at verifyCredentials (../../../node_modules/@upstash/qstash/index.js:1133:13)
+      at getClientCredentials (../../../node_modules/@upstash/qstash/index.js:1079:10)
+      at new Client (../../../node_modules/@upstash/qstash/index.js:2244:32)
+      at SeoOpportunitiesController.<instance_members_initializer> (../src/seo-opportunities/seo-opportunities.controller.ts:10:29)
+      at new SeoOpportunitiesController (../src/seo-opportunities/seo-opportunities.controller.ts:12:3)
+      at TestingInjector.instantiateClass (../../../node_modules/@nestjs/core/injector/injector.js:373:19)
+      at callback (../../../node_modules/@nestjs/core/injector/injector.js:65:45)
+      at TestingInjector.resolveConstructorParams (../../../node_modules/@nestjs/core/injector/injector.js:145:24)
+      at TestingInjector.loadInstance (../../../node_modules/@nestjs/core/injector/injector.js:70:13)
+      at TestingInjector.loadController (../../../node_modules/@nestjs/core/injector/injector.js:89:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:68:13
+          at async Promise.all (index 0)
+      at TestingInstanceLoader.createInstancesOfControllers (../../../node_modules/@nestjs/core/injector/instance-loader.js:67:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:42:13
+          at async Promise.all (index 14)
+      at TestingInstanceLoader.createInstances (../../../node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-module.builder.js:118:9)
+      at TestingModuleBuilder.compile (../../../node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at Object.<anonymous> (auth.e2e-spec.ts:11:42)
+
+    console.warn
+      [Upstash QStash] client token is not set. Either pass a token or set QSTASH_TOKEN env variable.
+
+      36 | @Controller('workspaces/:workspaceId/gsc')
+      37 | export class GscController {
+    > 38 |   private readonly qstash = new Client({ token: process.env.QSTASH_TOKEN || '' });
+         |                             ^
+      39 |   constructor(
+      40 |     private readonly gscService: GscService
+      41 |   ) {}
+
+      at verifyCredentials (../../../node_modules/@upstash/qstash/index.js:1133:13)
+      at getClientCredentials (../../../node_modules/@upstash/qstash/index.js:1079:10)
+      at new Client (../../../node_modules/@upstash/qstash/index.js:2244:32)
+      at GscController.<instance_members_initializer> (../src/gsc/gsc.controller.ts:38:29)
+      at new GscController (../src/gsc/gsc.controller.ts:39:3)
+      at TestingInjector.instantiateClass (../../../node_modules/@nestjs/core/injector/injector.js:373:19)
+      at callback (../../../node_modules/@nestjs/core/injector/injector.js:65:45)
+      at TestingInjector.resolveConstructorParams (../../../node_modules/@nestjs/core/injector/injector.js:145:24)
+      at TestingInjector.loadInstance (../../../node_modules/@nestjs/core/injector/injector.js:70:13)
+      at TestingInjector.loadController (../../../node_modules/@nestjs/core/injector/injector.js:89:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:68:13
+          at async Promise.all (index 0)
+      at TestingInstanceLoader.createInstancesOfControllers (../../../node_modules/@nestjs/core/injector/instance-loader.js:67:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:42:13
+          at async Promise.all (index 15)
+      at TestingInstanceLoader.createInstances (../../../node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-module.builder.js:118:9)
+      at TestingModuleBuilder.compile (../../../node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at Object.<anonymous> (auth.e2e-spec.ts:11:42)
+
+    console.warn
+      [Upstash QStash] client token is not set. Either pass a token or set QSTASH_TOKEN env variable.
+
+       7 | export class SeoAuditService {
+       8 |   private readonly logger = new Logger(SeoAuditService.name);
+    >  9 |   private readonly qstash = new Client({ token: process.env.QSTASH_TOKEN || '' });
+         |                             ^
+      10 |   private readonly provider = new FreeTechnicalSeoProvider();
+      11 |
+      12 |   constructor(private readonly prisma: PrismaService) {}
+
+      at verifyCredentials (../../../node_modules/@upstash/qstash/index.js:1133:13)
+      at getClientCredentials (../../../node_modules/@upstash/qstash/index.js:1079:10)
+      at new Client (../../../node_modules/@upstash/qstash/index.js:2244:32)
+      at SeoAuditService.<instance_members_initializer> (../src/seo-audit/seo-audit.service.ts:9:29)
+      at new SeoAuditService (../src/seo-audit/seo-audit.service.ts:12:3)
+      at TestingInjector.instantiateClass (../../../node_modules/@nestjs/core/injector/injector.js:373:19)
+      at callback (../../../node_modules/@nestjs/core/injector/injector.js:65:45)
+      at TestingInjector.resolveConstructorParams (../../../node_modules/@nestjs/core/injector/injector.js:145:24)
+      at TestingInjector.loadInstance (../../../node_modules/@nestjs/core/injector/injector.js:70:13)
+      at TestingInjector.loadProvider (../../../node_modules/@nestjs/core/injector/injector.js:98:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 3)
+      at TestingInstanceLoader.createInstancesOfProviders (../../../node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 22)
+      at TestingInstanceLoader.createInstances (../../../node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-module.builder.js:118:9)
+      at TestingModuleBuilder.compile (../../../node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at Object.<anonymous> (auth.e2e-spec.ts:11:42)
+
+    console.warn
+      [Upstash QStash] client token is not set. Either pass a token or set QSTASH_TOKEN env variable.
+
+      32 | export class SeoOpportunitiesService {
+      33 |   private readonly logger = new Logger(SeoOpportunitiesService.name);
+    > 34 |   private readonly qstash = new Client({ token: process.env.QSTASH_TOKEN || '' });
+         |                             ^
+      35 |
+      36 |   // Configurable Thresholds from Env
+      37 |   private readonly MIN_IMPRESSIONS = parseInt(process.env.SEO_OPPORTUNITY_MIN_IMPRESSIONS || '1000', 10);
+
+      at verifyCredentials (../../../node_modules/@upstash/qstash/index.js:1133:13)
+      at getClientCredentials (../../../node_modules/@upstash/qstash/index.js:1079:10)
+      at new Client (../../../node_modules/@upstash/qstash/index.js:2244:32)
+      at SeoOpportunitiesService.<instance_members_initializer> (../src/seo-opportunities/seo-opportunities.service.ts:34:29)
+      at new SeoOpportunitiesService (../src/seo-opportunities/seo-opportunities.service.ts:42:3)
+      at TestingInjector.instantiateClass (../../../node_modules/@nestjs/core/injector/injector.js:373:19)
+      at callback (../../../node_modules/@nestjs/core/injector/injector.js:65:45)
+      at TestingInjector.resolveConstructorParams (../../../node_modules/@nestjs/core/injector/injector.js:145:24)
+      at TestingInjector.loadInstance (../../../node_modules/@nestjs/core/injector/injector.js:70:13)
+      at TestingInjector.loadProvider (../../../node_modules/@nestjs/core/injector/injector.js:98:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 3)
+      at TestingInstanceLoader.createInstancesOfProviders (../../../node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 14)
+      at TestingInstanceLoader.createInstances (../../../node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-module.builder.js:118:9)
+      at TestingModuleBuilder.compile (../../../node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at Object.<anonymous> (auth.e2e-spec.ts:11:42)
+
+    console.warn
+      [Upstash QStash] client token is not set. Either pass a token or set QSTASH_TOKEN env variable.
+
+      23 | @Controller('workspaces/:workspaceId/research')
+      24 | export class ResearchController {
+    > 25 |   private readonly qstash = new Client({ token: process.env.QSTASH_TOKEN || '' });
+         |                             ^
+      26 |
+      27 |   constructor(
+      28 |     private readonly researchService: ResearchService
+
+      at verifyCredentials (../../../node_modules/@upstash/qstash/index.js:1133:13)
+      at getClientCredentials (../../../node_modules/@upstash/qstash/index.js:1079:10)
+      at new Client (../../../node_modules/@upstash/qstash/index.js:2244:32)
+      at ResearchController.<instance_members_initializer> (../src/research/research.controller.ts:25:29)
+      at new ResearchController (../src/research/research.controller.ts:27:3)
+      at TestingInjector.instantiateClass (../../../node_modules/@nestjs/core/injector/injector.js:373:19)
+      at callback (../../../node_modules/@nestjs/core/injector/injector.js:65:45)
+      at TestingInjector.resolveConstructorParams (../../../node_modules/@nestjs/core/injector/injector.js:145:24)
+      at TestingInjector.loadInstance (../../../node_modules/@nestjs/core/injector/injector.js:70:13)
+      at TestingInjector.loadController (../../../node_modules/@nestjs/core/injector/injector.js:89:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:68:13
+          at async Promise.all (index 0)
+      at TestingInstanceLoader.createInstancesOfControllers (../../../node_modules/@nestjs/core/injector/instance-loader.js:67:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:42:13
+          at async Promise.all (index 12)
+      at TestingInstanceLoader.createInstances (../../../node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-module.builder.js:118:9)
+      at TestingModuleBuilder.compile (../../../node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at Object.<anonymous> (auth.e2e-spec.ts:11:42)
+
+    console.warn
+      [Upstash QStash] client token is not set. Either pass a token or set QSTASH_TOKEN env variable.
+
+       8 | @Controller('workspaces/:workspaceId/seo-opportunities')
+       9 | export class SeoOpportunitiesController {
+    > 10 |   private readonly qstash = new Client({ token: process.env.QSTASH_TOKEN || '' });
+         |                             ^
+      11 |
+      12 |   constructor(
+      13 |     private readonly seoOppsService: SeoOpportunitiesService
+
+      at verifyCredentials (../../../node_modules/@upstash/qstash/index.js:1133:13)
+      at getClientCredentials (../../../node_modules/@upstash/qstash/index.js:1079:10)
+      at new Client (../../../node_modules/@upstash/qstash/index.js:2244:32)
+      at SeoOpportunitiesController.<instance_members_initializer> (../src/seo-opportunities/seo-opportunities.controller.ts:10:29)
+      at new SeoOpportunitiesController (../src/seo-opportunities/seo-opportunities.controller.ts:12:3)
+      at TestingInjector.instantiateClass (../../../node_modules/@nestjs/core/injector/injector.js:373:19)
+      at callback (../../../node_modules/@nestjs/core/injector/injector.js:65:45)
+      at TestingInjector.resolveConstructorParams (../../../node_modules/@nestjs/core/injector/injector.js:145:24)
+      at TestingInjector.loadInstance (../../../node_modules/@nestjs/core/injector/injector.js:70:13)
+      at TestingInjector.loadController (../../../node_modules/@nestjs/core/injector/injector.js:89:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:68:13
+          at async Promise.all (index 0)
+      at TestingInstanceLoader.createInstancesOfControllers (../../../node_modules/@nestjs/core/injector/instance-loader.js:67:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:42:13
+          at async Promise.all (index 14)
+      at TestingInstanceLoader.createInstances (../../../node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-module.builder.js:118:9)
+      at TestingModuleBuilder.compile (../../../node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at Object.<anonymous> (auth.e2e-spec.ts:11:42)
+
+    console.warn
+      [Upstash QStash] client token is not set. Either pass a token or set QSTASH_TOKEN env variable.
+
+      36 | @Controller('workspaces/:workspaceId/gsc')
+      37 | export class GscController {
+    > 38 |   private readonly qstash = new Client({ token: process.env.QSTASH_TOKEN || '' });
+         |                             ^
+      39 |   constructor(
+      40 |     private readonly gscService: GscService
+      41 |   ) {}
+
+      at verifyCredentials (../../../node_modules/@upstash/qstash/index.js:1133:13)
+      at getClientCredentials (../../../node_modules/@upstash/qstash/index.js:1079:10)
+      at new Client (../../../node_modules/@upstash/qstash/index.js:2244:32)
+      at GscController.<instance_members_initializer> (../src/gsc/gsc.controller.ts:38:29)
+      at new GscController (../src/gsc/gsc.controller.ts:39:3)
+      at TestingInjector.instantiateClass (../../../node_modules/@nestjs/core/injector/injector.js:373:19)
+      at callback (../../../node_modules/@nestjs/core/injector/injector.js:65:45)
+      at TestingInjector.resolveConstructorParams (../../../node_modules/@nestjs/core/injector/injector.js:145:24)
+      at TestingInjector.loadInstance (../../../node_modules/@nestjs/core/injector/injector.js:70:13)
+      at TestingInjector.loadController (../../../node_modules/@nestjs/core/injector/injector.js:89:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:68:13
+          at async Promise.all (index 0)
+      at TestingInstanceLoader.createInstancesOfControllers (../../../node_modules/@nestjs/core/injector/instance-loader.js:67:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:42:13
+          at async Promise.all (index 15)
+      at TestingInstanceLoader.createInstances (../../../node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-module.builder.js:118:9)
+      at TestingModuleBuilder.compile (../../../node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at Object.<anonymous> (auth.e2e-spec.ts:11:42)
+
+    console.warn
+      [Upstash QStash] client token is not set. Either pass a token or set QSTASH_TOKEN env variable.
+
+       7 | export class SeoAuditService {
+       8 |   private readonly logger = new Logger(SeoAuditService.name);
+    >  9 |   private readonly qstash = new Client({ token: process.env.QSTASH_TOKEN || '' });
+         |                             ^
+      10 |   private readonly provider = new FreeTechnicalSeoProvider();
+      11 |
+      12 |   constructor(private readonly prisma: PrismaService) {}
+
+      at verifyCredentials (../../../node_modules/@upstash/qstash/index.js:1133:13)
+      at getClientCredentials (../../../node_modules/@upstash/qstash/index.js:1079:10)
+      at new Client (../../../node_modules/@upstash/qstash/index.js:2244:32)
+      at SeoAuditService.<instance_members_initializer> (../src/seo-audit/seo-audit.service.ts:9:29)
+      at new SeoAuditService (../src/seo-audit/seo-audit.service.ts:12:3)
+      at TestingInjector.instantiateClass (../../../node_modules/@nestjs/core/injector/injector.js:373:19)
+      at callback (../../../node_modules/@nestjs/core/injector/injector.js:65:45)
+      at TestingInjector.resolveConstructorParams (../../../node_modules/@nestjs/core/injector/injector.js:145:24)
+      at TestingInjector.loadInstance (../../../node_modules/@nestjs/core/injector/injector.js:70:13)
+      at TestingInjector.loadProvider (../../../node_modules/@nestjs/core/injector/injector.js:98:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 3)
+      at TestingInstanceLoader.createInstancesOfProviders (../../../node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 22)
+      at TestingInstanceLoader.createInstances (../../../node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-module.builder.js:118:9)
+      at TestingModuleBuilder.compile (../../../node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at Object.<anonymous> (auth.e2e-spec.ts:11:42)
+
+    console.warn
+      [Upstash QStash] client token is not set. Either pass a token or set QSTASH_TOKEN env variable.
+
+      32 | export class SeoOpportunitiesService {
+      33 |   private readonly logger = new Logger(SeoOpportunitiesService.name);
+    > 34 |   private readonly qstash = new Client({ token: process.env.QSTASH_TOKEN || '' });
+         |                             ^
+      35 |
+      36 |   // Configurable Thresholds from Env
+      37 |   private readonly MIN_IMPRESSIONS = parseInt(process.env.SEO_OPPORTUNITY_MIN_IMPRESSIONS || '1000', 10);
+
+      at verifyCredentials (../../../node_modules/@upstash/qstash/index.js:1133:13)
+      at getClientCredentials (../../../node_modules/@upstash/qstash/index.js:1079:10)
+      at new Client (../../../node_modules/@upstash/qstash/index.js:2244:32)
+      at SeoOpportunitiesService.<instance_members_initializer> (../src/seo-opportunities/seo-opportunities.service.ts:34:29)
+      at new SeoOpportunitiesService (../src/seo-opportunities/seo-opportunities.service.ts:42:3)
+      at TestingInjector.instantiateClass (../../../node_modules/@nestjs/core/injector/injector.js:373:19)
+      at callback (../../../node_modules/@nestjs/core/injector/injector.js:65:45)
+      at TestingInjector.resolveConstructorParams (../../../node_modules/@nestjs/core/injector/injector.js:145:24)
+      at TestingInjector.loadInstance (../../../node_modules/@nestjs/core/injector/injector.js:70:13)
+      at TestingInjector.loadProvider (../../../node_modules/@nestjs/core/injector/injector.js:98:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 3)
+      at TestingInstanceLoader.createInstancesOfProviders (../../../node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 14)
+      at TestingInstanceLoader.createInstances (../../../node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-module.builder.js:118:9)
+      at TestingModuleBuilder.compile (../../../node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at Object.<anonymous> (auth.e2e-spec.ts:11:42)
+
+    console.warn
+      [Upstash QStash] client token is not set. Either pass a token or set QSTASH_TOKEN env variable.
+
+      23 | @Controller('workspaces/:workspaceId/research')
+      24 | export class ResearchController {
+    > 25 |   private readonly qstash = new Client({ token: process.env.QSTASH_TOKEN || '' });
+         |                             ^
+      26 |
+      27 |   constructor(
+      28 |     private readonly researchService: ResearchService
+
+      at verifyCredentials (../../../node_modules/@upstash/qstash/index.js:1133:13)
+      at getClientCredentials (../../../node_modules/@upstash/qstash/index.js:1079:10)
+      at new Client (../../../node_modules/@upstash/qstash/index.js:2244:32)
+      at ResearchController.<instance_members_initializer> (../src/research/research.controller.ts:25:29)
+      at new ResearchController (../src/research/research.controller.ts:27:3)
+      at TestingInjector.instantiateClass (../../../node_modules/@nestjs/core/injector/injector.js:373:19)
+      at callback (../../../node_modules/@nestjs/core/injector/injector.js:65:45)
+      at TestingInjector.resolveConstructorParams (../../../node_modules/@nestjs/core/injector/injector.js:145:24)
+      at TestingInjector.loadInstance (../../../node_modules/@nestjs/core/injector/injector.js:70:13)
+      at TestingInjector.loadController (../../../node_modules/@nestjs/core/injector/injector.js:89:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:68:13
+          at async Promise.all (index 0)
+      at TestingInstanceLoader.createInstancesOfControllers (../../../node_modules/@nestjs/core/injector/instance-loader.js:67:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:42:13
+          at async Promise.all (index 12)
+      at TestingInstanceLoader.createInstances (../../../node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-module.builder.js:118:9)
+      at TestingModuleBuilder.compile (../../../node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at Object.<anonymous> (auth.e2e-spec.ts:11:42)
+
+    console.warn
+      [Upstash QStash] client token is not set. Either pass a token or set QSTASH_TOKEN env variable.
+
+       8 | @Controller('workspaces/:workspaceId/seo-opportunities')
+       9 | export class SeoOpportunitiesController {
+    > 10 |   private readonly qstash = new Client({ token: process.env.QSTASH_TOKEN || '' });
+         |                             ^
+      11 |
+      12 |   constructor(
+      13 |     private readonly seoOppsService: SeoOpportunitiesService
+
+      at verifyCredentials (../../../node_modules/@upstash/qstash/index.js:1133:13)
+      at getClientCredentials (../../../node_modules/@upstash/qstash/index.js:1079:10)
+      at new Client (../../../node_modules/@upstash/qstash/index.js:2244:32)
+      at SeoOpportunitiesController.<instance_members_initializer> (../src/seo-opportunities/seo-opportunities.controller.ts:10:29)
+      at new SeoOpportunitiesController (../src/seo-opportunities/seo-opportunities.controller.ts:12:3)
+      at TestingInjector.instantiateClass (../../../node_modules/@nestjs/core/injector/injector.js:373:19)
+      at callback (../../../node_modules/@nestjs/core/injector/injector.js:65:45)
+      at TestingInjector.resolveConstructorParams (../../../node_modules/@nestjs/core/injector/injector.js:145:24)
+      at TestingInjector.loadInstance (../../../node_modules/@nestjs/core/injector/injector.js:70:13)
+      at TestingInjector.loadController (../../../node_modules/@nestjs/core/injector/injector.js:89:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:68:13
+          at async Promise.all (index 0)
+      at TestingInstanceLoader.createInstancesOfControllers (../../../node_modules/@nestjs/core/injector/instance-loader.js:67:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:42:13
+          at async Promise.all (index 14)
+      at TestingInstanceLoader.createInstances (../../../node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-module.builder.js:118:9)
+      at TestingModuleBuilder.compile (../../../node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at Object.<anonymous> (auth.e2e-spec.ts:11:42)
+
+    console.warn
+      [Upstash QStash] client token is not set. Either pass a token or set QSTASH_TOKEN env variable.
+
+      36 | @Controller('workspaces/:workspaceId/gsc')
+      37 | export class GscController {
+    > 38 |   private readonly qstash = new Client({ token: process.env.QSTASH_TOKEN || '' });
+         |                             ^
+      39 |   constructor(
+      40 |     private readonly gscService: GscService
+      41 |   ) {}
+
+      at verifyCredentials (../../../node_modules/@upstash/qstash/index.js:1133:13)
+      at getClientCredentials (../../../node_modules/@upstash/qstash/index.js:1079:10)
+      at new Client (../../../node_modules/@upstash/qstash/index.js:2244:32)
+      at GscController.<instance_members_initializer> (../src/gsc/gsc.controller.ts:38:29)
+      at new GscController (../src/gsc/gsc.controller.ts:39:3)
+      at TestingInjector.instantiateClass (../../../node_modules/@nestjs/core/injector/injector.js:373:19)
+      at callback (../../../node_modules/@nestjs/core/injector/injector.js:65:45)
+      at TestingInjector.resolveConstructorParams (../../../node_modules/@nestjs/core/injector/injector.js:145:24)
+      at TestingInjector.loadInstance (../../../node_modules/@nestjs/core/injector/injector.js:70:13)
+      at TestingInjector.loadController (../../../node_modules/@nestjs/core/injector/injector.js:89:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:68:13
+          at async Promise.all (index 0)
+      at TestingInstanceLoader.createInstancesOfControllers (../../../node_modules/@nestjs/core/injector/instance-loader.js:67:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:42:13
+          at async Promise.all (index 15)
+      at TestingInstanceLoader.createInstances (../../../node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-module.builder.js:118:9)
+      at TestingModuleBuilder.compile (../../../node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at Object.<anonymous> (auth.e2e-spec.ts:11:42)
+
+    console.warn
+      [Upstash QStash] client token is not set. Either pass a token or set QSTASH_TOKEN env variable.
+
+       7 | export class SeoAuditService {
+       8 |   private readonly logger = new Logger(SeoAuditService.name);
+    >  9 |   private readonly qstash = new Client({ token: process.env.QSTASH_TOKEN || '' });
+         |                             ^
+      10 |   private readonly provider = new FreeTechnicalSeoProvider();
+      11 |
+      12 |   constructor(private readonly prisma: PrismaService) {}
+
+      at verifyCredentials (../../../node_modules/@upstash/qstash/index.js:1133:13)
+      at getClientCredentials (../../../node_modules/@upstash/qstash/index.js:1079:10)
+      at new Client (../../../node_modules/@upstash/qstash/index.js:2244:32)
+      at SeoAuditService.<instance_members_initializer> (../src/seo-audit/seo-audit.service.ts:9:29)
+      at new SeoAuditService (../src/seo-audit/seo-audit.service.ts:12:3)
+      at TestingInjector.instantiateClass (../../../node_modules/@nestjs/core/injector/injector.js:373:19)
+      at callback (../../../node_modules/@nestjs/core/injector/injector.js:65:45)
+      at TestingInjector.resolveConstructorParams (../../../node_modules/@nestjs/core/injector/injector.js:145:24)
+      at TestingInjector.loadInstance (../../../node_modules/@nestjs/core/injector/injector.js:70:13)
+      at TestingInjector.loadProvider (../../../node_modules/@nestjs/core/injector/injector.js:98:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 3)
+      at TestingInstanceLoader.createInstancesOfProviders (../../../node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 22)
+      at TestingInstanceLoader.createInstances (../../../node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-module.builder.js:118:9)
+      at TestingModuleBuilder.compile (../../../node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at Object.<anonymous> (auth.e2e-spec.ts:11:42)
+
+    console.warn
+      [Upstash QStash] client token is not set. Either pass a token or set QSTASH_TOKEN env variable.
+
+      32 | export class SeoOpportunitiesService {
+      33 |   private readonly logger = new Logger(SeoOpportunitiesService.name);
+    > 34 |   private readonly qstash = new Client({ token: process.env.QSTASH_TOKEN || '' });
+         |                             ^
+      35 |
+      36 |   // Configurable Thresholds from Env
+      37 |   private readonly MIN_IMPRESSIONS = parseInt(process.env.SEO_OPPORTUNITY_MIN_IMPRESSIONS || '1000', 10);
+
+      at verifyCredentials (../../../node_modules/@upstash/qstash/index.js:1133:13)
+      at getClientCredentials (../../../node_modules/@upstash/qstash/index.js:1079:10)
+      at new Client (../../../node_modules/@upstash/qstash/index.js:2244:32)
+      at SeoOpportunitiesService.<instance_members_initializer> (../src/seo-opportunities/seo-opportunities.service.ts:34:29)
+      at new SeoOpportunitiesService (../src/seo-opportunities/seo-opportunities.service.ts:42:3)
+      at TestingInjector.instantiateClass (../../../node_modules/@nestjs/core/injector/injector.js:373:19)
+      at callback (../../../node_modules/@nestjs/core/injector/injector.js:65:45)
+      at TestingInjector.resolveConstructorParams (../../../node_modules/@nestjs/core/injector/injector.js:145:24)
+      at TestingInjector.loadInstance (../../../node_modules/@nestjs/core/injector/injector.js:70:13)
+      at TestingInjector.loadProvider (../../../node_modules/@nestjs/core/injector/injector.js:98:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 3)
+      at TestingInstanceLoader.createInstancesOfProviders (../../../node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 14)
+      at TestingInstanceLoader.createInstances (../../../node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-module.builder.js:118:9)
+      at TestingModuleBuilder.compile (../../../node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at Object.<anonymous> (auth.e2e-spec.ts:11:42)
+
+    console.warn
+      [Upstash QStash] client token is not set. Either pass a token or set QSTASH_TOKEN env variable.
+
+      23 | @Controller('workspaces/:workspaceId/research')
+      24 | export class ResearchController {
+    > 25 |   private readonly qstash = new Client({ token: process.env.QSTASH_TOKEN || '' });
+         |                             ^
+      26 |
+      27 |   constructor(
+      28 |     private readonly researchService: ResearchService
+
+      at verifyCredentials (../../../node_modules/@upstash/qstash/index.js:1133:13)
+      at getClientCredentials (../../../node_modules/@upstash/qstash/index.js:1079:10)
+      at new Client (../../../node_modules/@upstash/qstash/index.js:2244:32)
+      at ResearchController.<instance_members_initializer> (../src/research/research.controller.ts:25:29)
+      at new ResearchController (../src/research/research.controller.ts:27:3)
+      at TestingInjector.instantiateClass (../../../node_modules/@nestjs/core/injector/injector.js:373:19)
+      at callback (../../../node_modules/@nestjs/core/injector/injector.js:65:45)
+      at TestingInjector.resolveConstructorParams (../../../node_modules/@nestjs/core/injector/injector.js:145:24)
+      at TestingInjector.loadInstance (../../../node_modules/@nestjs/core/injector/injector.js:70:13)
+      at TestingInjector.loadController (../../../node_modules/@nestjs/core/injector/injector.js:89:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:68:13
+          at async Promise.all (index 0)
+      at TestingInstanceLoader.createInstancesOfControllers (../../../node_modules/@nestjs/core/injector/instance-loader.js:67:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:42:13
+          at async Promise.all (index 12)
+      at TestingInstanceLoader.createInstances (../../../node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-module.builder.js:118:9)
+      at TestingModuleBuilder.compile (../../../node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at Object.<anonymous> (auth.e2e-spec.ts:11:42)
+
+    console.warn
+      [Upstash QStash] client token is not set. Either pass a token or set QSTASH_TOKEN env variable.
+
+       8 | @Controller('workspaces/:workspaceId/seo-opportunities')
+       9 | export class SeoOpportunitiesController {
+    > 10 |   private readonly qstash = new Client({ token: process.env.QSTASH_TOKEN || '' });
+         |                             ^
+      11 |
+      12 |   constructor(
+      13 |     private readonly seoOppsService: SeoOpportunitiesService
+
+      at verifyCredentials (../../../node_modules/@upstash/qstash/index.js:1133:13)
+      at getClientCredentials (../../../node_modules/@upstash/qstash/index.js:1079:10)
+      at new Client (../../../node_modules/@upstash/qstash/index.js:2244:32)
+      at SeoOpportunitiesController.<instance_members_initializer> (../src/seo-opportunities/seo-opportunities.controller.ts:10:29)
+      at new SeoOpportunitiesController (../src/seo-opportunities/seo-opportunities.controller.ts:12:3)
+      at TestingInjector.instantiateClass (../../../node_modules/@nestjs/core/injector/injector.js:373:19)
+      at callback (../../../node_modules/@nestjs/core/injector/injector.js:65:45)
+      at TestingInjector.resolveConstructorParams (../../../node_modules/@nestjs/core/injector/injector.js:145:24)
+      at TestingInjector.loadInstance (../../../node_modules/@nestjs/core/injector/injector.js:70:13)
+      at TestingInjector.loadController (../../../node_modules/@nestjs/core/injector/injector.js:89:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:68:13
+          at async Promise.all (index 0)
+      at TestingInstanceLoader.createInstancesOfControllers (../../../node_modules/@nestjs/core/injector/instance-loader.js:67:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:42:13
+          at async Promise.all (index 14)
+      at TestingInstanceLoader.createInstances (../../../node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-module.builder.js:118:9)
+      at TestingModuleBuilder.compile (../../../node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at Object.<anonymous> (auth.e2e-spec.ts:11:42)
+
+    console.warn
+      [Upstash QStash] client token is not set. Either pass a token or set QSTASH_TOKEN env variable.
+
+      36 | @Controller('workspaces/:workspaceId/gsc')
+      37 | export class GscController {
+    > 38 |   private readonly qstash = new Client({ token: process.env.QSTASH_TOKEN || '' });
+         |                             ^
+      39 |   constructor(
+      40 |     private readonly gscService: GscService
+      41 |   ) {}
+
+      at verifyCredentials (../../../node_modules/@upstash/qstash/index.js:1133:13)
+      at getClientCredentials (../../../node_modules/@upstash/qstash/index.js:1079:10)
+      at new Client (../../../node_modules/@upstash/qstash/index.js:2244:32)
+      at GscController.<instance_members_initializer> (../src/gsc/gsc.controller.ts:38:29)
+      at new GscController (../src/gsc/gsc.controller.ts:39:3)
+      at TestingInjector.instantiateClass (../../../node_modules/@nestjs/core/injector/injector.js:373:19)
+      at callback (../../../node_modules/@nestjs/core/injector/injector.js:65:45)
+      at TestingInjector.resolveConstructorParams (../../../node_modules/@nestjs/core/injector/injector.js:145:24)
+      at TestingInjector.loadInstance (../../../node_modules/@nestjs/core/injector/injector.js:70:13)
+      at TestingInjector.loadController (../../../node_modules/@nestjs/core/injector/injector.js:89:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:68:13
+          at async Promise.all (index 0)
+      at TestingInstanceLoader.createInstancesOfControllers (../../../node_modules/@nestjs/core/injector/instance-loader.js:67:9)
+      at ../../../node_modules/@nestjs/core/injector/instance-loader.js:42:13
+          at async Promise.all (index 15)
+      at TestingInstanceLoader.createInstances (../../../node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (../../../node_modules/@nestjs/testing/testing-module.builder.js:118:9)
+      at TestingModuleBuilder.compile (../../../node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at Object.<anonymous> (auth.e2e-spec.ts:11:42)
+
+  ● AuthController (e2e) › unauthenticated request without cookie fails
+
+    expected 401 "Unauthorized", got 500 "Internal Server Error"
+
+      60 |     await request(app.getHttpServer())
+      61 |       .get('/workspaces') // Assume this requires auth
+    > 62 |       .expect(401);
+         |        ^
+      63 |   });
+      64 |
+      65 |   it('authenticated request with cookie succeeds', async () => {
+
+      at Object.<anonymous> (auth.e2e-spec.ts:62:8)
+      ----
+      at Test._assertStatus (../../../node_modules/supertest/lib/test.js:376:14)
+      at ../../../node_modules/supertest/lib/test.js:432:13
+      at Test._assertFunction (../../../node_modules/supertest/lib/test.js:409:13)
+      at Test.assert (../../../node_modules/supertest/lib/test.js:274:23)
+      at localAssert (../../../node_modules/supertest/lib/test.js:196:38)
+      at Server.<anonymous> (../../../node_modules/supertest/lib/test.js:203:13)
+
+[Nest] 37255  - 10/08/2026, 8:32:47 PM    WARN [AiService] Using MockAIProvider in test environment
+[Nest] 37255  - 10/08/2026, 8:32:47 PM    WARN [AiService] Using MockAIProvider in test environment
+[Nest] 37255  - 10/08/2026, 8:32:47 PM     LOG [PrismaService] Successfully connected to the database.
+
+Test Suites: 1 failed, 1 passed, 2 total
+Tests:       1 failed, 5 passed, 6 total
+Snapshots:   0 total
+Time:        4.838 s
+Ran all test suites.
+Jest did not exit one second after the test run has completed.
+
+'This usually means that there are asynchronous operations that weren't stopped in your tests. Consider running Jest with `--detectOpenHandles` to troubleshoot this issue.
+npm error Lifecycle script `test:e2e` failed with error:
+npm error code 1
+npm error path /Users/mac/Desktop/SEO/apps/api
+npm error workspace api@0.0.1
+npm error location /Users/mac/Desktop/SEO/apps/api
+npm error command failed
+npm error command sh -c NODE_OPTIONS=--experimental-vm-modules jest --config ./test/jest-e2e.json --runInBand

@@ -1,0 +1,220 @@
+[
+  {
+    "test": "GSC sync mocked Google real DB",
+    "data": {
+      "success": true
+    }
+  },
+  {
+    "test": "GSC stored performance",
+    "data": {
+      "clicks": 10,
+      "impressions": 100,
+      "ctr": 10,
+      "averagePosition": 5
+    }
+  },
+  {
+    "test": "analytics after GSC sync",
+    "data": {
+      "hasData": false,
+      "summary": null,
+      "trends": []
+    }
+  },
+  {
+    "test": "GSC weighted CTR fixture",
+    "data": {
+      "actual": {
+        "clicks": 100,
+        "impressions": 9100,
+        "ctr": 5.5,
+        "averagePosition": 7.5
+      },
+      "expectedCtr": 1.098901098901099
+    }
+  },
+  {
+    "test": "brand profile create scoped extension",
+    "error": "\nInvalid `extension',()=>db.withWorkspace(f.workspaceA).brandProfile.create()` invocation in\n/Users/mac/Desktop/SEO/audit-results/integration-audit.cjs:7:101\n\n  4 (async()=>{await db.$connect();const opp=new SeoOpportunitiesService(db,ai);const gsc=new GscService(db,opp);const analytics=new AnalyticsService(db,ai);const audit=new SeoAuditService(db);const studio=new SeoStudioService(db,ai);\n  5 await check('GSC sync mocked Google real DB',()=>gsc.sync(f.workspaceB,7));await check('GSC stored performance',()=>gsc.getPerformance(f.workspaceB,new Date('2026-01-01'),new Date('2027-01-01')));await check('analytics after GSC sync',()=>analytics.getOverview(f.workspaceB));\n  6 await check('GSC weighted CTR fixture',async()=>{const p=await db.searchConsoleProperty.findFirst({where:{workspaceId:f.workspaceB}});await db.searchConsoleDaily.create({data:{propertyId:p.id,date:new Date('2026-10-07'),clicks:90,impressions:9000,ctr:1,position:10}});return {actual:await gsc.getPerformance(f.workspaceB,new Date('2026-01-01'),new Date('2027-01-01')),expectedCtr:100/9100*100}});\n→ 7 await check('brand profile create scoped extension',()=>db.withWorkspace(f.workspaceA).brandProfile.create({\n      data: {\n        businessName: \"Audit brand\",\n        industry: \"Software\",\n        targetAudience: \"Engineers\",\n        workspaceId: \"c21eaae9-e1e2-444e-89ca-e408312f35ed\"\n      },\n      where: {\n      ~~~~~\n        workspaceId: \"c21eaae9-e1e2-444e-89ca-e408312f35ed\"\n      }\n    })\n\nUnknown argument `where`. Available options are marked with ?."
+  },
+  {
+    "test": "AI prompt ContentPack",
+    "medicalSafety": false,
+    "containsBrand": false
+  },
+  {
+    "test": "content create valid AI fixture",
+    "error": "\nInvalid `this.prisma.withWorkspace(workspaceId).contentPack.create()` invocation in\n/Users/mac/Desktop/SEO/apps/api/src/content-packs/content-packs.service.ts:80:63\n\n  77   isMedical ? 'MedicalContentPack' : 'ContentPack'\n  78 );\n  79 \n→ 80 return this.prisma.withWorkspace(workspaceId).contentPack.create({\n       data: {\n         workspaceId: \"c21eaae9-e1e2-444e-89ca-e408312f35ed\",\n         platform: \"LinkedIn\",\n         status: \"DRAFT\",\n         topic: \"Audit\",\n         objective: \"Educate\",\n         audience: \"Engineers\",\n         intent: \"informational\",\n         hook: \"Hello\",\n         caption: \"Fixture\",\n         visualDirection: \"None\",\n         cta: \"Read\",\n         hashtags: \"#audit\",\n         seoTitle: \"Audit\",\n         metaDescription: \"Fixture\",\n         primaryKeyword: \"audit\",\n         secondaryKeywords: \"test\"\n       },\n       where: {\n       ~~~~~\n         workspaceId: \"c21eaae9-e1e2-444e-89ca-e408312f35ed\"\n       }\n     })\n\nUnknown argument `where`. Available options are marked with ?."
+  },
+  {
+    "test": "AI prompt ContentBrief",
+    "medicalSafety": false,
+    "containsBrand": false
+  },
+  {
+    "test": "SEO brief medical prompt",
+    "data": {
+      "id": "2970a164-0f97-4726-a476-0501ad3649b7",
+      "workspaceId": "16327bb4-dee6-4ae6-bdf2-610623193cb5",
+      "primaryKeyword": "education",
+      "secondaryKeywords": [],
+      "topic": "Audit",
+      "country": null,
+      "language": null,
+      "contentType": null,
+      "searchIntent": null,
+      "briefData": {
+        "topic": "Audit",
+        "audience": "Engineers",
+        "metadata": {
+          "slug": "audit",
+          "title": "Audit",
+          "description": "Fixture"
+        },
+        "contentType": "Blog",
+        "searchIntent": {
+          "intent": "informational",
+          "reason": "Fixture",
+          "confidence": "high"
+        },
+        "titleOptions": [
+          "Audit"
+        ],
+        "relatedTopics": [],
+        "primaryKeyword": "audit",
+        "contentGuidance": {
+          "tone": "Clear",
+          "style": "Plain",
+          "thingsToAvoid": [],
+          "importantPoints": []
+        },
+        "questionsToAnswer": [],
+        "secondaryKeywords": [],
+        "recommendedOutline": [],
+        "technicalRequirements": [],
+        "internalLinkOpportunities": []
+      },
+      "status": "completed",
+      "errorMessage": null,
+      "createdAt": "2026-10-08T15:06:32.856Z",
+      "updatedAt": "2026-10-08T15:06:32.856Z"
+    }
+  },
+  {
+    "test": "AI prompt ContentBrief",
+    "medicalSafety": false,
+    "containsBrand": false
+  },
+  {
+    "test": "AI prompt ContentDraft",
+    "medicalSafety": false,
+    "containsBrand": false
+  },
+  {
+    "test": "SEO brief draft edit pipeline",
+    "data": {
+      "brief": "0477c2b4-8c36-458e-bc6d-ac9512dfbb7e",
+      "draft": "24b5ee11-d310-44d6-b646-7a7ee8e2feaf",
+      "version": 2,
+      "content": "Edited audit draft",
+      "section": {
+        "newSectionContent": "A deterministic audit section.",
+        "originalDraftId": "6358c005-0aea-4fd5-a565-fb088b724052"
+      }
+    }
+  },
+  {
+    "test": "audit missing QStash stays pending",
+    "data": {
+      "id": "61f80b76-8504-4b58-90f5-34b15b812f6b",
+      "status": "pending"
+    }
+  },
+  {
+    "test": "captured audit queue payload",
+    "data": {
+      "url": "${baseUrlString}/api/internal/queues/seo/audit-run",
+      "body": {
+        "workspaceId": "c21eaae9-e1e2-444e-89ca-e408312f35ed",
+        "auditId": "064fcce4-662b-4736-8e85-efbb0ef45b6b"
+      },
+      "retries": 0
+    }
+  },
+  {
+    "test": "QStash audit target contract",
+    "data": {
+      "id": "064fcce4-662b-4736-8e85-efbb0ef45b6b",
+      "workspaceId": "c21eaae9-e1e2-444e-89ca-e408312f35ed",
+      "baseUrl": "https://example.com",
+      "status": "pending",
+      "maxPages": 1,
+      "maxDepth": 0,
+      "pagesCrawled": 0,
+      "pagesFailed": 0,
+      "issueCount": 0,
+      "criticalCount": 0,
+      "warningCount": 0,
+      "passedCount": 0,
+      "errorMessage": null,
+      "startedAt": null,
+      "completedAt": null,
+      "createdAt": "2026-10-08T15:06:32.869Z"
+    }
+  },
+  {
+    "test": "captured GSC queue payload",
+    "data": {
+      "url": "http://localhost:3001/internal/queues/analytics/sync-gsc",
+      "body": {
+        "workspaceId": "b6930841-aeda-4e1f-b3ad-2f35c3c219b0",
+        "days": 7
+      }
+    }
+  },
+  {
+    "test": "QStash GSC target contract",
+    "data": {
+      "message": "Synchronization queued",
+      "jobId": "fixture"
+    }
+  },
+  {
+    "test": "AI prompt ResearchAnalysis",
+    "medicalSafety": false,
+    "containsBrand": false
+  },
+  {
+    "test": "RSS private network fetch",
+    "data": {
+      "hits": 2,
+      "first": {
+        "success": true,
+        "newItemsCount": 1,
+        "failedSources": 0
+      },
+      "second": {
+        "success": true,
+        "newItemsCount": 0,
+        "failedSources": 0
+      },
+      "privateNetworkFetched": true
+    }
+  },
+  {
+    "test": "n8n undefined secret",
+    "data": {
+      "success": true
+    }
+  },
+  {
+    "test": "Nest exception identity",
+    "data": {
+      "appVersion": "10.4.22",
+      "coreVersion": "10.4.15",
+      "sameExceptionClass": false,
+      "instanceRecognized": false
+    }
+  }
+]

@@ -1,0 +1,87 @@
+[
+  {
+    "test": "public route",
+    "path": "/",
+    "url": "http://localhost:3000/workspaces",
+    "text": "My Workspaces\n+ Create Workspace\n\nYou don't have any workspaces yet.\n\nCreate your first workspace"
+  },
+  {
+    "test": "public route",
+    "path": "/login",
+    "url": "http://localhost:3000/login",
+    "text": "AI Marketing\nSign in to your account\nEmail address\nPassword\nSign in\n\nDon't have an account? Sign up"
+  },
+  {
+    "test": "public route",
+    "path": "/register",
+    "url": "http://localhost:3000/register",
+    "text": "AI Marketing\nCreate your account\nFull name\nEmail address\nPassword\nSign up\n\nAlready have an account? Sign in"
+  },
+  {
+    "test": "public route",
+    "path": "/workspaces",
+    "url": "http://localhost:3000/workspaces",
+    "text": "My Workspaces\n+ Create Workspace\n\nYou don't have any workspaces yet.\n\nCreate your first workspace"
+  },
+  {
+    "test": "create workspace button",
+    "bodyChanged": false,
+    "dialogs": 0,
+    "inputs": 0
+  },
+  {
+    "test": "active navigation",
+    "active": [
+      "Dashboard",
+      "Research"
+    ]
+  },
+  {
+    "test": "medical workspace",
+    "text": "AI Marketing\nDashboard\nResearch\nSEO\nContent\nCalendar\nAnalytics\nSources\nAI Assistant\nSettings\nAU\nAudit Medical\nNotifications\nMedical/Mental Health Workspace:Content generated here must be for general education only. Do not provide specific patient advice, diagnosis, or treatment recommendations. All content should undergo professional review before publishing.\nDashboard\n+ New Content Idea\nResearch Ideas\n0\nDraft Content\n0\nPending Approvals\n0\nScheduled Posts\n0\nRecent Activity\nNo data found\n\nGet started by setting up your brand profile and research sources.\n\nSetup Brand Profile"
+  },
+  {
+    "test": "agent crash reproduction",
+    "errors": [
+      "destroy is not a function",
+      "destroy is not a function",
+      "destroy is not a function",
+      "destroy is not a function",
+      "destroy is not a function",
+      "destroy is not a function",
+      "destroy is not a function",
+      "destroy is not a function",
+      "destroy is not a function",
+      "destroy is not a function",
+      "destroy is not a function",
+      "destroy is not a function",
+      "destroy is not a function",
+      "destroy is not a function",
+      "destroy is not a function",
+      "destroy is not a function"
+    ],
+    "text": ""
+  },
+  {
+    "test": "scrollIntoView return type",
+    "value": {
+      "type": "object",
+      "constructor": "Promise"
+    }
+  },
+  {
+    "test": "browser registration",
+    "url": "http://localhost:3000/workspaces",
+    "text": "My Workspaces\n+ Create Workspace\n\nYou don't have any workspaces yet.\n\nCreate your first workspace"
+  },
+  {
+    "test": "register responsive",
+    "width": 390,
+    "scrollWidth": 390
+  },
+  {
+    "test": "register responsive",
+    "width": 768,
+    "scrollWidth": 768
+  }
+]

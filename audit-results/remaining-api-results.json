@@ -1,0 +1,1134 @@
+[
+  {
+    "name": "login",
+    "path": "/auth/login",
+    "method": "POST",
+    "status": 200,
+    "ms": 170,
+    "data": {
+      "user": {
+        "id": "e708cd54-34f9-47af-bd84-5d6a57a1574f",
+        "email": "audit-owner@example.test",
+        "name": "Audit Owner",
+        "role": "USER"
+      }
+    },
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "access-control-allow-origin": "http://localhost:3000",
+      "connection": "keep-alive",
+      "content-length": "124",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Thu, 08 Oct 2026 22:55:44 GMT",
+      "etag": "W/\"7c-xkzPhFic+H0c0tbZ/ySQBZTr82U\"",
+      "keep-alive": "timeout=5",
+      "vary": "Origin",
+      "x-powered-by": "Express"
+    }
+  },
+  {
+    "name": "health",
+    "path": "/health",
+    "method": "GET",
+    "status": 200,
+    "ms": 13,
+    "data": {
+      "status": "ok",
+      "service": "api",
+      "database": "connected"
+    },
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "access-control-allow-origin": "http://localhost:3000",
+      "connection": "keep-alive",
+      "content-length": "54",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Thu, 08 Oct 2026 22:55:44 GMT",
+      "etag": "W/\"36-GklA/cPr8VG+TVTNzwn6eeSg0tc\"",
+      "keep-alive": "timeout=5",
+      "vary": "Origin",
+      "x-powered-by": "Express"
+    }
+  },
+  {
+    "name": "AI health mock",
+    "path": "/health/ai",
+    "method": "GET",
+    "status": 200,
+    "ms": 3,
+    "data": {
+      "provider": "mock",
+      "available": true,
+      "model": "mock",
+      "embeddingModel": "mock",
+      "message": "Local AI is available."
+    },
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "access-control-allow-origin": "http://localhost:3000",
+      "connection": "keep-alive",
+      "content-length": "110",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Thu, 08 Oct 2026 22:55:44 GMT",
+      "etag": "W/\"6e-IQuUx582BFqnCtH5Chn+I7xuX1Y\"",
+      "keep-alive": "timeout=5",
+      "vary": "Origin",
+      "x-powered-by": "Express"
+    }
+  },
+  {
+    "name": "SEO health",
+    "path": "/seo/health",
+    "method": "GET",
+    "status": 200,
+    "ms": 2,
+    "data": {
+      "status": "ok",
+      "service": "local-free"
+    },
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "access-control-allow-origin": "http://localhost:3000",
+      "connection": "keep-alive",
+      "content-length": "38",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Thu, 08 Oct 2026 22:55:44 GMT",
+      "etag": "W/\"26-gUqtRgZI+k4RHm4QTrD/WzYMY8Q\"",
+      "keep-alive": "timeout=5",
+      "vary": "Origin",
+      "x-powered-by": "Express"
+    }
+  },
+  {
+    "name": "CORS preflight",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed",
+    "method": "OPTIONS",
+    "status": 204,
+    "ms": 1,
+    "data": "",
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "access-control-allow-headers": "Content-Type,Authorization",
+      "access-control-allow-methods": "GET,POST,PUT,PATCH,DELETE,OPTIONS",
+      "access-control-allow-origin": "http://localhost:3000",
+      "connection": "keep-alive",
+      "content-length": "0",
+      "date": "Thu, 08 Oct 2026 22:55:44 GMT",
+      "keep-alive": "timeout=5",
+      "vary": "Origin",
+      "x-powered-by": "Express"
+    }
+  },
+  {
+    "name": "CORS foreign origin",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed",
+    "method": "OPTIONS",
+    "status": 204,
+    "ms": 2,
+    "data": "",
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "access-control-allow-headers": "Content-Type,Authorization",
+      "access-control-allow-methods": "GET,POST,PUT,PATCH,DELETE,OPTIONS",
+      "access-control-allow-origin": "http://localhost:3000",
+      "connection": "keep-alive",
+      "content-length": "0",
+      "date": "Thu, 08 Oct 2026 22:55:44 GMT",
+      "keep-alive": "timeout=5",
+      "vary": "Origin",
+      "x-powered-by": "Express"
+    }
+  },
+  {
+    "name": "workspace stats with scheduled fixture",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/stats",
+    "method": "GET",
+    "status": 200,
+    "ms": 16,
+    "data": {
+      "researchIdeas": 0,
+      "draftContent": 0,
+      "pendingApprovals": 0,
+      "scheduledPosts": 0
+    },
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "access-control-allow-origin": "http://localhost:3000",
+      "connection": "keep-alive",
+      "content-length": "76",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Thu, 08 Oct 2026 22:55:44 GMT",
+      "etag": "W/\"4c-cnCB8U1cUZJX6KujLg9KMMNW7LY\"",
+      "keep-alive": "timeout=5",
+      "vary": "Origin",
+      "x-powered-by": "Express"
+    }
+  },
+  {
+    "name": "research detail",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/research/cf1515ab-2bf7-4e47-a0b5-22cb943722b9",
+    "method": "GET",
+    "status": 200,
+    "ms": 7,
+    "data": {
+      "id": "cf1515ab-2bf7-4e47-a0b5-22cb943722b9",
+      "workspaceId": "c21eaae9-e1e2-444e-89ca-e408312f35ed",
+      "sourceId": "90c70e66-a57f-4d66-9e5e-9d85c3b084cc",
+      "title": "Audit article",
+      "url": "https://example.com/audit-article",
+      "topic": "SEO",
+      "audience": "Engineers",
+      "summary": "An audit fixture about search engine optimization.",
+      "relevanceReason": "Relevant industry topic for audit testing.",
+      "suggestedContentFormats": "[\"Blog\"]",
+      "publishedAt": null,
+      "confidence": 0.9,
+      "intent": "informational",
+      "status": "new",
+      "createdAt": "2026-10-08T15:06:32.900Z",
+      "source": {
+        "id": "90c70e66-a57f-4d66-9e5e-9d85c3b084cc",
+        "workspaceId": "c21eaae9-e1e2-444e-89ca-e408312f35ed",
+        "name": "Local SSRF test fixture",
+        "url": "http://127.0.0.1:55433/feed",
+        "sourceType": "rss",
+        "sourceTier": "tier1",
+        "active": false,
+        "createdAt": "2026-10-08T15:06:32.877Z"
+      },
+      "contentIdeas": []
+    },
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "access-control-allow-origin": "http://localhost:3000",
+      "connection": "keep-alive",
+      "content-length": "820",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Thu, 08 Oct 2026 22:55:44 GMT",
+      "etag": "W/\"334-zWd3cQ1XXv7kP2MAG16xomCLJiA\"",
+      "keep-alive": "timeout=5",
+      "vary": "Origin",
+      "x-powered-by": "Express"
+    }
+  },
+  {
+    "name": "research convert",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/research/cf1515ab-2bf7-4e47-a0b5-22cb943722b9/convert",
+    "method": "POST",
+    "status": 201,
+    "ms": 11,
+    "data": {
+      "id": "b0c54a98-09d9-4e34-9a35-df09d6dc48e8",
+      "workspaceId": "c21eaae9-e1e2-444e-89ca-e408312f35ed",
+      "researchItemId": "cf1515ab-2bf7-4e47-a0b5-22cb943722b9",
+      "seoOpportunityId": null,
+      "title": "SEO",
+      "topic": "SEO",
+      "audience": "Engineers",
+      "intent": "informational",
+      "status": "draft",
+      "confidence": 0.9,
+      "createdAt": "2026-10-08T22:55:44.848Z",
+      "updatedAt": "2026-10-08T22:55:44.848Z"
+    },
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "access-control-allow-origin": "http://localhost:3000",
+      "connection": "keep-alive",
+      "content-length": "366",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Thu, 08 Oct 2026 22:55:44 GMT",
+      "etag": "W/\"16e-LJpIRok6kiuuglk+pMsgg/QndgI\"",
+      "keep-alive": "timeout=5",
+      "vary": "Origin",
+      "x-powered-by": "Express"
+    }
+  },
+  {
+    "name": "brief detail",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/content-briefs/0477c2b4-8c36-458e-bc6d-ac9512dfbb7e",
+    "method": "GET",
+    "status": 200,
+    "ms": 6,
+    "data": {
+      "id": "0477c2b4-8c36-458e-bc6d-ac9512dfbb7e",
+      "workspaceId": "c21eaae9-e1e2-444e-89ca-e408312f35ed",
+      "primaryKeyword": "audit",
+      "secondaryKeywords": [],
+      "topic": null,
+      "country": null,
+      "language": null,
+      "contentType": null,
+      "searchIntent": null,
+      "briefData": {
+        "topic": "Audit",
+        "audience": "Engineers",
+        "metadata": {
+          "slug": "audit",
+          "title": "Audit",
+          "description": "Fixture"
+        },
+        "contentType": "Blog",
+        "searchIntent": {
+          "intent": "informational",
+          "reason": "Fixture",
+          "confidence": "high"
+        },
+        "titleOptions": [
+          "Audit"
+        ],
+        "relatedTopics": [],
+        "primaryKeyword": "audit",
+        "contentGuidance": {
+          "tone": "Clear",
+          "style": "Plain",
+          "thingsToAvoid": [],
+          "importantPoints": []
+        },
+        "questionsToAnswer": [],
+        "secondaryKeywords": [],
+        "recommendedOutline": [],
+        "technicalRequirements": [],
+        "internalLinkOpportunities": []
+      },
+      "status": "completed",
+      "errorMessage": null,
+      "createdAt": "2026-10-08T15:06:32.859Z",
+      "updatedAt": "2026-10-08T15:06:32.859Z"
+    },
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "access-control-allow-origin": "http://localhost:3000",
+      "connection": "keep-alive",
+      "content-length": "859",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Thu, 08 Oct 2026 22:55:44 GMT",
+      "etag": "W/\"35b-R9FbMSJLiWDHS1RL2ZbTPbspmqU\"",
+      "keep-alive": "timeout=5",
+      "vary": "Origin",
+      "x-powered-by": "Express"
+    }
+  },
+  {
+    "name": "brief drafts",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/content-briefs/0477c2b4-8c36-458e-bc6d-ac9512dfbb7e/drafts",
+    "method": "GET",
+    "status": 200,
+    "ms": 4,
+    "data": [
+      {
+        "id": "6358c005-0aea-4fd5-a565-fb088b724052",
+        "workspaceId": "c21eaae9-e1e2-444e-89ca-e408312f35ed",
+        "briefId": "0477c2b4-8c36-458e-bc6d-ac9512dfbb7e",
+        "title": "Audit Draft",
+        "content": "Edited audit draft",
+        "metadata": {
+          "title": "Audit",
+          "description": "Fixture"
+        },
+        "status": "draft",
+        "version": 2,
+        "createdAt": "2026-10-08T15:06:32.865Z",
+        "updatedAt": "2026-10-08T15:06:32.865Z"
+      },
+      {
+        "id": "24b5ee11-d310-44d6-b646-7a7ee8e2feaf",
+        "workspaceId": "c21eaae9-e1e2-444e-89ca-e408312f35ed",
+        "briefId": "0477c2b4-8c36-458e-bc6d-ac9512dfbb7e",
+        "title": "Audit Draft",
+        "content": "# Audit\n\nFixture text",
+        "metadata": {
+          "title": "Audit",
+          "description": "Fixture"
+        },
+        "status": "draft",
+        "version": 1,
+        "createdAt": "2026-10-08T15:06:32.862Z",
+        "updatedAt": "2026-10-08T15:06:32.862Z"
+      }
+    ],
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "access-control-allow-origin": "http://localhost:3000",
+      "connection": "keep-alive",
+      "content-length": "728",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Thu, 08 Oct 2026 22:55:44 GMT",
+      "etag": "W/\"2d8-aWBR/Wxo8+kEPbPmtMupXYKJw/U\"",
+      "keep-alive": "timeout=5",
+      "vary": "Origin",
+      "x-powered-by": "Express"
+    }
+  },
+  {
+    "name": "generate draft mock AI",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/content-briefs/0477c2b4-8c36-458e-bc6d-ac9512dfbb7e/generate-draft",
+    "method": "POST",
+    "status": 500,
+    "ms": 15,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "access-control-allow-origin": "http://localhost:3000",
+      "connection": "keep-alive",
+      "content-length": "52",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Thu, 08 Oct 2026 22:55:44 GMT",
+      "etag": "W/\"34-rlKccw1E+/fV8niQk4oFitDfPro\"",
+      "keep-alive": "timeout=5",
+      "vary": "Origin",
+      "x-powered-by": "Express"
+    }
+  },
+  {
+    "name": "draft detail",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/content-drafts/24b5ee11-d310-44d6-b646-7a7ee8e2feaf",
+    "method": "GET",
+    "status": 200,
+    "ms": 4,
+    "data": {
+      "id": "24b5ee11-d310-44d6-b646-7a7ee8e2feaf",
+      "workspaceId": "c21eaae9-e1e2-444e-89ca-e408312f35ed",
+      "briefId": "0477c2b4-8c36-458e-bc6d-ac9512dfbb7e",
+      "title": "Audit Draft",
+      "content": "# Audit\n\nFixture text",
+      "metadata": {
+        "title": "Audit",
+        "description": "Fixture"
+      },
+      "status": "draft",
+      "version": 1,
+      "createdAt": "2026-10-08T15:06:32.862Z",
+      "updatedAt": "2026-10-08T15:06:32.862Z"
+    },
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "access-control-allow-origin": "http://localhost:3000",
+      "connection": "keep-alive",
+      "content-length": "365",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Thu, 08 Oct 2026 22:55:44 GMT",
+      "etag": "W/\"16d-34UHc70jMU6nZ8EwDUJeIXqDJL0\"",
+      "keep-alive": "timeout=5",
+      "vary": "Origin",
+      "x-powered-by": "Express"
+    }
+  },
+  {
+    "name": "draft update",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/content-drafts/24b5ee11-d310-44d6-b646-7a7ee8e2feaf",
+    "method": "PATCH",
+    "status": 200,
+    "ms": 5,
+    "data": {
+      "id": "3aae367c-7cd5-4440-be9a-3d65dbce0a59",
+      "workspaceId": "c21eaae9-e1e2-444e-89ca-e408312f35ed",
+      "briefId": "0477c2b4-8c36-458e-bc6d-ac9512dfbb7e",
+      "title": "Audit Draft",
+      "content": "API edited fixture",
+      "metadata": {
+        "title": "Audit",
+        "description": "Fixture"
+      },
+      "status": "draft",
+      "version": 2,
+      "createdAt": "2026-10-08T22:55:44.893Z",
+      "updatedAt": "2026-10-08T22:55:44.893Z"
+    },
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "access-control-allow-origin": "http://localhost:3000",
+      "connection": "keep-alive",
+      "content-length": "360",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Thu, 08 Oct 2026 22:55:44 GMT",
+      "etag": "W/\"168-qRyNH5jhz8LF0xBD3J4ATuiITzY\"",
+      "keep-alive": "timeout=5",
+      "vary": "Origin",
+      "x-powered-by": "Express"
+    }
+  },
+  {
+    "name": "draft regenerate snippet",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/content-drafts/24b5ee11-d310-44d6-b646-7a7ee8e2feaf/regenerate-section",
+    "method": "POST",
+    "status": 201,
+    "ms": 6,
+    "data": {
+      "newSectionContent": "This is a mocked AI response.",
+      "originalDraftId": "24b5ee11-d310-44d6-b646-7a7ee8e2feaf"
+    },
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "access-control-allow-origin": "http://localhost:3000",
+      "connection": "keep-alive",
+      "content-length": "110",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Thu, 08 Oct 2026 22:55:44 GMT",
+      "etag": "W/\"6e-7+mjUD/iBXksXJ2MIiPynw4PyU0\"",
+      "keep-alive": "timeout=5",
+      "vary": "Origin",
+      "x-powered-by": "Express"
+    }
+  },
+  {
+    "name": "create brief mock AI",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/content-briefs",
+    "method": "POST",
+    "status": 201,
+    "ms": 9,
+    "data": {
+      "id": "96a97f3f-ffa7-4ff4-a010-7f3a8fd499bd",
+      "workspaceId": "c21eaae9-e1e2-444e-89ca-e408312f35ed",
+      "primaryKeyword": "audit",
+      "secondaryKeywords": [],
+      "topic": null,
+      "country": null,
+      "language": null,
+      "contentType": null,
+      "searchIntent": null,
+      "briefData": {},
+      "status": "completed",
+      "errorMessage": null,
+      "createdAt": "2026-10-08T22:55:44.908Z",
+      "updatedAt": "2026-10-08T22:55:44.908Z"
+    },
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "access-control-allow-origin": "http://localhost:3000",
+      "connection": "keep-alive",
+      "content-length": "363",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Thu, 08 Oct 2026 22:55:44 GMT",
+      "etag": "W/\"16b-0ZfnwvnX7fprWv3HVc+b995wBlg\"",
+      "keep-alive": "timeout=5",
+      "vary": "Origin",
+      "x-powered-by": "Express"
+    }
+  },
+  {
+    "name": "generate report mock AI",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/reports/generate",
+    "method": "POST",
+    "status": 500,
+    "ms": 10,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "access-control-allow-origin": "http://localhost:3000",
+      "connection": "keep-alive",
+      "content-length": "52",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Thu, 08 Oct 2026 22:55:44 GMT",
+      "etag": "W/\"34-rlKccw1E+/fV8niQk4oFitDfPro\"",
+      "keep-alive": "timeout=5",
+      "vary": "Origin",
+      "x-powered-by": "Express"
+    }
+  },
+  {
+    "name": "analytics insights mock AI",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/analytics/insights",
+    "method": "POST",
+    "status": 201,
+    "ms": 8,
+    "data": {},
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "access-control-allow-origin": "http://localhost:3000",
+      "connection": "keep-alive",
+      "content-length": "2",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Thu, 08 Oct 2026 22:55:44 GMT",
+      "etag": "W/\"2-vyGp6PvFo4RvsFtPoIWeCReyIC8\"",
+      "keep-alive": "timeout=5",
+      "vary": "Origin",
+      "x-powered-by": "Express"
+    }
+  },
+  {
+    "name": "AI test",
+    "path": "/ai/test",
+    "method": "POST",
+    "status": 201,
+    "ms": 2,
+    "data": {
+      "result": "This is a mocked AI response."
+    },
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "access-control-allow-origin": "http://localhost:3000",
+      "connection": "keep-alive",
+      "content-length": "42",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Thu, 08 Oct 2026 22:55:44 GMT",
+      "etag": "W/\"2a-RqI1gn4eYy3o9bvUl/dTRiaprmE\"",
+      "keep-alive": "timeout=5",
+      "vary": "Origin",
+      "x-powered-by": "Express"
+    }
+  },
+  {
+    "name": "create technical audit no queue",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/audits",
+    "method": "POST",
+    "status": 201,
+    "ms": 6,
+    "data": {
+      "id": "7131822d-d679-4f54-8d16-cfe3aa28dccc",
+      "workspaceId": "c21eaae9-e1e2-444e-89ca-e408312f35ed",
+      "baseUrl": "https://example.com",
+      "status": "pending",
+      "maxPages": 1,
+      "maxDepth": 0,
+      "pagesCrawled": 0,
+      "pagesFailed": 0,
+      "issueCount": 0,
+      "criticalCount": 0,
+      "warningCount": 0,
+      "passedCount": 0,
+      "errorMessage": null,
+      "startedAt": null,
+      "completedAt": null,
+      "createdAt": "2026-10-08T22:55:44.934Z"
+    },
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "access-control-allow-origin": "http://localhost:3000",
+      "connection": "keep-alive",
+      "content-length": "369",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Thu, 08 Oct 2026 22:55:44 GMT",
+      "etag": "W/\"171-c3ZU28BHDk5Hv5FfmVsUmo24ieQ\"",
+      "keep-alive": "timeout=5",
+      "vary": "Origin",
+      "x-powered-by": "Express"
+    }
+  },
+  {
+    "name": "research queue missing configuration",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/research/sync",
+    "method": "POST",
+    "status": 500,
+    "ms": 3,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "access-control-allow-origin": "http://localhost:3000",
+      "connection": "keep-alive",
+      "content-length": "52",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Thu, 08 Oct 2026 22:55:44 GMT",
+      "etag": "W/\"34-rlKccw1E+/fV8niQk4oFitDfPro\"",
+      "keep-alive": "timeout=5",
+      "vary": "Origin",
+      "x-powered-by": "Express"
+    }
+  },
+  {
+    "name": "GSC queue missing configuration",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/gsc/sync",
+    "method": "POST",
+    "status": 500,
+    "ms": 572,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "access-control-allow-origin": "http://localhost:3000",
+      "connection": "keep-alive",
+      "content-length": "52",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Thu, 08 Oct 2026 22:55:45 GMT",
+      "etag": "W/\"34-rlKccw1E+/fV8niQk4oFitDfPro\"",
+      "keep-alive": "timeout=5",
+      "vary": "Origin",
+      "x-powered-by": "Express"
+    }
+  },
+  {
+    "name": "SEO opportunity queue missing configuration",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo-opportunities/analyze",
+    "method": "POST",
+    "status": 500,
+    "ms": 146,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "access-control-allow-origin": "http://localhost:3000",
+      "connection": "keep-alive",
+      "content-length": "52",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Thu, 08 Oct 2026 22:55:45 GMT",
+      "etag": "W/\"34-rlKccw1E+/fV8niQk4oFitDfPro\"",
+      "keep-alive": "timeout=5",
+      "vary": "Origin",
+      "x-powered-by": "Express"
+    }
+  },
+  {
+    "name": "Instagram disconnected sync",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/social/instagram/sync",
+    "method": "POST",
+    "status": 500,
+    "ms": 4,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "access-control-allow-origin": "http://localhost:3000",
+      "connection": "keep-alive",
+      "content-length": "52",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Thu, 08 Oct 2026 22:55:45 GMT",
+      "etag": "W/\"34-rlKccw1E+/fV8niQk4oFitDfPro\"",
+      "keep-alive": "timeout=5",
+      "vary": "Origin",
+      "x-powered-by": "Express"
+    }
+  },
+  {
+    "name": "Instagram empty analyze",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/social/instagram/analyze",
+    "method": "POST",
+    "status": 500,
+    "ms": 5,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "access-control-allow-origin": "http://localhost:3000",
+      "connection": "keep-alive",
+      "content-length": "52",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Thu, 08 Oct 2026 22:55:45 GMT",
+      "etag": "W/\"34-rlKccw1E+/fV8niQk4oFitDfPro\"",
+      "keep-alive": "timeout=5",
+      "vary": "Origin",
+      "x-powered-by": "Express"
+    }
+  },
+  {
+    "name": "Instagram disconnect",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/social/instagram/disconnect",
+    "method": "POST",
+    "status": 201,
+    "ms": 4,
+    "data": {
+      "success": true
+    },
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "access-control-allow-origin": "http://localhost:3000",
+      "connection": "keep-alive",
+      "content-length": "16",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Thu, 08 Oct 2026 22:55:45 GMT",
+      "etag": "W/\"10-oV4hJxRVSENxc/wX8+mA4/Pe4tA\"",
+      "keep-alive": "timeout=5",
+      "vary": "Origin",
+      "x-powered-by": "Express"
+    }
+  },
+  {
+    "name": "automation detail",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/automations/2dddc413-b1c3-48c8-ba90-c78d6890db3f",
+    "method": "GET",
+    "status": 200,
+    "ms": 3,
+    "data": {
+      "id": "2dddc413-b1c3-48c8-ba90-c78d6890db3f",
+      "workspaceId": "c21eaae9-e1e2-444e-89ca-e408312f35ed",
+      "name": "Weekly GSC Sync",
+      "type": "gsc-sync",
+      "enabled": true,
+      "schedule": "0 0 * * 0",
+      "config": null,
+      "createdAt": "2026-10-08T15:00:35.253Z",
+      "updatedAt": "2026-10-08T15:00:35.253Z"
+    },
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "access-control-allow-origin": "http://localhost:3000",
+      "connection": "keep-alive",
+      "content-length": "271",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Thu, 08 Oct 2026 22:55:45 GMT",
+      "etag": "W/\"10f-m7/kQqWp5aVehRqmk4g6W3L7xLQ\"",
+      "keep-alive": "timeout=5",
+      "vary": "Origin",
+      "x-powered-by": "Express"
+    }
+  },
+  {
+    "name": "automation disable",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/automations/2dddc413-b1c3-48c8-ba90-c78d6890db3f",
+    "method": "PATCH",
+    "status": 200,
+    "ms": 4,
+    "data": {
+      "id": "2dddc413-b1c3-48c8-ba90-c78d6890db3f",
+      "workspaceId": "c21eaae9-e1e2-444e-89ca-e408312f35ed",
+      "name": "Weekly GSC Sync",
+      "type": "gsc-sync",
+      "enabled": false,
+      "schedule": "0 0 * * 0",
+      "config": null,
+      "createdAt": "2026-10-08T15:00:35.253Z",
+      "updatedAt": "2026-10-08T22:55:45.683Z"
+    },
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "access-control-allow-origin": "http://localhost:3000",
+      "connection": "keep-alive",
+      "content-length": "272",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Thu, 08 Oct 2026 22:55:45 GMT",
+      "etag": "W/\"110-PqjK1owkm6qyoYX2ubC6qTk4GzA\"",
+      "keep-alive": "timeout=5",
+      "vary": "Origin",
+      "x-powered-by": "Express"
+    }
+  },
+  {
+    "name": "SEO content SSRF rejection",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/seo/content/analyze",
+    "method": "POST",
+    "status": 500,
+    "ms": 4,
+    "data": {
+      "statusCode": 500,
+      "message": "Internal server error"
+    },
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "access-control-allow-origin": "http://localhost:3000",
+      "connection": "keep-alive",
+      "content-length": "52",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Thu, 08 Oct 2026 22:55:45 GMT",
+      "etag": "W/\"34-rlKccw1E+/fV8niQk4oFitDfPro\"",
+      "keep-alive": "timeout=5",
+      "vary": "Origin",
+      "x-powered-by": "Express"
+    }
+  },
+  {
+    "name": "live keyword provider ",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/keyword-research?q=seo",
+    "method": "GET",
+    "status": 200,
+    "ms": 863,
+    "data": {
+      "seed": "seo",
+      "language": "en",
+      "country": "us",
+      "suggestions": [
+        {
+          "keyword": "seoul",
+          "source": "google_autocomplete"
+        },
+        {
+          "keyword": "seo",
+          "source": "google_autocomplete"
+        },
+        {
+          "keyword": "seoul korea",
+          "source": "google_autocomplete"
+        },
+        {
+          "keyword": "seo meaning",
+          "source": "google_autocomplete"
+        },
+        {
+          "keyword": "seonghyeon",
+          "source": "google_autocomplete"
+        },
+        {
+          "keyword": "seo in guk",
+          "source": "google_autocomplete"
+        },
+        {
+          "keyword": "seora skincare",
+          "source": "google_autocomplete"
+        },
+        {
+          "keyword": "seoul beauty club",
+          "source": "google_autocomplete"
+        },
+        {
+          "keyword": "seonghwa",
+          "source": "google_autocomplete"
+        },
+        {
+          "keyword": "seo kang joon",
+          "source": "google_autocomplete"
+        }
+      ],
+      "trend": null,
+      "relatedQueries": [],
+      "gscData": null,
+      "disclaimer": "Exact monthly search volume is unavailable in the free provider. Suggestions come from Google Autocomplete. Interest data (0–100) is relative Google Trends data, NOT monthly search volume."
+    },
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "access-control-allow-origin": "http://localhost:3000",
+      "connection": "keep-alive",
+      "content-length": "877",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Thu, 08 Oct 2026 22:55:46 GMT",
+      "etag": "W/\"36d-fP2MgYZt4cYkIvsWl6Nd1Uz7y+U\"",
+      "keep-alive": "timeout=5",
+      "vary": "Origin",
+      "x-powered-by": "Express"
+    }
+  },
+  {
+    "name": "live keyword provider /suggestions",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/keyword-research/suggestions?q=seo",
+    "method": "GET",
+    "status": 200,
+    "ms": 2,
+    "data": [
+      {
+        "keyword": "seoul",
+        "source": "google_autocomplete"
+      },
+      {
+        "keyword": "seo",
+        "source": "google_autocomplete"
+      },
+      {
+        "keyword": "seoul korea",
+        "source": "google_autocomplete"
+      },
+      {
+        "keyword": "seo meaning",
+        "source": "google_autocomplete"
+      },
+      {
+        "keyword": "seonghyeon",
+        "source": "google_autocomplete"
+      },
+      {
+        "keyword": "seo in guk",
+        "source": "google_autocomplete"
+      },
+      {
+        "keyword": "seora skincare",
+        "source": "google_autocomplete"
+      },
+      {
+        "keyword": "seoul beauty club",
+        "source": "google_autocomplete"
+      },
+      {
+        "keyword": "seonghwa",
+        "source": "google_autocomplete"
+      },
+      {
+        "keyword": "seo kang joon",
+        "source": "google_autocomplete"
+      }
+    ],
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "access-control-allow-origin": "http://localhost:3000",
+      "connection": "keep-alive",
+      "content-length": "563",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Thu, 08 Oct 2026 22:55:46 GMT",
+      "etag": "W/\"233-F82+8WxnTC5paw2stSSk44XVYF0\"",
+      "keep-alive": "timeout=5",
+      "vary": "Origin",
+      "x-powered-by": "Express"
+    }
+  },
+  {
+    "name": "live keyword provider /trends",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/keyword-research/trends?q=seo",
+    "method": "GET",
+    "status": 200,
+    "ms": 112,
+    "data": "",
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "access-control-allow-origin": "http://localhost:3000",
+      "connection": "keep-alive",
+      "content-length": "0",
+      "date": "Thu, 08 Oct 2026 22:55:46 GMT",
+      "keep-alive": "timeout=5",
+      "vary": "Origin",
+      "x-powered-by": "Express"
+    }
+  },
+  {
+    "name": "live keyword provider /related",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/keyword-research/related?q=seo",
+    "method": "GET",
+    "status": 200,
+    "ms": 3,
+    "data": [],
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "access-control-allow-origin": "http://localhost:3000",
+      "connection": "keep-alive",
+      "content-length": "2",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Thu, 08 Oct 2026 22:55:46 GMT",
+      "etag": "W/\"2-l9Fw4VUO7kr8CvBlt4zaMCqXZ0w\"",
+      "keep-alive": "timeout=5",
+      "vary": "Origin",
+      "x-powered-by": "Express"
+    }
+  },
+  {
+    "name": "live keyword provider /compare",
+    "path": "/workspaces/c21eaae9-e1e2-444e-89ca-e408312f35ed/keyword-research/compare?kw=seo&kw=marketing",
+    "method": "GET",
+    "status": 200,
+    "ms": 299,
+    "data": {
+      "keywords": [
+        "seo",
+        "marketing"
+      ],
+      "interests": {
+        "seo": 0,
+        "marketing": 0
+      }
+    },
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "access-control-allow-origin": "http://localhost:3000",
+      "connection": "keep-alive",
+      "content-length": "68",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Thu, 08 Oct 2026 22:55:46 GMT",
+      "etag": "W/\"44-BvJM4yE93nl8+6fY9xtu6hPzxl0\"",
+      "keep-alive": "timeout=5",
+      "vary": "Origin",
+      "x-powered-by": "Express"
+    }
+  },
+  {
+    "name": "legacy seo keywords",
+    "path": "/seo/keywords?q=seo",
+    "method": "GET",
+    "status": 200,
+    "ms": 2,
+    "data": [
+      {
+        "keyword": "seo",
+        "volume": 0,
+        "difficulty": 0,
+        "intent": "informational"
+      }
+    ],
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "access-control-allow-origin": "http://localhost:3000",
+      "connection": "keep-alive",
+      "content-length": "70",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Thu, 08 Oct 2026 22:55:46 GMT",
+      "etag": "W/\"46-K/KVVUAY5/WxUzFncIsE/townqU\"",
+      "keep-alive": "timeout=5",
+      "vary": "Origin",
+      "x-powered-by": "Express"
+    }
+  },
+  {
+    "name": "legacy competitors",
+    "path": "/seo/competitors?domain=example.com",
+    "method": "GET",
+    "status": 200,
+    "ms": 1,
+    "data": [],
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "access-control-allow-origin": "http://localhost:3000",
+      "connection": "keep-alive",
+      "content-length": "2",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Thu, 08 Oct 2026 22:55:46 GMT",
+      "etag": "W/\"2-l9Fw4VUO7kr8CvBlt4zaMCqXZ0w\"",
+      "keep-alive": "timeout=5",
+      "vary": "Origin",
+      "x-powered-by": "Express"
+    }
+  },
+  {
+    "name": "legacy rank",
+    "path": "/seo/rank",
+    "method": "POST",
+    "status": 201,
+    "ms": 3,
+    "data": [
+      {
+        "keyword": "seo",
+        "position": 0,
+        "url": "https://example.com/",
+        "change": 0
+      }
+    ],
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "access-control-allow-origin": "http://localhost:3000",
+      "connection": "keep-alive",
+      "content-length": "72",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Thu, 08 Oct 2026 22:55:46 GMT",
+      "etag": "W/\"48-AZADIN5o28W+tzWxm1B8aVb6Ukg\"",
+      "keep-alive": "timeout=5",
+      "vary": "Origin",
+      "x-powered-by": "Express"
+    }
+  },
+  {
+    "name": "legacy audit SSRF",
+    "path": "/seo/audit",
+    "method": "POST",
+    "status": 201,
+    "ms": 2,
+    "data": {
+      "score": 100,
+      "issues": [
+        "Local crawler implementation pending"
+      ],
+      "recommendations": [
+        "Implement Lighthouse CLI integration"
+      ]
+    },
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "access-control-allow-origin": "http://localhost:3000",
+      "connection": "keep-alive",
+      "content-length": "122",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Thu, 08 Oct 2026 22:55:46 GMT",
+      "etag": "W/\"7a-TBPj7JULZ2jq71oE8CjBzzWEjS4\"",
+      "keep-alive": "timeout=5",
+      "vary": "Origin",
+      "x-powered-by": "Express"
+    }
+  }
+]
